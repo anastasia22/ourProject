@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+
+<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
+<link rel="stylesheet" href="css/mainStyle.css">
+<link rel="stylesheet" href="css/socials.css">
+<link rel="stylesheet" href="css/favorites.css">
+<link rel="stylesheet" href="css/homeBlock.css">
+<link rel="stylesheet" href="css/moviesBlock.css">
+<script src="js/underscore.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<body onload="homeTemplate()">
+
+ <!--HEADER    logo and reg/log buttons-->
+<section id="header">
+    <img src="images/header_repainted.png">
+    <a href="#">Registration</a>
+    <a href="#">Sing in</a>
+</section>
+
+<!--MENU-->
+<nav id="mainMenu">
+<ul>
+        <li class="menuButton" onclick="homeTemplate()">Home</li>
+
+        <li class="menuButton" onclick="moviesTemplate()">Movies
+             <!--dorp down block-->
+            <ul>
+                <li>Most popular</li>
+                <li>This year</li>
+                <li>For kids</li>
+                <li>Top of 2010</li>
+            </ul>
+        </li>
+
+        <li class="menuButton" onclick="helpTemplate()">Help</li>
+        <li class="menuButton">Search</li>
+    </ul>
+
+    <input id="favoritesButton" type="button" value="Favorites" onclick="eventHandler()">
+</nav>
+
+<!--section with main content movies help Home .....-->
+<main id="mainContent">
+
+</main>
+
+
+<footer id="footer">
+<p>Unknown beavers &copy</p>
+    <!--SOCIALS-->
+    <a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
+    <a href="#" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+    <a href="#" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
+
+</footer>
+
+<script src="js/favorites.js"></script>
+<script src="js/contentTemplates.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+/*favorites button and block styling*/
+#favoritesButton {
+    width: 90px;
+    padding: 0px;
+    margin: 15px 0px 0px 40px;
+    background-image: url(../images/favIcon1.jpg);
+    border: none;
+    border-radius: 4px;
+    border-bottom-right-radius: 0px;
+}
+#favoritesButton:hover {
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    border-bottom-right-radius: 0px;
+    color: #db5a3c;
+}
+
+#favSection {
+    height: 500px;
+    width: 18%;
+    background: #fff;
+    float: right;
+    background: #C5E2FF;
+    border-radius: 6px;
+    text-align: center;
+}
+.movieIcon {
+    width: 120px;
+    height: 140px;
+    background: #ccc;
+    margin: 10px;
+}
