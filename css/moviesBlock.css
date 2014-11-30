@@ -1,8 +1,0 @@
-/*movies block styles*/
-.singleMovieBlock {
-    width: 150px;
-    height: 250px;
-    float: left;
-    border: 1px solid #db5a3c;
-    margin: 20px;
-}
