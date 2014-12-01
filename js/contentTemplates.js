@@ -2,7 +2,9 @@
  * Created by Daryl on 28.11.2014.
  */
 /*templates for all sections HOME HELP MOVIES . every menu button has its own template*/
-
+var apiKey = '7a135ff2c408f8e138e4645f83b30222';
+var baseUrl = 'http://api.themoviedb.org/3';
+var posterUrl = 'http://image.tmdb.org/t/p/w300/'
 // HOME BLOCK
 function homeTemplate() {
     var newsPictures = {
@@ -64,9 +66,38 @@ function moviesTemplate() {
 
 
     _.each(movies,function(value,key){
-        movieBlocks += '<div class="singleMovieBlock">' + value.poster + key + ' year:' + value.year + '</div>';
+        movieBlocks += '<div class="singleMovieBlock" onclick="singleMoviePage()">' + value.poster + key + ' year:' + value.year + '</div>';
     });
     movieBlocks += '</section>';
     $('#mainContent').find(':first-child').remove();
     $('#mainContent').append(movieBlocks);
 }
+
+function singleMoviePage(){
+    $.ajax({
+        type: "GET",
+        //url: baseUrl + "/movie/" + id + '?api_key=' + apiKey,
+        url:'http://api.themoviedb.org/3/movie/13-forrest-gump?api_key=7a135ff2c408f8e138e4645f83b30222',
+        dataType: "json",
+        success: function(data) {
+          renderSingleMoviePage(data) 
+        }
+    })
+
+    function renderSingleMoviePage(data) {
+
+    }
+        
+}
+
+
+//h1- original title
+//q - tagline
+//img - poster *
+//li - rating - stars
+//span*3 year, runtime, Country
+//p - owerwiew 
+//company, budget, revenue, (a - genres), (a -actors) 
+//button -watch trailer*
+//a>img - screenshots, popup
+//a - similar movies
