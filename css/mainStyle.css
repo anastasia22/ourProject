@@ -1,0 +1,89 @@
+/*general styles header menu footer ....*/
+body{
+    margin: 0% 10% 0% 10%;
+    background: #F9FEBC;
+    font-family: Aral,sans-serif;
+}
+
+#mainContent{
+    border: 1px solid #ccc;
+    height: 500px;
+    clear: both;
+    background: #C5E2FF;
+    border-radius: 6px;
+}
+/*styles for reg and log buttons */
+a {
+    display: block;
+    float: right;
+    margin: 10px;
+}
+/* */
+
+/*menu styling buttons and drop downs*/
+li > ul {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0px;
+    background: #FFD200;
+}
+
+li > ul > li {
+    font-size: 0.8em;
+    padding: 5px;
+    margin: 5px 0px;
+    color: crimson;
+}
+
+li:hover > ul {
+    display: block;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+li:hover > ul>li:hover {
+    border: 1px solid #FC6620;
+
+}
+.menuButton{
+    display: block;
+    margin: 10px 110px 10px 0px;
+    list-style: none;
+    float: left;
+    font-size: 1.3em;
+}
+
+.menuButton:hover {
+    cursor: pointer;
+    color: #FFD200;
+}
+#mainMenu {
+    margin-left: 20%;
+}
+/* */
+
+/*page header*/
+#header {
+    text-align: center;
+}
+
+#header img {
+    height: 130px;
+    background: #F9FEBC;
+}
+/* */
+
+/*footer*/
+#footer {
+    padding: 10px 10px;
+    clear: both;
+}
+#footer p{
+    display: block;
+    width: 300px;
+    float: left;
+}
+
+/* */
+

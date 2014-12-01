@@ -1,0 +1,8 @@
+.search-wrapper {
+    border: 1px solid #ccc;
+    height: 0px;
+    opacity: 0;
+    clear: both;
+    background: #C5E2FF;
+    border-radius: 6px;
+}
