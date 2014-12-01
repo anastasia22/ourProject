@@ -2,8 +2,6 @@ $(function() {
     var state = true, frm;
     $('<div>').attr('id', 'searchWrapper').addClass('search-wrapper').insertAfter('#mainMenu');
     
-    frm = $('<form>').
-    
     
     
     
