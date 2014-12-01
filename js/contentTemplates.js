@@ -79,7 +79,7 @@ function singleMoviePage(id){
     var singleMovieTemplate = 
     '<section id = "singleMovie">' + 
     '<h1> <%= singleMovie.title %> </h1>' +
-    // '<img src="<%= mediumImageUrl %>' + '<%= singleMovie.poster %>" >' +
+    '<img class ="poster" src="<%= mediumImageUrl %>' + '<%= singleMovie.poster %>" >' +
     '<q> <%= singleMovie.tagline %> </q>' +
     '<ul> <li>Rates: <%= singleMovie.rating %> </li>' +
     '<li>Year: <%= singleMovie.year %> </li>' +
@@ -89,10 +89,10 @@ function singleMoviePage(id){
         '<%= singleMovie.countries[i] %>' +
         '<% }) %> </li></ul>' +
     '<p> <%= singleMovie.overview %> </p>' +
-    '<ul><li> Genres:<ul><li>' + 
+    '<ul><li> Genres:' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
         '<a> <%= singleMovie.genres[i].name %> </a> ' +
-        '<% }) %> </li></ul>' +
+        '<% }) %> </li>' +
     '<li> Company:' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
         '<%= singleMovie.companies[i] %>' +
@@ -150,6 +150,7 @@ function singleMoviePage(id){
         dataType: "json",
         success: function(data) {
             if(data.similar.results.length>10) {data.similar.results.splice(10)};
+            if(data.credits.cast.length>5) {data.credits.cast.splice(5)}
             renderSingleMoviePage(data);//object that has all nesessary fields
 
             $('#mainContent').find(':first-child').remove();

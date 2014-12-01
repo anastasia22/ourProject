@@ -6,3 +6,38 @@
     border: 1px solid #db5a3c;
     margin: 20px;
 }
+#singleMovie * {
+	position:static;
+}
+
+#singleMovie h1 {
+	text-align:center;
+}
+
+#singleMovie .poster {
+	margin:10px;
+}
+#singleMovie q {
+	font style:italic;
+}
+
+
+#singleMovie img{
+	float:left;
+}
+#singleMovie li > ul{
+	display:block;
+	background: none;
+	position:static;
+}
+
+#singleMovie a{
+	float:none;
+	display:inline;
+	margin:0;
+}
+
+#singleMovie li {
+	padding: 0;
+	margin: 0;
+}
