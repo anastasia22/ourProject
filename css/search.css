@@ -5,4 +5,5 @@
     clear: both;
     background: #C5E2FF;
     border-radius: 6px;
+    position: static;
 }

@@ -19,14 +19,20 @@
 <body onload="homeTemplate()">
 
  <!--HEADER    logo and reg/log buttons-->
+
+
 <section id="header">
-    <img src="images/header_repainted.png">
-    <a href="#">Registration</a>
-    <a href="#">Sing in</a>
-</section>
+    <div class="logo-backgr logo-dimentions">
+       
+        <div class="header-wrapper"><div class="logo"></div><h1 class="page-header">Beaver's<br><span>movie search</span></h1></div>
+        <div class="registration">
+            <a href="#">Registration</a>
+            <a href="#">Sing in</a>
+        </div>
+    </div>
 
 <!--MENU-->
-<nav id="mainMenu">
+<nav id="mainMenu" class="menu-color">
 <ul>
         <li class="menuButton" onclick="homeTemplate()">Home</li>
 
@@ -46,7 +52,7 @@
 
     <input id="favoritesButton" type="button" value="Favorites" onclick="eventHandler()">
 </nav>
-
+</section>
 <!--section with main content movies help Home .....-->
 <main id="mainContent">
 
