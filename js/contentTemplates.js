@@ -46,34 +46,38 @@ function helpTemplate() {
     $('#mainContent').append(section);
 }
 
-function moviesTemplate() {
-    var movies = {
-            Dragon:{
-                year: 1999,
-                poster: '<img src="moviesIcons/icon1.jpg">'
+function moviesTemplate(movies) {
+    var movieBlocks='';
+    //paint recived movie list
+    for(var i=0; i < movies.length; i++) {
+        //check if  current movie have no poster pass it
+        if(movies[i].poster_path == null) {
+            continue;
+        }
+        movieBlocks += '<div id="' + movies[i].id + '" class="singleMovieBlock">' +
+        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w185' + movies[i].poster_path + '">' +
+        '<div class="infoBlock">' +
+        '<p>' + movies[i].original_title + '</p>' +
+        '<p>' + movies[i].release_date + '</p>' +
+        '</div></div>';
+    }
+    //removes prev 'little' preloder
+    if($('#loader')){
+       $('#loader').remove(); 
+    }
+    //adds little preloder
+    movieBlocks += '<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>';
 
-            },
-            Lucy:{
-                year: 1299,
-                poster: '<img src="moviesIcons/icon2.jpg">'
-
-            },
-            Harry_Potter:{
-                year: 1933,
-                poster: '<img src="moviesIcons/icon3.jpg">'
-
-            }
-    };
-
-    var movieBlocks='<section id="Movies">';
-
-
-    _.each(movies,function(value,key){
-        movieBlocks += '<div class="singleMovieBlock" onclick="singleMoviePage()">' + value.poster + key + ' year:' + value.year + '</div>';
-    });
-    movieBlocks += '</section>';
-    $('#mainContent').find(':first-child').remove();
-    $('#mainContent').append(movieBlocks);
+    //check if it is the first paint if true it wrapps it into 'Movies'
+    if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
+        $('#Movies').append(movieBlocks);
+        //slide out event 
+        addHover();
+    } else {
+        movieBlocks='<section id="Movies">' + movieBlocks + '</section>';
+        $('#mainContent').append(movieBlocks);
+        addHover();
+    }
 }
 
 function singleMoviePage(id){

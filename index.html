@@ -11,9 +11,10 @@
         <link rel="stylesheet" href="css/favorites.css">
         <link rel="stylesheet" href="css/homeBlock.css">
         <link rel="stylesheet" href="css/moviesBlock.css">
+		<link rel="stylesheet" href="css/moviesBlocks.css">
         <link rel="stylesheet" href="css/search.css">
         <script src="js/underscore.js"></script>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery-1.11.1.js"></script>
     </head>
 
 <body onload="homeTemplate()">
@@ -34,19 +35,19 @@
 <!--MENU-->
 <nav id="mainMenu" class="menu-color">
 <ul>
-        <li class="menuButton" onclick="homeTemplate()">Home</li>
+        <li id="menuHome" class="menuButton" >Home</li>
 
-        <li class="menuButton" onclick="moviesTemplate()">Movies
+        <li id="menuMovies" class="menuButton" >Movies
              <!--dorp down block-->
             <ul>
-                <li>Most popular</li>
-                <li>This year</li>
-                <li>For kids</li>
-                <li>Top of 2010</li>
+                <li id="subMenuPop">Most popular</li>
+                <li id="subMenu2013">Last year most popular</li>
+                <li id="subMenuKids">For kids</li>
+                <li id="subMenuComedy">Best comedies</li>
             </ul>
         </li>
 
-        <li class="menuButton" onclick="helpTemplate()">Help</li>
+        <li id="menuHelp" class="menuButton">Help</li>
         <li class="menuButton" id="callSearch">Search</li>
     </ul>
 
@@ -71,6 +72,8 @@
 <script src="js/favorites.js"></script>
 <script src="js/contentTemplates.js"></script>
 <script src="js/search.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/events.js"></script>
 
 </body>
 </html>
