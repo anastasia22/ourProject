@@ -12,13 +12,15 @@
 body{
     margin: 0 auto;
     width: 950px;
+    position: relative;
     background-color:#f5f5f5;
-    background-image: -webkit-radial-gradient(#d1d7fd 15%, transparent 16%), -webkit-radial-gradient(#d1d7fd 15%, transparent 16%);
-    background-image: radial-gradient(#d1d7fd 15%, transparent 16%), radial-gradient(#d1d7fd 15%, transparent 16%);
+    background-image: -webkit-radial-gradient(#EDEFFF 15%, transparent 16%), -webkit-radial-gradient(#EDEFFF 15%, transparent 16%);
+    background-image: radial-gradient(#EDEFFF 15%, transparent 16%), radial-gradient(#EDEFFF 15%, transparent 16%);
     background-size:60px 60px;
     background-position: 0 0, 30px 30px;
     font-family: 'Open Sans', sans-serif;
     color: #333;
+
 }
 
 a {
@@ -40,17 +42,32 @@ a {
     position: static;
 }
 
+#mainContent {
+    width: 100%;
+    overflow: auto;
+    min-height: 600px;
+}
+
+#footer {
+    width: 100%;
+    height: 65px;
+    clear: both;
+}
+
 
 /*******     MODULES     *******/
 
 
+/*** header ***/
+
+/** logo **/
 .logo-backgr {
     background: #646060;
-    text-align: center;
 }
 
 .logo-dimentions {
     height: 145px;
+    text-align: center;
 }
 .logo{
  display: inline-block;
@@ -111,6 +128,9 @@ a {
     padding-top: 7px;
 }
 
+
+/** registration **/
+
 .registration {
     position: absolute;
     top: 0px;
@@ -130,23 +150,9 @@ a {
     color: #6ec1e0;
 }
 
-.menuButton {
-    width: 187px;
-    display: inline-block;
-    float: left;
-    position: inherit ;
-    overflow: hidden;
-    color: #fff;
-    padding: 17.5px 59px;
-    border: 0;
-    -webkit-transition-duration: 0.2s;
-            transition-duration: 0.2s
-}
 
-.menuButton:hover {
-    cursor: pointer;
-    background: #01aadd;
-}
+
+/* dropdown */
 
 .menuButton ul {
     visibility: hidden;
@@ -170,7 +176,7 @@ a {
 .menuButton:hover ul {
     visibility: visible;
     position: absolute;
-    left: 187px;
+    left: 190px;
     top: 200px;
     list-style-type: none;
     
@@ -182,8 +188,42 @@ a {
 }
 
 
+/** menu **/
 
+.menuButton {
+    width: 190px;
+    display: inline-block;
+    float: left;
+    position: inherit ;
+    overflow: hidden;
+    color: #fff;
+    padding: 17.5px 59px;
+    border: 0;
+    -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s
+}
 
+.menuButton:hover {
+    cursor: pointer;
+    background: #01aadd;
+}
+
+.menuButtonHovered {
+    background: #01aadd;
+}
+
+    /*** content ***/
+
+.content-background {
+    background: #FFFAF0;
+}
+
+.fooer-par {
+    color: #fff;
+    position: relative;
+    top: 24px;
+    left: 66px;
+}
 
 
 

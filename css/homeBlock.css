@@ -1,15 +1,16 @@
 /*block with news(home page block) styles*/
 .newsBlocks {
     width: 550px;
-    height: 150px;
-    margin: 5px;
-    border: 2px solid #db5a3c;
-    border-radius: 6px;
-    background: #cccccc;
+    margin: 10px;
+    background: #fff;
+    padding: 20px;
+    overflow: auto;
+    border-bottom: 2px solid #6EC1E0;
 }
 
 .newsPic {
     width: 207px;
     height: 138px;
     float: left;
+    margin-right: 25px;
 }

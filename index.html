@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
     <head lang="en">
         <meta charset="UTF-8">
         <title>Page</title>
@@ -17,59 +20,61 @@
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     </head>
 
+<body onload="homeTemplate()">
+
+ <!--HEADER    logo and reg/log buttons-->
 
 
-    <body onload="homeTemplate()">
+<div id="header">
+    <div class="logo-backgr logo-dimentions">
+       
+        <div class="header-wrapper"><div class="logo"></div><h1 class="page-header">Beaver's<br><span>movie search</span></h1></div>
+        <div class="registration">
+            <a href="#">Registration</a>
+            <a href="#">Sing in</a>
+        </div>
+    </div>
 
-     <!--HEADER    logo and reg/log buttons-->
+<!--MENU-->
+<nav id="mainMenu" class="menu-color">
+<ul>
+        <li class="menuButton" onclick="homeTemplate()">Home</li>
 
-        <section id="header">
-            <div class="logo-backgr logo-dimentions">
-                <div class="header-wrapper"><div class="logo"></div>
-                <h1 class="page-header">Beaver's<br><span>movie search</span></h1></div>
-                <div class="registration">
-                    <a href="#">Registration</a>
-                    <a href="#">Sing in</a>
-                </div>
-            </div>
+        <li class="menuButton" onclick="moviesTemplate()">Movies
+             <!--dorp down block-->
+            <ul>
+                <li>Most popular</li>
+                <li>This year</li>
+                <li>For kids</li>
+                <li>Top of 2010</li>
+            </ul>
+        </li>
 
-        <!--MENU-->
-            <nav id="mainMenu" class="menu-color">
-                <ul>
-                    <li class="menuButton" onclick="homeTemplate()">Home</li>
+        <li class="menuButton" onclick="helpTemplate()">Help</li>
+        <li class="menuButton" id="callSearch">Search</li>
+    </ul>
 
-                    <li class="menuButton" onclick="moviesTemplate()">Movies
-                         <!--dorp down block-->
-                        <ul>
-                            <li>Most popular</li>
-                            <li>This year</li>
-                            <li>For kids</li>
-                            <li>Top of 2010</li>
-                        </ul>
-                    </li>
+    <input id="favoritesButton" class="menuButton menu-color" type="button" value="Favorites" onclick="eventHandler()">
+</nav>
+</div>
+<!--section with main content movies help Home .....-->
+<main id="mainContent" class="content-background">
 
-                    <li class="menuButton" onclick="helpTemplate()">Help</li>
-                    <li class="menuButton" id="callSearch">Search</li>
-                </ul>
-                <input id="favoritesButton" type="button" value="Favorites" onclick="eventHandler()">
-            </nav>
-        </section>
-        
-        <!--section with main content movies help Home .....-->
-        <main id="mainContent"></main>
+</main>
 
 
-        <footer id="footer">
-            <p>Unknown beavers &copy</p>
-            <!--SOCIALS-->
-            <a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
-            <a href="#" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
-            <a href="#" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
-        </footer>
+<footer id="footer" class="logo-backgr">
+<p class="fooer-par">Unknown beavers &copy</p>
+    <!--SOCIALS-->
+    <a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
+    <a href="#" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+    <a href="#" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
 
-        <script src="js/favorites.js"></script>
-        <script src="js/contentTemplates.js"></script>
-        <script src="js/search.js"></script>
+</footer>
 
-    </body>
+<script src="js/favorites.js"></script>
+<script src="js/contentTemplates.js"></script>
+<script src="js/search.js"></script>
+
+</body>
 </html>

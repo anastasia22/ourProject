@@ -3,13 +3,13 @@
  */
 
 function eventHandler(event) {
-    var button = document.getElementById('favoritesButton');
+    var button = $('#favoritesButton');
 
     if(checkFavorites()){
-        button.style.backgroundImage='url(images/favIcon1.jpg)';
+        button.toggleClass('menuButtonHovered');
         hideFavBlock();
     }else {
-        button.style.backgroundImage='url(images/favIcon2.jpg)';
+        button.toggleClass('menuButtonHovered');
         addFavBlock();
     }
 
@@ -36,16 +36,23 @@ function addFavBlock() {
 
     var favBlock = _.template('<div id=\"favSection\">' + moviesIcons + '</div>');
     /*shortens main block */
-    $('#mainContent').css({'width':'80%','float':'left'});
+    $('#mainContent').animate({'width':'80%','float':'left'}, 300);
     /*adds favorites block*/
-    $( favBlock({}) ).insertBefore( "#footer" );
+    window.setTimeout(function(){
+        $( favBlock({}) ).insertBefore( "#footer" ).animate({'opacity': '1'}, 400);
+    }, 200);   
 }
 
 //delete favorites block
 function hideFavBlock() {
     /*restores main block */
-    $('#mainContent').css({'width':'100%','float':'none'});
+    window.setTimeout(function() {
+        $('#mainContent').animate({'width':'100%','float':'none'});
+    }, 300);
     /*delete favorites block*/
-    document.body.removeChild(document.getElementById('favSection'));
+    $('#favSection').animate({'opacity': '0'}, 400);
+    window.setTimeout(function() {
+         $('#favSection').remove();
+    }, 300);
 
 }

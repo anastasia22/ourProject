@@ -21,11 +21,11 @@ function homeTemplate() {
         3: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>'
     }
 
-    var newsBlocks='<section id="Home">';
+    var newsBlocks='<div id="Home">';
 
 // create news block with pic and news
-    _.each(newsPictures,function(value,key){newsBlocks += '<div class="newsBlocks">' + value + shortInfo[key] + '</div>'});
-    newsBlocks += '</section>';
+    _.each(newsPictures,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
+    newsBlocks += '</div>';
 // delete current block
     $('#mainContent').find(':first-child').remove();
 //set home block
