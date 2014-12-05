@@ -4,9 +4,10 @@
 /*templates for all sections HOME HELP MOVIES . every menu button has its own template*/
 var apiKey = '7a135ff2c408f8e138e4645f83b30222';
 var baseUrl = 'http://api.themoviedb.org/3';
-var bigImageUrl = 'http://image.tmdb.org/t/p/w300/';
+var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
 var mediumImageUrl = 'http://image.tmdb.org/t/p/w185/';
-var smallImageUrl = 'http://image.tmdb.org/t/p/w185/';
+var smallImageUrl = 'http://image.tmdb.org/t/p/w45/';
+
 // HOME BLOCK
 function homeTemplate() {
     var newsPictures = {
@@ -79,33 +80,42 @@ function singleMoviePage(id){
     var singleMovieTemplate = 
     '<section id = "singleMovie">' + 
     '<h1> <%= singleMovie.title %> </h1>' +
-    '<img class ="poster" src="<%= mediumImageUrl %>' + '<%= singleMovie.poster %>" >' +
+    '<div class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></div>' +
     '<q> <%= singleMovie.tagline %> </q>' +
-    '<ul> <li>Rates: <%= singleMovie.rating %> </li>' +
-    '<li>Year: <%= singleMovie.year %> </li>' +
-    '<li>Runtime:<%= singleMovie.runtime %> </li>' +
-    '<li>Country:' +  
+    '<ul> <li><span>Rates: </span><a href="#"><%= singleMovie.rating %></a>' + 
+    '<% for(var i=0; i++; i <= Math.round(singleMovie.rating)) { %>' +
+    '<span class="glyphicon glyphicon-star"><span> ' +
+    '<% }; %>' + 
+    '<% for(var i=0; i++; i <= (10 - Math.round(singleMovie.rating))){ %>' +
+    '<span class="glyphicon glyphicon-star-empty"><span> ' +
+    '<% }; %>' + 
+    '</li>' +
+    '<li><span>Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
+    '<li><span>Runtime: </span><%= singleMovie.runtime %> min</li>' +
+    '<li><span>Country: </span>' +  
         '<% _.each(singleMovie.countries, function(el, i){ %>' + 
-        '<%= singleMovie.countries[i] %>' +
+        '<a href="#"><%= singleMovie.countries[i] %></a>' +
         '<% }) %> </li></ul>' +
-    '<p> <%= singleMovie.overview %> </p>' +
-    '<ul><li> Genres:' + 
+    '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
+    '<ul><li><span>Genres: </span>' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
-        '<a> <%= singleMovie.genres[i].name %> </a> ' +
+        '<a href="#"> <%= singleMovie.genres[i].name %> </a> ' +
         '<% }) %> </li>' +
-    '<li> Company:' + 
+    '<li><span>Company: </span>' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
-        '<%= singleMovie.companies[i] %>' +
+        '<a href="#"><%= singleMovie.companies[i] %></a>' +
         '<% }) %> </li>' +
-    '<li>Budget:$ <%= singleMovie.budget %> </li>' +
-    '<li>Revenue:$ <%= singleMovie.revenue %> </li>' +
-    '<li> Actors: <ul>' + 
+    '<li><span>Budget: </span>$ <%= singleMovie.budget %> </li>' +
+    '<li><span>Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
+    '<li><span>Actors: </span><table>' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
-        '<li> <img src="<%= smallImageUrl %>' + 
-        '<%= singleMovie.actors[i].profile_path %>">' +
-        '<span><%= singleMovie.actors[i].name %> as' +
-        '<%= singleMovie.actors[i].character %> </span>' +
-        '</li> <% }) %> </ul>'
+        '<tr><td> <img src="<%= smallImageUrl %>' +  
+        '<%= singleMovie.actors[i].profile_path %>" </td>' +
+        '<td><%= singleMovie.actors[i].name %></td>' +
+        '<td><%= singleMovie.actors[i].character %></td>' +
+        '</tr> <% }) %> </table></li></ul>' +
+    '<iframe width="640" height="360" src="http://www.youtube.com/embed/' + 
+    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'
 
 
 
@@ -126,7 +136,7 @@ function singleMoviePage(id){
             runtime: data.runtime,
             genres: data.genres,
             images: [],
-            trailers: data.trailers.youtube,
+            trailer: data.trailers.youtube[0].source,
             actors: data.credits.cast
         }
         for (var country in data.production_countries) {
@@ -146,11 +156,11 @@ function singleMoviePage(id){
     $.ajax({
         type: "GET",
         //url: baseUrl + "/movie/" + id + '?api_key=' + apiKey,
-        url:'http://api.themoviedb.org/3/movie/13-forrest-gump?api_key=7a135ff2c408f8e138e4645f83b30222&append_to_response=similar,images,trailers,credits',
+        url:'http://api.themoviedb.org/3/movie/240832-lucy?api_key=7a135ff2c408f8e138e4645f83b30222&append_to_response=similar,images,trailers,credits',
         dataType: "json",
         success: function(data) {
             if(data.similar.results.length>10) {data.similar.results.splice(10)};
-            if(data.credits.cast.length>5) {data.credits.cast.splice(5)}
+            if(data.credits.cast.length>10) {data.credits.cast.splice(10)}
             renderSingleMoviePage(data);//object that has all nesessary fields
 
             $('#mainContent').find(':first-child').remove();
