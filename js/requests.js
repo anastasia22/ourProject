@@ -26,6 +26,13 @@ function defaultMovies() {
     var defaultMovies='discover/movie?primary_release_year=2014';
    sendRequest(defaultMovies,'This year movies');
 }
+function searchByTitle(title){
+    var titleSearch = 'search/movie?query=' + title;
+    sendRequest(titleSearch);
+}
+function searchByActor () {
+
+}
 // ajax request  creates  request with recived url 
 function sendRequest(url,listName) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";

@@ -56,7 +56,7 @@ function moviesTemplate(movies,listName) {
             continue;
         }
         movieBlocks += '<div id="' + movies[i].id + '" class="singleMovieBlock">' +
-        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w185' + movies[i].poster_path + '">' +
+        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300' + movies[i].poster_path + '">' +
         '<div class="infoBlock">' +
         '<p>' + movies[i].original_title + '</p>' +
         '<p>' + movies[i].release_date + '</p>' +
