@@ -26,12 +26,14 @@ function defaultMovies() {
     var defaultMovies='discover/movie?primary_release_year=2014';
    sendRequest(defaultMovies,'This year movies');
 }
-function searchByTitle(title){
-    var titleSearch = 'search/movie?query=' + title;
-    sendRequest(titleSearch);
+function searchByTitle(){
+    var titleSearch = 'search/movie?query=' + $('#searchField1').val();
+    sendRequest(titleSearch,$('#searchField1').val());
+
 }
 function searchByActor () {
-
+    var titleSearch = 'search/person?query=' + $('#searchField1').val();
+    sendRequest(titleSearch,$('#searchField1').val());
 }
 // ajax request  creates  request with recived url 
 function sendRequest(url,listName) {

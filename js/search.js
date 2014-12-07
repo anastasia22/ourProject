@@ -5,8 +5,7 @@ $(function() {
     
     frm = $('<form>');
     
-    frm.append('<input type="text" placeholder="Search..." class="search-input"><span class="by">by</span><input type="radio" name="factor" value="" class="search-radio" id="movieTitle"> <label for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"> <label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"> <label for="advanced">Advanced search</label><button class="search-button">GO!</button>');
-    
+    frm.append('<input id="searchField" type="text" placeholder="Search..." class="search-input"><span class="by">by</span><input type="radio" name="factor" value="" class="search-radio" id="movieTitle"> <label id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"> <label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"> <label for="advanced">Advanced search</label><button class="search-button">GO!</button>');
     $('#searchWrapper').append(frm);
     
     $('form').submit(function(event) {
@@ -32,7 +31,7 @@ $(function() {
     if (state) {
         $('#searchWrapper').animate({
             'height': '100px',
-            'opacity': '1',
+            'opacity': '1'
         }, 300);
         if ( $('#favSection') ) {
             $('#favSection').animate({'top': '300px'}, 300);
@@ -55,6 +54,7 @@ $(function() {
 $('.search-radio-text').click(function() {
     
 });
+
 
 
 

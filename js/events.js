@@ -4,6 +4,14 @@
  //adds all events handlers to menu buttons
 (function(){
 	$('#mainMenu').on('click',handlEvent);
+	$('#searchButton').on('click',function() {
+		$('#mainContent').find(':first-child').remove();
+		if($('input[name=search22]:checked').val() == 'Title'){
+			searchByTitle();
+		} else {
+			searchByActor();
+		}
+	});
 })();
 
 // menu event handlers
@@ -40,3 +48,4 @@ function addEvents() {
 	});
 	
 }
+
