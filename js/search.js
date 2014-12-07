@@ -9,6 +9,10 @@ $(function() {
     
     $('#searchWrapper').append(frm);
     
+    $('form').submit(function(event) {
+        event.preventDefault();
+    });
+    
     var labels = document.getElementsByTagName('label');
     labels[0].style.borderRight = '1px solid rgba(238, 238, 238, 0.34)';
     labels[1].style.borderRight = '1px solid rgba(238, 238, 238, 0.34)';    

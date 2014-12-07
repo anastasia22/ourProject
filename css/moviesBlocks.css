@@ -1,8 +1,8 @@
 /*movies block styles*/
 div.singleMovieBlock {
     position: relative;
-    width: 200px;
-    height: 280px;
+    width: 249px;
+    height: 334.6px;
     float: left;
     text-align: center;
     margin: 10px;
@@ -24,6 +24,12 @@ div.infoBlock {
     position: relative;
     margin-bottom: 50pxRR
 }
+
+#Movies.h1 {
+    margin: 20px 22px 3px;
+    color: #056E8D;
+}
+
 #loader {
     display: none;
     position: absolute;
