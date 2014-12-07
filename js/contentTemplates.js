@@ -46,8 +46,9 @@ function helpTemplate() {
     $('#mainContent').append(section);
 }
 
-function moviesTemplate(movies) {
+function moviesTemplate(movies,listName) {
     var movieBlocks='';
+    console.log(movies);
     //paint recived movie list
     for(var i=0; i < movies.length; i++) {
         //check if  current movie have no poster pass it
@@ -72,11 +73,11 @@ function moviesTemplate(movies) {
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks);
         //slide out event 
-        addHover();
+        addEvents();
     } else {
-        movieBlocks='<section id="Movies">' + movieBlocks + '</section>';
+        movieBlocks='<section id="Movies"><h1>' + listName + '</h1>' + movieBlocks + '</section>';
         $('#mainContent').append(movieBlocks);
-        addHover();
+        addEvents();
     }
 }
 
@@ -160,9 +161,10 @@ function singleMoviePage(id){
     $.ajax({
         type: "GET",
         //url: baseUrl + "/movie/" + id + '?api_key=' + apiKey,
-        url:'http://api.themoviedb.org/3/movie/240832-lucy?api_key=7a135ff2c408f8e138e4645f83b30222&append_to_response=similar,images,trailers,credits',
+        url:'http://api.themoviedb.org/3/movie/' + id + '?api_key=7a135ff2c408f8e138e4645f83b30222&append_to_response=similar,images,trailers,credits',
         dataType: "json",
         success: function(data) {
+            console.log(data);
             if(data.similar.results.length>10) {data.similar.results.splice(10)};
             if(data.credits.cast.length>10) {data.credits.cast.splice(10)}
             renderSingleMoviePage(data);//object that has all nesessary fields

@@ -4,30 +4,30 @@
  // function invokes when one clicks  on sub menu it creates movie list for kids
 function popular4Kids() {
    	var forKids ='discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc';
-    sendRequest(forKids);
+    sendRequest(forKids,'For kids');
 }
 // -/- most pop
 function mostPopular() {
     var mostPopUrl ='discover/movie?sort_by=popularity.desc';
-    sendRequest(mostPopUrl);
+    sendRequest(mostPopUrl,'Most popular');
 }
 // -/- last year
 function mostPopular2013() {
     var lastYear = 'discover/movie?primary_release_year=2013&sort_by=vote_average.desc';
-    sendRequest(lastYear);
+    sendRequest(lastYear,'Last year');
 }
 
 function mostPopularComedies() {
     var mostPopComedies = 'discover/movie?with_genres=35,36&sort_by=revenue.desc';
-    sendRequest(mostPopComedies);
+    sendRequest(mostPopComedies,'Most popular comedis');
 }
 
 function defaultMovies() {
     var defaultMovies='discover/movie?primary_release_year=2014';
-   sendRequest(defaultMovies);
+   sendRequest(defaultMovies,'This year movies');
 }
 // ajax request  creates  request with recived url 
-function sendRequest(url) {
+function sendRequest(url,listName) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
     var moviesSearchUrl = baseUrl + url + apikey;
@@ -52,7 +52,7 @@ function sendRequest(url) {
             //-------------------
 
             //post revcived movies on page 
-            moviesTemplate(data.results);
+            moviesTemplate(data.results,listName);
 
 
             //adds auto movie list  uploads when scrolling 

@@ -3,7 +3,7 @@
  */
  //adds all events handlers to menu buttons
 (function(){
-	$('#mainMenu').on('click',handlEvent)
+	$('#mainMenu').on('click',handlEvent);
 })();
 
 // menu event handlers
@@ -24,7 +24,10 @@ function handlEvent(event) {
 
 
 //single movie block slide out handler
-function addHover() {
+function addEvents() {
+	$(".singleMovieBlock").on('click',function() {
+		singleMoviePage(this.id);
+	});
 
 	$(".singleMovieBlock").hover(function() {
 		$(this).find(':last-child').stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
