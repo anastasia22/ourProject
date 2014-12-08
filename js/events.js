@@ -35,17 +35,23 @@ function handlEvent(event) {
 
 //single movie block slide out handler
 function addEvents() {
+	var infoBlock;
+
 	$(".singleMovieBlock").on('click',function() {
 		singleMoviePage(this.id);
 	});
 
 	$(".singleMovieBlock").hover(function() {
-		$(this).find(':last-child').stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
+		infoBlock=$(this).find(':last-child')[0];
+
+		$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
+
 	},
 	function(){
-		 $(this).find(':last-child').stop(false,false).animate({height: '0px'}, 700,
+		$(infoBlock).stop(false,false).animate({height: '0px'}, 700,
 		 	function(){		 
 		 	$(this).css({visibility: "hidden",height : '100px'});
+
 		 })
 	});
 	
