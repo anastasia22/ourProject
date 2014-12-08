@@ -72,12 +72,40 @@ function moviesTemplate(movies,listName) {
     //check if it is the first paint if true it wrapps it into 'Movies'
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks);
-        //slide out event 
+        //slide out event
         addEvents();
     } else {
         movieBlocks='<section id="Movies"><h1>' + listName + '</h1>' + movieBlocks + '</section>';
         $('#mainContent').append(movieBlocks);
         addEvents();
+    }
+}
+
+function  actorsTempl(actors,listName){
+    var actorsBlock='';
+
+    for (var i=0; i < actors.length; i++) {
+        actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">' +
+        '<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">' +
+        '<p>' + actors[i].name + '</p>' +
+        '<p>' + actors[i].popularity + '</p>' +
+         '</div>';
+    }
+
+    if($('#loader')){
+        $('#loader').remove();
+    }
+
+    actorsBlock += '<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>';
+
+    if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
+        $('#Actors').append(movieBlocks);
+        //slide out event
+       // addEvents();
+    } else {
+        actorsBlock='<section id="Actors"><h1>' + listName + '</h1>' + actorsBlock + '</section>';
+        $('#mainContent').append(actorsBlock);
+        //addEvents();
     }
 }
 

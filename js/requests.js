@@ -33,7 +33,8 @@ function searchByTitle(){
 }
 function searchByActor () {
     var titleSearch = 'search/person?query=' + $('#searchField').val();
-    sendRequest(titleSearch,$('#searchField').val());
+    $('#mainContent').find(':first-child').remove();
+    findActors(titleSearch,$('#searchField').val());
 }
 // ajax request  creates  request with recived url 
 function sendRequest(url,listName) {
@@ -94,6 +95,66 @@ function sendRequest(url,listName) {
     }
 
 }
+
+
+function findActors (url,listName) {
+    var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
+    var baseUrl = "https://api.themoviedb.org/3/";
+    var actorsSearchUrl = baseUrl + url + apikey;
+    var page=1;
+
+    //preloader  ON
+    $('#mainContent').append('<div id="loaderImage"></div>');
+    new imageLoader(cImageSrc, 'startAnimation()');
+
+
+    $.ajax({
+        url: actorsSearchUrl,
+        dataType: "jsonp",
+        success: callBackFunc
+    });
+
+
+    function callBackFunc (data) {
+        //when request recived PRELODER OFF
+        stopAnimation();
+        $('#loaderImage').remove();
+        //-------------------
+
+        //post revcived movies on page
+        actorsTempl(data.results,listName);
+
+
+        //adds auto movie list  uploads when scrolling
+        $('#Movies').on(/*{*/
+            'mousewheel', function(e) {
+
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    //every scroll  appends new page to url
+                    var currentPage= '&page=' + (++page);
+                    actorsSearchUrl = baseUrl + url + apikey + currentPage;
+
+                    $.ajax({
+                        url: moviesSearchUrl,
+                        beforeSend: function( ) {
+                            //little preloder when scrolling list
+                            $('#loader').show();
+                        },
+                        success: function (data) {
+                            //little preloder off
+                            $('#loader').hide();
+
+                            actorsTempl(data.results);
+
+                        }
+                    });
+                }
+            }
+            /* }*/);
+
+    }
+}
+
 
 // this code  handle  preloder animation
 
