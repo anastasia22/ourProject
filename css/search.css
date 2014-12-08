@@ -51,6 +51,10 @@ label:hover {
     background: #01aadd;
 }
 
+input[type="radio"]:checked + label {
+    background: #0382a8;
+}
+
 .search-button {
     float: left;
     margin: 0 24px;

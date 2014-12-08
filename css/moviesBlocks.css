@@ -22,11 +22,11 @@ div.infoBlock {
 #Movies {
     overflow: auto;
     position: relative;
-    margin-bottom: 50pxRR
+    margin: 0 auto;
 }
 
-#Movies.h1 {
-    margin: 20px 22px 3px;
+#Movies h1 {
+    margin: 20px 22px 8px;
     color: #056E8D;
 }
 

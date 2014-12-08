@@ -131,9 +131,10 @@ a {
 /** registration **/
 
 .registration {
-    position: absolute;
-    top: 0px;
-    left: 780px;
+   position: absolute;
+    top: 7px;
+    left: 912px;
+    font-size: 14px;
 }
 
 .registration a {
@@ -209,7 +210,7 @@ a {
 }
 
 .menuButtonHovered {
-    background: #01aadd;
+    background: #0382a8;
 }
 
     /*** content ***/
