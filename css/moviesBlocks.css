@@ -21,7 +21,9 @@ div.infoBlock {
     opacity: 0.8;
     color: #cccccc;
 }
-
+/*div.infoBlock p{
+    position: absolute;
+}*/
 #Movies {
     overflow: auto;
     position: relative;
