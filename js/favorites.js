@@ -34,13 +34,15 @@ function addFavBlock() {
     var moviesIcons='';
      _.each(movies,function(num, key){ moviesIcons+='<div class=\"movieIcon\">' + num + '</div>'});
 
-    var favBlock = _.template('<div id=\"favSection\">' + moviesIcons + '</div>');
+    var favBlock = _.template('<div id=\"favSection\">' + moviesIcons + '</div>');    
+    
     /*shortens main block */
-    $('#mainContent').animate({'width':'80%','float':'left'}, 300);
+    $('#mainContent').animate({'width':'75%','float':'left'}, 300);
     /*adds favorites block*/
     window.setTimeout(function(){
         $( favBlock({}) ).insertBefore( "#footer" ).animate({'opacity': '1'}, 400);
-    }, 200);   
+    }, 200); 
+    
 }
 
 //delete favorites block
@@ -56,4 +58,16 @@ function hideFavBlock() {
     }, 300);
 
 }
+
+//make fav block fixed when scroll
+$('#favSection').on('scroll', function(e) {
+    console.log(this.scrollTop);
+      if (this.scrollTop > 200) {                       //WHY DON'T WORK?!?!?!?!?!
+        $('#favSection').addClass('fix-fav');
+      } else {
+        $('#favSection').removeClass('fix-fav');
+      }
+});
+
+     
 

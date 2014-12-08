@@ -2,7 +2,7 @@
 div.singleMovieBlock {
     position: relative;
     width: 249px;
-    height: 334.6px;
+    height: 373px;
     float: left;
     text-align: center;
     margin: 10px;
@@ -41,7 +41,6 @@ div.infoBlock {
 }
 img.miniMovieImg {
     width: 100%;
-    height: 100%;
 }
 #loadBlock {
     background: #ccc;

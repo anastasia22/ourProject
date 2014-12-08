@@ -8,13 +8,8 @@
     overflow: hidden;
 } 
 
-form {    
-    position: relative;
-    top: 32px;
-}
-
 .search-input {
-    margin: 0 14px 0 30px;
+    margin: 32px 14px 0 30px;
     border: none;
     height: 39px;
     width: 430px;
@@ -26,6 +21,7 @@ form {
     z-index: 0;
 }
 
+/*
 .by {
     margin-right: 14px;
     font-size: 1.1em;
@@ -33,18 +29,22 @@ form {
     float: left;
     margin: 9px 14px 0 0;
 }
+*/
 
 .search-radio {
-    width: 0;
+    display: none;
 }
 
 label {
+    height: 44px;
     cursor: pointer;
     background: #6EC1E0;
     padding: 11px;
-    float: left; 
+    float: left;
     color: #fff;
     text-align: center;
+    margin-top: 32px;
+    line-height: 21px;
 }
 
 label:hover {
@@ -57,7 +57,7 @@ input[type="radio"]:checked + label {
 
 .search-button {
     float: left;
-    margin: 0 24px;
+    margin: 32px 24px;
     border: none;
     outline: none;
     width: 78px;

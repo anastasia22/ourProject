@@ -1,0 +1,33 @@
+@media only screen  and (max-width: 1153px) {
+    label {
+        margin: 17px 0 0 0;
+        height: 32px;
+        line-height: 9px;
+    }
+    
+    .search-button {
+        margin: 8px 70px 0 0px;
+        height: 31px;
+        font-size: 1em;
+        
+    }
+    
+}
+
+@media only screen and (min-width: 340px) and (max-width: 740px) {
+    body {
+        width: 90%;
+    }
+    
+    #menuMovies ul {
+        display: none;
+    }
+    
+/*    SEARCH     */
+    .resp-search {
+        display: block;
+        width: 90%;
+        height: 40px;
+        margin: 5px auto;
+    }
+}
