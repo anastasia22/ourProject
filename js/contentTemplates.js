@@ -125,6 +125,10 @@ function createBlock(){
     $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
 }
 function deleteBlock() {
+    if($('#loadImage')){
+        stopAnimation();
+        $('#loaderImage').remove();
+    }
     $('#Actor').remove();
 }
 function singleMoviePage(id){
