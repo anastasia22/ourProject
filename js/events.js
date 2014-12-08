@@ -4,16 +4,18 @@
  //adds all events handlers to menu buttons
 (function(){
 	$('#mainMenu').on('click',handlEvent);
-	$('#searchButton').on('click',function() {
+
+})();
+function funC() {
+	$('.search-button').on('click',function() {
 		$('#mainContent').find(':first-child').remove();
-		if($('input[name=search22]:checked').val() == 'Title'){
+		if($('input[name=factor]:checked').val() == 'Title'){
 			searchByTitle();
 		} else {
 			searchByActor();
 		}
 	});
-})();
-
+}
 // menu event handlers
 function handlEvent(event) {
 	var target=event.target || event.srcElement;

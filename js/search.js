@@ -5,12 +5,12 @@ $(function() {
     
     frm = $('<form>');
     
-    frm.append('<input id="searchField" type="text" placeholder="Search..." class="search-input"><span class="by">by</span><input type="radio" name="factor" value="title" class="search-radio" id="movieTitle" checked="checked"> <label id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"> <label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"> <label for="advanced">Advanced search</label><button class="search-button">GO!</button>');
+    frm.append('<input id="searchField" type="text" placeholder="Search..." class="search-input"><span class="by">by</span><input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked"> <label id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"> <label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"> <label for="advanced">Advanced search</label><button class="search-button">GO!</button>');
     $('#searchWrapper').append(frm);    
     $('form').submit(function(event) {
         event.preventDefault();
     });
-    
+    funC();
     var labels = document.getElementsByTagName('label');
     labels[0].style.borderRight = '1px solid rgba(238, 238, 238, 0.34)';
     labels[1].style.borderRight = '1px solid rgba(238, 238, 238, 0.34)';        

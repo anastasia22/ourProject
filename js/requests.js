@@ -27,13 +27,13 @@ function defaultMovies() {
    sendRequest(defaultMovies,'This year movies');
 }
 function searchByTitle(){
-    var titleSearch = 'search/movie?query=' + $('#searchField1').val();
-    sendRequest(titleSearch,$('#searchField1').val());
+    var titleSearch = 'search/movie?query=' + $('#searchField').val();
+    sendRequest(titleSearch,$('#searchField').val());
 
 }
 function searchByActor () {
-    var titleSearch = 'search/person?query=' + $('#searchField1').val();
-    sendRequest(titleSearch,$('#searchField1').val());
+    var titleSearch = 'search/person?query=' + $('#searchField').val();
+    sendRequest(titleSearch,$('#searchField').val());
 }
 // ajax request  creates  request with recived url 
 function sendRequest(url,listName) {
@@ -65,8 +65,8 @@ function sendRequest(url,listName) {
 
 
             //adds auto movie list  uploads when scrolling 
-        $('#Movies').on({
-            'mousewheel': function(e) {
+        $('#Movies').on(/*{*/
+            'mousewheel', function(e) {
 
                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
                     //every scroll  appends new page to url
@@ -89,7 +89,7 @@ function sendRequest(url,listName) {
                     });
                 }
             }
-        });
+       /* }*/);
 
     }
 
