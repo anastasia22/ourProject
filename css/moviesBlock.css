@@ -25,8 +25,23 @@
 	padding:5px;
 }
 
-#singleMovie span {
+#singleMovie ul span {
 	font-weight:bold;
+}
+#singleMovie .stars{
+    width:200px;
+    height:20px;
+    display:inline-block;
+    background:url(../images/gray_stars.png) no-repeat;
+    vertical-align: sub;
+}
+#singleMovie .star{
+    width:20px;
+    height:20px;
+    /*position:absolute;*/
+    background:url(../images/stars.png) no-repeat left center;
+    z-index:10;
+    /*margin-left:20px;*/
 }
 
 #singleMovie blockquote {

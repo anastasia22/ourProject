@@ -115,31 +115,30 @@ function singleMoviePage(id){
     '<h1> <%= singleMovie.title %> </h1>' +
     '<div class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></div>' +
     '<q> <%= singleMovie.tagline %> </q>' +
-    '<ul> <li><span>Rates: </span><a href="#"><%= singleMovie.rating %></a>' + 
-    '<% for(var i=0; i++; i <= Math.round(singleMovie.rating)) { %>' +
-    '<span class="glyphicon glyphicon-star"><span> ' +
-    '<% }; %>' + 
-    '<% for(var i=0; i++; i <= (10 - Math.round(singleMovie.rating))){ %>' +
-    '<span class="glyphicon glyphicon-star-empty"><span> ' +
-    '<% }; %>' + 
+    '<ul class="mov-info"> <li><span>Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
+    // '<div class="stars">' + 
+    // '<% _.times(7, function() { %>' +
+    // '<img src="images/star.png"></img> ' +
+    // '<% }) %> </div>' + 
     '</li>' +
+    '<li><span>Budget: </span>$ <%= singleMovie.budget %> </li>' +
+    '<li><span>Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
     '<li><span>Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
     '<li><span>Runtime: </span><%= singleMovie.runtime %> min</li>' +
-    '<li><span>Country: </span>' +  
+    '<li><span>Production countries: </span>' +  
         '<% _.each(singleMovie.countries, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.countries[i] %></a>' +
-        '<% }) %> </li></ul>' +
-    '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
-    '<ul><li><span>Genres: </span>' + 
+        '<% }) %> </li>' +
+    '<li><span>Genres: </span>' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
         '<a href="#"> <%= singleMovie.genres[i].name %> </a> ' +
         '<% }) %> </li>' +
-    '<li><span>Company: </span>' + 
+    '<li><span>Production companies: </span>' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.companies[i] %></a>' +
-        '<% }) %> </li>' +
-    '<li><span>Budget: </span>$ <%= singleMovie.budget %> </li>' +
-    '<li><span>Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
+        '<% }) %> </li></ul>' +
+    '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
+    
     '<li><span>Actors: </span><table>' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
         '<tr><td> <img src="<%= smallImageUrl %>' +  
