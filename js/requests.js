@@ -101,12 +101,9 @@ function findActors (url,listName) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
     var actorsSearchUrl = baseUrl + url + apikey;
-    var page=1;
 
-    //preloader  ON
     $('#mainContent').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');
-
 
     $.ajax({
         url: actorsSearchUrl,
@@ -114,48 +111,29 @@ function findActors (url,listName) {
         success: callBackFunc
     });
 
-
-    function callBackFunc (data) {
-        //when request recived PRELODER OFF
-        console.log(data)
+    function callBackFunc(data) {
+        console.log(data);  /*ЗАБРАТИ!!!!!!!!!!*/
         stopAnimation();
         $('#loaderImage').remove();
-        //-------------------
-
-        //post revcived movies on page
         actorsTempl(data.results,listName);
-
-
-        //adds auto movie list  uploads when scrolling
-        $('#Movies').on(/*{*/
-            'mousewheel', function(e) {
-
-                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                    //every scroll  appends new page to url
-                    var currentPage= '&page=' + (++page);
-                    actorsSearchUrl = baseUrl + url + apikey + currentPage;
-
-                    $.ajax({
-                        url: moviesSearchUrl,
-                        beforeSend: function( ) {
-                            //little preloder when scrolling list
-                            $('#loader').show();
-                        },
-                        success: function (data) {
-                            //little preloder off
-                            $('#loader').hide();
-
-                            actorsTempl(data.results);
-
-                        }
-                    });
-                }
-            }
-            /* }*/);
-
     }
 }
 
+function findThisActor(id) {
+    var apikey = "?api_key=7a135ff2c408f8e138e4645f83b30222";
+    var baseUrl = "https://api.themoviedb.org/3/";
+    var actorsSearchUrl = baseUrl + 'person/'+ id + apikey;
+
+    $.ajax({
+        url: actorsSearchUrl,
+        dataType: "jsonp",
+        success: callBackFunc
+    });
+
+    function callBackFunc (data) {
+        singleActorTempl(data);
+    }
+}
 
 // this code  handle  preloder animation
 

@@ -87,9 +87,9 @@ function  actorsTempl(actors,listName){
     for (var i=0; i < actors.length; i++) {
         actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">' +
         '<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">' +
+        '<div class="infoBlock">' +
         '<p>' + actors[i].name + '</p>' +
-        '<p>' + actors[i].popularity + '</p>' +
-         '</div>';
+         '</div></div>';
     }
 
     if($('#loader')){
@@ -100,15 +100,33 @@ function  actorsTempl(actors,listName){
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
         $('#Actors').append(movieBlocks);
-        //slide out event
-       // addEvents();
+        addEventsToActors();
     } else {
         actorsBlock='<section id="Actors"><h1>' + listName + '</h1>' + actorsBlock + '</section>';
         $('#mainContent').append(actorsBlock);
-        //addEvents();
+        addEventsToActors();
     }
 }
+function  singleActorTempl(actor) {
+    var content = '';
 
+    content='<div><image class="actorPic" src="http://image.tmdb.org/t/p/w300'+actor.profile_path+'"></div>' +
+        '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Born </span>' + actor.birthday + ' in ' + actor.place_of_birth + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ actor.also_known_as + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity + '</p></div>';
+    content +='<div class="biography"><p>' + actor.biography + '</p></div>';
+    stopAnimation();
+    $('#loaderImage').remove();
+    $('#Actor').append(content);
+}
+
+function createBlock(){
+    $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
+}
+function deleteBlock() {
+    $('#Actor').remove();
+}
 function singleMoviePage(id){
     var singleMovieTemplate = 
     '<section id = "singleMovie">' + 

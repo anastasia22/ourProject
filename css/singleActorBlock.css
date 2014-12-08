@@ -1,0 +1,71 @@
+#Actor {
+    position: fixed;
+    z-index: 7;
+    width: 1200px;
+    height: 620px;
+    background: rgba(204, 204, 204, 0.8);
+    top: 30px;
+    left: 80px;
+    border-top-right-radius: 15px;
+}
+#offOnBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    border-radius: 10px;
+    outline:0;
+}
+#offOnBtn {
+    background-image: url(../images/closeBtn1.png);
+}
+.actorPic {
+    float: left;
+    margin: 40px;
+
+}
+.actorInfo {
+    margin-top: 40px;
+    float: left;
+}
+.actorInfo p {
+    margin: 30px;
+}
+.actorInfo p:hover {
+    cursor: default;
+    font-weight: bold ;
+}
+.infoTags {
+    font-weight: bold ;
+}
+.biography {
+    margin-top: 20px;
+    float: left;
+    border: 1px solid #000000;
+    border-bottom: none;
+    border-top: none;
+    font-size: 0.9em;
+    width: 800px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+}
+.biography p{
+    font-weight: bold;
+    color: #000000;
+    position: absolute;
+    top: 5px;
+    bottom: 0px;
+    left: 5px;
+    right: -15px; /* Increase this value (in negative) for cross-browser compatibility */
+    overflow: auto;
+    /*width: 790px;*/
+}
+.biography:hover {
+    background: #ffffff;
+    opacity: 0.8;
+    cursor: default;
+}

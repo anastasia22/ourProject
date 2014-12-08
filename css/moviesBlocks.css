@@ -43,6 +43,7 @@ div.infoBlock {
 }
 img.miniMovieImg {
     width: 100%;
+    Sheight: 100%;
 }
 #loadBlock {
     background: #ccc;
