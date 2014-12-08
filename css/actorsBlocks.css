@@ -2,7 +2,7 @@
 div.singleActorBlock {
     position: relative;
     width: 249px;
-    height: 334.6px;
+    height: 420px;
     float: left;
     text-align: center;
     margin: 10px;
@@ -41,7 +41,6 @@ div.singleActorBlock:hover {
 }
 img.miniActorImg {
     width: 100%;
-    height: 100%;
 }
 #loadBlock {
     background: #ccc;

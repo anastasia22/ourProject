@@ -117,6 +117,7 @@ function findActors (url,listName) {
 
     function callBackFunc (data) {
         //when request recived PRELODER OFF
+        console.log(data)
         stopAnimation();
         $('#loaderImage').remove();
         //-------------------

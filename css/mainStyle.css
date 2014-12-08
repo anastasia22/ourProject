@@ -11,7 +11,6 @@
 
 body{
     margin: 0% 10% 0% 10%;
-    min-width: 950px;
     background-color:#f5f5f5;
     background-image: -webkit-radial-gradient(#EDEFFF 15%, transparent 16%), -webkit-radial-gradient(#EDEFFF 15%, transparent 16%);
     background-image: radial-gradient(#EDEFFF 15%, transparent 16%), radial-gradient(#EDEFFF 15%, transparent 16%);
@@ -19,7 +18,7 @@ body{
     background-position: 0 0, 30px 30px;
     font-family: 'Open Sans', sans-serif;
     color: #333;
-
+    position: relative;
 }
 
 a {
@@ -45,6 +44,7 @@ a {
     width: 100%;
     overflow: auto;
     min-height: 600px;
+  
 }
 
 #footer {
@@ -115,6 +115,9 @@ a {
     color: #eee;
     font-size: 3em;
     display: inline-block;
+    position: relative;
+    top: -43px;
+    left: -16px;
 }
 
 .page-header span {
@@ -152,11 +155,47 @@ a {
 
 
 
+
+
+/** menu **/
+
+.main-menu-wrapper {
+    display: block;
+    width: 100%;
+}
+
+.menuButton {
+    width: 17.60532384993222%;
+    display: inline-block;
+    float: left;
+    position: inherit ;
+    overflow: hidden;
+    color: #fff;
+    padding: 17.5px 0;
+    border: 0;
+    -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s
+}
+
+.menuButton:hover {
+    cursor: pointer;
+    background: #01aadd;
+}
+
+.menuButtonHovered {
+    background: #0382a8;
+}
+
+
 /* dropdown */
 
 .menuButton ul {
     visibility: hidden;
-    width: inherit;
+    position: absolute;
+    list-style-type: none;
+    left: 17.60532384993222%;
+    top: 200px;
+    width: 17.60532384993222%;
     cursor: pointer;
     background: #01aadd;
 }
@@ -175,10 +214,6 @@ a {
 
 .menuButton:hover ul {
     visibility: visible;
-    position: absolute;
-    left: 190px;
-    top: 200px;
-    list-style-type: none;
      z-index: 20; 
     
 }
@@ -188,30 +223,6 @@ a {
     border-top: 2px solid #3A77B3;
 }
 
-
-/** menu **/
-
-.menuButton {
-    width: 190px;
-    display: inline-block;
-    float: left;
-    position: inherit ;
-    overflow: hidden;
-    color: #fff;
-    padding: 17.5px 59px;
-    border: 0;
-    -webkit-transition-duration: 0.2s;
-            transition-duration: 0.2s
-}
-
-.menuButton:hover {
-    cursor: pointer;
-    background: #01aadd;
-}
-
-.menuButtonHovered {
-    background: #0382a8;
-}
 
     /*** content ***/
 
@@ -225,8 +236,6 @@ a {
     top: 24px;
     left: 66px;
 }
-
-
 
 
 
