@@ -115,6 +115,9 @@ a {
     color: #eee;
     font-size: 3em;
     display: inline-block;
+    position: relative;
+    top: -43px;
+    left: -16px;
 }
 
 .page-header span {
