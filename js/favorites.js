@@ -41,17 +41,20 @@ function addFavBlock() {
     /*adds favorites block*/
     window.setTimeout(function(){
         
-        var searchHeight = document.getElementById('searchWrapper').style.height;        
-        if (searchHeight == '100px') {
-            $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': '300px'}, 400);
-        } else {
-            $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1'}, 400);
-        }
+      //append favBlock due to header and searchWrapper common height
+    $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': headerPlusSearchHeight()}, 400);
         
-        
-        
-    }, 200); 
+    }, 200);    
+}
+
+//get a common height of header and searchWrapper
+function headerPlusSearchHeight(height) {
+    var searchHeight, headerHeight, favouritesTopStyle;
+        searchHeight = document.getElementById('searchWrapper').offsetHeight;        
+        headerHeight = document.getElementById('header').offsetHeight;
+        favouritesTopStyle = '' + (searchHeight + headerHeight);
     
+    return favouritesTopStyle;
 }
 
 //delete favorites block
