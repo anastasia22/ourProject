@@ -36,7 +36,8 @@
 }
 
 label {
-    height: 44px;
+    height: 39px;
+    width: 100px;
     cursor: pointer;
     background: #6EC1E0;
     padding: 11px;
@@ -45,6 +46,11 @@ label {
     text-align: center;
     margin-top: 32px;
     line-height: 21px;
+}
+
+label:first-of-type {
+    width: 150px;
+    margin-left: 0.9265959921016958%;
 }
 
 label:hover {
@@ -61,7 +67,7 @@ input[type="radio"]:checked + label {
     border: none;
     outline: none;
     width: 78px;
-    height: 44px;
+    height: 39px;
     font-size: 1.5em;
     color: #fff;
     background: #FCA840;

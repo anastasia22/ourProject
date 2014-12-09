@@ -1,10 +1,6 @@
 /*favorites button and block styling*/
 
 #favoritesButton {
-    border: none;
-    height: inherit;
-    font: inherit;
-    outline: none;
 }
 
 #favSection {

@@ -44,7 +44,7 @@ a {
     width: 100%;
     overflow: auto;
     min-height: 600px;
-  
+    position: static;
 }
 
 #footer {
@@ -135,9 +135,11 @@ a {
 
 .registration {
    position: absolute;
-    top: 7px;
-    left: 912px;
+    top: 0;
+    right: 0;
     font-size: 14px;
+    width: 159px;
+    text-align: right;
 }
 
 .registration a {
@@ -171,8 +173,9 @@ a {
     position: inherit ;
     overflow: hidden;
     color: #fff;
-    padding: 17.5px 0;
+    padding: 17.5px 0 19px;
     border: 0;
+    line-height: 16px;
     -webkit-transition-duration: 0.2s;
             transition-duration: 0.2s
 }
@@ -186,6 +189,9 @@ a {
     background: #0382a8;
 }
 
+.toggle-menu {
+    display: none;
+}
 
 /* dropdown */
 

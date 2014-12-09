@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title>Page</title>
-        <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/mainStyle.css">
-        <link rel="stylesheet" href="css/socials.css">
-        <link rel="stylesheet" href="css/favorites.css">
-        <link rel="stylesheet" href="css/homeBlock.css">
-        <link rel="stylesheet" href="css/moviesBlock.css">
-		<link rel="stylesheet" href="css/moviesBlocks.css">
-        <link rel="stylesheet" href="css/search.css">
-        <link rel="stylesheet" href="css/actorsBlocks.css">
-        <link rel="stylesheet" href="css/responcive.css">
-        <script src="js/underscore.js"></script>
-        <script src="js/jquery-1.11.1.js"></script>
-    </head>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Page</title>
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="css/socials.css">
+    <link rel="stylesheet" href="css/favorites.css">
+    <link rel="stylesheet" href="css/homeBlock.css">
+    <link rel="stylesheet" href="css/moviesBlock.css">
+    <link rel="stylesheet" href="css/moviesBlocks.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/actorsBlocks.css">
+    <link rel="stylesheet" href="css/responcive.css">
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery-1.11.1.js"></script>
+</head>
 
 <body onload="homeTemplate()">
 
-<div id="header">
-    <div class="logo-backgr logo-dimentions">
-       
-        <div class="header-wrapper"><div class="logo"></div><h1 class="page-header">Spring</h1></div>
+    <div id="header">
+        <div class="logo-backgr logo-dimentions">
 
-        <div class="registration">
-            <a href="#">Registration</a>
-            <a href="#">Sing in</a>
+            <div class="header-wrapper">
+                <div class="logo"></div>
+                <h1 class="page-header">Spring</h1>
+            </div>
+
+            <div class="registration">
+                <a href="#">Registration</a>
+                <a href="#">Sing in</a>
+            </div>
         </div>
-    </div>
 
-<!--MENU-->
-<nav id="mainMenu" class="menu-color">
-<ul class="main-menu-wrapper">
-        <li id="menuHome" class="menuButton" >Home</li>
+        <!--MENU-->
+        <nav id="mainMenu" class="menu-color">
+            <div class="toggle-menu">
+                <span class="toggle-span"></span>
+                <span class="toggle-span"></span>
+                <span class="toggle-span"></span> 
+            </div>
+               <ul class="main-menu-wrapper">
+                <li id="menuHome" class="menuButton">Home</li>
 
-        <li id="menuMovies" class="menuButton" >Movies
-             <!--dorp down block-->
-            <ul>
-                <li id="subMenuPop">Most popular</li>
-                <li id="subMenu2013">Last year most popular</li>
-                <li id="subMenuKids">For kids</li>
-                <li id="subMenuComedy">Best comedies</li>
+                <li id="menuMovies" class="menuButton">Movies
+                    <!--dorp down block-->
+                    <ul>
+                        <li id="subMenuPop">Most popular</li>
+                        <li id="subMenu2013">Last year most popular</li>
+                        <li id="subMenuKids">For kids</li>
+                        <li id="subMenuComedy">Best comedies</li>
+                    </ul>
+                </li>
+
+                <li id="menuHelp" class="menuButton">Help</li>
+                <li class="menuButton" id="callSearch">Search</li>
+                <li id="favoritesButton" class="menuButton" onclick="eventHandler()">Favorites</li>
             </ul>
-        </li>
-
-        <li id="menuHelp" class="menuButton">Help</li>
-        <li class="menuButton" id="callSearch">Search</li>
-    <li id="favoritesButton" class="menuButton menu-color" onclick="eventHandler()">Favorites</li>
-    </ul>
-
-    
-</nav>
-</div>
-<!--section with main content movies help Home .....-->
-<main id="mainContent" class="content-background">
-
-</main>
 
 
-<footer id="footer" class="logo-backgr">
-<p class="fooer-par">Unknown beavers &copy</p>
-    <!--SOCIALS-->
-    <a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
-    <a href="#" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
-    <a href="#" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
+        </nav>
+    </div>
+    <!--section with main content movies help Home .....-->
+    <main id="mainContent" class="content-background">
 
-</footer>
+    </main>
 
-<script src="js/favorites.js"></script>
-<script src="js/contentTemplates.js"></script>
-<script src="js/search.js"></script>
-<script src="js/requests.js"></script>
-<script src="js/events.js"></script>
+
+    <footer id="footer" class="logo-backgr">
+        <p class="fooer-par">Unknown beavers &copy</p>
+        <!--SOCIALS-->
+        <a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
+        <a href="#" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+        <a href="#" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
+
+    </footer>
+
+    <script src="js/favorites.js"></script>
+    <script src="js/contentTemplates.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/requests.js"></script>
+    <script src="js/events.js"></script>
 
 </body>
+
 </html>

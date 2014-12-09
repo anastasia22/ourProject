@@ -5,7 +5,7 @@ $(function() {
     
     frm = $('<form>');
     
-    frm.append('<div class="resp-search"><input id="searchField" type="text" placeholder="Search..." class="search-input"></div><div class="resp-search"><input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked"><label id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"><label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"><label for="advanced">Advanced search</label></div><div class="resp-search"><button class="search-button">GO!</button></div>');
+    frm.append('<input id="searchField" type="text" placeholder="Search..." class="search-input"><input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked"><label id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"><label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"><label for="advanced">Advanced</label><button class="search-button">GO!</button>');
     $('#searchWrapper').append(frm);    
     $('form').submit(function(event) {
         event.preventDefault();
