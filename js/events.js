@@ -57,3 +57,27 @@ function addEvents() {
 	
 }
 
+function addEventsToActors() {
+	var infoBlock;
+	$(".singleActorBlock").hover(function() {
+			infoBlock=$(this).find(':last-child')[0];
+
+			$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
+
+		},
+		function(){
+			$(infoBlock).stop(false,false).animate({height: '0px'}, 700,
+				function(){
+					$(this).css({visibility: "hidden",height : '100px'});
+
+				})
+		});
+	$(".singleActorBlock").on('click',function() {
+		createBlock();
+		$('#offOnBtn').on('click',deleteBlock);
+		findThisActor(this.id);
+		$('#Actor').append('<div id="loaderImage"></div>');
+		new imageLoader(cImageSrc, 'startAnimation()');
+	});
+}
+
