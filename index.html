@@ -1,29 +1,140 @@
 <!DOCTYPE html>
 <html>
 
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title>Page</title>
-        <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/mainStyle.css">
-        <link rel="stylesheet" href="css/socials.css">
-        <link rel="stylesheet" href="css/favorites.css">
-        <link rel="stylesheet" href="css/homeBlock.css">
-        <link rel="stylesheet" href="css/moviesBlock.css">
-		<link rel="stylesheet" href="css/moviesBlocks.css">
-        <link rel="stylesheet" href="css/search.css">
-        <link rel="stylesheet" href="css/actorsBlocks.css">
-        <link rel="stylesheet" href="css/responcive.css">
-        <link rel="stylesheet" href="css/singleActorBlock.css">
-        <script src="js/underscore.js"></script>
-        <script src="js/jquery-1.11.1.js"></script>
-    </head>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Page</title>
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="css/socials.css">
+    <link rel="stylesheet" href="css/favorites.css">
+    <link rel="stylesheet" href="css/homeBlock.css">
+    <link rel="stylesheet" href="css/moviesBlock.css">
+    <link rel="stylesheet" href="css/moviesBlocks.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/actorsBlocks.css">
+    <link rel="stylesheet" href="css/responcive.css">
+    <link rel="stylesheet" href="css/singleActorBlock.css">
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery-1.11.1.js"></script>
+</head>
 
 
 <body onload="homeTemplate()">
+    <div>
+        <input type="text">
+        <br>
+        <input type="checkbox" class="search-check-box" name="Action" value="Action" id="28">
+        <label for="28">Action</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Adventure" value="Adventure" id="12">
+        <label for="12">Adventure</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Animation" value="Animation" id="16">
+        <label for="16">Animation</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Comedy" value="Comedy" id="35">
+        <label for="35">Comedy</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Crime" value="Crime" id="80">
+        <label for="80">Crime</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Disaster" value="Disaster" id="105">
+        <label for="105">Disaster</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Documentary" value="Documentary" id="99">
+        <label for="99">Documentary</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Drama" value="Drama" id="18">
+        <label for="18">Drama</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Eastern" value="Eastern" id="82">
+        <label for="82">Eastern</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Erotic" value="Erotic" id="2916">
+        <label for="2916">Erotic</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Family" value="Family" id="10751">
+        <label for="10751">Family</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Fan-Film" value="Fan-Film" id="10750">
+        <label for="10750">Fan Film</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Fantasy" value="Fantasy" id="14">
+        <label for="14">Fantasy</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Film-Noir" value="Film-Noir" id="10753">
+        <label for="10753">Film Noir</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Foreign" value="Foreign" id="10769">
+        <label for="10769">Foreign</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="History" value="History" id="36">
+        <label for="36">History</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Holiday" value="Holiday" id="10595">
+        <label for="10595">Holiday</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Horror" value="Horror" id="27">
+        <label for="27">Horror</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Indie" value="Indie" id="10756">
+        <label for="10756">Indie</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Music" value="Music" id="10402">
+        <label for="10402">Music</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Musical" value="Musical" id="22">
+        <label for="22">Musical</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Mystery" value="Mystery" id="9648">
+        <label for="9648">Mystery</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Neo-noir" value="Neo-noir" id="10754">
+        <label for="10754">Neo-noir</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Road-Movie" value="Road-Movie" id="1115">
+        <label for="1115">Road Movie</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Romance" value="Romance" id="10749">
+        <label for="10749">Romance</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Science-Fiction" value="Science-Fiction" id="878">
+        <label for="878">Science Fiction</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Short" value="Short" id="10755">
+        <label for="10755">Short</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Sport" value="Sport" id="9805">
+        <label for="9805">Sport</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Sporting-Event" value="Sporting-Event" id="10758">
+        <label for="10758">Sporting Event</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Sports-Film" value="Sports-Film" id="10757">
+        <label for="10757">Sports Film</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Suspense" value="Suspense" id="10748">
+        <label for="10748">Suspense</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="TV-movie" value="TV-movie" id="10770">
+        <label for="10770">TV movie</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Thriller" value="Thriller" id="53">
+        <label for="53">Thriller</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="War" value="War" id="10752">
+        <label for="10752">War</label>
+        <br>
+        <input type="checkbox" class="search-check-box" name="Western" value="Western" id="37">
+        <label for="37">Western</label>
+        <br>
 
+        <button>go!</button>
+
+    </div>
     <div id="header">
         <div class="logo-backgr logo-dimentions">
 
@@ -45,7 +156,7 @@
                 <span class="toggle-span"></span>
                 <span class="toggle-span"></span> 
             </div>
-               <ul class="main-menu-wrapper">
+            <ul class="main-menu-wrapper">
                 <li id="menuHome" class="menuButton">Home</li>
 
                 <li id="menuMovies" class="menuButton">Movies

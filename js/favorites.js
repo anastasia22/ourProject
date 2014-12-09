@@ -40,7 +40,16 @@ function addFavBlock() {
     $('#mainContent').animate({'width':'75%','float':'left'}, 300);
     /*adds favorites block*/
     window.setTimeout(function(){
-        $( favBlock({}) ).insertBefore( "#footer" ).animate({'opacity': '1'}, 400);
+        
+        var searchHeight = document.getElementById('searchWrapper').style.height;        
+        if (searchHeight == '100px') {
+            $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': '300px'}, 400);
+        } else {
+            $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1'}, 400);
+        }
+        
+        
+        
     }, 200); 
     
 }

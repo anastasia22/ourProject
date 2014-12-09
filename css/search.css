@@ -35,7 +35,7 @@
     display: none;
 }
 
-label {
+#searchWrapper label { /****  delete #searchWrapper selector  *****/
     height: 39px;
     width: 100px;
     cursor: pointer;
@@ -48,12 +48,12 @@ label {
     line-height: 21px;
 }
 
-label:first-of-type {
+#searchWrapper label:first-of-type {
     width: 150px;
     margin-left: 0.9265959921016958%;
 }
 
-label:hover {
+#searchWrapper label:hover {
     background: #01aadd;
 }
 
