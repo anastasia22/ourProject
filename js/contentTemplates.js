@@ -6,7 +6,7 @@ var apiKey = '7a135ff2c408f8e138e4645f83b30222';
 var baseUrl = 'http://api.themoviedb.org/3';
 var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
 var mediumImageUrl = 'http://image.tmdb.org/t/p/w185/';
-var smallImageUrl = 'http://image.tmdb.org/t/p/w45/';
+var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 
 // HOME BLOCK
 function homeTemplate() {
@@ -115,39 +115,44 @@ function singleMoviePage(id){
     '<h1> <%= singleMovie.title %> </h1>' +
     '<div class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></div>' +
     '<q> <%= singleMovie.tagline %> </q>' +
-    '<ul class="mov-info"> <li><span>Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
-    // '<div class="stars">' + 
-    // '<% _.times(7, function() { %>' +
-    // '<img src="images/star.png"></img> ' +
-    // '<% }) %> </div>' + 
+    '<ul class="mov-info"> <li><span class="sp_bold">Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
     '</li>' +
-    '<li><span>Budget: </span>$ <%= singleMovie.budget %> </li>' +
-    '<li><span>Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
-    '<li><span>Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
-    '<li><span>Runtime: </span><%= singleMovie.runtime %> min</li>' +
-    '<li><span>Production countries: </span>' +  
+    '<li><span class="sp_bold">Budget: </span>$ <%= singleMovie.budget %> </li>' +
+    '<li><span class="sp_bold">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
+    '<li><span class="sp_bold">Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
+    '<li><span class="sp_bold">Runtime: </span><%= singleMovie.runtime %> min</li>' +
+    '<li><span class="sp_bold">Production countries: </span>' +  
         '<% _.each(singleMovie.countries, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.countries[i] %></a>' +
         '<% }) %> </li>' +
-    '<li><span>Genres: </span>' + 
+    '<li><span class="sp_bold">Genres: </span>' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
         '<a href="#"> <%= singleMovie.genres[i].name %> </a> ' +
         '<% }) %> </li>' +
-    '<li><span>Production companies: </span>' + 
+    '<li><span class="sp_bold">Production companies: </span>' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.companies[i] %></a>' +
         '<% }) %> </li></ul>' +
     '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
-    
-    '<li><span>Actors: </span><table>' + 
+    '<span>Screenshots: </span><section class="carousel"><section class="carousel-container">' +
+        '<% _.each(singleMovie.images, function(el, i){ %>' +
+        '<img class="screenshot" src="<%= largeImageUrl %>' +  
+        '<%= singleMovie.images[i] %>">' +
+    '<% }) %> </section></section>' + 
+    '<section class="carousel-nav">'+
+        '<section class="controls" data-direction="prev" onclick="carousel()">Prev</section>' +
+        '<section class="controls" data-direction="next" onclick="carousel()">Next</section>' +
+    '</section>'+
+    '<span>Actors: </span><section class="actors">' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
-        '<tr><td> <img src="<%= smallImageUrl %>' +  
-        '<%= singleMovie.actors[i].profile_path %>" </td>' +
-        '<td><%= singleMovie.actors[i].name %></td>' +
-        '<td><%= singleMovie.actors[i].character %></td>' +
-        '</tr> <% }) %> </table></li></ul>' +
+        '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
+        '<%= singleMovie.actors[i].profile_path %>">' +
+        '<span class="act_name"><%= singleMovie.actors[i].name %></span>' +
+        '<span class="act_role"><%= singleMovie.actors[i].character %></span>' +
+        '</section> <% }) %> </section>'+
     '<iframe width="640" height="360" src="http://www.youtube.com/embed/' + 
-    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'
+    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'+
+    '</section>'
 
 
 
@@ -201,8 +206,11 @@ function singleMoviePage(id){
             $('#mainContent').append(_.template(singleMovieTemplate,renderSingleMoviePage(data)));
         }
     })
-
-
-
-
 }
+
+
+
+
+
+
+
