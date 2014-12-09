@@ -6,7 +6,7 @@ var apiKey = '7a135ff2c408f8e138e4645f83b30222';
 var baseUrl = 'http://api.themoviedb.org/3';
 var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
 var mediumImageUrl = 'http://image.tmdb.org/t/p/w185/';
-var smallImageUrl = 'http://image.tmdb.org/t/p/w45/';
+var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 
 // HOME BLOCK
 function homeTemplate() {
@@ -87,9 +87,9 @@ function  actorsTempl(actors,listName){
     for (var i=0; i < actors.length; i++) {
         actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">' +
         '<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">' +
+        '<div class="infoBlock">' +
         '<p>' + actors[i].name + '</p>' +
-        '<p>' + actors[i].popularity + '</p>' +
-         '</div>';
+         '</div></div>';
     }
 
     if($('#loader')){
@@ -100,55 +100,81 @@ function  actorsTempl(actors,listName){
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
         $('#Actors').append(movieBlocks);
-        //slide out event
-       // addEvents();
+        addEventsToActors();
     } else {
         actorsBlock='<section id="Actors"><h1>' + listName + '</h1>' + actorsBlock + '</section>';
         $('#mainContent').append(actorsBlock);
-        //addEvents();
+        addEventsToActors();
     }
 }
+function  singleActorTempl(actor) {
+    var content = '';
 
+    content='<div><image class="actorPic" src="http://image.tmdb.org/t/p/w300'+actor.profile_path+'"></div>' +
+        '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Born </span>' + actor.birthday + ' in ' + actor.place_of_birth + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ actor.also_known_as + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity + '</p></div>';
+    content +='<div class="biography"><p>' + actor.biography + '</p></div>';
+    stopAnimation();
+    $('#loaderImage').remove();
+    $('#Actor').append(content);
+}
+
+function createBlock(){
+    $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
+}
+function deleteBlock() {
+    if($('#loadImage')){
+        stopAnimation();
+        $('#loaderImage').remove();
+    }
+    $('#Actor').remove();
+}
 function singleMoviePage(id){
     var singleMovieTemplate = 
     '<section id = "singleMovie">' + 
     '<h1> <%= singleMovie.title %> </h1>' +
     '<div class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></div>' +
     '<q> <%= singleMovie.tagline %> </q>' +
-    '<ul> <li><span>Rates: </span><a href="#"><%= singleMovie.rating %></a>' + 
-    '<% for(var i=0; i++; i <= Math.round(singleMovie.rating)) { %>' +
-    '<span class="glyphicon glyphicon-star"><span> ' +
-    '<% }; %>' + 
-    '<% for(var i=0; i++; i <= (10 - Math.round(singleMovie.rating))){ %>' +
-    '<span class="glyphicon glyphicon-star-empty"><span> ' +
-    '<% }; %>' + 
+    '<ul class="mov-info"> <li><span class="sp_bold">Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
     '</li>' +
-    '<li><span>Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
-    '<li><span>Runtime: </span><%= singleMovie.runtime %> min</li>' +
-    '<li><span>Country: </span>' +  
+    '<li><span class="sp_bold">Budget: </span>$ <%= singleMovie.budget %> </li>' +
+    '<li><span class="sp_bold">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
+    '<li><span class="sp_bold">Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
+    '<li><span class="sp_bold">Runtime: </span><%= singleMovie.runtime %> min</li>' +
+    '<li><span class="sp_bold">Production countries: </span>' +  
         '<% _.each(singleMovie.countries, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.countries[i] %></a>' +
-        '<% }) %> </li></ul>' +
-    '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
-    '<ul><li><span>Genres: </span>' + 
+        '<% }) %> </li>' +
+    '<li><span class="sp_bold">Genres: </span>' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
         '<a href="#"> <%= singleMovie.genres[i].name %> </a> ' +
         '<% }) %> </li>' +
-    '<li><span>Company: </span>' + 
+    '<li><span class="sp_bold">Production companies: </span>' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.companies[i] %></a>' +
-        '<% }) %> </li>' +
-    '<li><span>Budget: </span>$ <%= singleMovie.budget %> </li>' +
-    '<li><span>Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
-    '<li><span>Actors: </span><table>' + 
+        '<% }) %> </li></ul>' +
+    '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
+    '<span>Screenshots: </span><section class="carousel"><section class="carousel-container">' +
+        '<% _.each(singleMovie.images, function(el, i){ %>' +
+        '<img class="screenshot" src="<%= largeImageUrl %>' +  
+        '<%= singleMovie.images[i] %>">' +
+    '<% }) %> </section></section>' + 
+    '<section class="carousel-nav">'+
+        '<section class="controls" data-direction="prev" onclick="carousel()">Prev</section>' +
+        '<section class="controls" data-direction="next" onclick="carousel()">Next</section>' +
+    '</section>'+
+    '<span>Actors: </span><section class="actors">' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
-        '<tr><td> <img src="<%= smallImageUrl %>' +  
-        '<%= singleMovie.actors[i].profile_path %>" </td>' +
-        '<td><%= singleMovie.actors[i].name %></td>' +
-        '<td><%= singleMovie.actors[i].character %></td>' +
-        '</tr> <% }) %> </table></li></ul>' +
+        '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
+        '<%= singleMovie.actors[i].profile_path %>">' +
+        '<span class="act_name"><%= singleMovie.actors[i].name %></span>' +
+        '<span class="act_role"><%= singleMovie.actors[i].character %></span>' +
+        '</section> <% }) %> </section>'+
     '<iframe width="640" height="360" src="http://www.youtube.com/embed/' + 
-    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'
+    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'+
+    '</section>'
 
 
 
@@ -202,8 +228,11 @@ function singleMoviePage(id){
             $('#mainContent').append(_.template(singleMovieTemplate,renderSingleMoviePage(data)));
         }
     })
-
-
-
-
 }
+
+
+
+
+
+
+

@@ -10,7 +10,6 @@
 #singleMovie .poster {
 	margin-right:30px;
 	float:left;
-
 }
 #singleMovie q {
 	font-style:italic;
@@ -25,7 +24,7 @@
 	padding:5px;
 }
 
-#singleMovie span {
+#singleMovie .sp_bold {
 	font-weight:bold;
 }
 
@@ -45,19 +44,123 @@
 	text-decoration:underline;
 }
 
-#singleMovie table {
-    margin: 10px auto;
-}
-#singleMovie td {
-    padding: 5px;
+#singleMovie img.screenshot{
+    float:left;
+    margin:7px;
 }
 
-#singleMovie tr{
-    background:#a9ddf0;
+#singleMovie .carousel{
+    background: none repeat scroll 0 0 #ccc;
+    height: 188px;
+    margin: 10px auto;
+    overflow: hidden;
+    width: 800px;
 }
-#singleMovie tr:nth-child(odd){
+#singleMovie .carousel-nav{
+    margin:5px auto;
+    width:250px;
+    
+}
+#singleMovie .controls{
+    background: none repeat scroll 0 0 rgba(110, 193, 224, 0.5);
+    height: 50px;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    display: inline-block;
+}
+#singleMovie .controls:hover{
+    background-color: rgba(110, 193, 224, 1);
+}
+#singleMovie .controls:active{
+    background-color: rgba(110, 193, 224, 0.8);
+}
+
+
+
+#singleMovie .actors{
     background:#c8dae0;
+    width:55%;
+
 }
+
+#singleMovie .single_actor{
+    width:92px;
+    height:200px;
+    background:white;
+    float:left;
+    margin:7px;
+}
+.single_actor:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+#singleMovie .act_name {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#singleMovie .act_role{
+    display: inline-block;
+    font-size: 11px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #singleMovie iframe{
     display: block;
     margin: 0 auto;
