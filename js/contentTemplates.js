@@ -1,6 +1,7 @@
 /**
  * Created by Daryl on 28.11.2014.
  */
+
 /*templates for all sections HOME HELP MOVIES . every menu button has its own template*/
 var apiKey = '7a135ff2c408f8e138e4645f83b30222';
 var baseUrl = 'http://api.themoviedb.org/3';
@@ -10,26 +11,34 @@ var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 
 // HOME BLOCK
 function homeTemplate() {
-    var newsPictures = {
+    var some = {
         1: '<img src="news/JessicaAlba.jpg" class="newsPic">',
         2: '<img src="news/EdwardNorton.jpg" class="newsPic">',
         3: '<img src="news/AlPacino.jpg" class="newsPic">'
-    }
+    };
     var shortInfo = {
         1: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>',
         2: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>',
         3: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>'
-    }
+    };
 
-    var newsBlocks='<div id="Home">';
+    /*var newsBlocks= _.template('<div id="Home">' +
+    '<%_.each(obj,function(value,key){ %>' +
+    '<section class="newsBlocks">' +
+    '<%=value%>' +
+    '' +
+    '</section>' +
+    '<%})%>'
+    );*/
 
-// create news block with pic and news
-    _.each(newsPictures,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
-    newsBlocks += '</div>';
-// delete current block
+/*
+    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
+    newsBlocks += '</div>';*/
+
     $('#mainContent').find(':first-child').remove();
-//set home block
-    $('#mainContent').append(newsBlocks);
+
+   // document.getElementById('mainContent').innerHTML = newsBlocks(some);
+    $('#mainContent').append(newsBlocks(some));
 }
 
 //HELP BLOCK
@@ -47,38 +56,27 @@ function helpTemplate() {
 }
 
 function moviesTemplate(movies,listName) {
-    var movieBlocks='';
-    console.log(movies);
-    //paint recived movie list
-    for(var i=0; i < movies.length; i++) {
-        //check if  current movie have no poster pass it
-        if(movies[i].poster_path == null) {
-            continue;
-        }
-        movieBlocks += '<div id="' + movies[i].id + '" class="singleMovieBlock">' +
-        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300' + movies[i].poster_path + '">' +
-        '<div class="infoBlock">' +
-        '<p>' + movies[i].original_title + '</p>' +
-        '<p>' + movies[i].release_date + '</p>' +
-        '</div></div>';
-    }
-    //removes prev 'little' preloder
+    var movieBlocks= _.template(
+        '<%_.each(obj,function(movie){%>'+
+        '<%if(movie.poster_path == null)return;%>' +
+        '<div id="<%=movie.id%>" class="singleMovieBlock">' +
+        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>">' +
+        '<div class="infoBlock"><p><%=movie.original_title%></p><p><%=movie.release_date%></p></div></div>' +
+        '<%})%>'
+    );
+
     if($('#loader')){
        $('#loader').remove(); 
     }
-    //adds little preloder
-    movieBlocks += '<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>';
 
-    //check if it is the first paint if true it wrapps it into 'Movies'
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
-        $('#Movies').append(movieBlocks);
-        //slide out event
+        $('#Movies').append(movieBlocks(movies));
         addEvents();
     } else {
-        movieBlocks='<section id="Movies"><h1>' + listName + '</h1>' + movieBlocks + '</section>';
-        $('#mainContent').append(movieBlocks);
+        $('#mainContent').append('<section id="Movies"><h1>' + listName + '</h1>' + movieBlocks(movies) + '</section>');
         addEvents();
     }
+    $('#Movies').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
 }
 
 function  actorsTempl(actors,listName){
