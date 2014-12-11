@@ -81,5 +81,31 @@ $('#favSection').on('scroll', function(e) {
       }
 });
 
-     
+function createCarousel(){
+    var visibleImg = 2;
+    var container=$('#img-container');
+    var slider = $('#slider');
+    var images=$('#img-container').find('.screenshot');
+    var totalLength = images.outerWidth(true)*images.length;
+    var visibleLength = images.outerWidth(true)*visibleImg;
+    var step = visibleLength;
+    container.css({'width': totalLength,'left': 0});
+    slider.css('width', visibleLength);
+
+    var direction;
+
+
+
+
+
+    $('#carousel').on('click','.control', function(){
+        direction=$(this).data('direction');
+        if(direction == 'previous'){
+            slider.animate({"scrollLeft": "-="+ step }, "slow")
+        }else if (direction =='next') {
+            slider.animate({"scrollLeft": "+=" + step }, "slow")
+        } else {return}
+    })
+
+};    
 

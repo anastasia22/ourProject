@@ -57,14 +57,16 @@ function helpTemplate() {
 
 function moviesTemplate(movies,listName) {
     var movieBlocks= _.template(
-        '<%_.each(obj,function(movie){%>'+
-        '<%if(movie.poster_path == null)return;%>' +
-        '<div id="<%=movie.id%>" class="singleMovieBlock">' +
-        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>">' +
-        '<div class="infoBlock"><p><%=movie.original_title%></p><p><%=movie.release_date%></p></div></div>' +
+        '<% console.log(obj==arguments[0]) %>' +
+        '<%_.each(obj,function(movieBlaBla){%>'+
+            
+        '<%if(movieBlaBla.poster_path == null)return;%>' +
+        '<div id="<%=movieBlaBla.id%>" class="singleMovieBlock">' +
+        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movieBlaBla.poster_path%>">' +
+        '<div class="infoBlock"><p><%=movieBlaBla.original_title%></p><p><%=movieBlaBla.release_date%></p></div></div>' +
         '<%})%>'
     );
-
+    // console.log(obj)
     if($('#loader')){
        $('#loader').remove(); 
     }
@@ -128,7 +130,7 @@ function deleteBlock() {
         $('#loaderImage').remove();
     }
     $('#Actor').remove();
-}
+};
 function singleMoviePage(id){
     var singleMovieTemplate = 
     '<section id = "singleMovie">' + 
@@ -154,15 +156,14 @@ function singleMoviePage(id){
         '<a href="#"><%= singleMovie.companies[i] %></a>' +
         '<% }) %> </li></ul>' +
     '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
-    '<span>Screenshots: </span><section class="carousel"><section class="carousel-container">' +
+    '<span>Screenshots: </span><section id="carousel">'+
+    '<div class="control" data-direction="previous">previous</div>'+
+    '<div id="slider"><div id="img-container">' +
         '<% _.each(singleMovie.images, function(el, i){ %>' +
         '<img class="screenshot" src="<%= largeImageUrl %>' +  
         '<%= singleMovie.images[i] %>">' +
-    '<% }) %> </section></section>' + 
-    '<section class="carousel-nav">'+
-        '<section class="controls" data-direction="prev" onclick="carousel()">Prev</section>' +
-        '<section class="controls" data-direction="next" onclick="carousel()">Next</section>' +
-    '</section>'+
+    '<% }) %> </div></div>'+
+    '<div class="control" data-direction="next">next</div></div>' + 
     '<span>Actors: </span><section class="actors">' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
         '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
@@ -172,11 +173,7 @@ function singleMoviePage(id){
         '</section> <% }) %> </section>'+
     '<iframe width="640" height="360" src="http://www.youtube.com/embed/' + 
     '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'+
-    '</section>'
-
-
-
-    ;
+    '</section>';
     function renderSingleMoviePage(data) {
         singleMovie = {
             title : data.title,
@@ -224,10 +221,10 @@ function singleMoviePage(id){
             $('#mainContent').find(':first-child').remove();
     
             $('#mainContent').append(_.template(singleMovieTemplate,renderSingleMoviePage(data)));
+            createCarousel();
         }
-    })
-}
-
+    });
+};
 
 
 

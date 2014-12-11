@@ -59,7 +59,7 @@
 #singleMovie .carousel-nav{
     margin:5px auto;
     width:250px;
-    
+
 }
 #singleMovie .controls{
     background: none repeat scroll 0 0 rgba(110, 193, 224, 0.5);
@@ -82,7 +82,8 @@
 
 #singleMovie .actors{
     background:#c8dae0;
-    width:55%;
+    margin: 5px auto;
+    width: 55%;
 
 }
 
@@ -114,6 +115,43 @@
     font-style: italic;
     text-align: center;
     width: 100%;
+}
+
+#img-container{
+    background: none repeat scroll 0 0 #ccc;
+    display: inline-block;
+    height: 189px;
+    position:relative;
+}
+
+
+#singleMovie .screenshot{
+    float: left;
+    margin: 10px;
+    display:block;
+}
+
+#slider{
+    display: inline-block;
+    height: 189px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 70%;
+}
+
+
+#singleMovie .control{
+    background-color: blue;
+    display: inline-block;
+    font-weight: bold;
+    height: 50px;
+    vertical-align: middle;
+    width: 100px;
+}
+
+#carousel{
+    margin: 0 auto;
+    width: 80%;
 }
 
 
