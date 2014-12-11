@@ -90,7 +90,7 @@ function createCarousel(){
     var visibleLength = images.outerWidth(true)*visibleImg;
     var step = visibleLength;
     container.css({'width': totalLength,'left': 0});
-    slider.css('width', visibleLength);
+    // slider.css('width', visibleLength);
 
     var direction;
 

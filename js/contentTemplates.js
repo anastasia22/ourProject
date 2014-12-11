@@ -157,13 +157,13 @@ function singleMoviePage(id){
         '<% }) %> </li></ul>' +
     '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
     '<span>Screenshots: </span><section id="carousel">'+
-    '<div class="control" data-direction="previous">previous</div>'+
-    '<div id="slider"><div id="img-container">' +
+    '<section class="control" data-direction="previous">previous</section>'+
+    '<section id="slider"><section id="img-container">' +
         '<% _.each(singleMovie.images, function(el, i){ %>' +
         '<img class="screenshot" src="<%= largeImageUrl %>' +  
         '<%= singleMovie.images[i] %>">' +
-    '<% }) %> </div></div>'+
-    '<div class="control" data-direction="next">next</div></div>' + 
+    '<% }) %> </section></section>'+
+    '<section class="control" data-direction="next">next</section></section>' + 
     '<span>Actors: </span><section class="actors">' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
         '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  

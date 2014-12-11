@@ -118,7 +118,7 @@
 }
 
 #img-container{
-    background: none repeat scroll 0 0 #ccc;
+    background: #c5e2ff;
     display: inline-block;
     height: 189px;
     position:relative;
@@ -136,17 +136,17 @@
     height: 189px;
     overflow: hidden;
     vertical-align: middle;
-    width: 70%;
+    width: 100%;
 }
 
 
 #singleMovie .control{
-    background-color: blue;
+    background-color: rgba(110, 193, 224, 0.8);
     display: inline-block;
     font-weight: bold;
     height: 50px;
     vertical-align: middle;
-    width: 100px;
+    width: 80px;
 }
 
 #carousel{
