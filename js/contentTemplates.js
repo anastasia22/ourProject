@@ -213,7 +213,6 @@ function singleMoviePage(id){
         url:'http://api.themoviedb.org/3/movie/' + id + '?api_key=7a135ff2c408f8e138e4645f83b30222&append_to_response=similar,images,trailers,credits',
         dataType: "json",
         success: function(data) {
-            console.log(data);
             if(data.similar.results.length>10) {data.similar.results.splice(10)};
             if(data.credits.cast.length>10) {data.credits.cast.splice(10)}
             renderSingleMoviePage(data);//object that has all nesessary fields
@@ -221,11 +220,10 @@ function singleMoviePage(id){
             $('#mainContent').find(':first-child').remove();
     
             $('#mainContent').append(_.template(singleMovieTemplate,renderSingleMoviePage(data)));
-            createCarousel();
+            $(document).ready(createCarousel);
         }
     });
 };
-
 
 
 

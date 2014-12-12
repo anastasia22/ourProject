@@ -81,31 +81,34 @@ $('#favSection').on('scroll', function(e) {
       }
 });
 
-function createCarousel(){
-    var visibleImg = 2;
-    var container=$('#img-container');
-    var slider = $('#slider');
+function scrollCarousel(){
+    var imageContainer = $('#img-container');
     var images=$('#img-container').find('.screenshot');
-    var totalLength = images.outerWidth(true)*images.length;
-    var visibleLength = images.outerWidth(true)*visibleImg;
-    var step = visibleLength;
-    container.css({'width': totalLength,'left': 0});
-    // slider.css('width', visibleLength);
-
-    var direction;
-
-
-
-
-
-    $('#carousel').on('click','.control', function(){
-        direction=$(this).data('direction');
-        if(direction == 'previous'){
-            slider.animate({"scrollLeft": "-="+ step }, "slow")
-        }else if (direction =='next') {
-            slider.animate({"scrollLeft": "+=" + step }, "slow")
-        } else {return}
-    })
+    var imagesWidth = parseInt($('#img-container').css('width'));
+    var sliderWidth = parseInt($('#slider').css('width'));
+    var imagesRighth = parseInt($('#img-container').css('right'));
+    var step = images.outerWidth(true);
+    var direction=$(this).data('direction');
+    var diffWidth = imagesWidth - sliderWidth;//
+    var lastStep = diffWidth - imagesRighth;
+    console.log(direction);
+    if(direction == 'previous' && imagesRighth>step){
+        imageContainer.animate({"right": "-=" + step + "px" }, "slow","linear")
+    } else if(direction == 'previous' && imagesRighth<=step && imagesRighth>0) {
+        imageContainer.animate({"right": "-=" + imagesRighth + "px" }, "slow","linear")
+    };
+    if (direction =='next' && lastStep>step) {
+        imageContainer.animate({"right": "+=" + step + "px"}, "slow","linear")
+    } else if(direction =='next' && lastStep<=step) {
+        imageContainer.animate({"right": "+=" + lastStep + "px"}, "slow","linear")
+    };
+    return
+}
+function createCarousel(){
+    var images=$('#img-container').find('.screenshot');
+    var totalLength = (parseInt(images.css('width')) + parseInt(images.css('margin-left')) + parseInt(images.css('margin-right'))) * images.length;
+    $('#img-container').css({'width': totalLength});
+    $('#carousel').on('click','.control',scrollCarousel)
 
 };    
 
