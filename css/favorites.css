@@ -6,7 +6,6 @@
 #favSection {
     position: absolute;
     z-index: 0;
-    top: 200px;
     left: 75%;
     opacity: 0;
     width: 25%;
