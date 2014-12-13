@@ -6,52 +6,118 @@
     margin: 10px;
     text-align: center;
 }
+#singleMovie .row:before {
+    display: block;
+    content: " ";
+    
+}
+#singleMovie .row:after {
+    display: block;
+    content: " ";
+    clear: both;
+}
+#singleMovie .row {margin-top:10px;}
+#singleMovie .main-info{
+    display:block;
+    margin-bottom:5px;
+}
 
 #singleMovie .poster {
 	margin-right:30px;
 	float:left;
+    width:30%;
+}
+#singleMovie .column2 {
+    float:left;
+    width:60%;
+}
+#singleMovie .poster>img {
+    width:100%;
 }
 #singleMovie q {
 	font-style:italic;
-	display:inline-block;
+	display:block;
 	margin-bottom: 15px;
     margin-top: 20px;
-    width: 500px;
+    width: 100%;
+}
+#singleMovie .mov-info {
+    width:100%;
+    border-top:2px solid #01aadd;
+    border-bottom: 2px solid #01aadd;
+
 }
 
+#singleMovie .overview>span{
+    display:block;
+    text-transform: uppercase;
+    font-weight: bold;
+}
 #singleMovie li {
 	list-style:none;
-	padding:5px;
+	padding:5px 0;
 }
 
-#singleMovie .sp_bold {
+#singleMovie .sp_title {
 	font-weight:bold;
+    text-transform:uppercase;
+    color: #01aadd;
 }
 
-#singleMovie blockquote {
-	background-color: rgba(110, 193, 224, 0.8);
-    border-radius: 5px;
-    display: inline-block;
+#singleMovie .overview {
+	background-color: rgb(110, 193, 224);
+    display: block;
     font-style: italic;
     font-weight: bold;
-    margin-top: 5px;
-    padding: 7px;
+    margin:10px 20px;
+    padding: 10px;
     text-align: justify;
-    width: 500px;
+    width: 30%;
+    float:left;
+}
+
+#singleMovie a{
+    color: rgb(51, 51, 51);
 }
 
 #singleMovie a:hover{
 	text-decoration:underline;
 }
+#singleMovie a~a:before{
+    content:", ";
+    display: inline;
+}
 
+#singleMovie .trail{
+    width:60%;
+    padding:10px;
+    border-top:2px solid #01aadd;
+    border-bottom: 2px solid #01aadd;
+    float:left;
 
+}   
 
-
+#singleMovie iframe{
+    width:100%;
+    display: block;
+}
+#singleMovie input[type="button"]{
+    background-color: rgb(110, 193, 224);
+    font-weight:bold;
+    color:rgb(51, 51, 51);
+    border:0;
+    padding:5px;
+}
+#singleMovie input[type="button"]:hover{
+    background-color: #01aadd;
+}
+#singleMovie input[type="button"]:active{
+    background-color: rgb(110, 193, 224)
+}
 #singleMovie .actors{
-    background:#c8dae0;
     margin: 5px auto;
     width: 55%;
-
+    display:none;
 }
 
 #singleMovie .single_actor{
@@ -84,14 +150,32 @@
     width: 100%;
 }
 
-#img-container{
-    background: #c5e2ff;
-    display: inline-block;
-    height:189px;
-    position:relative;
-
+#singleMovie .carousel{
+    margin: 0 auto;
+    width: 100%;
 }
 
+#singleMovie .slider{
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 90%;
+}
+
+#singleMovie .control{
+    display: inline-block;
+    font-weight: bold;
+    height: 44px;
+    vertical-align: middle;
+    width: 5%;
+    
+}
+
+#singleMovie .img-container{
+    display: inline-block;
+    min-height:189px;
+    position:relative;
+}
 
 #singleMovie .screenshot{
     float: left;
@@ -101,27 +185,33 @@
     cursor:pointer;
 }
 
-#slider{
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: middle;
-    width: 90%;
-}
-
-
-#singleMovie .control{
-    background-color: rgba(110, 193, 224, 0.8);
-    display: inline-block;
-    font-weight: bold;
-    height: 50px;
-    vertical-align: middle;
-    width: 5%;
+#singleMovie .arrow{
+    width:29px;
+    height:44px;
+    margin: 0 auto;
     cursor:pointer;
 }
+#singleMovie .prev-able {
+    background: url("../images/arrow.png") no-repeat left top;
+}
+#singleMovie .prev-unable {
+    background: url("../images/arrow.png") no-repeat left center;
+    cursor:auto;
+}
 
-#carousel{
-    margin: 0 auto;
-    width: 100%;
+#singleMovie .prev-able:hover {
+    background: url("../images/arrow.png") no-repeat left bottom;
+}
+#singleMovie .next-able {
+    background: url("../images/arrow.png") no-repeat right top;
+}
+#singleMovie .next-unable {
+    background: url("../images/arrow.png") no-repeat right center;
+    cursor:auto;
+}
+
+#singleMovie .next-able:hover {
+    background: url("../images/arrow.png") no-repeat right bottom;
 }
 
 
@@ -135,42 +225,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#singleMovie iframe{
-    display: block;
-    margin: 0 auto;
-}
 

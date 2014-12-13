@@ -135,44 +135,51 @@ function singleMoviePage(id){
     var singleMovieTemplate = 
     '<section id = "singleMovie">' + 
     '<h1> <%= singleMovie.title %> </h1>' +
-    '<div class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></div>' +
-    '<q> <%= singleMovie.tagline %> </q>' +
-    '<ul class="mov-info"> <li><span class="sp_bold">Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
+    '<section class="row">' +
+    '<section class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></section>' +
+    '<section class="column2"><q> <%= singleMovie.tagline %> </q>' +
+    '<span class="sp_title main-info">Main information</span>' +
+    '<ul class="mov-info"> <li><span class="sp_title">Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
     '</li>' +
-    '<li><span class="sp_bold">Budget: </span>$ <%= singleMovie.budget %> </li>' +
-    '<li><span class="sp_bold">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
-    '<li><span class="sp_bold">Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
-    '<li><span class="sp_bold">Runtime: </span><%= singleMovie.runtime %> min</li>' +
-    '<li><span class="sp_bold">Production countries: </span>' +  
+    '<li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %> </li>' +
+    '<li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
+    '<li><span class="sp_title">Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
+    '<li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>' +
+    '<li><span class="sp_title">Production countries: </span>' +  
         '<% _.each(singleMovie.countries, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.countries[i] %></a>' +
         '<% }) %> </li>' +
-    '<li><span class="sp_bold">Genres: </span>' + 
+    '<li><span class="sp_title">Genres: </span>' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
         '<a href="#"> <%= singleMovie.genres[i].name %> </a> ' +
         '<% }) %> </li>' +
-    '<li><span class="sp_bold">Production companies: </span>' + 
+    '<li><span class="sp_title">Production companies: </span>' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
         '<a href="#"><%= singleMovie.companies[i] %></a>' +
         '<% }) %> </li></ul>' +
-    '<p><span>Experts overview:</span> <blockquote><%= singleMovie.overview %></blockquote> </p>' +
-    '<span>Screenshots: </span><section id="carousel">'+
-    '<section class="control" data-direction="previous">previous</section>'+
-    '<section id="slider"><section id="img-container">' +
-        '<% _.each(singleMovie.images, function(el, i){ %>' +
-        '<img class="screenshot" src="<%= largeImageUrl %>' +  
-        '<%= singleMovie.images[i] %>">' +
-    '<% }) %> </section></section>'+
-    '<section class="control" data-direction="next">next</section></section>' + 
-    '<span>Actors: </span><section class="actors">' + 
+        '</section></section>' +
+        '<section class="row">' +
+    '<span class="sp_title main-info">Movie trailer</span><section class="trail"><iframe height="360" src="http://www.youtube.com/embed/' + 
+    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe></section>'+
+    '<blockquote class="overview"><span>Experts overview:</span> <%= singleMovie.overview %></blockquote>' + 
+    '</section>' + 
+    '<input type="button" value="Cast"> <section class="actors row">' + 
         '<% _.each(singleMovie.actors, function(el, i){ %>' +
         '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
         '<%= singleMovie.actors[i].profile_path %>">' +
         '<span class="act_name"><%= singleMovie.actors[i].name %></span>' +
         '<span class="act_role"><%= singleMovie.actors[i].character %></span>' +
-        '</section> <% }) %> </section>'+
-    '<iframe width="640" height="360" src="http://www.youtube.com/embed/' + 
-    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe>'+
+    '</section> <% }) %> </section>'+
+    '<span>Screenshots: </span><section class="carousel">'+
+    '<section class="control" data-direction="previous"><section class="arrow prev-ar"></section></section>'+
+    '<section class="slider"><section class="img-container">' +
+        '<% _.each(singleMovie.images, function(el, i){ %>' +
+        '<img class="screenshot" src="<%= largeImageUrl %>' +  
+        '<%= singleMovie.images[i] %>">' +
+    '<% }) %> </section></section>'+
+    '<section class="control" data-direction="next"><section class="arrow next-ar"></section></section></section>' + 
+    
+    
     '</section>';
     function renderSingleMoviePage(data) {
         singleMovie = {
