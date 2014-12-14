@@ -40,20 +40,6 @@ $(function () {
     
     
     //advanced search
-//    $('#advSearch').click(function () {
-//        var searchWrap = $('#searchWrapper'),
-//            expH = 250,
-//            collapsH = 100;
-//        if (searchWrap.height() == 100) {
-//            searchWrap.animate({'height': expH + 'px'}, 300);
-//            favSectionTop(expH);
-//        } else {
-//            searchWrap.animate({'height': collapsH + 'px'}, 300);
-//            favSectionTop(collapsH);
-//            
-//        }
-//    });
-    
     $('input[name="factor"]:radio').click(function() {
          controlAdvanced();
     });
@@ -85,6 +71,12 @@ $(function () {
                 }, 300);
             }
         }
+    //get list of advanced options and paint it
+    $('#advSearch').on('click', function() {
+        
+        
+    });
+    
 });
 
 
