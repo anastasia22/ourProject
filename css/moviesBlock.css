@@ -9,7 +9,6 @@
 #singleMovie .row:before {
     display: block;
     content: " ";
-    
 }
 #singleMovie .row:after {
     display: block;
@@ -17,9 +16,15 @@
     clear: both;
 }
 #singleMovie .row {margin-top:10px;}
-#singleMovie .main-info{
+#singleMovie .block_title{
     display:block;
     margin-bottom:5px;
+    margin-left: 5px;
+}
+#singleMovie .sp_title {
+    font-weight:bold;
+    text-transform:uppercase;
+    color: #01aadd;
 }
 
 #singleMovie .poster {
@@ -41,29 +46,22 @@
     margin-top: 20px;
     width: 100%;
 }
-#singleMovie .mov-info {
+#singleMovie ul.mov-info {
     width:100%;
-    border-top:2px solid #01aadd;
-    border-bottom: 2px solid #01aadd;
-
-}
-
-#singleMovie .overview>span{
-    display:block;
-    text-transform: uppercase;
-    font-weight: bold;
+    
 }
 #singleMovie li {
-	list-style:none;
-	padding:5px 0;
+    list-style:none;
+    padding-bottom: 10px;
 }
-
-#singleMovie .sp_title {
-	font-weight:bold;
-    text-transform:uppercase;
-    color: #01aadd;
+#singleMovie a{
+    color: rgb(51, 51, 51);
+    text-decoration:underline;
 }
-
+#singleMovie a~a:before{
+    content:", ";
+    display: inline;
+}
 #singleMovie .overview {
 	background-color: rgb(110, 193, 224);
     display: block;
@@ -75,83 +73,34 @@
     width: 30%;
     float:left;
 }
-
-#singleMovie a{
-    color: rgb(51, 51, 51);
+#singleMovie .overview>span{
+    display:block;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom:5px;
+    margin-bottom:5px;
+    border-bottom: 3px solid rgb(51, 51, 51);
 }
-
-#singleMovie a:hover{
-	text-decoration:underline;
-}
-#singleMovie a~a:before{
-    content:", ";
-    display: inline;
-}
-
-#singleMovie .trail{
+#singleMovie .trailer{
     width:60%;
     padding:10px;
-    border-top:2px solid #01aadd;
-    border-bottom: 2px solid #01aadd;
     float:left;
-
 }   
-
 #singleMovie iframe{
     width:100%;
     display: block;
 }
-#singleMovie input[type="button"]{
-    background-color: rgb(110, 193, 224);
-    font-weight:bold;
-    color:rgb(51, 51, 51);
-    border:0;
-    padding:5px;
-}
-#singleMovie input[type="button"]:hover{
-    background-color: #01aadd;
-}
-#singleMovie input[type="button"]:active{
-    background-color: rgb(110, 193, 224)
-}
-#singleMovie .actors{
-    margin: 5px auto;
-    width: 55%;
-    display:none;
+#singleMovie .border_class {
+    border-top:5px solid #01aadd;
+    border-bottom: 5px solid #01aadd;
+    padding: 10px 0;
 }
 
-#singleMovie .single_actor{
-    width:92px;
-    height:200px;
-    background:white;
-    float:left;
-    margin:7px;
-}
-.single_actor:after{
-    content:"";
-    display:block;
-    clear:both;
-}
-
-#singleMovie .act_name {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-}
-
-#singleMovie .act_role{
-    display: inline-block;
-    font-size: 11px;
-    font-style: italic;
-    text-align: center;
-    width: 100%;
-}
-
-#singleMovie .carousel{
+#singleMovie .screens {
+    width:90%;
     margin: 0 auto;
+}
+#singleMovie .carousel{
     width: 100%;
 }
 
@@ -215,7 +164,54 @@
 }
 
 
+#singleMovie input[type="button"]{
+    background-color: rgb(110, 193, 224);
+    font-weight:bold;
+    color:rgb(51, 51, 51);
+    border:0;
+    padding:5px;
+}
+#singleMovie input[type="button"]:hover{
+    background-color: #01aadd;
+}
+#singleMovie input[type="button"]:active{
+    background-color: rgb(110, 193, 224)
+}
+#singleMovie .actors{
+    margin: 5px auto;
+    width: 55%;
+    display:none;
+}
 
+#singleMovie .single_actor{
+    width:92px;
+    height:200px;
+    background:white;
+    float:left;
+    margin:7px;
+}
+.single_actor:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+#singleMovie .act_name {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#singleMovie .act_role{
+    display: inline-block;
+    font-size: 11px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
 
 
 
