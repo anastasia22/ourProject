@@ -6,7 +6,7 @@ $(function () {
 
     frm = $('<form>');
 
-    frm.append('<input id="searchField" type="text" placeholder="Search..." class="search-input"><input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked"><label id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"><label for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"><label for="advanced">Advanced</label><button class="search-button">GO!</button>');
+    frm.append('<input id="searchField" type="text" placeholder="Search..." class="search-input"><input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked"><label class="search-radio-label" id="SOME" for="movieTitle">Movie title</label><input type="radio" name="factor" value="" class="search-radio" id="actors"><label class="search-radio-label" for="actors">Actors</label><input type="radio" name="factor" value="" class="search-radio" id="advanced"><label class="search-radio-label" id="advSearch" for="advanced">Advanced</label><button class="search-button">GO!</button>');
     $('#searchWrapper').append(frm);
     $('form').submit(function (event) {
         event.preventDefault();
@@ -22,11 +22,9 @@ $(function () {
         var expandedHight = 100, collapsedHeight = 0;
         if (state) {
             
-            $('#searchWrapper').animate({
-                'height': expandedHight + 'px',
-                'opacity': '1'
-            }, 300);
+            $('#searchWrapper').animate({'height': expandedHight + 'px','opacity': '1'}, 300);
             favSectionTop(expandedHight);
+            controlAdvanced();
         } else {
             $('#searchWrapper').animate({
                 'height': collapsedHeight + 'px',
@@ -37,7 +35,47 @@ $(function () {
         }
         state = !state;
         
-        //correct a top position of favSection due to searchWpapper height
+        
+    });
+    
+    
+    //advanced search
+//    $('#advSearch').click(function () {
+//        var searchWrap = $('#searchWrapper'),
+//            expH = 250,
+//            collapsH = 100;
+//        if (searchWrap.height() == 100) {
+//            searchWrap.animate({'height': expH + 'px'}, 300);
+//            favSectionTop(expH);
+//        } else {
+//            searchWrap.animate({'height': collapsH + 'px'}, 300);
+//            favSectionTop(collapsH);
+//            
+//        }
+//    });
+    
+    $('input[name="factor"]:radio').click(function() {
+         controlAdvanced();
+    });
+    
+    function controlAdvanced() {
+             var searchWrap = $('#searchWrapper'),
+            expH = 250,
+            collapsH = 100;
+        if ($('#advanced').prop('checked') == true) {        
+            return (function() {
+                searchWrap.animate({'height': expH + 'px'}, 300);
+            favSectionTop(expH);  
+            })();       
+        } else{
+            return (function() {
+                searchWrap.animate({'height': collapsH + 'px'}, 300);
+            favSectionTop(collapsH); 
+            })();           
+        }
+         }
+    
+    //correct a top position of favSection due to searchWpapper height
         function favSectionTop(height) {
             var totalHight, headerHeight = document.getElementById('header').offsetHeight;
             totalHight = headerHeight + height + 'px';
@@ -47,10 +85,13 @@ $(function () {
                 }, 300);
             }
         }
-    });
 });
 
 
-$('.search-radio-text').click(function () {
 
-});
+
+
+
+
+
+    

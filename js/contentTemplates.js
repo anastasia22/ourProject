@@ -22,23 +22,23 @@ function homeTemplate() {
         3: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>'
     };
 
-    /*var newsBlocks= _.template('<div id="Home">' +
-    '<%_.each(obj,function(value,key){ %>' +
-    '<section class="newsBlocks">' +
-    '<%=value%>' +
-    '' +
-    '</section>' +
-    '<%})%>'
-    );*/
-
-/*
-    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
-    newsBlocks += '</div>';*/
-
-    $('#mainContent').find(':first-child').remove();
-
-   // document.getElementById('mainContent').innerHTML = newsBlocks(some);
-    $('#mainContent').append(newsBlocks(some));
+//    var newsBlocks= _.template('<div id="Home">' +
+//    '<%_.each(obj,function(value,key){ %>' +
+//    '<section class="newsBlocks">' +
+//    '<%=value%>' +
+//    '' +
+//    '</section>' +
+//    '<%})%>'
+//    );
+//
+//
+//    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
+//    newsBlocks += '</div>';
+//
+//    $('#mainContent').find(':first-child').remove();
+//
+//   // document.getElementById('mainContent').innerHTML = newsBlocks(some);
+//    $('#mainContent').append(newsBlocks(some));
 }
 
 //HELP BLOCK
@@ -231,6 +231,29 @@ function singleMoviePage(id){
         }
     });
 };
+
+
+////scroll to top button
+//$(function() {
+//    $(document).on('scroll', function() {
+//        var windowHght = $(window).height();
+//        var scrollT = $('body').scrollTop();
+//        if (scrollT > windowHght) {
+//            createToTop();
+//        } else {
+//            removeToTop();
+//        }
+//    });
+//    
+//    function createToTop() {
+//        $('<div>').addClass('to-top-button');
+//        $('body').insertBefore('#footer');
+//    }
+//    
+//    function removeToTop() {
+//        $('div.to-top-button').remove();
+//    }
+//});
 
 
 

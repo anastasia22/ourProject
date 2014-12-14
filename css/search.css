@@ -35,7 +35,7 @@
     display: none;
 }
 
-#searchWrapper label { /****  delete #searchWrapper selector  *****/
+.search-radio-label { /****  delete #searchWrapper selector  *****/
     height: 39px;
     width: 100px;
     cursor: pointer;
@@ -48,16 +48,16 @@
     line-height: 21px;
 }
 
-#searchWrapper label:first-of-type {
+.search-radio-label:first-of-type {
     width: 150px;
     margin-left: 0.9265959921016958%;
 }
 
-#searchWrapper label:hover {
+.search-radio-label:hover {
     background: #01aadd;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + .search-radio-label {
     background: #0382a8;
 }
 
