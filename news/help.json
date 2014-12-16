@@ -1,0 +1,33 @@
+[
+	{
+		"number" : 1,
+		"question" : "What is main purpose of website?",
+		"answer" : "Spring is a source for movie and celebrity content. The movie website offers a searchable database of data items including 185,000 movies and 481,000 cast members. Consumers can rely on the information our website provides - including movie showtimes, trailers, critic overviews, photo galleries, entertainment news, and a universal watchlist – when deciding what to watch and what genre."
+
+	},
+	{
+		"number" : 2,
+		"question" : "Where did all of data come from?",
+		"answer" : "Think of Spring website as a very specialised version of Wikipedia where everything can be editable but very specialised around only movie and actor data. We use TMDb database to provide you actual info about movies and actors."
+	},
+	{
+		"number" : 3,
+		"question" : "How can I use the data?",
+		"answer" : "Data can be used in many different ways. You are strictly prohibited from scraping data from the website."
+	},
+	{
+		"number" : 4,
+		"question" : "Why can't I find what I am looking for?",
+		"answer" : "There are two common scenarios. First, the media has not been added to our database yet. Second, it could be a misspelling, typo or foreign language issue. Movies support translated titles as well as what we call “Alternative Titles”. A lot of times the issue is simply that the translated or alternative title hasn't been added."
+	},
+	{
+		"number" : 5,
+		"question" : "Why are there titles in foreign languages?",
+		"answer" : "TMDb - our database - supports movies and data from every corner of the globe. It is part of what makes us unique and such a powerful tool."
+	},
+	{
+		"number" : 6,
+		"question" : "Who are creators of your website?",
+		"answer" : "Creators are Anastasia, Taras and Andriy (Front-end lab2)."
+	}
+]

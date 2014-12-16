@@ -139,23 +139,23 @@ function singleMoviePage(id){
     '<section class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></section>' +
     '<section class="column2"><q> <%= singleMovie.tagline %> </q>' +
     '<span class="sp_title block_title">Main information</span>' +
-    '<ul class="mov-info border_class"> <li><span class="sp_title">Rates: </span><a href="#"><%= singleMovie.rating %></a> / 10' + 
+    '<ul class="mov-info border_class"> <li><span class="sp_title">Rates: </span><span class = "additional" onclick="searchByRates(<%= singleMovie.rating %>)">' + '<%= singleMovie.rating %></span> / 10' + 
     '</li>' +
     '<li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %> </li>' +
     '<li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
-    '<li><span class="sp_title">Year: </span><a href="#"><%= singleMovie.year %></a> </li>' +
+    '<li><span class="sp_title">Year: </span><span class = "additional"><%= singleMovie.year %></span> </li>' +
     '<li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>' +
     '<li><span class="sp_title">Production countries: </span>' +  
         '<% _.each(singleMovie.countries, function(el, i){ %>' + 
-        '<a href="#"><%= singleMovie.countries[i] %></a>' +
+        '<span class = "additional"><%= singleMovie.countries[i] %></span>' +
         '<% }) %> </li>' +
     '<li><span class="sp_title">Genres: </span>' + 
     '<% _.each(singleMovie.genres, function(el, i){ %>' +
-        '<a href="#"> <%= singleMovie.genres[i].name %> </a> ' +
+        '<span class = "additional"> <%= singleMovie.genres[i].name %> </span> ' +
         '<% }) %> </li>' +
     '<li><span class="sp_title">Production companies: </span>' + 
         '<% _.each(singleMovie.companies, function(el, i){ %>' + 
-        '<a href="#"><%= singleMovie.companies[i] %></a>' +
+        '<span class = "additional"><%= singleMovie.companies[i] %></span>' +
         '<% }) %> </li></ul>' +
         '</section></section>' +
         '<section class="row">' +

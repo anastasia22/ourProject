@@ -54,11 +54,12 @@
     list-style:none;
     padding-bottom: 10px;
 }
-#singleMovie a{
+#singleMovie .additional{
     color: rgb(51, 51, 51);
     text-decoration:underline;
+    cursor: pointer;
 }
-#singleMovie a~a:before{
+#singleMovie .additional~.additional:before{
     content:", ";
     display: inline;
 }
@@ -67,11 +68,11 @@
     display: block;
     font-style: italic;
     font-weight: bold;
-    margin:10px 20px;
+    margin:10px 25px;
     padding: 10px;
     text-align: justify;
     width: 30%;
-    float:left;
+    float:right;
 }
 #singleMovie .overview>span{
     display:block;

@@ -36,6 +36,10 @@ function searchByActor () {
     $('#mainContent').find(':first-child').remove();
     findActors(titleSearch,$('#searchField').val());
 }
+function searchByRates (rate) {
+    var rating = 'discover/movie?vote_average.lte=' + rate + '&sort_by=vote_average.desc'
+    sendRequest(rating ,'Movies with rating' + rate);
+}
 // ajax request  creates  request with recived url 
 function sendRequest(url,listName) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
