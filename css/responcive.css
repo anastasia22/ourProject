@@ -83,4 +83,31 @@
         left: 60%;
     }
     
+    /* single movie page styles */
+    #singleMovie .row {
+        margin-top: 30px;
+    }
+    #singleMovie .poster {
+        float:none;
+        margin: 0 auto;
+        width: 60%;
+    }
+    #singleMovie .column2 {
+        margin-top: 10px;
+        width: 100%;
+    }
+    #singleMovie q {
+        text-align: center;
+    }
+    #singleMovie .border_class {
+        padding: 10px;
+    }
+    #singleMovie .trailer {
+        width: 100%;
+    }
+    #singleMovie .overview {
+        width: 100%;
+        margin: 10px 0;
+    }
+    /*end of single movie page styles*/
 }
