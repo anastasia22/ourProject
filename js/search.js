@@ -19,10 +19,14 @@ $(function () {
 
     //Toggle visibility of search block
     $('#callSearch').click(function () {
-        var expandedHight = 100, collapsedHeight = 0;
+        var expandedHight = 100,
+            collapsedHeight = 0;
         if (state) {
-            
-            $('#searchWrapper').animate({'height': expandedHight + 'px','opacity': '1'}, 300);
+
+            $('#searchWrapper').animate({
+                'height': expandedHight + 'px',
+                'opacity': '1'
+            }, 300);
             favSectionTop(expandedHight);
             controlAdvanced();
         } else {
@@ -34,56 +38,69 @@ $(function () {
             favSectionTop(collapsedHeight);
         }
         state = !state;
-        
-        
+
+
     });
-    
-    
+
+
     //advanced search
-    $('input[name="factor"]:radio').click(function() {
-         controlAdvanced();
+    $('input[name="factor"]:radio').click(function () {
+        controlAdvanced();
     });
-    
+
     function controlAdvanced() {
-             var searchWrap = $('#searchWrapper'),
+        var searchWrap = $('#searchWrapper'),
             expH = 250,
             collapsH = 100;
-        if ($('#advanced').prop('checked') == true) {        
-            return (function() {
-                searchWrap.animate({'height': expH + 'px'}, 300);
-            favSectionTop(expH);  
-            })();       
-        } else{
-            return (function() {
-                searchWrap.animate({'height': collapsH + 'px'}, 300);
-            favSectionTop(collapsH); 
-            })();           
-        }
-         }
-    
-    //correct a top position of favSection due to searchWpapper height
-        function favSectionTop(height) {
-            var totalHight, headerHeight = document.getElementById('header').offsetHeight;
-            totalHight = headerHeight + height + 'px';
-            if ($('#favSection')) {
-                $('#favSection').animate({
-                    'top': totalHight
+        if ($('#advanced').prop('checked') == true) {
+            return (function () {
+                searchWrap.animate({
+                    'height': expH + 'px'
                 }, 300);
-            }
+                favSectionTop(expH);
+            })();
+        } else {
+            return (function () {
+                searchWrap.animate({
+                    'height': collapsH + 'px'
+                }, 300);
+                favSectionTop(collapsH);
+            })();
         }
+    }
+
+    //correct a top position of favSection due to searchWpapper height
+    function favSectionTop(height) {
+        var totalHight, headerHeight = document.getElementById('header').offsetHeight;
+        totalHight = headerHeight + height + 'px';
+        if ($('#favSection')) {
+            $('#favSection').animate({
+                'top': totalHight
+            }, 300);
+        }
+    }
     //get list of advanced options and paint it
-    $('#advSearch').on('click', function() {
-        
+    $('#advSearch').on('click', function () {
+
+        $.ajax({
+            url: 'http://api.themoviedb.org/3/genre/movie/list?api_key=7a135ff2c408f8e138e4645f83b30222',
+            dataType: 'json',
+            success: callback
+        });
+
+        function callback(data) {
+           
+                var list = '';
+                $.each(data.genres, function (num, el) {
+                    list += '<input type="checkbox" id="' + el.id + '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label>';
+                });
+
+                $('<div>', {
+                    id: 'advancedWrapper',
+                    html: list
+                }).appendTo('#searchWrapper');
+        }
         
     });
-    
+
 });
-
-
-
-
-
-
-
-
-    
