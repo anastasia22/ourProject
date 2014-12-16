@@ -1,8 +1,5 @@
 /*favorites button and block styling*/
 
-#favoritesButton {
-}
-
 #favSection {
     position: absolute;
     z-index: 0;
@@ -13,17 +10,36 @@
     text-align: center;
     background: #C5E2FF;
     padding: 17px 0px;
-}
-
-.movieIcon {
-    width: 80%;
-    height: 200px;
-    background: #ccc;
-    margin: 10px auto;
+    min-height: 600px;
 }
 
 .fix-fav {
     position: fixed;
     top: 100px;
     height: 100%;
+}
+.favMovieBlock {
+    position: relative;
+    width: 70%;
+    margin: 0% 0% 5% 15% ;
+    height: 250px;
+    cursor: pointer;
+}
+.favMovieImg {
+    width: 100%;
+    height: 100%;
+}
+.favInfoBlock {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    opacity: 0.8;
+    color: #cccccc;
+
+}
+.favMovieBlock:hover {
+
 }

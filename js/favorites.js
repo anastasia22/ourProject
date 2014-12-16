@@ -11,6 +11,7 @@ function eventHandler(event) {
     }else {
         button.toggleClass('menuButtonHovered');
         addFavBlock();
+
     }
 
 }
@@ -26,25 +27,32 @@ function checkFavorites() {
 
 //adds favorite block
 function addFavBlock() {
-    var movies = {
+/*    var movies = {
         1 : 'First title',
         2 : 'Second tile',
         3 : 'Third tile'
-    };
+    };*/
+/*
     var moviesIcons='';
      _.each(movies,function(num, key){ moviesIcons+='<div class=\"movieIcon\">' + num + '</div>'});
+*/
 
-    var favBlock = _.template('<div id=\"favSection\">' + moviesIcons + '</div>');    
-    
+    var favBlock = _.template('<div id=\"favSection\">'+ '</div>');
+
     /*shortens main block */
     $('#mainContent').animate({'width':'75%','float':'left'}, 300);
     /*adds favorites block*/
     window.setTimeout(function(){
         
       //append favBlock due to header and searchWrapper common height
-    $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': headerPlusSearchHeight()}, 400);
+    $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': headerPlusSearchHeight()}, 400,function() {
+        alert('hi');
+        makeDroppable();
+    });
         
-    }, 200);    
+    }, 200);
+
+
 }
 
 //get a common height of header and searchWrapper

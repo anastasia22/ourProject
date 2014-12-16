@@ -22,23 +22,23 @@ function homeTemplate() {
         3: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>'
     };
 
-//    var newsBlocks= _.template('<div id="Home">' +
-//    '<%_.each(obj,function(value,key){ %>' +
-//    '<section class="newsBlocks">' +
-//    '<%=value%>' +
-//    '' +
-//    '</section>' +
-//    '<%})%>'
-//    );
-//
-//
-//    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
-//    newsBlocks += '</div>';
-//
-//    $('#mainContent').find(':first-child').remove();
-//
-//   // document.getElementById('mainContent').innerHTML = newsBlocks(some);
-//    $('#mainContent').append(newsBlocks(some));
+    var newsBlocks= _.template('<div id="Home">' +
+    '<%_.each(obj,function(value,key){ %>' +
+    '<section class="newsBlocks">' +
+    '<%=value%>' +
+    '' +
+    '</section>' +
+    '<%})%>'
+    );
+
+
+    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
+    newsBlocks += '</div>';
+
+    $('#mainContent').find(':first-child').remove();
+
+   // document.getElementById('mainContent').innerHTML = newsBlocks(some);
+    $('#mainContent').append(newsBlocks(some));
 }
 
 //HELP BLOCK
@@ -58,15 +58,14 @@ function helpTemplate() {
 function moviesTemplate(movies,listName) {
     var movieBlocks= _.template(
         '<% console.log(obj==arguments[0]) %>' +
-        '<%_.each(obj,function(movieBlaBla){%>'+
+        '<%_.each(obj,function(movie){%>'+
             
-        '<%if(movieBlaBla.poster_path == null)return;%>' +
-        '<div id="<%=movieBlaBla.id%>" class="singleMovieBlock">' +
-        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movieBlaBla.poster_path%>">' +
-        '<div class="infoBlock"><p><%=movieBlaBla.original_title%></p><p><%=movieBlaBla.release_date%></p></div></div>' +
+        '<%if(movie.poster_path == null)return;%>' +
+        '<div id="<%=movie.id%>" class="singleMovieBlock">' +
+        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>">' +
+        '<div class="infoBlock"><p><%=movie.original_title%></p><p><%=movie.release_date%></p></div></div>' +
         '<%})%>'
     );
-    // console.log(obj)
     if($('#loader')){
        $('#loader').remove(); 
     }
@@ -79,6 +78,8 @@ function moviesTemplate(movies,listName) {
         addEvents();
     }
     $('#Movies').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
+
+    makeDraggable();
 }
 
 function  actorsTempl(actors,listName){
