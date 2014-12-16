@@ -77,3 +77,46 @@ input[type="radio"]:checked + .search-radio-label {
 .search-button:hover {
     background: #FF8D00;
 }
+
+/** advanced **/
+
+.genre {
+    display: inline-block;
+    width: 140px;
+}
+.genre label {
+    font-size: 0.95em;
+    cursor: pointer;
+    color: #006E96;
+}
+
+.genre label:hover:before {
+    background: #0382A8;
+}
+
+.genre label:before {
+    display: inline-block;
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 2px;
+    background: #f2f2f2;
+    margin: 0 8px 0 0;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+}
+
+.genre input[type="checkbox"] {    
+    display: none;
+}
+.genre input[type="checkbox"]:checked + label:before {
+    background-color:  #FCA840;
+    background-size: 7px 7px;
+}
+#advancedWrapper {
+    margin-left: 239px;
+    width: 840px;
+}
+

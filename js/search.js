@@ -48,6 +48,7 @@ $(function () {
         controlAdvanced();
     });
 
+    //toggle div for adv search and move properly fav section
     function controlAdvanced() {
         var searchWrap = $('#searchWrapper'),
             expH = 250,
@@ -58,6 +59,7 @@ $(function () {
                     'height': expH + 'px'
                 }, 300);
                 favSectionTop(expH);
+                addAdvanced();
             })();
         } else {
             return (function () {
@@ -65,6 +67,7 @@ $(function () {
                     'height': collapsH + 'px'
                 }, 300);
                 favSectionTop(collapsH);
+                $('#advancedWrapper').remove();
             })();
         }
     }
@@ -80,27 +83,32 @@ $(function () {
         }
     }
     //get list of advanced options and paint it
-    $('#advSearch').on('click', function () {
+    function addAdvanced() {
+        var searchwrap = document.getElementById('searchWrapper');
+        var advwrap = document.getElementById('advancedWrapper');
+        if ($.contains(searchwrap, advwrap)) {
+            return false;
+        } else {
+            $.ajax({
+                url: 'http://api.themoviedb.org/3/genre/movie/list?api_key=7a135ff2c408f8e138e4645f83b30222',
+                dataType: 'json',
+                success: callback
+            });
 
-        $.ajax({
-            url: 'http://api.themoviedb.org/3/genre/movie/list?api_key=7a135ff2c408f8e138e4645f83b30222',
-            dataType: 'json',
-            success: callback
-        });
-
-        function callback(data) {
-           
+            function callback(data) {
                 var list = '';
                 $.each(data.genres, function (num, el) {
-                    list += '<input type="checkbox" id="' + el.id + '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label>';
+                    list += '<div class ="genre"><input type="checkbox" id="' + el.id + '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label></div>';
                 });
 
                 $('<div>', {
                     id: 'advancedWrapper',
+                    style: 'clear: both;',
                     html: list
                 }).appendTo('#searchWrapper');
+            }
         }
-        
-    });
+
+    }
 
 });
