@@ -48,6 +48,7 @@ function addFavBlock() {
     $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': headerPlusSearchHeight()}, 400,function() {
         alert('hi');
         makeDroppable();
+        favMovies();
     });
         
     }, 200);
