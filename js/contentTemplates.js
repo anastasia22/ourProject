@@ -43,16 +43,15 @@ function homeTemplate() {
 
 //HELP BLOCK
 function helpTemplate() {
-
-    var h1 = document.createElement('h1');
-    h1.innerHTML='!!! Help PAGE!!';
-    var section=document.createElement('section');
-    section.id='Help';
-    section.appendChild(h1);
-    //delete current block
-    $('#mainContent').find(':first-child').remove();
-    //set help block
-    $('#mainContent').append(section);
+    var helpTempl = '<section id="Help">' +
+        '<% console.log(obj)%>' 
+    $.getJSON( "news/help.json", function( data ) {
+        console.log(data)
+        //delete current block
+        $('#mainContent').find(':first-child').remove();
+        //set help block
+        $('#mainContent').append(_.template(helpTempl, {'data':data} ));
+    })
 }
 
 function moviesTemplate(movies,listName) {
@@ -131,56 +130,59 @@ function deleteBlock() {
     }
     $('#Actor').remove();
 };
-function singleMoviePage(id){
-    var singleMovieTemplate = 
-    '<section id = "singleMovie">' + 
-    '<h1> <%= singleMovie.title %> </h1>' +
-    '<section class="row">' +
-    '<section class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></section>' +
-    '<section class="column2"><q> <%= singleMovie.tagline %> </q>' +
-    '<span class="sp_title block_title">Main information</span>' +
-    '<ul class="mov-info border_class"> <li><span class="sp_title">Rates: </span><span class = "additional" onclick="searchByRates(<%= singleMovie.rating %>)">' + '<%= singleMovie.rating %></span> / 10' + 
-    '</li>' +
-    '<li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %> </li>' +
-    '<li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
-    '<li><span class="sp_title">Year: </span><span class = "additional"><%= singleMovie.year %></span> </li>' +
-    '<li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>' +
-    '<li><span class="sp_title">Production countries: </span>' +  
-        '<% _.each(singleMovie.countries, function(el, i){ %>' + 
-        '<span class = "additional"><%= singleMovie.countries[i] %></span>' +
-        '<% }) %> </li>' +
-    '<li><span class="sp_title">Genres: </span>' + 
-    '<% _.each(singleMovie.genres, function(el, i){ %>' +
-        '<span class = "additional"> <%= singleMovie.genres[i].name %> </span> ' +
-        '<% }) %> </li>' +
-    '<li><span class="sp_title">Production companies: </span>' + 
-        '<% _.each(singleMovie.companies, function(el, i){ %>' + 
-        '<span class = "additional"><%= singleMovie.companies[i] %></span>' +
-        '<% }) %> </li></ul>' +
-        '</section></section>' +
+
+function singleMoviePage (data) { 
+    var singleMovieTemplate = _.template(
+        '<section id = "singleMovie">' + 
+        '<h1> <%= singleMovie.title %> </h1>' +
         '<section class="row">' +
-    '<section class="trailer"><span class="sp_title block_title">Movie trailer</span><section class="border_class"><iframe height="360" src="http://www.youtube.com/embed/' + 
-    '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe></section></section>'+
-    '<blockquote class="overview"><span>Experts overview</span> <%= singleMovie.overview %></blockquote>' + 
-    '</section>' + 
-    '<section class="row"><section class="screens"><span class="sp_title block_title">Screenshots</span><section class="border_class  carousel">'+
-    '<section class="control" data-direction="previous"><section class="arrow prev-ar"></section></section>'+
-    '<section class="slider"><section class="img-container">' +
-        '<% _.each(singleMovie.images, function(el, i){ %>' +
-        '<img class="screenshot" src="<%= largeImageUrl %>' +  
-        '<%= singleMovie.images[i] %>">' +
-    '<% }) %> </section></section>'+
-    '<section class="control" data-direction="next"><section class="arrow next-ar"></section></section></section></section>' + 
-    '<input type="button" value="Cast"> <section class="actors row">' + 
-        '<% _.each(singleMovie.actors, function(el, i){ %>' +
-        '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
-        '<%= singleMovie.actors[i].profile_path %>">' +
-        '<span class="act_name"><%= singleMovie.actors[i].name %></span>' +
-        '<span class="act_role"><%= singleMovie.actors[i].character %></span>' +
-    '</section> <% }) %> </section>'+
+        '<section class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></section>' +
+        '<section class="column2"><q> <%= singleMovie.tagline %> </q>' +
+        '<span class="sp_title block_title">Main information</span>' +
+        '<ul class="mov-info border_class"> <li><span class="sp_title">Rates: </span><span class = "additional" onclick="searchByRates(<%= singleMovie.rating %>)">' + '<%= singleMovie.rating %></span> / 10' + 
+        '</li>' +
+        '<li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %> </li>' +
+        '<li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
+        '<li><span class="sp_title">Year: </span><%= singleMovie.year %> </li>' +
+        '<li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>' +
+        '<li><span class="sp_title">Production countries: </span>' +  
+            '<% _.each(singleMovie.countries, function(el, i){ %>' + 
+            '<span class = "additional"><%= singleMovie.countries[i] %></span>' +
+            '<% }) %> </li>' +
+        '<li><span class="sp_title">Genres: </span>' + 
+        '<% _.each(singleMovie.genres, function(el, i){ %>' +
+            '<span class = "additional"> <%= singleMovie.genres[i].name %> </span> ' +
+            '<% }) %> </li>' +
+        '<li><span class="sp_title">Production companies: </span>' + 
+            '<% _.each(singleMovie.companies, function(el, i){ %>' + 
+            '<span class = "additional"><%= singleMovie.companies[i] %></span>' +
+            '<% }) %> </li></ul>' +
+            '</section></section>' +
+            '<section class="row">' +
+        '<section class="trailer"><span class="sp_title block_title">Movie trailer</span><section class="border_class"><iframe height="360" src="http://www.youtube.com/embed/' + 
+        '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe></section></section>'+
+        '<blockquote class="overview"><span>Experts overview</span> <%= singleMovie.overview %></blockquote>' + 
+        '</section>' + 
+        '<section class="row"><section class="screens"><span class="sp_title block_title">Screenshots</span><section class="border_class  carousel">'+
+        '<section class="control" data-direction="previous"><section class="arrow prev-ar"></section></section>'+
+        '<section class="slider"><section class="img-container">' +
+            '<% _.each(singleMovie.images, function(el, i){ %>' +
+            '<img class="screenshot" src="<%= largeImageUrl %>' +  
+            '<%= singleMovie.images[i] %>">' +
+        '<% }) %> </section></section>'+
+        '<section class="control" data-direction="next"><section class="arrow next-ar"></section></section></section></section></section>' + 
+        '<section class="row"><span class="sp_title block_title">Cast</span><section class="border_class"><section class="actors">' + 
+            '<% _.each(singleMovie.actors, function(el, i){ %>' +
+            '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
+            '<%= singleMovie.actors[i].profile_path %>">' +
+            '<span class="act_name"><%= singleMovie.actors[i].name %></span>' +
+            '<span class="act_role"><%= singleMovie.actors[i].character %></span>' +
+        '</section> <% }) %> </section></section></section>'+
+            
         
-    
-    '</section>';
+        '</section>'
+    );
+
     function renderSingleMoviePage(data) {
         singleMovie = {
             title : data.title,
@@ -214,25 +216,13 @@ function singleMoviePage(id){
         }
         return singleMovie
     };
-    $.ajax({
-        type: "GET",
-        //url: baseUrl + "/movie/" + id + '?api_key=' + apiKey,
-        url:'http://api.themoviedb.org/3/movie/' + id + '?api_key=7a135ff2c408f8e138e4645f83b30222&append_to_response=similar,images,trailers,credits',
-        dataType: "json",
-        success: function(data) {
-            if(data.similar.results.length>10) {data.similar.results.splice(10)};
-            if(data.credits.cast.length>10) {data.credits.cast.splice(10)}
-            renderSingleMoviePage(data);//object that has all nesessary fields
-
-            $('#mainContent').find(':first-child').remove();
-    
-            $('#mainContent').append(_.template(singleMovieTemplate,renderSingleMoviePage(data)));
-            $(document).ready(createCarousel);
-        }
-    });
-};
 
 
+    $('#mainContent').find(':first-child').remove();
+
+    $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(data)}));
+    $(document).ready(createCarousel);
+}
 ////scroll to top button
 //$(function() {
 //    $(document).on('scroll', function() {
