@@ -153,13 +153,13 @@ function singleMoviePage (movie) {
               <ul class="mov-info border_class">\
                 <li>\
                   <span class="sp_title">Rates: </span>\
-                  <span class = "additional" onclick="searchByRates(<%= singleMovie.rating %>)">\
+                  <span class = "additional searching" onclick="searchByRates(<%= singleMovie.rating %>)">\
                     <span><%= singleMovie.rating %></span>\
                   </span> / 10\
                 </li>\
                 <li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %></li>\
                 <li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %></li>\
-                <li><span class="sp_title">Year: </span><%= singleMovie.year %></li>\
+                <li><span class="sp_title">Year: </span><span class = "additional searching" onclick="searchByYears(<%= singleMovie.year %>)"><span><%= singleMovie.year %></span></span></li>\
                 <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
                 <li><span class="sp_title">Production countries: </span>\
                   <% _.each(singleMovie.countries, function(el, i){ %>\
@@ -170,15 +170,15 @@ function singleMoviePage (movie) {
                 </li>\
                 <li><span class="sp_title">Genres: </span>\
                   <% _.each(singleMovie.genres, function(el, i){ %>\
-                    <span class = "additional">\
-                      <span><%= singleMovie.genres[i].name %></span>\
+                    <span class = "additional searching">\
+                      <span onclick="searchByGenres(<%=singleMovie.genres[i].id%>,\'<%=singleMovie.genres[i].name%>\')"><%= singleMovie.genres[i].name %></span>\
                     </span>\
                   <% }) %>\
                 </li>\
                 <li><span class="sp_title">Production companies: </span>\
                   <% _.each(singleMovie.companies, function(el, i){ %>\
                     <span class = "additional">\
-                    <span><%= singleMovie.companies[i] %></span>\
+                        <span><%= singleMovie.companies[i] %></span>\
                     </span>\
                   <% }) %>\
                 </li>\
@@ -217,16 +217,29 @@ function singleMoviePage (movie) {
           </section>\
           <section class="row">\
             <span class="sp_title block_title">Cast</span>\
-            <section class="border_class">\
+            <section class="border_class actors_container">\
               <section class="actors">\
                 <% _.each(singleMovie.actors, function(el, i){ %>\
-                  <section class="single_actor">\
+                  <section class="single_actor" onclick="findThisActor(<%= singleMovie.actors[i].id %>)">\
                     <img src="<%= smallImageUrl %><%= singleMovie.actors[i].profile_path %>">\
                     <span class="act_name"><%= singleMovie.actors[i].name %></span>\
                     <span class="act_role"><%= singleMovie.actors[i].character %></span>\
                   </section>\
                 <% }) %>\
               </section>\
+            </section>\
+          </section>\
+          <section class="row">\
+            <span class="sp_title block_title">Similar movies</span>\
+            <section class="border_class similar_container">\
+              <% _.each(singleMovie.similar, function(el, i){ %>\
+                <section class="similar" onclick="showOneMovie(<%= singleMovie.similar[i].id %>)">\
+                  <img src="<%= mediumImageUrl %><%= singleMovie.similar[i].backdrop_path %>">\
+                  <span class="similar_name"><%= singleMovie.similar[i].title %></span>\
+                  <span class="similar_date"><%= singleMovie.similar[i].release_date %></span>\
+                  <span class="similar_rate"><%= singleMovie.similar[i].vote_average %></span>\
+                </section>\
+                <% }) %>\
             </section>\
           </section>\
         </section>'
@@ -246,7 +259,7 @@ function singleMoviePage (movie) {
             genres: movie.genres == [] ? null : movie.genres,
             companies : [],
             countries : [],
-            similar: [],
+            similar: movie.similar.results,
             images: [],
             trailer: movie.trailers.youtube[0] ? movie.trailers.youtube[0].source: null,
             actors: movie.credits.cast == [] ? null : movie.credits.cast
@@ -261,11 +274,6 @@ function singleMoviePage (movie) {
                 singleMovie.companies.push(movie.production_companies[company].name)
             }
         } else {singleMovie.companies = null};
-        if (movie.similar.results[0]) {
-            for (var movies in movie.similar.results) {
-                singleMovie.similar.push({id:movie.similar.results[movies].id, backdrop_path:movie.similar.results[movies].backdrop_path, title:movie.similar.results[movies].title})
-            }
-        } else {singleMovie.similar = null};
         if(movie.images.backdrops[0]) {
             for (var image in movie.images.backdrops) {
                 singleMovie.images.push(movie.images.backdrops[image].file_path)

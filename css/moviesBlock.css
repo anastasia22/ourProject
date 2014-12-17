@@ -56,7 +56,7 @@
     list-style:none;
     padding-bottom: 10px;
 }
-#singleMovie .additional{
+#singleMovie .searching{
     color: rgb(51, 51, 51);
     cursor: pointer;
     display: inline-block;
@@ -73,7 +73,7 @@
 #singleMovie .additional>span{
     margin-left:5px;
 }
-#singleMovie .additional>span:hover{
+#singleMovie .searching>span:hover{
     font-weight:bold;
     text-decoration:underline;
 }
@@ -188,8 +188,7 @@
 
 #singleMovie .actors{
     margin: 5px auto;
-    width: 55%;
-    
+    width: 100%;
 }
 
 #singleMovie .single_actor{
@@ -198,8 +197,17 @@
     background:white;
     float:left;
     margin:7px;
+    cursor:pointer;
 }
-.single_actor:after{
+#singleMovie .single_actor>img{
+    height:138px;
+    width:92px;
+}
+#singleMovie .actors:before {
+    display: block;
+    content: " ";
+}
+#singleMovie .actors:after {
     content:"";
     display:block;
     clear:both;

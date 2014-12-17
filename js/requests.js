@@ -37,9 +37,21 @@ function searchByActor () {
     findActors(titleSearch,$('#searchField').val());
 }
 function searchByRates (rate) {
+    $('#singleMovie').remove();
     var rating = 'discover/movie?vote_average.lte=' + rate + '&sort_by=vote_average.desc'
-    sendRequest(rating ,'Movies with rating' + rate);
+    sendRequest(rating ,'Movies with rating ' + rate);
 }
+function searchByGenres (id, name) {
+    $('#singleMovie').remove();
+    var url = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc'
+    sendRequest(url ,'Movies with ' + name + '&nbsp;genre');
+}
+function searchByYears (year) {
+    $('#singleMovie').remove();
+    var url = 'discover/movie?primary_release_year=' + year + '&sort_by=popularity.desc'
+    sendRequest(url ,'Movies released in ' + year + '&nbsp;year');
+}
+
 // ajax request  creates  request with recived url 
 function sendRequest(url,listName) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
@@ -142,14 +154,13 @@ function findThisActor(id) {
 function showOneMovie (id) {
     var apikey = "?api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/movie/";
-    var additional = '&append_to_response=similar,images,trailers,credits'
+    var additional = '&append_to_response=similar,images,trailers,credits';
     var movieUrl = baseUrl + id + apikey + additional
 
     
 
     $.ajax({
         type: "GET",
-        //url: baseUrl + "/movie/" + id + '?api_key=' + apiKey,
         url:movieUrl,
         dataType: "json",
         success: callBackFunc
@@ -157,7 +168,6 @@ function showOneMovie (id) {
 
     function callBackFunc (data) {
             if(data.similar.results.length>5) {data.similar.results.splice(5)};
-            if(data.credits.cast.length>10) {data.credits.cast.splice(10)};
             singleMoviePage(data);
         }
 
