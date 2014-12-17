@@ -163,7 +163,11 @@ function showOneMovie (id) {
 
 }
 
-
+function getHelp(){
+    $.getJSON( "news/help.json", function(data) {
+        helpTemplate(data)
+    })
+}
 
 
 

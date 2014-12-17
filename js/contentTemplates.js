@@ -42,16 +42,23 @@ function homeTemplate() {
 }
 
 //HELP BLOCK
-function helpTemplate() {
-    var helpTempl = '<section id="Help">' +
-        '<% console.log(obj)%>' 
-    $.getJSON( "news/help.json", function( data ) {
-        console.log(data)
-        //delete current block
-        $('#mainContent').find(':first-child').remove();
-        //set help block
-        $('#mainContent').append(_.template(helpTempl, {'data':data} ));
-    })
+function helpTemplate(questions) {
+    var helpTempl = _.template('<section id="Help">\
+        <% console.log(data[0])%>\
+        <%_.each(data, function(el,i){%>\
+            <section class="help">\
+                <span class="question">\
+                    <span><%= data[i].number%></span>\
+                    <span><%= data[i].question%></span>\
+                </span>\
+                <span><%= data[i].answer%></span>\
+            </section>\
+        <%})%></section>'
+    );
+    //delete current block
+    $('#mainContent').find(':first-child').remove();
+    //set help block
+    $('#mainContent').append(helpTempl({'data':questions}));
 }
 
 function moviesTemplate(movies,listName) {
@@ -132,96 +139,146 @@ function deleteBlock() {
     $('#Actor').remove();
 };
 
-function singleMoviePage (data) { 
+function singleMoviePage (movie) { 
     var singleMovieTemplate = _.template(
-        '<section id = "singleMovie">' + 
-        '<h1> <%= singleMovie.title %> </h1>' +
-        '<section class="row">' +
-        '<section class ="poster"><img src="<%= largeImageUrl %>' + '<%= singleMovie.poster %>" ></section>' +
-        '<section class="column2"><q> <%= singleMovie.tagline %> </q>' +
-        '<span class="sp_title block_title">Main information</span>' +
-        '<ul class="mov-info border_class"> <li><span class="sp_title">Rates: </span><span class = "additional" onclick="searchByRates(<%= singleMovie.rating %>)">' + '<%= singleMovie.rating %></span> / 10' + 
-        '</li>' +
-        '<li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %> </li>' +
-        '<li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %> </li>' +
-        '<li><span class="sp_title">Year: </span><%= singleMovie.year %> </li>' +
-        '<li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>' +
-        '<li><span class="sp_title">Production countries: </span>' +  
-            '<% _.each(singleMovie.countries, function(el, i){ %>' + 
-            '<span class = "additional"><%= singleMovie.countries[i] %></span>' +
-            '<% }) %> </li>' +
-        '<li><span class="sp_title">Genres: </span>' + 
-        '<% _.each(singleMovie.genres, function(el, i){ %>' +
-            '<span class = "additional"> <%= singleMovie.genres[i].name %> </span> ' +
-            '<% }) %> </li>' +
-        '<li><span class="sp_title">Production companies: </span>' + 
-            '<% _.each(singleMovie.companies, function(el, i){ %>' + 
-            '<span class = "additional"><%= singleMovie.companies[i] %></span>' +
-            '<% }) %> </li></ul>' +
-            '</section></section>' +
-            '<section class="row">' +
-        '<section class="trailer"><span class="sp_title block_title">Movie trailer</span><section class="border_class"><iframe height="360" src="http://www.youtube.com/embed/' + 
-        '<%= singleMovie.trailer %>' + '" frameborder="0" allowfullscreen></iframe></section></section>'+
-        '<blockquote class="overview"><span>Experts overview</span> <%= singleMovie.overview %></blockquote>' + 
-        '</section>' + 
-        '<section class="row"><section class="screens"><span class="sp_title block_title">Screenshots</span><section class="border_class  carousel">'+
-        '<section class="control" data-direction="previous"><section class="arrow prev-ar"></section></section>'+
-        '<section class="slider"><section class="img-container">' +
-            '<% _.each(singleMovie.images, function(el, i){ %>' +
-            '<img class="screenshot" src="<%= largeImageUrl %>' +  
-            '<%= singleMovie.images[i] %>">' +
-        '<% }) %> </section></section>'+
-        '<section class="control" data-direction="next"><section class="arrow next-ar"></section></section></section></section></section>' + 
-        '<section class="row"><span class="sp_title block_title">Cast</span><section class="border_class"><section class="actors">' + 
-            '<% _.each(singleMovie.actors, function(el, i){ %>' +
-            '<section class="single_actor"> <img src="<%= smallImageUrl %>' +  
-            '<%= singleMovie.actors[i].profile_path %>">' +
-            '<span class="act_name"><%= singleMovie.actors[i].name %></span>' +
-            '<span class="act_role"><%= singleMovie.actors[i].character %></span>' +
-        '</section> <% }) %> </section></section></section>'+
-            
-        
-        '</section>'
+        '<section id = "singleMovie">\
+          <h1><%= singleMovie.title %></h1>\
+          <section class="row">\
+            <section class ="poster">\
+              <img src="<%= largeImageUrl %><%= singleMovie.poster %>">\
+            </section>\
+            <section class="column2">\
+              <q class="par_block"> <%= singleMovie.tagline %> </q>\
+              <span class="sp_title block_title">Main information</span>\
+              <ul class="mov-info border_class">\
+                <li>\
+                  <span class="sp_title">Rates: </span>\
+                  <span class = "additional" onclick="searchByRates(<%= singleMovie.rating %>)">\
+                    <span><%= singleMovie.rating %></span>\
+                  </span> / 10\
+                </li>\
+                <li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %></li>\
+                <li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %></li>\
+                <li><span class="sp_title">Year: </span><%= singleMovie.year %></li>\
+                <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
+                <li><span class="sp_title">Production countries: </span>\
+                  <% _.each(singleMovie.countries, function(el, i){ %>\
+                    <span class = "additional">\
+                      <span><%= singleMovie.countries[i] %></span>\
+                    </span>\
+                  <% }) %>\
+                </li>\
+                <li><span class="sp_title">Genres: </span>\
+                  <% _.each(singleMovie.genres, function(el, i){ %>\
+                    <span class = "additional">\
+                      <span><%= singleMovie.genres[i].name %></span>\
+                    </span>\
+                  <% }) %>\
+                </li>\
+                <li><span class="sp_title">Production companies: </span>\
+                  <% _.each(singleMovie.companies, function(el, i){ %>\
+                    <span class = "additional">\
+                    <span><%= singleMovie.companies[i] %></span>\
+                    </span>\
+                  <% }) %>\
+                </li>\
+              </ul>\
+            </section>\
+          </section>\
+          <section class="row">\
+            <section class="trailer">\
+              <span class="sp_title block_title">Movie trailer</span>\
+              <section class="border_class">\
+                <iframe height="360" src="http://www.youtube.com/embed/<%= singleMovie.trailer %>" frameborder="0" allowfullscreen></iframe>\
+              </section>\
+            </section>\
+            <blockquote class="overview">\
+              <span>Experts overview</span>\
+              <%= singleMovie.overview %>\
+            </blockquote>\
+          </section>\
+          <section class="row">\
+            <section class="screens">\
+              <span class="sp_title block_title">Screenshots</span>\
+              <section class="border_class carousel">\
+                <section class="control" data-direction="previous">\
+                  <section class="arrow prev-ar"></section>\
+                </section>\
+                <section class="slider"><section class="img-container">\
+                <% _.each(singleMovie.images, function(el, i){ %>\
+                    <img class="screenshot" src="<%= largeImageUrl %><%= singleMovie.images[i] %>">\
+                <% }) %>\
+                </section></section>\
+                <section class="control" data-direction="next">\
+                  <section class="arrow next-ar"></section>\
+                </section>\
+              </section>\
+            </section>\
+          </section>\
+          <section class="row">\
+            <span class="sp_title block_title">Cast</span>\
+            <section class="border_class">\
+              <section class="actors">\
+                <% _.each(singleMovie.actors, function(el, i){ %>\
+                  <section class="single_actor">\
+                    <img src="<%= smallImageUrl %><%= singleMovie.actors[i].profile_path %>">\
+                    <span class="act_name"><%= singleMovie.actors[i].name %></span>\
+                    <span class="act_role"><%= singleMovie.actors[i].character %></span>\
+                  </section>\
+                <% }) %>\
+              </section>\
+            </section>\
+          </section>\
+        </section>'
     );
 
-    function renderSingleMoviePage(data) {
-        singleMovie = {
-            title : data.title,
-            poster: data.poster_path,
-            tagline : data.tagline,
-            rating : data.vote_average,
-            overview : data.overview,
-            year : parseInt(data.release_date),
-            budget : data.budget,
-            revenue : data.revenue,
+    function renderSingleMoviePage(movie) {
+        var singleMovie = {
+            title : movie.title,
+            poster: movie.poster_path,
+            tagline : movie.tagline ? movie.tagline : null,
+            rating : movie.vote_average,
+            overview : movie.overview ? movie.overview : null,
+            year : parseInt(movie.release_date),
+            budget : movie.budget == 0 ? null : movie.budget,
+            revenue : movie.revenue == 0 ? null : movie.revenue,
+            runtime: movie.runtime == 0 ? null : movie.runtime,
+            genres: movie.genres == [] ? null : movie.genres,
             companies : [],
             countries : [],
             similar: [],
-            runtime: data.runtime,
-            genres: data.genres,
             images: [],
-            trailer: data.trailers.youtube[0].source,
-            actors: data.credits.cast
-        }
-        for (var country in data.production_countries) {
-            singleMovie.countries.push(data.production_countries[country].name)
-        }
-        for (var company in data.production_companies) {
-            singleMovie.companies.push(data.production_companies[company].name)
-        }
-        for (var movie in data.similar.results) {
-            singleMovie.similar.push({id:data.similar.results[movie].id, backdrop_path:data.similar.results[movie].backdrop_path, title:data.similar.results[movie].title})
-        }
-        for (var image in data.images.backdrops) {
-            singleMovie.images.push(data.images.backdrops[image].file_path)
-        }
+            trailer: movie.trailers.youtube[0] ? movie.trailers.youtube[0].source: null,
+            actors: movie.credits.cast == [] ? null : movie.credits.cast
+        };
+        if (movie.production_countries[0]) {
+            for (var country in movie.production_countries) {
+                singleMovie.countries.push(movie.production_countries[country].name)
+            }
+        } else {singleMovie.countries = null};
+        if (movie.production_companies[0]) {
+            for (var company in movie.production_companies) {
+                singleMovie.companies.push(movie.production_companies[company].name)
+            }
+        } else {singleMovie.companies = null};
+        if (movie.similar.results[0]) {
+            for (var movies in movie.similar.results) {
+                singleMovie.similar.push({id:movie.similar.results[movies].id, backdrop_path:movie.similar.results[movies].backdrop_path, title:movie.similar.results[movies].title})
+            }
+        } else {singleMovie.similar = null};
+        if(movie.images.backdrops[0]) {
+            for (var image in movie.images.backdrops) {
+                singleMovie.images.push(movie.images.backdrops[image].file_path)
+            } 
+        } else {singleMovie.images = null}
+        console.log(singleMovie)
         return singleMovie
     };
 
 
     $('#mainContent').find(':first-child').remove();
 
-    $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(data)}));
+    $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
     $(document).ready(createCarousel);
 }
 ////scroll to top button
