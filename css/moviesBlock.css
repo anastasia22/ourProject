@@ -118,21 +118,28 @@
 #singleMovie .carousel{
     width: 100%;
 }
+#singleMovie .carousel:before {
+    display: block;
+    content: " ";
+}
+#singleMovie .carousel:after {
+    display: block;
+    content: " ";
+    clear: both;
+}
 
 #singleMovie .slider{
-    display: inline-block;
+    float:left;
     overflow: hidden;
-    vertical-align: middle;
     width: 90%;
 }
 
 #singleMovie .control{
-    display: inline-block;
+    float:left;
     font-weight: bold;
     height: 44px;
-    vertical-align: middle;
     width: 5%;
-    
+    margin-top: 75px;
 }
 
 #singleMovie .img-container{
