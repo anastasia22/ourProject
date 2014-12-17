@@ -25,8 +25,6 @@ function drop(event) {
         favMovies = JSON.parse(localStorage.getItem('favMovies'));
         favMovies.push(dragMovie);
         localStorage.setItem('favMovies',JSON.stringify(favMovies));
-        console.log(localStorage.getItem('favMovies'));
-
     }
     addFavMovieBlock(dragMovie);
     allowDrop(event);
@@ -49,6 +47,7 @@ function favMovies() {
 
 function addFavMovieBlock(movie) {
     var str = '<div class="favMovieBlock" fav-id="' + movie.id + '">' +
+        '<button class="favDelBtn"></button>' +
         '<img class="favMovieImg" src="' + movie.poster + '">' +
         '<div class="favInfoBlock">' +
         '<p>' + movie.title + '</p>' +
@@ -63,9 +62,7 @@ function allowDrop(event) {
 }
 
 function makeDraggable(elem) {
-
     $('.singleMovieBlock').attr({draggable : true, ondragstart : 'startDrag(event)'});
-
 }
 
 function makeDroppable() {
@@ -73,14 +70,9 @@ function makeDroppable() {
     $('#favSection').attr({ondrop : 'drop(event)', ondragover : 'allowDrop(event)'});
 }
 
-
-
-
-
-
-
 function addHovEvent() {
     var infoBlock;
+
     $(".favMovieBlock").hover(function() {
             infoBlock=$(this).find(':last-child')[0];
 
@@ -95,13 +87,36 @@ function addHovEvent() {
                 })
         });
 
-    $(".favMovieBlock").on('click',function() {
-        singleMoviePage(this.getAttribute('fav-id'));
+    $(".favMovieImg,.favInfoBlock ").on('click',function() {
+
+        showOneMovie(this.parentNode.getAttribute('fav-id'));
+        return;
     });
+
+    $('.favDelBtn').on('click',function() {
+        delFavMovie(this.parentNode.getAttribute('fav-id'));
+
+        $(this.parentNode).animate({opacity : 0,height : '20px'},600,function(){
+            this.remove();
+        });
+        return;
+    });
+
 }
 
 
+function delFavMovie(blockID) {
+    var allMovies = JSON.parse(localStorage.getItem('favMovies'));
+    var temp=[];
+    for (var i=0; i < allMovies.length; i++) {
+        if(allMovies[i].id == blockID) {
+          continue;
+        }
+        temp.push(allMovies[i]);
+    }
 
+    localStorage.setItem('favMovies',JSON.stringify(temp));
+}
 
 
 function checkFav() {

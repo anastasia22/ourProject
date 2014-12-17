@@ -46,7 +46,7 @@ function addFavBlock() {
         
       //append favBlock due to header and searchWrapper common height
     $( favBlock({}) ).insertAfter( "#searchWrapper" ).animate({'opacity': '1', 'top': headerPlusSearchHeight()}, 400,function() {
-        alert('hi');
+
         makeDroppable();
         favMovies();
     });
