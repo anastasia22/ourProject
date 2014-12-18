@@ -4,7 +4,6 @@
  //adds all events handlers to menu buttons
 (function(){
 	$('#mainMenu').on('click',handlEvent);
-
 })();
 function funC() {
 	$('.search-button').on('click',function() {

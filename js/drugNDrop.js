@@ -2,8 +2,8 @@ var dragMovie={};
 function startDrag(event) {
     var sd = event.target.parentNode;
     dragMovie.id = sd.id;
-    dragMovie.poster = sd.childNodes[0].src;
-    dragMovie.title=sd.childNodes[0].getAttribute('name');
+    dragMovie.poster = event.target.src;
+    dragMovie.title=event.target.getAttribute('name');
 }
 
 function drop(event) {
