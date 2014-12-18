@@ -1,0 +1,44 @@
+#Help {
+	padding-top:10px;
+}
+#Help h1{
+	color: rgb(51, 51, 51);
+    font-weight:bold;
+    text-transform:uppercase;
+    font-size: 2em;
+    margin: 10px;
+    text-align: center;
+} 
+
+#Help .help {
+    color: rgb(51, 51, 51);
+    margin: 10px auto;
+    width: 80%;
+}
+
+#Help .question {
+    background-color: rgb(110, 193, 224);
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+}
+
+
+#Help .answer {
+    background-color: rgba(110, 193, 224, 0.2);
+    display: inline-block;
+    padding: 10px;
+    text-align: justify;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+

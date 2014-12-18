@@ -44,14 +44,14 @@ function homeTemplate() {
 //HELP BLOCK
 function helpTemplate(questions) {
     var helpTempl = _.template('<section id="Help">\
-        <% console.log(data[0])%>\
+        <h1>Common questions</h1>\
         <%_.each(data, function(el,i){%>\
             <section class="help">\
                 <span class="question">\
                     <span><%= data[i].number%></span>\
                     <span><%= data[i].question%></span>\
                 </span>\
-                <span><%= data[i].answer%></span>\
+                <span class="answer"><%= data[i].answer%></span>\
             </section>\
         <%})%></section>'
     );
@@ -162,24 +162,20 @@ function singleMoviePage (movie) {
                 <li><span class="sp_title">Year: </span><span class = "additional searching" onclick="searchByYears(<%= singleMovie.year %>)"><span><%= singleMovie.year %></span></span></li>\
                 <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
                 <li><span class="sp_title">Production countries: </span>\
-                  <% _.each(singleMovie.countries, function(el, i){ %>\
-                    <span class = "additional">\
-                      <span><%= singleMovie.countries[i] %></span>\
-                    </span>\
+                  <% _.each(singleMovie.countries, function(el){ %>\
+                    <span class = "additional"><span><%=el%></span></span>\
                   <% }) %>\
                 </li>\
                 <li><span class="sp_title">Genres: </span>\
-                  <% _.each(singleMovie.genres, function(el, i){ %>\
+                  <% _.each(singleMovie.genres, function(el){ %>\
                     <span class = "additional searching">\
-                      <span onclick="searchByGenres(<%=singleMovie.genres[i].id%>,\'<%=singleMovie.genres[i].name%>\')"><%= singleMovie.genres[i].name %></span>\
+                      <span onclick="searchByGenres(<%=el.id%>,\'<%=el.name%>\')"><%= el.name %></span>\
                     </span>\
                   <% }) %>\
                 </li>\
                 <li><span class="sp_title">Production companies: </span>\
-                  <% _.each(singleMovie.companies, function(el, i){ %>\
-                    <span class = "additional">\
-                        <span><%= singleMovie.companies[i] %></span>\
-                    </span>\
+                  <% _.each(singleMovie.companies, function(el){ %>\
+                    <span class = "additional"><span><%= el %></span></span>\
                   <% }) %>\
                 </li>\
               </ul>\
@@ -205,8 +201,8 @@ function singleMoviePage (movie) {
                   <section class="arrow prev-ar"></section>\
                 </section>\
                 <section class="slider"><section class="img-container">\
-                <% _.each(singleMovie.images, function(el, i){ %>\
-                    <img class="screenshot" src="<%= largeImageUrl %><%= singleMovie.images[i] %>">\
+                <% _.each(singleMovie.images, function(el){ %>\
+                    <img class="screenshot" src="<%= largeImageUrl %><%= el %>">\
                 <% }) %>\
                 </section></section>\
                 <section class="control" data-direction="next">\
@@ -219,11 +215,11 @@ function singleMoviePage (movie) {
             <span class="sp_title block_title">Cast</span>\
             <section class="border_class actors_container">\
               <section class="actors">\
-                <% _.each(singleMovie.actors, function(el, i){ %>\
-                  <section class="single_actor" onclick="findThisActor(<%= singleMovie.actors[i].id %>)">\
-                    <img src="<%= smallImageUrl %><%= singleMovie.actors[i].profile_path %>">\
-                    <span class="act_name"><%= singleMovie.actors[i].name %></span>\
-                    <span class="act_role"><%= singleMovie.actors[i].character %></span>\
+                <% _.each(singleMovie.actors, function(el){ %>\
+                  <section class="single_actor" onclick="findThisActor(<%= el.id %>)">\
+                    <img src="<%= smallImageUrl %><%= el.profile_path %>">\
+                    <span class="act_name"><%= el.name %></span>\
+                    <span class="act_role"><%= el.character %></span>\
                   </section>\
                 <% }) %>\
               </section>\
@@ -232,12 +228,12 @@ function singleMoviePage (movie) {
           <section class="row">\
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
-              <% _.each(singleMovie.similar, function(el, i){ %>\
-                <section class="similar" onclick="showOneMovie(<%= singleMovie.similar[i].id %>)">\
-                  <img src="<%= mediumImageUrl %><%= singleMovie.similar[i].backdrop_path %>">\
-                  <span class="similar_name"><%= singleMovie.similar[i].title %></span>\
-                  <span class="similar_date"><%= singleMovie.similar[i].release_date %></span>\
-                  <span class="similar_rate"><%= singleMovie.similar[i].vote_average %></span>\
+              <% _.each(singleMovie.similar, function(el){ %>\
+                <section class="similar" onclick="showOneMovie(<%= el.id %>)">\
+                  <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
+                  <span class="similar_name"><%= el.title %></span>\
+                  <span class="similar_date"><%= el.release_date %></span>\
+                  <span class="similar_rate"><%= el.vote_average %></span>\
                 </section>\
                 <% }) %>\
             </section>\
