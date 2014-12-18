@@ -63,14 +63,15 @@ function helpTemplate(questions) {
 }
 
 function moviesTemplate(movies,listName) {
+    console.log(movies);
     var movieBlocks= _.template(
         '<% console.log(obj==arguments[0]) %>' +
         '<%_.each(obj,function(movie){%>'+
             
         '<%if(movie.poster_path == null)return;%>' +
         '<div id="<%=movie.id%>" class="singleMovieBlock">' +
-        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>">' +
-        '<div class="infoBlock"><p><%=movie.original_title%></p><p><%=movie.release_date%></p></div></div>' +
+        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>" name="<%=movie.title%>">' +
+        '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div>' +
         '<%})%>'
     );
     if($('#loader')){
@@ -124,29 +125,33 @@ function  singleActorTempl(actor) {
         '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ actor.also_known_as + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity + '</p></div>';
     content +='<div class="biography"><p>' + actor.biography + '</p></div>';
+
     stopAnimation();
     $('#loaderImage').remove();
     $('#Actor').append(content);
+
 }
 
 function createBlock(){
     $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
+    $('#offOnBtn').on('click', deleteBlock);
 }
 function deleteBlock() {
     if($('#loadImage')){
-        stopAnimation();
-        $('#loaderImage').remove();
+       stopAnimation();
+       $('#loaderImage').remove();
     }
+    $('body').css('overflow','auto');
     $('#Actor').remove();
-};
+}
 
 function singleMoviePage (movie) { 
     var singleMovieTemplate = _.template(
         '<section id = "singleMovie">\
           <h1><%= singleMovie.title %></h1>\
           <section class="row">\
-            <section class ="poster">\
-              <img src="<%= largeImageUrl %><%= singleMovie.poster %>">\
+            <section class ="poster singleMovieBlock" id="<%= singleMovie.id%>">\
+              <img src="<%= largeImageUrl %><%= singleMovie.poster %>" name="<%= singleMovie.title %>">\
             </section>\
             <section class="column2">\
               <q class="par_block"> <%= singleMovie.tagline %> </q>\
@@ -217,7 +222,7 @@ function singleMoviePage (movie) {
             <section class="border_class actors_container">\
               <section class="actors">\
                 <% _.each(singleMovie.actors, function(el){ %>\
-                  <section class="single_actor" onclick="findThisActor(<%= el.id %>)">\
+                  <section class="single_actor singleActorBlock" id="<%=el.id%>">\
                     <img src="<%= smallImageUrl %><%= el.profile_path %>">\
                     <span class="act_name"><%= el.name %></span>\
                     <span class="act_role"><%= el.character %></span>\
@@ -245,6 +250,7 @@ function singleMoviePage (movie) {
     function renderSingleMoviePage(movie) {
         var singleMovie = {
             title : movie.title,
+            id:movie.id,
             poster: movie.poster_path,
             tagline : movie.tagline ? movie.tagline : null,
             rating : movie.vote_average,
@@ -285,6 +291,8 @@ function singleMoviePage (movie) {
 
     $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
     $(document).ready(createCarousel);
+    makeDraggable();
+    addEventsToActors();
 }
 ////scroll to top button
 //$(function() {

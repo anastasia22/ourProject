@@ -131,7 +131,6 @@ function findActors (url,listName) {
     });
 
     function callBackFunc(data) {
-        console.log(data);  /*ЗАБРАТИ!!!!!!!!!!*/
         stopAnimation();
         $('#loaderImage').remove();
         actorsTempl(data.results,listName);

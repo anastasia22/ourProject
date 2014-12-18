@@ -3,10 +3,11 @@
     z-index: 7;
     width: 1200px;
     height: 620px;
-    background: rgba(204, 204, 204, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     top: 30px;
     left: 80px;
     border-top-right-radius: 15px;
+
 }
 #offOnBtn {
     position: absolute;

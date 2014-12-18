@@ -3,7 +3,7 @@ function startDrag(event) {
     var sd = event.target.parentNode;
     dragMovie.id = sd.id;
     dragMovie.poster = sd.childNodes[0].src;
-    dragMovie.title=sd.childNodes[1].firstChild.innerHTML;
+    dragMovie.title=sd.childNodes[0].getAttribute('name');
 }
 
 function drop(event) {

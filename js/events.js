@@ -40,6 +40,7 @@ function addEvents() {
 
 	$(".singleMovieBlock").on('click',function() {
 		showOneMovie(this.id);
+		$(window).scrollTop(0);
 	});
 
 	$(".singleMovieBlock").hover(function() {
@@ -71,10 +72,13 @@ function addEventsToActors() {
 				function(){
 					$(this).css({visibility: "hidden",height : '100px'});
 
-				})
+				});
 		});
+
 	$(".singleActorBlock").on('click',function() {
 		createBlock();
+		$('body').css('overflow','hidden');
+		//$('body').css('position','fixed');
 		$('#offOnBtn').on('click',deleteBlock);
 		findThisActor(this.id);
 		$('#Actor').append('<div id="loaderImage"></div>');
@@ -127,9 +131,4 @@ function toggleHelp(){
 	$('#Help').on('click', '.question', function(){
 		$(this).next().slideToggle("fast")
 	});
-};	
-
-
-
-
-
+}
