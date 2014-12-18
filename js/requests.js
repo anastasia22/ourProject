@@ -27,14 +27,17 @@ function defaultMovies() {
    sendRequest(defaultMovies,'This year movies');
 }
 function searchByTitle(){
+    window.location='#movies+' + $('#searchField').val();
     var titleSearch = 'search/movie?query=' + $('#searchField').val();
     sendRequest(titleSearch,$('#searchField').val());
 
 }
 function searchByActor () {
+    window.location='#actors+' + $('#searchField').val();
     var titleSearch = 'search/person?query=' + $('#searchField').val();
     $('#mainContent').find(':first-child').remove();
     findActors(titleSearch,$('#searchField').val());
+
 }
 function searchByRates (rate) {
     $('#singleMovie').remove();
