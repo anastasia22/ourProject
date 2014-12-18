@@ -1,12 +1,18 @@
 /*movies block styles*/
 
+#singleMovie {
+    padding:2%;
+}
 #singleMovie h1 {
     color: rgb(51, 51, 51);
     font-weight:bold;
     text-transform:uppercase;
-    font-size: 2em;
-    margin: 10px;
+    font-size: 2rem;
+    margin: 1%;
     text-align: center;
+}
+#singleMovie .row {
+    margin-top:2%;
 }
 #singleMovie .row:before {
     display: block;
@@ -17,44 +23,49 @@
     content: " ";
     clear: both;
 }
-#singleMovie .row {margin-top:10px;}
+#singleMovie .poster {
+    margin-right: 3%;
+    float:left;
+    width:30%;
+}
+#singleMovie .poster>img {
+    width:100%;
+}
+#singleMovie .column2 {
+    float:left;
+    width:65%;
+}
 #singleMovie .block_title{
     display:block;
-    margin-bottom:5px;
-    margin-left: 5px;
+    margin: 0.8% 0.5%;
+    font-size: 1rem;
 }
 #singleMovie .sp_title {
     font-weight:bold;
     text-transform:uppercase;
     color: #01aadd;
 }
-
-#singleMovie .poster {
-	margin-right:30px;
-	float:left;
-    width:30%;
-}
-#singleMovie .column2 {
-    float:left;
-    width:60%;
-}
-#singleMovie .poster>img {
-    width:100%;
+#singleMovie .border_class {
+    border-top:5px solid #01aadd;
+    border-bottom: 5px solid #01aadd;
+    padding: 1.6% 0;
 }
 #singleMovie q {
 	font-style:italic;
 	display:block;
-	margin-bottom: 15px;
-    margin-top: 20px;
+    margin: 3% 0;   
     width: 100%;
 }
 #singleMovie ul.mov-info {
     width:100%;
-    
 }
-#singleMovie li {
+#singleMovie .mov-info>li {
     list-style:none;
-    padding-bottom: 10px;
+    padding-bottom: 1.6%;
+    font-size: 1rem;
+}
+#singleMovie .mov-info>li:last-child{
+    padding-bottom: 0;
 }
 #singleMovie .searching{
     color: rgb(51, 51, 51);
@@ -65,7 +76,6 @@
     content:", ";
     display: inline-block;
 }
-
 #singleMovie .additional:last-child:after{
     content:"";
     display: inline-block;
@@ -77,13 +87,21 @@
     font-weight:bold;
     text-decoration:underline;
 }
+#singleMovie .trailer{
+    width:65%;
+    float:left;
+}   
+#singleMovie iframe{
+    width:100%;
+    display: block;
+}
 #singleMovie .overview {
 	background-color: rgb(110, 193, 224);
     display: block;
     font-style: italic;
     font-weight: bold;
-    margin:10px 25px;
-    padding: 10px;
+    margin: 3.2% 0;
+    padding: 1.2%;
     text-align: justify;
     width: 30%;
     float:right;
@@ -92,27 +110,12 @@
     display:block;
     text-transform: uppercase;
     font-weight: bold;
-    padding-bottom:5px;
-    margin-bottom:5px;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
     border-bottom: 3px solid rgb(51, 51, 51);
 }
-#singleMovie .trailer{
-    width:60%;
-    padding:10px;
-    float:left;
-}   
-#singleMovie iframe{
-    width:100%;
-    display: block;
-}
-#singleMovie .border_class {
-    border-top:5px solid #01aadd;
-    border-bottom: 5px solid #01aadd;
-    padding: 10px 0;
-}
-
 #singleMovie .screens {
-    width:90%;
+    width:100%;
     margin: 0 auto;
 }
 #singleMovie .carousel{
@@ -127,27 +130,16 @@
     content: " ";
     clear: both;
 }
-
 #singleMovie .slider{
     float:left;
     overflow: hidden;
-    width: 90%;
+    width: 89%;
 }
-
-#singleMovie .control{
-    float:left;
-    font-weight: bold;
-    height: 44px;
-    width: 5%;
-    margin-top: 75px;
-}
-
 #singleMovie .img-container{
     display: inline-block;
-    min-height:189px;
+    /*min-height:189px;*/
     position:relative;
 }
-
 #singleMovie .screenshot{
     float: left;
     margin: 10px;
@@ -155,7 +147,14 @@
     width:300px;
     cursor:pointer;
 }
-
+#singleMovie .control{
+    float:left;
+    font-weight: bold;
+    height: 44px;
+    width: 5%;
+    margin-top: 75px;
+    min-width: 29px;
+}
 #singleMovie .arrow{
     width:29px;
     height:44px;
@@ -169,7 +168,6 @@
     background: url("../images/arrow.png") no-repeat left center;
     cursor:auto;
 }
-
 #singleMovie .prev-able:hover {
     background: url("../images/arrow.png") no-repeat left bottom;
 }
@@ -180,20 +178,18 @@
     background: url("../images/arrow.png") no-repeat right center;
     cursor:auto;
 }
-
 #singleMovie .next-able:hover {
     background: url("../images/arrow.png") no-repeat right bottom;
 }
 
-
 #singleMovie .actors{
-    margin: 5px auto;
+    margin: 0 auto;
     width: 100%;
 }
 
 #singleMovie .single_actor{
     width:92px;
-    height:200px;
+    height:207px;
     background:white;
     float:left;
     margin:7px;
@@ -215,7 +211,7 @@
 
 #singleMovie .act_name {
     display: inline-block;
-    font-size: 12px;
+    font-size: 0.8rem;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -224,15 +220,38 @@
 
 #singleMovie .act_role{
     display: inline-block;
-    font-size: 11px;
+    font-size: 0.75rem;
     font-style: italic;
     text-align: center;
     width: 100%;
 }
-
-
-
-
+#singleMovie .similar:before {
+    display: block;
+    content: " ";
+}
+#singleMovie .similar:after {
+    display: block;
+    content: " ";
+    clear: both;
+}
+#singleMovie .similar{
+    padding: 1%;
+    cursor:pointer;
+}
+#singleMovie .similar>span{
+    display:block;
+}
+#singleMovie .similar>img{
+    float: left;
+    width: 20%;
+    margin-right: 2%;
+}
+#singleMovie .similar_name {
+    
+}
+#singleMovie .similar_date {
+    
+}
 
 
 

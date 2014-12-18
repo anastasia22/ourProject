@@ -232,7 +232,7 @@ function singleMoviePage (movie) {
               <% _.each(singleMovie.similar, function(el){ %>\
                 <section class="similar" onclick="showOneMovie(<%= el.id %>)">\
                   <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
-                  <span class="similar_name"><%= el.title %></span>\
+                  <span class="similar_name sp_title"><%= el.title %></span>\
                   <span class="similar_date"><%= el.release_date %></span>\
                   <span class="similar_rate"><%= el.vote_average %></span>\
                 </section>\
