@@ -48,8 +48,8 @@ function helpTemplate(questions) {
         <%_.each(data, function(el,i){%>\
             <section class="help">\
                 <span class="question">\
-                    <span><%= data[i].number%></span>\
-                    <span><%= data[i].question%></span>\
+                    <span><%= el.number%>.</span>\
+                    <span><%= el.question%></span>\
                 </span>\
                 <span class="answer"><%= data[i].answer%></span>\
             </section>\
@@ -59,6 +59,7 @@ function helpTemplate(questions) {
     $('#mainContent').find(':first-child').remove();
     //set help block
     $('#mainContent').append(helpTempl({'data':questions}));
+    toggleHelp();
 }
 
 function moviesTemplate(movies,listName) {

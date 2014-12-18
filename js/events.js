@@ -121,4 +121,14 @@ function createCarousel(){
     $('.img-container').css('right', '0')
 };  
 
+//toggle for help page
+function toggleHelp(){
+	$('#Help').on('click', '.question', function(){
+		$(this).next().slideToggle("fast")
+	});
+};	
+
+
+
+
 
