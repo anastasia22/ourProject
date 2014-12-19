@@ -72,10 +72,11 @@ a {
  display: inline-block;
   background: url(../images/logo.png);
     height: 121px;
-    width: 121px;
+    width: 205px;
     position: relative;
-    left: 60px;
+    left: 10px;
     top: 9px;
+    cursor: pointer;
   }
 
 
@@ -86,6 +87,7 @@ a {
     position: relative;
     top: -43px;
     left: -16px;
+    cursor: pointer;
 }
 
 .page-header span {
