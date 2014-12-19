@@ -70,44 +70,11 @@ a {
 }
 .logo{
  display: inline-block;
-  box-shadow:
-    0 0 0 1em #68a4f7,
-    0 1em 0 1em #68a4f7,
-    -2.5em 1.5em 0 .5em #68a4f7,
-    2.5em 1.5em 0 .5em #68a4f7,
-    -3em -3em 0 0 #68a4f7,
-    3em -3em 0 0 #68a4f7,
-    -2em -2em 0 0 #68a4f7,
-    2em -2em 0 0 #68a4f7,
-    -3em -1em 0 0 #68a4f7,
-    -2em -1em 0 0 #68a4f7,
-    2em -1em 0 0 #68a4f7,
-    3em -1em 0 0 #68a4f7,
-    -4em 0 0 0 #68a4f7,
-    -3em 0 0 0 #68a4f7,
-    3em 0 0 0 #68a4f7,
-    4em 0 0 0 #68a4f7,
-    -5em 1em 0 0 #68a4f7,
-    -4em 1em 0 0 #68a4f7,
-    4em 1em 0 0 #68a4f7,
-    5em 1em 0 0 #68a4f7,
-    -5em 2em 0 0 #68a4f7,
-    5em 2em 0 0 #68a4f7,
-    -5em 3em 0 0 #68a4f7,
-    -3em 3em 0 0 #68a4f7,
-    3em 3em 0 0 #68a4f7,
-    5em 3em 0 0 #68a4f7,
-    -2em 4em 0 0 #68a4f7,
-    -1em 4em 0 0 #68a4f7,
-    1em 4em 0 0 #68a4f7,
-    2em 4em 0 0 #68a4f7;
-
-    background: #68a4f7;
-    width: 1em;
-    height: 1em;
-    overflow: hidden;
-
-    margin: 50px 0 70px 65px;
+  background: url(../images/logo.png);
+    height: 121px;
+    width: 121px;
+    position: relative;
+    left: 60px;
   }
 
 
