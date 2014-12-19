@@ -246,15 +246,48 @@
     width: 20%;
     margin-right: 2%;
 }
-#singleMovie .similar_name {
-    
+
+#mask {
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:3;
+    background-color:#000;
+    display:none;
+    width:100%;
+    height:100%;
 }
-#singleMovie .similar_date {
-    
+
+#modwin {
+    position:fixed;
+    width:780px;
+    display:none;
+    z-index:5;
 }
 
-
-
-
-
-
+#modwin .lslider{
+    overflow: hidden;
+    height:439px;
+    width: 100%;
+}
+#modwin .limg-container{
+    display: inline-block;
+    position:relative;
+    height:439px;
+}
+#modwin .lscreenshot{
+    float: left;
+    display:block;
+    width:780px;
+}
+#modwin .lcontrol{
+    position:absolute;
+    z-index: 7;
+    top: 197.5px;
+}
+#modwin .lcontrol.lft {
+    left:0;
+}
+#modwin .lcontrol.rgh {
+    right:0;
+}
