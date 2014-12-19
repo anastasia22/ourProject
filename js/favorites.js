@@ -84,16 +84,25 @@ function hideFavBlock() {
 $(document).on('scroll', function(e) {
     var isFavorites = checkFavorites();
     var searchHeight = $('#searchWrapper').height();
-    //console.log('favorites is ' + isFavorites);
+    var headerHeight = $('#header').height();
+    var commonHeight = searchHeight + headerHeight;
+
     if (isFavorites) {
-         if ($(document).scrollTop() > 200) {  
-            // console.log($(document).scrollTop());
+         if ($(document).scrollTop() > commonHeight) {  
             $('#favSection').addClass('fix-fav')
             .css({top: '0px'});
           } else if($('#favSection').hasClass('fix-fav')) {
             $('#favSection').removeClass('fix-fav')
-            favSectionTop(searchHeight);
-          } 
+            .css({top: commonHeight + 'px'});                          
+          }
+        //make box smaller to fit footer  FIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        var docScrollTop = $(document).scrollTop();
+        var winHeight = window.innerHeight;
+        var scrollToFooter = $(document).height() - $('#footer').height() - window.innerHeight;
+        if (docScrollTop >= scrollToFooter) {
+            var newHeight = winHeight - (docScrollTop - scrollToFooter);
+            $('#favSection').css({height: newHeight + 'px'});
+        }
     } else {
         return;
     }
