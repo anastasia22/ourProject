@@ -84,12 +84,23 @@ function sendRequest(url,listName) {
             moviesTemplate(data.results,listName);
 
 
-            //adds auto movie list  uploads when scrolling 
+            //adds auto movie list  uploads when scrolling <div class="upArrow"></div>
         $('#Movies').on(/*{*/
             'mousewheel', function(e) {
-
+                if ($(window).scrollTop() >= $(window).height()*2) {
+                    if(!document.getElementById('scrollTopBtn')){
+                        $('body').append('<div id="scrollTopBtn" class="toTopBtn"><p class="scrolP">TO TOP</p></div>');
+                        toTopBtnEvents();
+                    }
+                }
+                if($(window).scrollTop() <= $(window).height()*2) {
+                    if (document.getElementById('scrollTopBtn')) {
+                    $('#scrollTopBtn').remove()
+                     }
+                }
                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                    //every scroll  appends new page to url
+
+
                     var currentPage= '&page=' + (++page);
                     moviesSearchUrl = baseUrl + url + apikey + currentPage;
 

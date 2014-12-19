@@ -72,12 +72,15 @@ a {
  display: inline-block;
   background: url(../images/logo.png);
     height: 121px;
-    width: 121px;
+    width: 205px;
     position: relative;
-    left: 60px;
+    left: 10px;
+    top: 6px;
+    cursor: pointer;
   }
 
 
+/*
 .page-header {
     color: #eee;
     font-size: 3em;
@@ -85,7 +88,9 @@ a {
     position: relative;
     top: -43px;
     left: -16px;
+    cursor: pointer;
 }
+*/
 
 .page-header span {
     font-size: 0.64em;

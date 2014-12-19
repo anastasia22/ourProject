@@ -67,8 +67,7 @@ function moviesTemplate(movies,listName) {
     var movieBlocks= _.template(
         '<% console.log(obj==arguments[0]) %>' +
         '<%_.each(obj,function(movie){%>'+
-            
-        '<%if(movie.poster_path == null)return;%>' +
+        '<%if(movie.poster_path == null){return;}%>' +
         '<div id="<%=movie.id%>" class="singleMovieBlock">' +
         '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>" name="<%=movie.title%>">' +
         '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div>' +
@@ -94,11 +93,16 @@ function  actorsTempl(actors,listName){
     var actorsBlock='';
 
     for (var i=0; i < actors.length; i++) {
-        actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">' +
-        '<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">' +
-        '<div class="infoBlock">' +
-        '<p>' + actors[i].name + '</p>' +
-         '</div></div>';
+        actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">';
+        if(actors[i].profile_path == null) {
+            actorsBlock+='<img class="miniActorImg" src="images/no-photo.png">';
+        } else{
+            actorsBlock+='<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">';
+        }
+        actorsBlock+='<div class="infoBlock">';
+        actorsBlock+='<p>' + actors[i].name + '</p>';
+        actorsBlock+='</div></div>';
+
     }
 
     if($('#loader')){

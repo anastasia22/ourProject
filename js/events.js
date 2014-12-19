@@ -133,6 +133,7 @@ function toggleHelp(){
 }
 
 
+
 function showLightRoom(numb){
 	function createModal() {
 		var mask = $('#mask');
@@ -184,3 +185,14 @@ function showLightRoom(numb){
 			};        
 
 }
+
+// events to scroll top btn
+
+function toTopBtnEvents() {
+	$('#scrollTopBtn').on('click',function(){
+		$(window).scrollTop(0);
+		window.location='#' + document.URL.split('#')[1];
+		this.remove();
+	});
+}
+

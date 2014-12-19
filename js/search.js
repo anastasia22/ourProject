@@ -72,16 +72,7 @@ $(function () {
         }
     }
 
-    //correct a top position of favSection due to searchWpapper height
-    function favSectionTop(height) {
-        var totalHight, headerHeight = document.getElementById('header').offsetHeight;
-        totalHight = headerHeight + height + 'px';
-        if ($('#favSection')) {
-            $('#favSection').animate({
-                'top': totalHight
-            }, 300);
-        }
-    }
+   
     //get list of advanced options and paint it
     function addAdvanced() {
         var searchwrap = document.getElementById('searchWrapper');
@@ -112,3 +103,14 @@ $(function () {
     }
 
 });
+
+ //correct a top position of favSection due to searchWpapper height
+    function favSectionTop(height) {
+        var totalHight, headerHeight = document.getElementById('header').offsetHeight;
+        totalHight = headerHeight + height + 'px';
+        if ($('#favSection')) {
+            $('#favSection').animate({
+                'top': totalHight
+            }, 300);
+        }
+    }
