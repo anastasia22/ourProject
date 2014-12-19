@@ -2,10 +2,12 @@
 
 #favSection {
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     left: 75%;
     opacity: 0;
     width: 25%;
+    height: 100%;
+    overflow-y: scroll;
     float: right;
     text-align: center;
     background: #C5E2FF;
@@ -14,11 +16,10 @@
 }
 
 #favSection.fix-fav {
-   position: fixed;
-    height: 100%;
+    position: fixed;
     left: 70.01%;
     width: 19.99%;
-    overflow: scroll;
+
 }
 .favMovieBlock {
     position: relative;
