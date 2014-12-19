@@ -49,6 +49,7 @@ function addFavBlock() {
 
         makeDroppable();
         favMovies();
+
     });
         
     }, 200);
@@ -80,6 +81,7 @@ function hideFavBlock() {
 
 }
 
+
 //make fav block fixed when scroll
 $(document).on('scroll', function(e) {
     var isFavorites = checkFavorites();
@@ -100,6 +102,7 @@ $(document).on('scroll', function(e) {
     
     
 });
+
 
 
 

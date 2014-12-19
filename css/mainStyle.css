@@ -43,7 +43,7 @@ a {
 #mainContent {
     width: 100%;
     overflow: auto;
-    min-height: 600px;
+    min-height: 630px; /*changed from 600 to 620*/
     position: static;
 }
 

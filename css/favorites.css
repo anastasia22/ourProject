@@ -2,15 +2,17 @@
 
 #favSection {
     position: absolute;
-    z-index: -1;
+    z-index: 4;
     left: 75%;
     opacity: 0;
     width: 25%;
+    height: 70%;
     float: right;
     text-align: center;
     background: #C5E2FF;
     padding: 17px 0px;
     min-height: 600px;
+    overflow: hidden;
 }
 
 #favSection.fix-fav {
@@ -20,12 +22,13 @@
     width: 19.99%;
     overflow: scroll;
 }
-.favMovieBlock {
+#favSection .favMovieBlock {
     position: relative;
     width: 70%;
     margin: 0% 0% 5% 15% ;
     height: 250px;
     cursor: pointer;
+    overflow: hidden;
 
 }
 .favMovieImg {
