@@ -75,11 +75,12 @@ a {
     width: 205px;
     position: relative;
     left: 10px;
-    top: 9px;
+    top: 6px;
     cursor: pointer;
   }
 
 
+/*
 .page-header {
     color: #eee;
     font-size: 3em;
@@ -89,6 +90,7 @@ a {
     left: -16px;
     cursor: pointer;
 }
+*/
 
 .page-header span {
     font-size: 0.64em;

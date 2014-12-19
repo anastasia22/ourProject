@@ -81,13 +81,24 @@ function hideFavBlock() {
 }
 
 //make fav block fixed when scroll
-$('#favSection').on('scroll', function(e) {
-    console.log(this.scrollTop);
-      if (this.scrollTop > 200) {                       //WHY DON'T WORK?!?!?!?!?!
-        $('#favSection').addClass('fix-fav');
-      } else {
-        $('#favSection').removeClass('fix-fav');
-      }
+$(document).on('scroll', function(e) {
+    var isFavorites = checkFavorites();
+    var searchHeight = $('#searchWrapper').height();
+    //console.log('favorites is ' + isFavorites);
+    if (isFavorites) {
+         if ($(document).scrollTop() > 200) {  
+            // console.log($(document).scrollTop());
+            $('#favSection').addClass('fix-fav')
+            .css({top: '0px'});
+          } else if($('#favSection').hasClass('fix-fav')) {
+            $('#favSection').removeClass('fix-fav')
+            favSectionTop(searchHeight);
+          } 
+    } else {
+        return;
+    }
+    
+    
 });
 
 
