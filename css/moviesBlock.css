@@ -260,12 +260,34 @@
 
 #modwin {
     position:fixed;
-    max-width:780px;
-    height:200px;
+    width:780px;
     display:none;
     z-index:5;
-    padding:20px;
 }
 
-
-
+#modwin .lslider{
+    overflow: hidden;
+    height:439px;
+    width: 100%;
+}
+#modwin .limg-container{
+    display: inline-block;
+    position:relative;
+    height:439px;
+}
+#modwin .lscreenshot{
+    float: left;
+    display:block;
+    width:780px;
+}
+#modwin .lcontrol{
+    position:absolute;
+    z-index: 7;
+    top: 197.5px;
+}
+#modwin .lcontrol.lft {
+    left:0;
+}
+#modwin .lcontrol.rgh {
+    right:0;
+}

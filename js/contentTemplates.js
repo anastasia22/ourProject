@@ -205,15 +205,15 @@ function singleMoviePage (movie) {
               <span class="sp_title block_title">Screenshots</span>\
               <section class="border_class carousel">\
                 <section class="control" data-direction="previous">\
-                  <section class="arrow prev-ar"></section>\
+                  <section class="arrow prev-ar prev-unable"></section>\
                 </section>\
                 <section class="slider"><section class="img-container">\
-                <% _.each(singleMovie.images, function(el){ %>\
-                    <img onclick="showLightRoom()" class="screenshot" src="<%= largeImageUrl %><%= el %>">\
+                <% _.each(singleMovie.images, function(el,i){ %>\
+                    <img class="screenshot" src="<%= largeImageUrl %><%= el %>" onclick="showLightRoom(<%= i %>)">\
                 <% }) %>\
                 </section></section>\
                 <section class="control" data-direction="next">\
-                  <section class="arrow next-ar"></section>\
+                  <section class="arrow next-ar next-able"></section>\
                 </section>\
               </section>\
             </section>\
@@ -247,16 +247,16 @@ function singleMoviePage (movie) {
           </section>\
           <section id="mask"></section>\
           <section id="modwin">\
-            <section class="control" data-direction="previous">\
-              <section class="arrow prev-ar"></section>\
+            <section class="lcontrol lft" data-direction="previous">\
+              <section class="arrow prev-ar prev-unable"></section>\
             </section>\
             <section class="lslider"><section class="limg-container">\
-              <% _.each(singleMovie.images, function(el){ %>\
-                <img class="lscreenshot" src="<%= hyperImageUrl %><%= el %>">\
+              <% _.each(singleMovie.images, function(el, i){ %>\
+                <img class="lscreenshot" src="<%= hyperImageUrl %><%= el %>" data-direction="next" data-numb="<%= i %>">\
               <% }) %>\
             </section></section>\
-            <section class="control" data-direction="next">\
-              <section class="arrow next-ar"></section>\
+            <section class="lcontrol rgh" data-direction="next">\
+              <section class="arrow next-ar next-able"></section>\
             </section>\
           </section>\
         </section>'
@@ -267,14 +267,14 @@ function singleMoviePage (movie) {
             title : movie.title,
             id:movie.id,
             poster: movie.poster_path,
-            tagline : movie.tagline ? movie.tagline : null,
-            rating : movie.vote_average,
-            overview : movie.overview ? movie.overview : null,
+            tagline : movie.tagline ? movie.tagline : "---",
+            rating : movie.vote_average ? movie.vote_average : "---",
+            overview : movie.overview ? movie.overview : "sorry, no overview available",
             year : parseInt(movie.release_date),
-            budget : movie.budget == 0 ? null : movie.budget,
-            revenue : movie.revenue == 0 ? null : movie.revenue,
-            runtime: movie.runtime == 0 ? null : movie.runtime,
-            genres: movie.genres == [] ? null : movie.genres,
+            budget : movie.budget == 0 ? "---" : movie.budget,
+            revenue : movie.revenue == 0 ? "---" : movie.revenue,
+            runtime: movie.runtime == 0 ? "---" : movie.runtime,
+            genres: movie.genres == [] ? "---" : movie.genres,
             companies : [],
             countries : [],
             similar: movie.similar.results,
@@ -286,17 +286,17 @@ function singleMoviePage (movie) {
             for (var country in movie.production_countries) {
                 singleMovie.countries.push(movie.production_countries[country].name)
             }
-        } else {singleMovie.countries = null};
+        } else {singleMovie.countries = "---"};
         if (movie.production_companies[0]) {
             for (var company in movie.production_companies) {
                 singleMovie.companies.push(movie.production_companies[company].name)
             }
-        } else {singleMovie.companies = null};
+        } else {singleMovie.companies = "---"};
         if(movie.images.backdrops[0]) {
             for (var image in movie.images.backdrops) {
                 singleMovie.images.push(movie.images.backdrops[image].file_path)
             } 
-        } else {singleMovie.images = null}
+        } else {singleMovie.images = "---"}
         console.log(singleMovie)
         return singleMovie
     };
@@ -306,6 +306,7 @@ function singleMoviePage (movie) {
 
     $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
     $(document).ready(createCarousel);
+
     makeDraggable();
     addEventsToActors();
 }
