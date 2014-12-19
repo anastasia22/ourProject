@@ -134,3 +134,14 @@ function toggleHelp(){
 		$(this).next().slideToggle("fast")
 	});
 }
+
+
+// events to scroll top btn
+
+function toTopBtnEvents() {
+	$('#scrollTopBtn').on('click',function(){
+		$(window).scrollTop(0);
+		window.location='#' + document.URL.split('#')[1];
+		this.remove();
+	});
+}

@@ -54,3 +54,32 @@ img.miniMovieImg {
     margin: auto;
     margin-top: 250px;
 }
+.toTopBtn{
+    position: fixed;
+    top: 0;
+    left: 5px;
+    height: 100%;
+    width: 9%;
+
+    background: #cccccc;
+}
+.toTopBtn:hover{
+    opacity: 0.5;
+}
+.upArrow {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-bottom: 20px solid black;
+    margin: auto;
+}
+#scrollTopBtn:hover .scrolP{
+    display: block;
+}
+#scrollTopBtn .scrolP {
+    display: none;
+    margin-left: 15%;
+    font-size: 1.5em;
+}
