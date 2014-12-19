@@ -4,8 +4,19 @@
  //adds all events handlers to menu buttons
 (function(){
 	$('#mainMenu').on('click',handlEvent);
+	$('#callSearch').on('click',function() {
+		if(!document.getElementById('searchWrapper')) {
+			addSearchPanel();
+			$('#searchWrapper').animate({height: '150px', opacity: 1}, 400);
+		}else {
+			$('#searchWrapper').animate({height: '0px', opacity: 0}, 400,function(){
+				$('#searchWrapper').remove();
+			});
+
+		}
+	});
 })();
-function funC() {
+function searchBy() {
 	$('.search-button').on('click',function() {
 		$('#mainContent').find(':first-child').remove();
 		if($('input[name=factor]:checked').val() == 'Title'){

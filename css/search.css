@@ -5,7 +5,7 @@
     background: #C5E2FF;
     position: static;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
 } 
 
 .search-input {
@@ -32,7 +32,7 @@
 */
 
 .search-radio {
-    display: none;
+    display: block;
 }
 
 .search-radio-label { /****  delete #searchWrapper selector  *****/

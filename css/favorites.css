@@ -6,26 +6,29 @@
     left: 75%;
     opacity: 0;
     width: 25%;
+    min-height: 600px;
     float: right;
     text-align: center;
     background: #C5E2FF;
     padding: 17px 0px;
     min-height: 600px;
+    overflow: hidden;
 }
 
 #favSection.fix-fav {
-   position: fixed;
-    height: 100%;
+    position: fixed;
     left: 70.01%;
     width: 19.99%;
     overflow: scroll;
+
 }
-.favMovieBlock {
+#favSection .favMovieBlock {
     position: relative;
     width: 70%;
     margin: 0% 0% 5% 15% ;
     height: 250px;
     cursor: pointer;
+    overflow: hidden;
 
 }
 .favMovieImg {

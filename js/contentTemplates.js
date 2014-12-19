@@ -65,7 +65,6 @@ function helpTemplate(questions) {
 
 function moviesTemplate(movies,listName) {
     var movieBlocks= _.template(
-        '<% console.log(obj==arguments[0]) %>' +
         '<%_.each(obj,function(movie){%>'+
         '<%if(movie.poster_path == null){return;}%>' +
         '<div id="<%=movie.id%>" class="singleMovieBlock">' +
