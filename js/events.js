@@ -25,7 +25,7 @@ function handlEvent(event) {
 		if(temp == target.id) {
 			$('#mainContent').find(':first-child').remove();
 			window.location='#' + temp;
-			menu[temp]();
+			//menu[temp]();
 		}
 	}
 
@@ -38,8 +38,9 @@ function addEvents() {
 	var infoBlock;
 
 	$(".singleMovieBlock").on('click',function() {
-		showOneMovie(this.id);
-		$(window).scrollTop(0);
+		window.location='#movie+'+this.id;
+		/*showOneMovie(this.id);
+		$(window).scrollTop(0);*/
 	});
 
 	$(".singleMovieBlock").hover(function() {
@@ -75,11 +76,13 @@ function addEventsToActors() {
 		});
 
 	$(".singleActorBlock").on('click',function() {
+
 		createBlock();
 		$('body').css('overflow','hidden');
 		//$('body').css('position','fixed');
 		$('#offOnBtn').on('click',deleteBlock);
-		findThisActor(this.id);
+		window.location ='#actor+' + this.id;
+
 		$('#Actor').append('<div id="loaderImage"></div>');
 		new imageLoader(cImageSrc, 'startAnimation()');
 	});

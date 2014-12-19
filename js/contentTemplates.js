@@ -63,7 +63,6 @@ function helpTemplate(questions) {
 }
 
 function moviesTemplate(movies,listName) {
-    console.log(movies);
     var movieBlocks= _.template(
         '<% console.log(obj==arguments[0]) %>' +
         '<%_.each(obj,function(movie){%>'+
@@ -108,8 +107,8 @@ function  actorsTempl(actors,listName){
     actorsBlock += '<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>';
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
-        $('#Actors').append(movieBlocks);
-        addEventsToActors();
+       /* $('#Actors').append(actorsBlock);                                           !!!!!!!!!!!!!!!!!!!!!!!         A C H T U N G !!!!!!!!!!!!!!!!!!!!!!!!!!
+        addEventsToActors();*/
     } else {
         actorsBlock='<section id="Actors"><h1>' + listName + '</h1>' + actorsBlock + '</section>';
         $('#mainContent').append(actorsBlock);
@@ -143,6 +142,7 @@ function deleteBlock() {
     }
     $('body').css('overflow','auto');
     $('#Actor').remove();
+   window.history.back();
 }
 
 function singleMoviePage (movie) { 
