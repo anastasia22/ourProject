@@ -169,8 +169,9 @@ function showOneMovie (id) {
     var baseUrl = "https://api.themoviedb.org/3/movie/";
     var additional = '&append_to_response=similar,images,trailers,credits';
     var movieUrl = baseUrl + id + apikey + additional
-
-    
+    $(window).scrollTop(0);
+    $('#mainContent').append('<div id="loaderImage"></div>');
+    new imageLoader(cImageSrc, 'startAnimation()');
 
     $.ajax({
         type: "GET",
@@ -180,6 +181,8 @@ function showOneMovie (id) {
     });
 
     function callBackFunc (data) {
+            stopAnimation();
+            $('#loaderImage').remove();
             if(data.similar.results.length>5) {data.similar.results.splice(5)};
             singleMoviePage(data);
         }

@@ -242,9 +242,11 @@ function singleMoviePage (movie) {
               <% _.each(singleMovie.similar, function(el){ %>\
                 <section class="similar" onclick="showOneMovie(<%= el.id %>)">\
                   <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
-                  <span class="similar_name sp_title"><%= el.title %></span>\
-                  <span class="similar_date"><%= el.release_date %></span>\
-                  <span class="similar_rate"><%= el.vote_average %></span>\
+                    <section>\
+                    <span class="similar_name sp_title"><%= el.title %></span>\
+                    <span class="similar_date"><%= el.release_date %></span>\
+                    <span class="similar_rate"><%= el.vote_average %></span>\
+                    </section>\
                 </section>\
                 <% }) %>\
             </section>\
@@ -300,8 +302,8 @@ function singleMoviePage (movie) {
             for (var image in movie.images.backdrops) {
                 singleMovie.images.push(movie.images.backdrops[image].file_path)
             } 
-        } else {singleMovie.images = "---"}
-        console.log(singleMovie)
+        } else {singleMovie.images = null}
+        
         return singleMovie
     };
 

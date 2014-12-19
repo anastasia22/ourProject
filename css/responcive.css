@@ -14,9 +14,23 @@
     
 }
 
-@media only screen and (min-width: 340px) and (max-width: 740px) {
+@media only screen and (max-width: 970px) {
+    #singleMovie .trailer {
+        width: 100%;
+    }
+    #singleMovie .overview {
+        width: 100%;
+        height: auto;
+        overflow: auto;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 740px) {
     body {
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
     }
     
@@ -102,12 +116,6 @@
     #singleMovie .border_class {
         padding: 10px;
     }
-    #singleMovie .trailer {
-        width: 100%;
-    }
-    #singleMovie .overview {
-        width: 100%;
-        margin: 10px 0;
-    }
+    
     /*end of single movie page styles*/
 }

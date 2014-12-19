@@ -143,7 +143,7 @@ function showLightRoom(numb){
 	    modwin.css('top', winH/2-modwin.height()/2);
 	    modwin.css('left', winW/2-modwin.width()/2);
 	    mask.fadeIn(400);    
-	    mask.fadeTo("slow",0.75);    
+	    mask.fadeTo("slow",0.9);    
 	    modwin.fadeIn(2000); 
 	    mask.click(function () {
 	        mask.hide();
