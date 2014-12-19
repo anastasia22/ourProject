@@ -208,7 +208,7 @@ function singleMoviePage (movie) {
                 </section>\
                 <section class="slider"><section class="img-container">\
                 <% _.each(singleMovie.images, function(el){ %>\
-                    <img class="screenshot" src="<%= largeImageUrl %><%= el %>">\
+                    <img onclick="showLightRoom()" class="screenshot" src="<%= largeImageUrl %><%= el %>">\
                 <% }) %>\
                 </section></section>\
                 <section class="control" data-direction="next">\
@@ -244,6 +244,8 @@ function singleMoviePage (movie) {
                 <% }) %>\
             </section>\
           </section>\
+          <section id="mask"></section>\
+          <section id="modwin"></section>\
         </section>'
     );
 
