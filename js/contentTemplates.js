@@ -5,6 +5,7 @@
 /*templates for all sections HOME HELP MOVIES . every menu button has its own template*/
 var apiKey = '7a135ff2c408f8e138e4645f83b30222';
 var baseUrl = 'http://api.themoviedb.org/3';
+var hyperImageUrl = 'http://image.tmdb.org/t/p/w780/';
 var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
 var mediumImageUrl = 'http://image.tmdb.org/t/p/w185/';
 var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
@@ -245,7 +246,19 @@ function singleMoviePage (movie) {
             </section>\
           </section>\
           <section id="mask"></section>\
-          <section id="modwin"></section>\
+          <section id="modwin">\
+            <section class="control" data-direction="previous">\
+              <section class="arrow prev-ar"></section>\
+            </section>\
+            <section class="lslider"><section class="limg-container">\
+              <% _.each(singleMovie.images, function(el){ %>\
+                <img class="lscreenshot" src="<%= hyperImageUrl %><%= el %>">\
+              <% }) %>\
+            </section></section>\
+            <section class="control" data-direction="next">\
+              <section class="arrow next-ar"></section>\
+            </section>\
+          </section>\
         </section>'
     );
 

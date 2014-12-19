@@ -260,7 +260,7 @@
 
 #modwin {
     position:fixed;
-    width:440px;
+    max-width:780px;
     height:200px;
     display:none;
     z-index:5;

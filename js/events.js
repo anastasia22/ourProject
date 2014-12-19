@@ -140,14 +140,14 @@ function showLightRoom(){
 	var modwin = $('#modwin');
     var winH = $(window).height();
     var winW = $(window).width();
-    // mask.css({'width':maskWidth,'height':maskHeight});
-    // modwin.css('top', winH/2-modwin.height()/2);
-    // modwin.css('left', winW/2-modwin.width()/2);
+    modwin.css('top', winH/2-modwin.height()/2);
+    modwin.css('left', winW/2-modwin.width()/2);
     mask.fadeIn(400);    
     mask.fadeTo("slow",0.75);    
-    // modwin.fadeIn(2000); 
+    modwin.fadeIn(2000); 
     mask.click(function () {
-        $(this).hide();
+        mask.hide();
+        modwin.hide();
     });            
 
 }
