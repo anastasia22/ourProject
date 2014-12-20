@@ -76,15 +76,10 @@ function addAdvanced() {
 
         function callback(data) {
             var list = '';
-            // genres
-            $.each(data.genres, function (num, el) {
-                list += '<div class ="genre"><input type="checkbox" id="' + el.id +
-                '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label></div>';
-            });
-            ///
 
             //actors
-            list += '<select id="actorSelect"><option class="selActors"></option>';
+            list += '<div class="search-selects">';
+            list += '<select id="actorSelect" class="select"><option class="selActors" selected="selected">Select actor</option>';
             for (var actor in actors) {
                 list += '<option class="selActors" id="' + actor + '">' + actors[actor] + '</option>';
             }
@@ -92,28 +87,43 @@ function addAdvanced() {
             //////
 
             // relise year
-            list += '<select id="yearSelect"><option class="selAYear"></option>';
-            for (var i=1960; i < 2015; i++ ) {
+            list += '<select id="yearSelect" class="select"><option class="selAYear" selected="selected">Year</option>';
+            var nextYear = (new Date().getFullYear()) + 1;
+            for (var i = nextYear; i >= 1960; i-- ) {
                 list +='<option class="selYear" id="' + i + '">' + i + '</option>'
             }
-
-            // sorting radios
-            list += '<label>Sort by popularity. descending<input value="popularity.desc" type="radio" name="sort" checked></label>'+
-            '<label>Sort by popularity. ascending<input value="popularity.asc" type="radio" name="sort"></label>'+
-            '<label>Sort by vote average. descending<input value="vote_average.desc" type="radio" name="sort"></label>'+
-            '<label>Sort by vote average. ascending<input value="vote_average.asc" type="radio" name="sort"></label>';
+            list +='</select>';
+            
+            // sorting select
+            list += '<select id="voteSelect" class="select">' +
+                '<option value="popularity.desc" name="sort">popularity 9 &#8680; 0</option>' +
+                '<option value="popularity.asc" name="sort">popularity 0 &#8680; 9</option>' +
+                '<option value="vote_average.desc" name="sort">vote average 9 &#8680; 0</option>' +
+                '<option value="vote_average.asc" name="sort">vote average 0 &#8680; 9</option>' +
+                '</select>';
+            list += '</div>';
             /////
-
-
+            
+            // genres
+            list += '<div class="search-genres">';
+            $.each(data.genres, function (num, el) {
+                list += '<div class="genre"><input type="checkbox" id="' + el.id +
+                '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label></div>';
+            });
+            list += '</div>';
+            ///
+            
+            
+            
             $('#searchWrapper').find(':first-child').remove();
-            list += '<button id="advSearchBtn">SEARCH</button>';
+            list += '<button id="advSearchBtn" class="search-button">SEARCH</button>';
             $('<div>', {
                 id: 'advancedWrapper',
                 style: 'clear: both;',
                 html: list
             }).appendTo('#searchWrapper');
             searchBtnEvents();
-           
+           favSectionTop(150);
         }
     }
 
