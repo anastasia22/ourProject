@@ -10,8 +10,7 @@
 		}
 		$('#searchWrapper').remove();
 		$('#mainContent').children().remove();
-
-		homeTemplate();
+		window.location='#menuHome';
 	});
 	$('#mainMenu').on('click',handlEvent);
 	$('#callSearch').on('click',function() {
