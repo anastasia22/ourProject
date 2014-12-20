@@ -57,3 +57,7 @@
     height: auto;
     width: auto;
 }
+#Actors .searchResInfo{
+    color: #01aadd;
+    font-size: 1.1em;
+}

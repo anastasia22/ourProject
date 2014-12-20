@@ -3,7 +3,7 @@
  */
  // function invokes when one clicks  on sub menu it creates movie list for kids
 function popular4Kids() {
-   	var forKids ='discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc';
+   	var forKids ='discover/movie?with_genres=16,10751&sort_by=popularity.desc';
     sendRequest(forKids,'For kids');
 }
 // -/- most pop
@@ -13,8 +13,16 @@ function mostPopular() {
 }
 // -/- last year
 function mostPopular2013() {
-    var lastYear = 'discover/movie?primary_release_year=2013&sort_by=vote_average.desc';
-    sendRequest(lastYear,'Last year');
+    var lastYear = 'discover/movie?primary_release_year=2013&sort_by=popularity.desc';
+    sendRequest(lastYear,'Last year most popular');
+}
+function bestHorrors() {
+    var horrors = 'discover/movie?with_genres=27,80&sort_by=popularity.desc';
+    sendRequest(horrors,'Best horror films');
+}
+function bestFantasy() {
+    var fantasy = 'discover/movie?with_genres=14&sort_by=popularity.desc';
+    sendRequest(fantasy,'Fantasy');
 }
 
 function mostPopularComedies() {
@@ -24,34 +32,34 @@ function mostPopularComedies() {
 
 function defaultMovies() {
     var defaultMovies='discover/movie?primary_release_year=2014';
-   sendRequest(defaultMovies,'This year movies');
+   sendRequest(defaultMovies,'');
 }
 function searchByTitle(){
     window.location='#movies+' + $('#searchField').val();
     var titleSearch = 'search/movie?query=' + $('#searchField').val();
-    sendRequest(titleSearch,$('#searchField').val());
+    sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() +'</span>  Results found: ');
 
 }
 function searchByActor () {
     window.location='#actors+' + $('#searchField').val();
     var titleSearch = 'search/person?query=' + $('#searchField').val();
     $('#mainContent').find(':first-child').remove();
-    findActors(titleSearch,$('#searchField').val());
+    findActors(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() +'</span>  Results found: ');
 
 }
 function searchByRates (rate) {
     $('#singleMovie').remove();
-    var rating = 'discover/movie?vote_average.lte=' + rate + '&sort_by=vote_average.desc'
+    var rating = 'discover/movie?vote_average.lte=' + rate + '&sort_by=vote_average.desc';
     sendRequest(rating ,'Movies with rating ' + rate);
 }
 function searchByGenres (id, name) {
     $('#singleMovie').remove();
-    var url = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc'
+    var url = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc';
     sendRequest(url ,'Movies with ' + name + '&nbsp;genre');
 }
 function searchByYears (year) {
     $('#singleMovie').remove();
-    var url = 'discover/movie?primary_release_year=' + year + '&sort_by=popularity.desc'
+    var url = 'discover/movie?primary_release_year=' + year + '&sort_by=popularity.desc';
     sendRequest(url ,'Movies released in ' + year + '&nbsp;year');
 }
 
@@ -168,7 +176,7 @@ function showOneMovie (id) {
     var apikey = "?api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/movie/";
     var additional = '&append_to_response=similar,images,trailers,credits';
-    var movieUrl = baseUrl + id + apikey + additional
+    var movieUrl = baseUrl + id + apikey + additional;
     $(window).scrollTop(0);
     $('#mainContent').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');

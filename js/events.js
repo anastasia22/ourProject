@@ -40,7 +40,8 @@ function searchBy() {
 function handlEvent(event) {
 	var target=event.target || event.srcElement;
 	var menu={'menuHome' : homeTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
-	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies};
+	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies,
+		'subMenuHorror' : bestHorrors,'subMenuFantasy' : bestFantasy};
 
 	for (var temp in menu) {
 		if(temp == target.id) {
