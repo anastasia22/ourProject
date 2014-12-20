@@ -129,6 +129,18 @@
     
     
     /*end of single movie page styles*/
+    
+/*    favourites  */
+    #favSection {
+        display: none;
+    }
+    
+/**********  footer  **********/
+    .footer-par {
+        top: 45px;
+        left: 15px;
+        font-size: 0.8em;
+    }
 }
 
 
