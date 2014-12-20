@@ -96,15 +96,7 @@ function addAdvanced() {
             list +='</select>';
             //////
 
-            // sorting select
-            list += '<div class="cat-label">Sort by</div><select id="voteSelect" class="select">' +
-                '<option value="popularity.desc" name="sort">popularity 9 &#8680; 0</option>' +
-                '<option value="popularity.asc" name="sort">popularity 0 &#8680; 9</option>' +
-                '<option value="vote_average.desc" name="sort">vote average 9 &#8680; 0</option>' +
-                '<option value="vote_average.asc" name="sort">vote average 0 &#8680; 9</option>' +
-                '</select>';
             
-            /////
             
             // relise year
             list += '<div class="cat-label">Year</div><select id="yearSelect" class="select"><option class="selAYear" selected="selected">Year</option>';
@@ -113,12 +105,22 @@ function addAdvanced() {
                 list +='<option class="selYear" id="' + i + '">' + i + '</option>'
             }
             list +='</select>';
+            
+            
+            // sorting select
+            list += '<div class="cat-label">Sort by</div><select id="voteSelect" class="select">' +
+                '<option value="popularity.desc" name="sort">popularity 9 &#8680; 0</option>' +
+                '<option value="popularity.asc" name="sort">popularity 0 &#8680; 9</option>' +
+                '<option value="vote_average.desc" name="sort">vote average 9 &#8680; 0</option>' +
+                '<option value="vote_average.asc" name="sort">vote average 0 &#8680; 9</option>' +
+                '</select>';
             list += '</div>';
+            /////
             
             
                         
             $('#searchWrapper').find(':first-child').remove();
-            list += '<button id="advSearchBtn" class="search-button">SEARCH</button>';
+            list += '<div class="srch-buttons-wrapper"><button id="toSimple">to simple<br>search</button><button id="advSearchBtn" class="search-button">SEARCH</button></div>';
             $('<div>', {
                 id: 'advancedWrapper',
                 style: 'clear: both;',

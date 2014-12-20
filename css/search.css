@@ -127,11 +127,14 @@ input[type="radio"]:checked + .search-radio-label {
 
 .select {
     height: 24px;
+    width: 140px;
     margin-right: 10px;
     border: none;
     outline: none;
     color: #006E96;
     padding-left: 10px;
+/*    background: url(../images/title-arrow.png) no-repeat right #fff;*/
+    overflow: hidden;
 }
 
 .search-genres {
@@ -143,8 +146,8 @@ input[type="radio"]:checked + .search-radio-label {
     width: 100px;
     font-size: 1em;
     margin: 0;
-    float: left;
-    margin: 28px 0 0 6%;
+    margin: 28px 0 0 50px;
+    display: block;
 }
 
 .cat-label {
@@ -158,4 +161,21 @@ input[type="radio"]:checked + .search-radio-label {
     border-bottom: 1px solid #96C3DD;
     width: 96%;
     margin-bottom: 6px;
+}
+
+#toSimple {
+    border: none;
+    background: #6EC1E0;
+    color: #fff;
+    width: 100px;
+    height: 39px;
+    margin: 28px 0 0 50px;
+    display: block;
+}
+#toSimple:hover {
+    background: #01aadd;
+}
+
+.srch-buttons-wrapper {
+    float: left;
 }
