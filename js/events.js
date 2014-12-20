@@ -3,6 +3,12 @@
  */
  //adds all events handlers to menu buttons
 (function(){
+	$('#header').on('click',function(){
+		$('#favSection').remove();
+		$('#searchWrapper').remove();
+		$('#mainContent').children().remove();
+		$('#').remove();
+	});
 	$('#mainMenu').on('click',handlEvent);
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
@@ -15,6 +21,7 @@
             favSectionTop();
 		}
 	});
+
 })();
 function searchBy() {
 	$('.search-button').on('click',function() {
