@@ -32,7 +32,7 @@ function mostPopularComedies() {
 
 function defaultMovies() {
     var defaultMovies='discover/movie?primary_release_year=2014';
-   sendRequest(defaultMovies,'');
+   sendRequest(defaultMovies,'This year movies');
 }
 function searchByTitle(){
     window.location='#movies+' + $('#searchField').val();

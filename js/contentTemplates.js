@@ -76,8 +76,8 @@ function moviesTemplate(movies,listName) {
        $('#loader').remove(); 
     }
 
-    if(listName.split(' ')[0] == 'Search') {
-        listName = listName + movies.length;
+    if(listName) {
+        if(listName.split(' ')[0] == 'Search')listName = listName + movies.length;
     }
 
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
