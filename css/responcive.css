@@ -1,18 +1,10 @@
-@media only screen  and (max-width: 1153px) {
-    label {
-        margin: 17px 0 0 0;
-        height: 32px;
-        line-height: 9px;
+@media only screen and (min-width: 741px) and (max-width: 1027px) {
+/********* SEARCH  ***************/
+    .srch-buttons-wrapper {
+        width: 41%;
     }
-    
-    .search-button {       
-        margin: 8px 70px 0 0px;
-        height: 31px;
-        font-size: 1em;
-        
-    }
-    
 }
+
 
 @media only screen and (max-width: 970px) {
     #singleMovie .trailer {
@@ -25,8 +17,27 @@
     }
 }
 
-
-
+@media only screen and (min-width: 741px) and (max-width: 1000px) {
+/********* SEARCH  ***************/
+     .search-input {
+         width: 30%;
+     }
+    
+    .label-wrapper {
+        float: left;
+        width: 47%;
+        margin: 32px 0 0 0;
+    }
+    
+    .clear-fix {
+        height: 10px;
+    }
+    
+    .search-button {
+        margin-left: 2%;
+    }
+    
+}
 
 @media only screen and (max-width: 740px) {
     body {
@@ -61,40 +72,26 @@
     
     
     
-/*    SEARCH     */
-    .resp-search {
-        display: block;
-        width: 100%;
-        height: 40px;
-        margin: 5px auto;
+/********* SEARCH  ***************/
+   .srch-buttons-wrapper {
+        width: 31%;
     }
-    
     .search-input {
-        margin-top: 8px;
-        margin-left: 8.141321044546851%;
-        width: 82.94930875576037%;
+        width: 91%;
+        margin-bottom: 10px;
     }
     
-    label {
-        margin-top: 8px;
-        width: 20%;
-    }
-    
-    label:first-of-type {
-        margin-left: 10.664587%;
-        width: 25%;
+    .label-wrapper {
+        margin-left: 8%;
+        margin-top: 0;
     }
     
     .search-button {
-        margin: 8px 0px 0 0;
-        height: 32px;
-        font-size: 1em;
+        margin: 0 0 0 4%;
     }
     
-    
-    #favSection {
-        width: 40%;
-        left: 60%;
+    .clear-fix {
+        height: 10px;
     }
     
     /* single movie page styles */
@@ -117,5 +114,61 @@
         padding: 10px;
     }
     
+    
     /*end of single movie page styles*/
+}
+
+
+@media only screen and (max-width: 520px) {
+/********* SEARCH  ***************/
+    .label-wrapper {
+        margin: 0 auto;
+    }
+    
+    .search-button {
+        margin: 15px 40% 0;
+    }
+    
+}
+
+
+@media only screen and (max-width: 499px) {
+/********* SEARCH  ***************/
+    .search-genres {
+        width: 100%;
+    }
+    
+    #toSimple {
+        margin-left: 7%;
+    }
+    
+    #advSearchBtn {
+        margin-left: 7%;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+/********* SEARCH  ***************/
+    .label-wrapper {
+        width: 100%;
+        height: 100px;
+        margin-top: 15px;
+        float: left;
+    }
+    .search-radio-label {
+        display: block;
+        clear: both;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .search-radio-label:first-of-type {
+        width: 100%;
+    }
+    
+    .clear-fix {
+        height: 10px;
+    }
+    
+    
 }

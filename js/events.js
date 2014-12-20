@@ -7,13 +7,12 @@
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
 			addSearchPanel();
-			$('#searchWrapper').animate({height: '100px', opacity: 1}, 300);
-            favSectionTop(100);
+			$('#searchWrapper').animate({opacity: 1}, 300);
+            favSectionTop();
 		}else {
-			$('#searchWrapper').animate({height: '0px', opacity: 0}, 300,function() {
-                $('#searchWrapper').remove();                
-			});
-            favSectionTop(0);
+			$('#searchWrapper').animate({opacity: 0}, 300);
+            $('#searchWrapper').remove(); 
+            favSectionTop();
 		}
 	});
 })();
