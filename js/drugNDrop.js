@@ -53,7 +53,7 @@ function addFavMovieBlock(movie) {
         '<p>' + movie.title + '</p>' +
         '</div></div>';
 
-    $('#favSection').append(str);
+    $('#favSection .wrp').append(str);
     addHovEvent();
 }
 

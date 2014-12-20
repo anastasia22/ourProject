@@ -2,40 +2,45 @@
 
 #favSection {
     position: absolute;
-    z-index: -1;
+    z-index: 4;
     left: 75%;
     opacity: 0;
     width: 25%;
-    min-height: 600px;
+    height: 600px;
     float: right;
     text-align: center;
     background: #C5E2FF;
     padding: 17px 0px;
     min-height: 600px;
     overflow: hidden;
+
 }
 
-#favSection.fix-fav {
+/*#favSection.fix-fav {
     position: fixed;
     left: 70.01%;
     width: 19.99%;
     overflow: scroll;
 
+}*/
+.wrp {
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    width: 110%;
 }
 #favSection .favMovieBlock {
     position: relative;
-    width: 70%;
+    width: 60%;
     margin: 0% 0% 5% 15% ;
     height: 250px;
     cursor: pointer;
-    overflow: hidden;
 
 }
 .favMovieImg {
     width: 100%;
     height: 100%
-   /* border-top-right-radius: 6px;*/
-}
+   }
 .favInfoBlock {
     visibility: hidden;
     position: absolute;

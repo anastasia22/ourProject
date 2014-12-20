@@ -36,7 +36,7 @@ function handlEvent(event) {
 		if(temp == target.id) {
 			$('#mainContent').find(':first-child').remove();
 			window.location='#' + temp;
-			//menu[temp]();
+			menu[temp]();
 		}
 	}
 
