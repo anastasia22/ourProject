@@ -268,7 +268,7 @@
     height:100%;
 }
 
-#modwin {
+#singleMovie #modwin {
     position:fixed;
     width:780px;
     display:none;
@@ -290,11 +290,12 @@
     display:block;
     width:780px;
     cursor:pointer;
+    margin:0px;
 }
 #modwin .lcontrol{
     position:absolute;
     z-index: 7;
-    top: 197.5px;
+    top: 122.5px;
 }
 #modwin .lcontrol.lft {
     left:0;

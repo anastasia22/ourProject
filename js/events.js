@@ -100,40 +100,78 @@ function addEventsToActors() {
 	});
 }
 
-//slider for singleMoviePage
-
-function createCarousel(){
-	var images=$('.img-container').find('.screenshot');
-    var imageContainer = $('.img-container');
-    var prevArrow = $('.prev-ar');
-	var nextArrow = $('.next-ar');
+//events and functions for singleMoviePage
+function addEventsToMovie(){
+	//setting width for small carousel container
+	var smImageContainer = $('.smCarousel').find($('.img-container'));
+	var smImages = smImageContainer.find('.screenshot');
+    var smTotalLength = (parseInt(smImages.css('width')) + parseInt(smImages.css('margin-left')) + parseInt(smImages.css('margin-right'))) * smImages.length;
+    smImageContainer.css({'width': smTotalLength,'right':0});
+    
+    $('.carousel').on('click','.control', scrollCarousel);
+    smImages.on('click', showLightRoom);
+    
+    //func that shows modal large carousel
+	function showLightRoom(){
+	//setting position and width for large carousel
+	var numb = $(this).data('numb')
+	var lgImageContainer = $('.lgCarousel').find($('.img-container'));;
+	var lgImages = lgImageContainer.find('.lscreenshot');
+	var lgStep = lgImages.outerWidth(true);
+	var lgTotalLength = parseInt(lgImages.css('width')) * lgImages.length;
+	lgImageContainer.css({'width': lgTotalLength,'right': numb*lgStep});
+	createModal()
+	}
+    //creating and inserting modal window and mask
+	function createModal() {
+		var mask = $('#mask');
+		var modwin = $('#modwin');
+	    var winH = $(window).height();
+	    var winW = $(window).width();
+	    modwin.css('top', winH/2-modwin.height()/2);
+	    modwin.css('left', winW/2-modwin.width()/2);
+	    mask.fadeIn(400);    
+	    mask.fadeTo("slow",0.8);    
+	    modwin.fadeIn(2000); 
+	    mask.click(function () {
+	        mask.hide();
+	        modwin.hide();
+    	});   
+	}
+    //function for sliding carousel
 	function scrollCarousel(){
-	    var imagesWidth = parseInt($('.img-container').css('width'));
-	    var sliderWidth = parseInt($('.slider').css('width'));
-	    var imagesRight = parseInt($('.img-container').css('right'));
+
+		var slider = $(this).closest('.carousel').find('.slider');
+		var img_cont = $(this).closest('.carousel').find('.img-container');
+		var images = img_cont.find('.screenshot');
+		var prevArrow = $(this).closest('.carousel').find($('.prev-ar'));
+		var nextArrow = $(this).closest('.carousel').find($('.next-ar'));
+	    var imagesWidth = parseInt(img_cont.css('width'));
+	    var sliderWidth = parseInt(slider.css('width'));
+	    var imagesRight = parseInt(img_cont.css('right'));
 	    var step = images.outerWidth(true);
 	    var direction=$(this).data('direction');
 	    var diffWidth = imagesWidth - sliderWidth;
 	    var lastStep = diffWidth - imagesRight;
+	    console.log(step,lastStep,imagesRight)
+
 	    if (direction == 'previous' && imagesRight > step) {
 	        nextArrow.removeClass('next-unable').addClass('next-able');
-	        imageContainer.stop().animate({"right": "-=" + step + "px" }, "slow","linear")
+	        img_cont.stop().animate({"right": "-=" + step + "px" }, "slow","linear")
 	    } else if (direction == 'previous' && imagesRight <= step && imagesRight > 0) {
 	        prevArrow.removeClass('prev-able').addClass('prev-unable');
-	        imageContainer.stop().animate({"right": "-=" + imagesRight + "px" }, "slow","linear")
+	        img_cont.stop().animate({"right": "-=" + imagesRight + "px" }, "slow","linear")
 	    };
 	    if (direction =='next' && lastStep > step) {
 	        prevArrow.removeClass('prev-unable').addClass('prev-able');
-	        imageContainer.stop().animate({"right": "+=" + step + "px"}, "slow", "linear")
+	        img_cont.stop().animate({"right": "+=" + step + "px"}, "slow", "linear")
 	    } else if (direction =='next' && lastStep <= step) {
 	        nextArrow.removeClass('next-able').addClass('next-unable');
-	        imageContainer.stop().animate({"right": "+=" + lastStep + "px"}, "slow", "linear")
+	        img_cont.stop().animate({"right": "+=" + lastStep + "px"}, "slow", "linear")
 	    };
 	    return
 	}
-    var totalLength = (parseInt(images.css('width')) + parseInt(images.css('margin-left')) + parseInt(images.css('margin-right'))) * images.length;
-    imageContainer.css({'width': totalLength,'right':0});
-    $('.carousel').on('click','.control', scrollCarousel);
+    
 
 };  
 
@@ -144,62 +182,7 @@ function toggleHelp(){
 	});
 }
 
-
-
-function showLightRoom(numb){
-	function createModal() {
-		var mask = $('#mask');
-		var modwin = $('#modwin');
-	    var winH = $(window).height();
-	    var winW = $(window).width();
-	    modwin.css('top', winH/2-modwin.height()/2);
-	    modwin.css('left', winW/2-modwin.width()/2);
-	    mask.fadeIn(400);    
-	    mask.fadeTo("slow",0.9);    
-	    modwin.fadeIn(2000); 
-	    mask.click(function () {
-	        mask.hide();
-	        modwin.hide();
-    	});   
-	}
-	createModal() 
-	var imageContainer = $('.limg-container');
-	var images=$('.limg-container').find('.lscreenshot');
-	var step = images.outerWidth(true);
-	var totalLength = parseInt(images.css('width')) * images.length;
-	imageContainer.css({'width': totalLength,'right': numb*step});
-	$('#modwin').on('click','.lcontrol',scrollSlider);
-	$('#modwin').on('click','.lscreenshot',scrollSlider);
-
-    		function scrollSlider(){
-				var prevArrow = $('#modwin').find($('.prev-ar'));
-				var nextArrow = $('#modwin').find($('.next-ar'));
-			    var imagesWidth = parseInt($('.limg-container').css('width'));
-			    var sliderWidth = parseInt($('.lslider').css('width'));
-			    var imagesRight = parseInt($('.limg-container').css('right'));
-			    
-			    var direction=$(this).data('direction');
-			    var difference = imagesWidth - imagesRight ;
-			    if (direction == 'previous' && step <= imagesRight) {
-			    	nextArrow.removeClass('next-unable').addClass('next-able');
-			        imageContainer.stop().animate({"right": "-=" + step + "px" }, "slow","linear");
-			    } else if (direction == 'previous' && imagesRight == 0 ){
-			    	prevArrow.removeClass('prev-able').addClass('prev-unable');
-			    };
-			    if (direction == 'next' && step < difference) {
-			        prevArrow.removeClass('prev-unable').addClass('prev-able');
-			        imageContainer.stop().animate({"right": "+=" + step + "px"}, "slow", "linear");
-			        console.log(imagesRight)
-			    } else if (direction =='next' && step == difference){
-			    	nextArrow.removeClass('next-able').addClass('next-unable');
-			    };
-			    return
-			};        
-
-}
-
 // events to scroll top btn
-
 function toTopBtnEvents() {
 	$('#scrollTopBtn').on('click',function(){
 		$(window).scrollTop(0);

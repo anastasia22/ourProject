@@ -126,7 +126,7 @@ function  singleActorTempl(actor) {
         '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Born </span>' + actor.birthday + ' in ' + actor.place_of_birth + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ actor.also_known_as + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity.toFixed(2) + '</p></div>';
+        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity + '</p></div>';
     content +='<div class="biography"><p>' + actor.biography + '</p></div>';
 
     stopAnimation();
@@ -206,13 +206,13 @@ function singleMoviePage (movie) {
           <section class="row">\
             <section class="screens">\
               <span class="sp_title block_title">Screenshots</span>\
-              <section class="border_class carousel">\
+              <section class="border_class carousel smCarousel">\
                 <section class="control" data-direction="previous">\
                   <section class="arrow prev-ar prev-unable"></section>\
                 </section>\
                 <section class="slider"><section class="img-container">\
                 <% _.each(singleMovie.images, function(el,i){ %>\
-                    <img class="screenshot" src="<%= largeImageUrl %><%= el %>" onclick="showLightRoom(<%= i %>)">\
+                    <img class="screenshot" src="<%= largeImageUrl %><%= el %>" data-numb="<%= i %>">\
                 <% }) %>\
                 </section></section>\
                 <section class="control" data-direction="next">\
@@ -251,16 +251,16 @@ function singleMoviePage (movie) {
             </section>\
           </section>\
           <section id="mask"></section>\
-          <section id="modwin">\
-            <section class="lcontrol lft" data-direction="previous">\
+          <section id="modwin" class="carousel lgCarousel">\
+            <section class="lcontrol lft control" data-direction="previous">\
               <section class="arrow prev-ar prev-unable"></section>\
             </section>\
-            <section class="lslider"><section class="limg-container">\
+            <section class="lslider slider"><section class="limg-container img-container">\
               <% _.each(singleMovie.images, function(el, i){ %>\
-                <img class="lscreenshot" src="<%= hyperImageUrl %><%= el %>" data-direction="next" data-numb="<%= i %>">\
+                <img class="lscreenshot screenshot" src="<%= hyperImageUrl %><%= el %>" data-direction="next">\
               <% }) %>\
             </section></section>\
-            <section class="lcontrol rgh" data-direction="next">\
+            <section class="lcontrol rgh control" data-direction="next">\
               <section class="arrow next-ar next-able"></section>\
             </section>\
           </section>\
@@ -308,9 +308,10 @@ function singleMoviePage (movie) {
 
 
     $('#mainContent').find(':first-child').remove();
-
+            stopAnimation();
+            $('#loaderImage').remove();
     $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
-    $(document).ready(createCarousel);
+    $(document).ready(addEventsToMovie);
 
     makeDraggable();
     addEventsToActors();
