@@ -230,7 +230,7 @@ function singleMoviePage (movie) {
                     <% if (el.profile_path){ %>\
                       <img src="<%= smallImageUrl %><%= el.profile_path %>">\
                     <%} else {%>\
-                      <img src="images/no-photo1.png">\
+                      <img src="images/no-photo.png">\
                     <% } %>\
                     <span class="act_name"><%= el.name %></span>\
                     <span class="act_role"><%= el.character %></span>\
@@ -244,7 +244,11 @@ function singleMoviePage (movie) {
             <section class="border_class similar_container">\
               <% _.each(singleMovie.similar, function(el){ %>\
                 <section class="similar" onclick="showOneMovie(<%= el.id %>)">\
-                  <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
+                  <% if (el.backdrop_path){ %>\
+                    <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
+                  <%} else {%>\
+                    <img src="images/no-image1.jpg">\
+                  <% } %>\
                     <section>\
                     <span class="similar_name sp_title"><%= el.title %></span>\
                     <span class="similar_date"><%= el.release_date %></span>\

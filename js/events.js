@@ -162,7 +162,6 @@ function addEventsToMovie(){
 	    var direction=$(this).data('direction');
 	    var diffWidth = imagesWidth - sliderWidth;
 	    var lastStep = diffWidth - imagesRight;
-	    console.log(direction)
 	    if (direction == 'previous' && imagesRight > step) {
 	        nextArrow.removeClass('next-unable').addClass('next-able');
 	        img_cont.stop().animate({"right": "-=" + step + "px" }, "slow","linear")
