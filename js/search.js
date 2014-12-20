@@ -30,6 +30,7 @@ function addSearchPanel() {
     $('input[name="factor"]:radio').click(function () {
         controlAdvanced();
     });
+     
 
 }
 
@@ -42,46 +43,16 @@ function controlAdvanced() {
         collapsH = 100;
     if ($('#advanced').prop('checked') == true) {
         return (function () {
-            searchWrap.animate({
-                'height': expH + 'px'
-            }, 300);
-            favSectionTop(expH);
+            $('#searchWrapper').animate({height: '150px'});
             addAdvanced();
         })();
     } else {
         return (function () {
-            searchWrap.animate({
-                'height': collapsH + 'px'
-            }, 300);
-            favSectionTop(collapsH);
             $('#advancedWrapper').remove();
         })();
     }
 }
-//Toggle visibility of search block
-/*$('#callSearch').click(function () {
-    var expandedHight = 100,
-        collapsedHeight = 0;
-    if (state) {
 
-        $('#searchWrapper').animate({
-            'height': expandedHight + 'px',
-            'opacity': '1'
-        }, 300);
-        favSectionTop(expandedHight);
-        controlAdvanced();
-    } else {
-        $('#searchWrapper').animate({
-            'height': collapsedHeight + 'px',
-            'opacity': '0',
-            'margin-bottom': '0px'
-        }, 300);
-        favSectionTop(collapsedHeight);
-    }
-    state = !state;
-
-
-});*/
 
 function addAdvanced() {
     var searchwrap = document.getElementById('searchWrapper');
@@ -142,6 +113,7 @@ function addAdvanced() {
                 html: list
             }).appendTo('#searchWrapper');
             searchBtnEvents();
+           
         }
     }
 

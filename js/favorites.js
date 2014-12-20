@@ -36,10 +36,10 @@ function addFavBlock() {
     /*adds favorites block*/
 
     window.setTimeout(function(){
-
       //append favBlock due to header and searchWrapper common height !!!! 'top': headerPlusSearchHeight()
 
     $(favBlock).insertAfter( "#header" ).animate({'opacity': '1'}, 400,function() {
+
 
         makeDroppable();
         favMovies();
@@ -61,7 +61,11 @@ function addFavBlock() {
 //get a common height of header and searchWrapper
 function headerPlusSearchHeight(height) {
     var searchHeight, headerHeight, favouritesTopStyle;
-        searchHeight = document.getElementById('searchWrapper').offsetHeight;
+        if (document.getElementById('searchWrapper')) {
+            searchHeight = document.getElementById('searchWrapper').offsetHeight;
+        } else {
+            searchHeight = 0;
+        }
         headerHeight = document.getElementById('header').offsetHeight;
         favouritesTopStyle = '' + (searchHeight + headerHeight);
     
