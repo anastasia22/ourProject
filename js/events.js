@@ -3,11 +3,15 @@
  */
  //adds all events handlers to menu buttons
 (function(){
-	$('#header').on('click',function(){
-		$('#favSection').remove();
+	$('.logo-backgr').css({cursor : 'pointer'});
+	$('.logo-backgr').on('click',function(){
+		if($('#favSection')) {
+			hideFavBlock();
+		}
 		$('#searchWrapper').remove();
 		$('#mainContent').children().remove();
-		$('#').remove();
+
+		homeTemplate();
 	});
 	$('#mainMenu').on('click',handlEvent);
 	$('#callSearch').on('click',function() {
@@ -190,10 +194,9 @@ function toggleHelp(){
 
 // events to scroll top btn
 function toTopBtnEvents() {
-	$('#scrollTopBtn').on('click',function(){
+	$('#scrollTopBtn').on('click',function() {
 		$(window).scrollTop(0);
-		window.location='#' + document.URL.split('#')[1];
+		window.location = '#' + document.URL.split('#')[1];
 		this.remove();
 	});
 }
-
