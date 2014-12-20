@@ -83,7 +83,7 @@ function addEvents() {
 
 function addEventsToActors() {
 	var infoBlock;
-	$(".singleActorBlock").hover(function() {
+	$("#Actor .singleActorBlock").hover(function() {
 			infoBlock=$(this).find(':last-child')[0];
 
 			$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
