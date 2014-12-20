@@ -95,7 +95,7 @@ $(document).on('scroll', function(e) {
             $('#favSection').removeClass('fix-fav')
             .css({top: commonHeight + 'px'});                          
           }
-        //make box smaller to fit footer  FIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        //make box smaller to fit footer
         var docScrollTop = $(document).scrollTop();
         var winHeight = window.innerHeight;
         var scrollToFooter = $(document).height() - $('#footer').height() - window.innerHeight;
@@ -110,6 +110,10 @@ $(document).on('scroll', function(e) {
     
 });
 
+//$(document).ready(function()
+//{
+//    $("#favSection").tinyscrollbar();
+//});
 
 
 

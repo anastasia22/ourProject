@@ -1,39 +1,39 @@
-/*favorites button and block styling*/
+/*favorites block styling*/
 
 #favSection {
     position: absolute;
-    z-index: 4;
+    z-index: 1;
     left: 75%;
     opacity: 0;
     width: 25%;
-    height: 600px;
+    height: 100%;
     float: right;
     text-align: center;
     background: #C5E2FF;
     padding: 17px 0px;
     min-height: 600px;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: visible;
+    
 }
 #favSection.over{
     background: #c0f;
 }
-/*#favSection.fix-fav {
+#favSection.fix-fav {
     position: fixed;
     left: 70.01%;
     width: 19.99%;
-    overflow: scroll;
-
-}*/
+}
 .wrp {
     position: relative;
     overflow: auto;
     height: 100%;
-    width: 110%;
+    width: 100%;
 }
 #favSection .favMovieBlock {
     position: relative;
-    width: 60%;
-    margin: 0% 0% 5% 15% ;
+    width: 70%;
+    margin: 0 auto 5%;
     height: 250px;
     cursor: pointer;
 
@@ -60,9 +60,7 @@
     border: none;
     background-image: url(../images/recyclebin3.png) ;
     width: 30px;
-    height: 30px
-    /*border-radius: 6px;*/
-
+    height: 30px;
 }
 
 .favDelBtn:hover {
@@ -70,3 +68,16 @@
     cursor: pointer;
     height: 31px;
 }
+
+::-webkit-scrollbar {  
+    width: 12px;  
+}  
+::-webkit-scrollbar-track {  
+    background-color: #eaeaea;    
+}  
+::-webkit-scrollbar-thumb {  
+    background-color: #ccc;  
+}  
+::-webkit-scrollbar-thumb:hover {  
+    background-color: #aaa;  
+}  

@@ -50,6 +50,7 @@ function controlAdvanced() {
         })();
     } else {
         return (function () {
+            $('#advancedWrapper').animate({opacity: '0'});
             $('#advancedWrapper').remove();
         })();
     }
