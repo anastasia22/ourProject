@@ -30,7 +30,6 @@ a {
     width: 100%;
     height: 200px;
     position: relative;
-    z-index: 1;
 }
 
 #mainMenu {
@@ -210,11 +209,12 @@ a {
     background: #FFFAF0;
 }
 
-.fooer-par {
+.footer-par {
     color: #fff;
     position: relative;
-    top: 24px;
+    top: 37px;
     left: 66px;
+    font-size: 0.9em;
 }
 
 

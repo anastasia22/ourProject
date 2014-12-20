@@ -3,6 +3,15 @@
  */
  //adds all events handlers to menu buttons
 (function(){
+	$('.logo-backgr').css({cursor : 'pointer'});
+	$('.logo-backgr').on('click',function(){
+		if($('#favSection')) {
+			hideFavBlock();
+		}
+		$('#searchWrapper').remove();
+		$('#mainContent').children().remove();
+		window.location='#menuHome';
+	});
 	$('#mainMenu').on('click',handlEvent);
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
@@ -15,6 +24,7 @@
             favSectionTop();
 		}
 	});
+
 })();
 function searchBy() {
 	$('.search-button').on('click',function() {
@@ -180,10 +190,9 @@ function toggleHelp(){
 
 // events to scroll top btn
 function toTopBtnEvents() {
-	$('#scrollTopBtn').on('click',function(){
+	$('#scrollTopBtn').on('click',function() {
 		$(window).scrollTop(0);
-		window.location='#' + document.URL.split('#')[1];
+		window.location = '#' + document.URL.split('#')[1];
 		this.remove();
 	});
 }
-
