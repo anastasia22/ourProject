@@ -1,10 +1,19 @@
-@media only screen and (min-width: 741px) and (max-width: 1027px) {
+@media only screen and (min-width: 590px) and (max-width: 1027px) {
 /********* SEARCH  ***************/
     .srch-buttons-wrapper {
         width: 41%;
     }
 }
 
+@media only screen  and (min-width: 1000px) {
+/********* SEARCH  ***************/
+    .label-wrapper {
+        width: 41%;
+        height: 40px;
+        margin: 32px 0 0 0;
+        float: left;
+    }
+}
 
 @media only screen and (max-width: 970px) {
     #singleMovie .trailer {
@@ -47,7 +56,7 @@
     
     #header {
         width: 100%;
-        height: 408px;
+        height: 356px;
         position: relative;
     }
     /** menu **/
@@ -57,7 +66,7 @@
     
     
     #mainMenu {
-        height: 263px;
+        height: 211px;
     }
     
     .menuButton {
@@ -70,20 +79,24 @@
         height: 30px;
     }
     
+    #favoritesButton {
+        display: none;
+    }
+    
     
     
 /********* SEARCH  ***************/
-   .srch-buttons-wrapper {
-        width: 31%;
-    }
+   
     .search-input {
         width: 91%;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        margin-top: 20px;
     }
     
     .label-wrapper {
         margin-left: 8%;
         margin-top: 0;
+        width: 60%;
     }
     
     .search-button {
@@ -91,7 +104,7 @@
     }
     
     .clear-fix {
-        height: 10px;
+        height: 15px;
     }
     
     /* single movie page styles */
@@ -121,12 +134,15 @@
 
 @media only screen and (max-width: 520px) {
 /********* SEARCH  ***************/
+    
+    
     .label-wrapper {
         margin: 0 auto;
+        width: 80%;
     }
     
     .search-button {
-        margin: 15px 40% 0;
+        margin: 30px 40% 0;
     }
     
 }

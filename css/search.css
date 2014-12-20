@@ -12,7 +12,7 @@
     margin: 32px 2% 15px 4%;;
     border: none;
     height: 39px;
-    width: 430px;
+    width: 38%;
     padding: 12px;
     color: #555;
     font-size: 1.1em;
@@ -47,11 +47,7 @@
     line-height: 21px;
 }
 
-.label-wrapper {
-    width: 350px;
-    height: 40px;
-    margin: 0 0 0 7%;
-}
+
 .search-radio-label:first-of-type {
     width: 42.85714285714286%;
 }
@@ -66,7 +62,7 @@ input[type="radio"]:checked + .search-radio-label {
 
 .search-button {
     float: left;
-    margin: 32px 0 0 24px;
+    margin: 32px 0 0 2%;
     border: none;
     outline: none;
     width: 78px;
@@ -82,7 +78,7 @@ input[type="radio"]:checked + .search-radio-label {
 }
 
 .clear-fix {
-    height: 30px;
+    height: 10px;
 }
 /** advanced **/
 

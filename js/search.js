@@ -173,7 +173,7 @@ function addAdvanced() {
 
 
             $('#searchWrapper').find(':first-child').remove();
-            list += '<div class="srch-buttons-wrapper"><button id="toSimple">to simple<br>search</button><button id="advSearchBtn" class="search-button">GO!</button></div><div style="clear: both; margin-top: 10px;"></div>';
+            list += '<div class="srch-buttons-wrapper"><button id="toSimple">BACK<br>to simple</button><button id="advSearchBtn" class="search-button">GO!</button></div><div style="clear: both; margin-top: 10px;"></div>';
             $('<div>', {
                 id: 'advancedWrapper',
                 style: 'clear: both;',
