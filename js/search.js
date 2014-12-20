@@ -1,19 +1,19 @@
 //search visualisation
 function addSearchPanel() {
     var state = true;
-    var frm='';
+    var frm = '';
 
     $('<div>').attr('id', 'searchWrapper').addClass('search-wrapper').insertAfter('#header');
 
-    frm='<form><input id="searchField" type="text" placeholder="Search..." class="search-input">' +
-    '<input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked">' +
-    '<label class="search-radio-label" id="SOME" for="movieTitle">Movie title</label>' +
+    frm = '<form><input id="searchField" type="text" placeholder="Search..." class="search-input">' +
+        '<input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked">' +
+        '<label class="search-radio-label" id="SOME" for="movieTitle">Movie title</label>' +
 
     '<input type="radio" name="factor" class="search-radio" id="actors">' +
-    '<label class="search-radio-label" for="actors">Actors</label>' +
+        '<label class="search-radio-label" for="actors">Actors</label>' +
 
     '<input type="radio" name="factor" class="search-radio" id="advanced">' +
-    '<label class="search-radio-label" id="advSearch" for="advanced">Advanced</label>' +
+        '<label class="search-radio-label" id="advSearch" for="advanced">Advanced</label>' +
 
     '<button class="search-button">GO!</button> </form>';
 
@@ -30,7 +30,7 @@ function addSearchPanel() {
     $('input[name="factor"]:radio').click(function () {
         controlAdvanced();
     });
-     
+
 
 }
 
@@ -43,7 +43,9 @@ function controlAdvanced() {
         collapsH = 100;
     if ($('#advanced').prop('checked') == true) {
         return (function () {
-            $('#searchWrapper').animate({height: '150px'});
+            $('#searchWrapper').animate({
+                height: '150px'
+            }, 300);
             addAdvanced();
         })();
     } else {
@@ -57,14 +59,65 @@ function controlAdvanced() {
 function addAdvanced() {
     var searchwrap = document.getElementById('searchWrapper');
     var advwrap = document.getElementById('advancedWrapper');
-    var actors = {500 : 'Tom Cruise',31 : 'Tom Hanks',85 : 'Johny Depp',1158 : 'Al Pacino',819 : 'Edward Norton',56731 : 'Jessica Alba',38406 : 'Paris Hilton',4173:'Anthony Hopkins',
-        206 : 'Jim Carrey',9642 : 'Jude Law',2461 : 'Mel Gibson',2231 : 'Samuel L. Jackson',5292 : 'Denzel Washington',3131 : 'Antonio Banderas',287 : 'Brad Pitt',1892 : 'Matt Damon',
-        6193 : 'Leonardo DiCaprio',6949 : 'John Malkovich',11856 : 'Daniel Day-Lewis',1532 : 'Bill Murray',2228 : 'Sean Penn',3223 : 'Robert Downey Jr.',3084 : 'Marlon Brando',
-        4483 : 'Dustin Hoffman',1979 : 'Kevin Spacey',204 : 'Kate Winslet',139 : 'Uma Thurman',1245 : 'Scarlett Johansson',11701 : 'Angelina Jolie',8891 : 'John Travolta',
-        18897 : 'Jackie Chan',12835: 'Vin Diesel',2888 : 'Will Smith',62 : 'Bruce Willis',2963 : 'Nicolas Cage',4491 : 'Jennifer Aniston',16483 : 'Sylvester Stallone',
-        17276 : 'Gerard Butler',13240 : 'Mark Wahlberg',8167: 'Paul Walker',6384 : 'Keanu Reeves',6885 : 'Charlize Theron',3896 : 'Liam Neeson',1003 : 'Jean Reno',
-        380 : 'Robert De Niro',934 : 'Russell Crowe',72466 : 'Colin Farrell',1844 : 'Til Schweiger',10980 : 'Daniel Radcliffe',192: 'Morgan Freeman',1100 : 'Arnold Schwarzenegger',
-        109 : 'Elijah Wood',57755 : 'Woody Harrelson',63312 : 'Yvonne Strahovski',19292 : 'Adam Sandler',28782 : 'Monica Bellucci',84497 : 'Aaron Paul'};
+    var actors = {
+        500: 'Tom Cruise',
+        31: 'Tom Hanks',
+        85: 'Johny Depp',
+        1158: 'Al Pacino',
+        819: 'Edward Norton',
+        56731: 'Jessica Alba',
+        38406: 'Paris Hilton',
+        4173: 'Anthony Hopkins',
+        206: 'Jim Carrey',
+        9642: 'Jude Law',
+        2461: 'Mel Gibson',
+        2231: 'Samuel L. Jackson',
+        5292: 'Denzel Washington',
+        3131: 'Antonio Banderas',
+        287: 'Brad Pitt',
+        1892: 'Matt Damon',
+        6193: 'Leonardo DiCaprio',
+        6949: 'John Malkovich',
+        11856: 'Daniel Day-Lewis',
+        1532: 'Bill Murray',
+        2228: 'Sean Penn',
+        3223: 'Robert Downey Jr.',
+        3084: 'Marlon Brando',
+        4483: 'Dustin Hoffman',
+        1979: 'Kevin Spacey',
+        204: 'Kate Winslet',
+        139: 'Uma Thurman',
+        1245: 'Scarlett Johansson',
+        11701: 'Angelina Jolie',
+        8891: 'John Travolta',
+        18897: 'Jackie Chan',
+        12835: 'Vin Diesel',
+        2888: 'Will Smith',
+        62: 'Bruce Willis',
+        2963: 'Nicolas Cage',
+        4491: 'Jennifer Aniston',
+        16483: 'Sylvester Stallone',
+        17276: 'Gerard Butler',
+        13240: 'Mark Wahlberg',
+        8167: 'Paul Walker',
+        6384: 'Keanu Reeves',
+        6885: 'Charlize Theron',
+        3896: 'Liam Neeson',
+        1003: 'Jean Reno',
+        380: 'Robert De Niro',
+        934: 'Russell Crowe',
+        72466: 'Colin Farrell',
+        1844: 'Til Schweiger',
+        10980: 'Daniel Radcliffe',
+        192: 'Morgan Freeman',
+        1100: 'Arnold Schwarzenegger',
+        109: 'Elijah Wood',
+        57755: 'Woody Harrelson',
+        63312: 'Yvonne Strahovski',
+        19292: 'Adam Sandler',
+        28782: 'Monica Bellucci',
+        84497: 'Aaron Paul'
+    };
     if ($.contains(searchwrap, advwrap)) {
         return false;
     } else {
@@ -77,36 +130,36 @@ function addAdvanced() {
         function callback(data) {
             var list = '';
 
-            
+
             // genres
             list += '<div class="search-genres"><div class="cat-label">Genres</div>';
             $.each(data.genres, function (num, el) {
                 list += '<div class="genre"><input type="checkbox" id="' + el.id +
-                '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label></div>';
+                    '" value="' + el.name + '"><label for="' + el.id + '">' + el.name + '</label></div>';
             });
             list += '</div>';
             ///
-            
+
             //actors
             list += '<div class="search-selects"><div class="cat-label">Actors</div>';
             list += '<select id="actorSelect" class="select"><option class="selActors" selected="selected">Select actor</option>';
             for (var actor in actors) {
                 list += '<option class="selActors" id="' + actor + '">' + actors[actor] + '</option>';
             }
-            list +='</select>';
+            list += '</select>';
             //////
 
-            
-            
+
+
             // relise year
             list += '<div class="cat-label">Year</div><select id="yearSelect" class="select"><option class="selAYear" selected="selected">Year</option>';
             var nextYear = (new Date().getFullYear()) + 1;
-            for (var i = nextYear; i >= 1960; i-- ) {
-                list +='<option class="selYear" id="' + i + '">' + i + '</option>'
+            for (var i = nextYear; i >= 1960; i--) {
+                list += '<option class="selYear" id="' + i + '">' + i + '</option>'
             }
-            list +='</select>';
-            
-            
+            list += '</select>';
+
+
             // sorting select
             list += '<div class="cat-label">Sort by</div><select id="voteSelect" class="select">' +
                 '<option value="popularity.desc" name="sort">popularity 9 &#8680; 0</option>' +
@@ -116,9 +169,9 @@ function addAdvanced() {
                 '</select>';
             list += '</div>';
             /////
-            
-            
-                        
+
+
+
             $('#searchWrapper').find(':first-child').remove();
             list += '<div class="srch-buttons-wrapper"><button id="toSimple">to simple<br>search</button><button id="advSearchBtn" class="search-button">SEARCH</button></div>';
             $('<div>', {
@@ -127,55 +180,64 @@ function addAdvanced() {
                 html: list
             }).appendTo('#searchWrapper');
             searchBtnEvents();
-           favSectionTop(150);
+            favSectionTop(150);
+            // REMOVE ADVANCED AND CREATE SIMPLE SEARCH
+            $('#toSimple').click(function () {
+                $('#searchWrapper').remove();
+                addSearchPanel();
+                $('#searchWrapper').css({opacity: '1', height: '100px'});
+                favSectionTop(100);
+            });
         }
     }
 
 }
 
 function searchBtnEvents() {
-    $('#advSearchBtn').on('click', function(){
+    $('#advSearchBtn').on('click', function () {
         var checkBoxes = $('.genre');
-        var checked=[];
-        var selectedActor=$('#actorSelect option:selected').attr('id');
-        var selectYear=$('#yearSelect option:selected').attr('id')
-        var url='discover/movie';
+        var checked = [];
+        var selectedActor = $('#actorSelect option:selected').attr('id');
+        var selectYear = $('#yearSelect option:selected').attr('id')
+        var url = 'discover/movie';
         // checking genres
-        for (var i=0; i < checkBoxes.length; i++) {
-            if($(checkBoxes[i]).find(':first-child').prop('checked') == true) {
+        for (var i = 0; i < checkBoxes.length; i++) {
+            if ($(checkBoxes[i]).find(':first-child').prop('checked') == true) {
                 checked.push($(checkBoxes[i]).find(':first-child').attr('id'));
             }
         }
 
-        if(checked.length != 0) {
-            url +='?with_genres=' + checked.join(',');
+        if (checked.length != 0) {
+            url += '?with_genres=' + checked.join(',');
         }
         /////
 
 
         // checking actor
-        if(selectedActor) {
-            url +='&with_cast=' + selectedActor;
+        if (selectedActor) {
+            url += '&with_cast=' + selectedActor;
         }
         //
         //year
-        if(selectYear){
-            url +='&primary_release_year=' + selectYear;
+        if (selectYear) {
+            url += '&primary_release_year=' + selectYear;
         }
         ///
-        url +='&sort_by='+$('input[name=sort]:checked').val();
+        url += '&sort_by=' + $('input[name=sort]:checked').val();
         $('#mainContent').find(':first-child').remove();
-        sendRequest(url,'ganres');
+        sendRequest(url, 'ganres');
     });
 }
 
- //correct a top position of favSection due to searchWpapper height
-    function favSectionTop(height) {
-        var totalHight, headerHeight = document.getElementById('header').offsetHeight;
-        totalHight = headerHeight + height + 'px';
-        if ($('#favSection')) {
-            $('#favSection').animate({
-                'top': totalHight
-            }, 300);
-        }
+
+
+//correct a top position of favSection due to searchWpapper height
+function favSectionTop(height) {
+    var totalHight, headerHeight = document.getElementById('header').offsetHeight;
+    totalHight = headerHeight + height + 'px';
+    if ($('#favSection')) {
+        $('#favSection').animate({
+            'top': totalHight
+        }, 300);
     }
+}

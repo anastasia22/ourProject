@@ -63,7 +63,7 @@ input[type="radio"]:checked + .search-radio-label {
 
 .search-button {
     float: left;
-    margin: 32px 24px;
+    margin: 32px 0 0 24px;
     border: none;
     outline: none;
     width: 78px;
@@ -171,6 +171,7 @@ input[type="radio"]:checked + .search-radio-label {
     height: 39px;
     margin: 28px 0 0 50px;
     display: block;
+    outline: none;
 }
 #toSimple:hover {
     background: #01aadd;
