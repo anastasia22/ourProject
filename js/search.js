@@ -6,16 +6,16 @@ function addSearchPanel() {
     $('<div>').attr('id', 'searchWrapper').addClass('search-wrapper').insertAfter('#header');
 
     frm = '<form><input id="searchField" type="text" placeholder="Search..." class="search-input">' +
-        '<input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked">' +
+        '<div class="label-wrapper"><input type="radio" name="factor" value="Title" class="search-radio" id="movieTitle" checked="checked">' +
         '<label class="search-radio-label" id="SOME" for="movieTitle">Movie title</label>' +
 
     '<input type="radio" name="factor" class="search-radio" id="actors">' +
         '<label class="search-radio-label" for="actors">Actors</label>' +
 
     '<input type="radio" name="factor" class="search-radio" id="advanced">' +
-        '<label class="search-radio-label" id="advSearch" for="advanced">Advanced</label>' +
+        '<label class="search-radio-label" id="advSearch" for="advanced">Advanced</label></div>' +
 
-    '<button class="search-button">GO!</button> </form>';
+    '<button class="search-button">GO!</button><div class="clear-fix" style="clear: both;"></div></form>';
 
     $('#searchWrapper').append(frm);
     $('form').submit(function (event) {
@@ -43,9 +43,9 @@ function controlAdvanced() {
         collapsH = 100;
     if ($('#advanced').prop('checked') == true) {
         return (function () {
-            $('#searchWrapper').animate({
-                height: '150px'
-            }, 300);
+//            $('#searchWrapper').animate({
+//                height: '150px'
+//            }, 300);
             addAdvanced();
         })();
     } else {
@@ -173,7 +173,7 @@ function addAdvanced() {
 
 
             $('#searchWrapper').find(':first-child').remove();
-            list += '<div class="srch-buttons-wrapper"><button id="toSimple">to simple<br>search</button><button id="advSearchBtn" class="search-button">SEARCH</button></div>';
+            list += '<div class="srch-buttons-wrapper"><button id="toSimple">to simple<br>search</button><button id="advSearchBtn" class="search-button">GO!</button></div><div style="clear: both; margin-top: 10px;"></div>';
             $('<div>', {
                 id: 'advancedWrapper',
                 style: 'clear: both;',
@@ -185,8 +185,8 @@ function addAdvanced() {
             $('#toSimple').click(function () {
                 $('#searchWrapper').remove();
                 addSearchPanel();
-                $('#searchWrapper').css({opacity: '1', height: '100px'});
-                favSectionTop(100);
+                $('#searchWrapper').css({opacity: '1'});
+                favSectionTop();
             });
         }
     }
@@ -232,9 +232,17 @@ function searchBtnEvents() {
 
 
 //correct a top position of favSection due to searchWpapper height
-function favSectionTop(height) {
+function favSectionTop() {
     var totalHight, headerHeight = document.getElementById('header').offsetHeight;
-    totalHight = headerHeight + height + 'px';
+    var srch = document.getElementById('searchWrapper');
+    var adv = document.getElementById('advancedWrapper');
+    if (adv) {
+        totalHight = headerHeight + adv.offsetHeight + 'px';
+    } else if (srch) {
+        totalHight = headerHeight + srch.offsetHeight + 'px';
+    } else if (!adv && !srch) {
+        totalHight = headerHeight + 'px';
+    }
     if ($('#favSection')) {
         $('#favSection').animate({
             'top': totalHight

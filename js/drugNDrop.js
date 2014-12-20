@@ -8,13 +8,15 @@ function startDrag(event) {
 
 function drop(event) {
     var favMovies=[];
+    document.getElementById('favSection').style.border = 'none';
+    $('#favSection').css({border : 'none'});
 
     if(checkFav()) {
 
     } else {
-        alert('already added');
-        allowDrop(event);
-        return;
+        customAlert('This movie has been already added.');
+        event.preventDefault();
+        return false;
     }
 
     if( !(localStorage.getItem('favMovies')) ) {
@@ -26,6 +28,7 @@ function drop(event) {
         favMovies.push(dragMovie);
         localStorage.setItem('favMovies',JSON.stringify(favMovies));
     }
+    customAlert('Movie added to favorites.')
     addFavMovieBlock(dragMovie);
     allowDrop(event);
 
@@ -48,7 +51,7 @@ function favMovies() {
 function addFavMovieBlock(movie) {
     var str = '<div class="favMovieBlock" fav-id="' + movie.id + '">' +
         '<button class="favDelBtn"></button>' +
-        '<img class="favMovieImg" src="' + movie.poster + '">' +
+        '<img class="favMovieImg" src="' + movie.poster + '"  ondragover="allowDrop(event)" ondragleave="handleDragLeave(event)">' +
         '<div class="favInfoBlock">' +
         '<p>' + movie.title + '</p>' +
         '</div></div>';
@@ -58,8 +61,24 @@ function addFavMovieBlock(movie) {
 }
 
 function allowDrop(event) {
+
+    event.stopPropagation();
     event.preventDefault();
+
+        $('#favSection').css({border: '2px dashed #7C7B7B'});
+
+    return false;
+
 }
+function handleDragLeave(event) {
+    $('#favSection').css({border : 'none'});
+    event.stopPropagation();
+    event.preventDefault();
+
+    return false;
+}
+
+
 
 function makeDraggable(elem) {
     $('.singleMovieBlock').attr({draggable : true, ondragstart : 'startDrag(event)'});
@@ -67,7 +86,7 @@ function makeDraggable(elem) {
 
 function makeDroppable() {
     var a=$('#favSection');
-    $('#favSection').attr({ondrop : 'drop(event)', ondragover : 'allowDrop(event)'});
+    $('#favSection').attr({ondrop : 'drop(event)', ondragover : 'allowDrop(event)',ondragleave : 'handleDragLeave(event)'});
 }
 
 function addHovEvent() {
@@ -129,3 +148,6 @@ function checkFav() {
     }
     return true;
 }
+
+
+

@@ -1,5 +1,5 @@
 .search-wrapper {
-    height: 0px;
+    height: auto;
     opacity: 0;
     clear: both;
     background: #C5E2FF;
@@ -9,7 +9,7 @@
 } 
 
 .search-input {
-    margin: 32px 14px 0 30px;
+    margin: 32px 2% 15px 4%;;
     border: none;
     height: 39px;
     width: 430px;
@@ -37,20 +37,23 @@
 
 .search-radio-label { /****  delete #searchWrapper selector  *****/
     height: 39px;
-    width: 100px;
+    width: 28.57142857142857%;
     cursor: pointer;
     background: #6EC1E0;
-    padding: 11px;
+    padding: 11px 0;
     float: left;
     color: #fff;
     text-align: center;
-    margin-top: 32px;
     line-height: 21px;
 }
 
+.label-wrapper {
+    width: 350px;
+    height: 40px;
+    margin: 0 0 0 7%;
+}
 .search-radio-label:first-of-type {
-    width: 150px;
-    margin-left: 0.9265959921016958%;
+    width: 42.85714285714286%;
 }
 
 .search-radio-label:hover {
@@ -78,6 +81,9 @@ input[type="radio"]:checked + .search-radio-label {
     background: #FF8D00;
 }
 
+.clear-fix {
+    height: 30px;
+}
 /** advanced **/
 
 .genre {
@@ -116,23 +122,24 @@ input[type="radio"]:checked + .search-radio-label {
     background-size: 7px 7px;
 }
 #advancedWrapper {
-    margin: 0 auto;
-    width: 90%;
+    width: 100%;
+    padding: 0 0 0 5%;
+    background: #C5E2FF;
 }
 
 .search-selects {
     float: left;
-    margin-left: 2%;
+    margin: 0 0 10px 2%;
 }
 
 .select {
     height: 24px;
-    width: 140px;
+    width: 170px;
     margin-right: 10px;
     border: none;
     outline: none;
     color: #006E96;
-    padding-left: 10px;
+    padding-left: 3px;
 /*    background: url(../images/title-arrow.png) no-repeat right #fff;*/
     overflow: hidden;
 }
@@ -140,14 +147,18 @@ input[type="radio"]:checked + .search-radio-label {
 .search-genres {
     width: 59%;
     float: left;
+    padding-bottom: 10px;
 }
 
 #advSearchBtn {
     width: 100px;
+    height: 39px;
     font-size: 1em;
     margin: 0;
-    margin: 28px 0 0 50px;
+    margin: 28px 0 0 5.317129558242242%;
     display: block;
+    margin-bottom: 10px;
+    float: left;
 }
 
 .cat-label {
@@ -169,9 +180,10 @@ input[type="radio"]:checked + .search-radio-label {
     color: #fff;
     width: 100px;
     height: 39px;
-    margin: 28px 0 0 50px;
+    margin: 28px 0 0 5.317129558242242%;
     display: block;
     outline: none;
+    float: left;
 }
 #toSimple:hover {
     background: #01aadd;
@@ -179,4 +191,5 @@ input[type="radio"]:checked + .search-radio-label {
 
 .srch-buttons-wrapper {
     float: left;
+    width: 15.95138867472673%;
 }

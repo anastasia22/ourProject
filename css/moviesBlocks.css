@@ -83,3 +83,98 @@ img.miniMovieImg {
     margin-left: 15%;
     font-size: 1.5em;
 }
+
+@media only screen  and (max-width: 1153px) {
+    div.singleMovieBlock {
+        position: relative;
+        width: 210px;
+        height: 320px;
+        float: left;
+        text-align: center;
+        margin: 10px 10px 10px 10px;
+    }
+    div.infoBlock {
+        font-size: 0.7em;
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+    }
+    div.infoBlock:hover {}
+}
+@media only screen and (max-width: 970px) {
+    div.singleMovieBlock {
+        position: relative;
+        width: 180px;
+        height: 250px;
+        float: left;
+        text-align: center;
+        margin: 10px 10px 10px 28px;
+    }
+    div.infoBlock {
+        font-size: 0.7em;
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+    }
+    div.infoBlock:hover {}
+}
+@media only screen and (max-width: 740px) {
+    div.singleMovieBlock {
+        position: relative;
+        width: 150px;
+        height: 230px;
+
+        float: left;
+        text-align: center;
+        margin: 10px 10px 10px 40px;
+    }
+    div.infoBlock {
+        font-size: 0.7em;
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+    }
+    div.infoBlock:hover {}
+    #scrollTopBtn {
+        display: none ;
+    }
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    div.singleMovieBlock {
+        position: relative;
+        width: 130px;
+        height: 190px;
+        float: left;
+        text-align: center;
+        margin: 10px;
+    }
+    div.infoBlock {
+        font-size: 0.7em;
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+    }
+    div.infoBlock:hover {}
+    .toTopBtn {
+        position: fixed;
+        top: 0;
+        left: 5px;
+        height: 100%;
+        width: 9%;
+
+        background: #cccccc;
+    }
+}
