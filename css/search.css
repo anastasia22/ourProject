@@ -32,7 +32,7 @@
 */
 
 .search-radio {
-    display: block;
+    display: none;
 }
 
 .search-radio-label { /****  delete #searchWrapper selector  *****/
