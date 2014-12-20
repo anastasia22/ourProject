@@ -207,15 +207,15 @@ function singleMoviePage (movie) {
             <section class="screens">\
               <span class="sp_title block_title">Screenshots</span>\
               <section class="border_class carousel smCarousel">\
-                <section class="control" data-direction="previous">\
+                <section class="control smControl" data-direction="previous">\
                   <section class="arrow prev-ar prev-unable"></section>\
                 </section>\
-                <section class="slider"><section class="img-container">\
+                <section class="slider smSlider"><section class="img-container smImgContainer">\
                 <% _.each(singleMovie.images, function(el,i){ %>\
-                    <img class="screenshot" src="<%= largeImageUrl %><%= el %>" data-numb="<%= i %>">\
+                    <img class="screenshot smScreenshot" src="<%= largeImageUrl %><%= el %>" data-numb="<%= i %>">\
                 <% }) %>\
                 </section></section>\
-                <section class="control" data-direction="next">\
+                <section class="control smControl" data-direction="next">\
                   <section class="arrow next-ar next-able"></section>\
                 </section>\
               </section>\
@@ -227,7 +227,11 @@ function singleMoviePage (movie) {
               <section class="actors">\
                 <% _.each(singleMovie.actors, function(el){ %>\
                   <section class="single_actor singleActorBlock" id="<%=el.id%>">\
-                    <img src="<%= smallImageUrl %><%= el.profile_path %>">\
+                    <% if (el.profile_path){ %>\
+                      <img src="<%= smallImageUrl %><%= el.profile_path %>">\
+                    <%} else {%>\
+                      <img src="images/no-photo1.png">\
+                    <% } %>\
                     <span class="act_name"><%= el.name %></span>\
                     <span class="act_role"><%= el.character %></span>\
                   </section>\
@@ -252,15 +256,15 @@ function singleMoviePage (movie) {
           </section>\
           <section id="mask"></section>\
           <section id="modwin" class="carousel lgCarousel">\
-            <section class="lcontrol lft control" data-direction="previous">\
+            <section class="control lgControl lft" data-direction="previous">\
               <section class="arrow prev-ar prev-unable"></section>\
             </section>\
-            <section class="lslider slider"><section class="limg-container img-container">\
+            <section class="lgSlider slider"><section class="img-container lgImgContainer">\
               <% _.each(singleMovie.images, function(el, i){ %>\
-                <img class="lscreenshot screenshot" src="<%= hyperImageUrl %><%= el %>" data-direction="next">\
+                <img class="screenshot lgScreenshot " src="<%= hyperImageUrl %><%= el %>" data-direction="next">\
               <% }) %>\
             </section></section>\
-            <section class="lcontrol rgh control" data-direction="next">\
+            <section class="control lgControl rgh" data-direction="next">\
               <section class="arrow next-ar next-able"></section>\
             </section>\
           </section>\

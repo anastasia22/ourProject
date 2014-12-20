@@ -121,42 +121,68 @@
     width:100%;
     margin: 0 auto;
 }
-#singleMovie .carousel{
+#singleMovie .smCarousel{
     width: 100%;
 }
-#singleMovie .carousel:before {
+#singleMovie .smCarousel:before {
     display: block;
     content: " ";
 }
-#singleMovie .carousel:after {
+#singleMovie .smCarousel:after {
     display: block;
     content: " ";
     clear: both;
 }
 #singleMovie .slider{
-    float:left;
     overflow: hidden;
+}
+#singleMovie .smSlider{
+    float:left;
     width: 89%;
+}
+#singleMovie .lgSlider{
+    height:439px;
+    width: 100%;
 }
 #singleMovie .img-container{
     display: inline-block;
-    /*min-height:189px;*/
     position:relative;
+}
+#singleMovie .lgImgContainer{
+    height:439px;
 }
 #singleMovie .screenshot{
     float: left;
-    margin: 10px;
     display:block;
-    width:300px;
     cursor:pointer;
 }
+#singleMovie .smScreenshot{
+    margin: 10px;
+    width:300px;
+}
+#singleMovie .lgScreenshot{
+    width:780px;
+    margin:0px;
+}
 #singleMovie .control{
-    float:left;
-    font-weight: bold;
     height: 44px;
     width: 5%;
-    margin-top: 75px;
     min-width: 29px;
+}
+#singleMovie .smControl{
+    float:left;
+    margin-top: 75px;
+}
+#singleMovie .lgControl{
+    position:absolute;
+    z-index: 7;
+    top: 197.5px;
+}
+#singleMovie .lgControl.lft {
+    left:0;
+}
+#singleMovie .lgControl.rgh {
+    right:0;
 }
 #singleMovie .arrow{
     width:29px;
@@ -184,12 +210,10 @@
 #singleMovie .next-able:hover {
     background: url("../images/arrow.png") no-repeat right bottom;
 }
-
 #singleMovie .actors{
     margin: 0 auto;
     width: 100%;
 }
-
 #singleMovie .single_actor{
     width:92px;
     height:207px;
@@ -211,7 +235,6 @@
     display:block;
     clear:both;
 }
-
 #singleMovie .act_name {
     display: inline-block;
     font-size: 0.8rem;
@@ -220,7 +243,6 @@
     text-transform: uppercase;
     width: 100%;
 }
-
 #singleMovie .act_role{
     display: inline-block;
     font-size: 0.75rem;
@@ -228,10 +250,10 @@
     text-align: center;
     width: 100%;
 }
-#singleMovie .act_img{
-    
+#singleMovie .similar{
+    padding: 1%;
+    cursor:pointer;
 }
-
 #singleMovie .similar:before {
     display: block;
     content: " ";
@@ -241,9 +263,8 @@
     content: " ";
     clear: both;
 }
-#singleMovie .similar{
-    padding: 1%;
-    cursor:pointer;
+#singleMovie .similar:hover{
+    background-color: rgba(110, 193, 224, 0.2);
 }
 #singleMovie .similar span{
     display:block;
@@ -256,7 +277,6 @@
 #singleMovie .similar>section{
     margin-left:25%;
 }
-
 #mask {
     position:fixed;
     top:0;
@@ -267,39 +287,10 @@
     width:100%;
     height:100%;
 }
-
-#singleMovie #modwin {
+#modwin {
     position:fixed;
     width:780px;
     display:none;
     z-index:5;
 }
 
-#modwin .lslider{
-    overflow: hidden;
-    height:439px;
-    width: 100%;
-}
-#modwin .limg-container{
-    display: inline-block;
-    position:relative;
-    height:439px;
-}
-#modwin .lscreenshot{
-    float: left;
-    display:block;
-    width:780px;
-    cursor:pointer;
-    margin:0px;
-}
-#modwin .lcontrol{
-    position:absolute;
-    z-index: 7;
-    top: 122.5px;
-}
-#modwin .lcontrol.lft {
-    left:0;
-}
-#modwin .lcontrol.rgh {
-    right:0;
-}

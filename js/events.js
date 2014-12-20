@@ -113,13 +113,14 @@ function addEventsToMovie(){
     //func that shows modal large carousel
 	function showLightRoom(){
 	//setting position and width for large carousel
-	var numb = $(this).data('numb')
-	var lgImageContainer = $('.lgCarousel').find($('.img-container'));;
-	var lgImages = lgImageContainer.find('.lscreenshot');
-	var lgStep = lgImages.outerWidth(true);
-	var lgTotalLength = parseInt(lgImages.css('width')) * lgImages.length;
-	lgImageContainer.css({'width': lgTotalLength,'right': numb*lgStep});
-	createModal()
+		var numb = $(this).data('numb')
+		var lgImageContainer = $('.lgCarousel').find($('.img-container'));;
+		var lgImages = lgImageContainer.find('.lgScreenshot');
+		var lgStep = lgImages.outerWidth(true);
+		var lgTotalLength = parseInt(lgImages.css('width')) * lgImages.length;
+		lgImageContainer.css({'width': lgTotalLength,'right': numb*lgStep});
+		lgImages.on('click', scrollCarousel);
+		createModal()
 	}
     //creating and inserting modal window and mask
 	function createModal() {
@@ -132,14 +133,13 @@ function addEventsToMovie(){
 	    mask.fadeIn(400);    
 	    mask.fadeTo("slow",0.8);    
 	    modwin.fadeIn(2000); 
-	    mask.click(function () {
+	    mask.on('click', function () {
 	        mask.hide();
 	        modwin.hide();
     	});   
 	}
     //function for sliding carousel
 	function scrollCarousel(){
-
 		var slider = $(this).closest('.carousel').find('.slider');
 		var img_cont = $(this).closest('.carousel').find('.img-container');
 		var images = img_cont.find('.screenshot');
@@ -152,8 +152,7 @@ function addEventsToMovie(){
 	    var direction=$(this).data('direction');
 	    var diffWidth = imagesWidth - sliderWidth;
 	    var lastStep = diffWidth - imagesRight;
-	    console.log(step,lastStep,imagesRight)
-
+	    console.log(direction)
 	    if (direction == 'previous' && imagesRight > step) {
 	        nextArrow.removeClass('next-unable').addClass('next-able');
 	        img_cont.stop().animate({"right": "-=" + step + "px" }, "slow","linear")
@@ -170,8 +169,6 @@ function addEventsToMovie(){
 	    };
 	    return
 	}
-    
-
 };  
 
 //toggle for help page

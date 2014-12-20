@@ -7,6 +7,7 @@
 
 
 @media only screen and (max-width: 970px) {
+    /*single movie page styles*/
     #singleMovie .trailer {
         width: 100%;
     }
@@ -15,6 +16,7 @@
         height: auto;
         overflow: auto;
     }
+    /*end of single movie page styles*/
 }
 
 @media only screen and (min-width: 741px) and (max-width: 1000px) {
@@ -113,8 +115,7 @@
     #singleMovie .border_class {
         padding: 10px;
     }
-    
-    
+   
     /*end of single movie page styles*/
 }
 
@@ -128,7 +129,11 @@
     .search-button {
         margin: 15px 40% 0;
     }
-    
+    /*single movie page styles*/
+    #singleMovie .similar>img {
+        width:30%;
+    }
+    /*end of single movie page styles*/
 }
 
 
