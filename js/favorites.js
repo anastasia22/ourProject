@@ -34,9 +34,11 @@ function addFavBlock() {
     $('#mainContent').animate({'width':'75%','float':'left'}, 300);
     //$(favBlock).insertAfter( "#header" );
     /*adds favorites block*/
+
     window.setTimeout(function(){
-        
+
       //append favBlock due to header and searchWrapper common height !!!! 'top': headerPlusSearchHeight()
+
     $(favBlock).insertAfter( "#header" ).animate({'opacity': '1'}, 400,function() {
 
         makeDroppable();
@@ -50,7 +52,7 @@ function addFavBlock() {
         });
 
     });
-        
+
     }, 200);
 
 

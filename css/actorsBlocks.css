@@ -52,3 +52,8 @@
     margin: auto;
     margin-top: 250px;
 }
+#Actors img.miniActorImg.noPhoto{
+    margin-top: 10%;
+    height: auto;
+    width: auto;
+}

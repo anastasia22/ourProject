@@ -94,7 +94,7 @@ function  actorsTempl(actors,listName){
     for (var i=0; i < actors.length; i++) {
         actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">';
         if(actors[i].profile_path == null) {
-            actorsBlock+='<img class="miniActorImg" src="images/no-photo.png">';
+            actorsBlock+='<img class="miniActorImg noPhoto" src="images/no-photo.png">';
         } else{
             actorsBlock+='<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">';
         }
