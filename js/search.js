@@ -64,7 +64,7 @@ function addAdvanced() {
         18897 : 'Jackie Chan',12835: 'Vin Diesel',2888 : 'Will Smith',62 : 'Bruce Willis',2963 : 'Nicolas Cage',4491 : 'Jennifer Aniston',16483 : 'Sylvester Stallone',
         17276 : 'Gerard Butler',13240 : 'Mark Wahlberg',8167: 'Paul Walker',6384 : 'Keanu Reeves',6885 : 'Charlize Theron',3896 : 'Liam Neeson',1003 : 'Jean Reno',
         380 : 'Robert De Niro',934 : 'Russell Crowe',72466 : 'Colin Farrell',1844 : 'Til Schweiger',10980 : 'Daniel Radcliffe',192: 'Morgan Freeman',1100 : 'Arnold Schwarzenegger',
-        109 : 'Elijah Wood',57755 : 'Woody Harrelson',63312 : 'Yvonne Strahovski',19292 : 'Adam Sandler'};
+        109 : 'Elijah Wood',57755 : 'Woody Harrelson',63312 : 'Yvonne Strahovski',19292 : 'Adam Sandler',28782 : 'Monica Bellucci',84497 : 'Aaron Paul'};
     if ($.contains(searchwrap, advwrap)) {
         return false;
     } else {

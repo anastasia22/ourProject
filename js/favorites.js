@@ -43,13 +43,6 @@ function addFavBlock() {
 
         makeDroppable();
         favMovies();
-        $('#favSection').hover(function() {
-            this.style.background = '#0382A8';
-            $('body').css({overflow : 'hidden'});
-        }, function() {
-            this.style.background = '#C5E2FF';
-            $('body').css({overflow : 'auto'});
-        });
 
     });
 

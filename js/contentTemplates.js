@@ -126,7 +126,7 @@ function  singleActorTempl(actor) {
         '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Born </span>' + actor.birthday + ' in ' + actor.place_of_birth + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ actor.also_known_as + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity + '</p></div>';
+        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity.toFixed(2) + '</p></div>';
     content +='<div class="biography"><p>' + actor.biography + '</p></div>';
 
     stopAnimation();
