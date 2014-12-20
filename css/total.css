@@ -1,0 +1,13 @@
+#customAlert {
+    position: fixed;
+    top: 40%;
+    left: 35%;
+    overflow: auto;
+    border-radius: 6px;
+    background: #01aadd;
+    z-index: 25;
+    padding: 20px;
+    font-size: 1.4em;
+    opacity: 0;
+
+}

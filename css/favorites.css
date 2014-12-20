@@ -14,7 +14,9 @@
     min-height: 600px;
     overflow: hidden;
 }
-
+#favSection.over{
+    background: #c0f;
+}
 /*#favSection.fix-fav {
     position: fixed;
     left: 70.01%;
