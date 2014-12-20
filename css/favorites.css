@@ -16,20 +16,13 @@
     overflow-x: visible;
     
 }
-#favSection.over{
-    background: #c0f;
-}
+
 #favSection.fix-fav {
     position: fixed;
     left: 70.01%;
     width: 19.99%;
 }
-.wrp {
-    position: relative;
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-}
+
 #favSection .favMovieBlock {
     position: relative;
     width: 70%;

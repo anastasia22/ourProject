@@ -28,7 +28,7 @@ function checkFavorites() {
 //adds favorite block
 function addFavBlock() {
 
-    var favBlock = '<div id=\"favSection\"><div class="wrp"></div></div>';
+    var favBlock = '<div id=\"favSection\"></div>';
 
     /*shortens main block */
     $('#mainContent').animate({'width':'75%','float':'left'}, 300);
