@@ -76,6 +76,10 @@ function moviesTemplate(movies,listName) {
        $('#loader').remove(); 
     }
 
+    if(listName) {
+        if(listName.split(' ')[0] == 'Search')listName = listName + movies.length;
+    }
+
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks(movies));
         addEvents();
@@ -107,7 +111,9 @@ function  actorsTempl(actors,listName){
     if($('#loader')){
         $('#loader').remove();
     }
-
+    if(listName.split(' ')[0] == 'Search') {
+        listName = listName + actors.length;
+    }
     actorsBlock += '<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>';
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
@@ -124,10 +130,10 @@ function  singleActorTempl(actor) {
 
     content='<div><image class="actorPic" src="http://image.tmdb.org/t/p/w300'+actor.profile_path+'"></div>' +
         '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Born </span>' + actor.birthday + ' in ' + actor.place_of_birth + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ actor.also_known_as + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + actor.popularity + '</p></div>';
-    content +='<div class="biography"><p>' + actor.biography + '</p></div>';
+        '<p>' + '<span class="infoTags">' + 'Born </span>' + (actor.birthday || 'no info') + ' in ' + (actor.place_of_birth || 'no info') + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ (actor.also_known_as || 'no info') + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + (actor.popularity.toFixed(2)  || 'no info') + '</p></div>';
+    content +='<div class="biography"><p>' + (actor.biography || 'no info') + '</p></div>';
 
     stopAnimation();
     $('#loaderImage').remove();

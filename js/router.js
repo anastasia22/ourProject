@@ -12,6 +12,8 @@ var MainRouter = Backbone.Router.extend({
         'subMenu2013': 'LastYear',
         'subMenuKids': 'ForKids',
         'subMenuComedy' : 'Comedy',
+        'subMenuHorror' : 'Horror',
+        'subMenuFantasy' : 'Fantasy',
         'movies+:query' : 'movieSearch',
         'actors+:query' : 'actorSearch',
         'movie+:query' : 'sinMoviePage',
@@ -45,6 +47,14 @@ var MainRouter = Backbone.Router.extend({
     Comedy : function() {
         $('#mainContent').find(':first-child').remove();
         mostPopularComedies();
+    },
+    Horror : function(){
+        $('#mainContent').find(':first-child').remove();
+        bestHorrors();
+    },
+    Fantasy : function(){
+        $('#mainContent').find(':first-child').remove();
+        bestFantasy();
     },
     movieSearch : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];

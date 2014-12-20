@@ -29,7 +29,10 @@ div.infoBlock {
     position: relative;
     margin: 0 auto;
 }
-
+#Movies .searchResInfo{
+    color: #01aadd;
+    font-size: 1.1em;
+}
 #Movies h1 {
     margin: 20px 22px 8px;
     color: #056E8D;
@@ -61,7 +64,7 @@ img.miniMovieImg {
     height: 100%;
     width: 9%;
 
-    background: #cccccc;
+    background: #1396BF;
 }
 .toTopBtn:hover{
     opacity: 0.5;

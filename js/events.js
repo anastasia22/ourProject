@@ -40,7 +40,8 @@ function searchBy() {
 function handlEvent(event) {
 	var target=event.target || event.srcElement;
 	var menu={'menuHome' : homeTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
-	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies};
+	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies,
+		'subMenuHorror' : bestHorrors,'subMenuFantasy' : bestFantasy};
 
 	for (var temp in menu) {
 		if(temp == target.id) {
@@ -82,7 +83,7 @@ function addEvents() {
 
 function addEventsToActors() {
 	var infoBlock;
-	$(".singleActorBlock").hover(function() {
+	$("#Actor .singleActorBlock").hover(function() {
 			infoBlock=$(this).find(':last-child')[0];
 
 			$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
