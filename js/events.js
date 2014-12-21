@@ -19,18 +19,20 @@
 			var autoHeight=$('#searchWrapper').height();
 			$('#searchWrapper').css({height: '0px',opacity : 0}).animate({height: autoHeight,opacity: 1}, 300,function(){
 				$('#searchWrapper').css('height','auto');
+				favSectionTop(); // СТАЛО ТУТ
 			});
 			//$('#searchWrapper').css({opacity : 1});
-            favSectionTop();
+            //favSectionTop(); БУЛО ТУТ
 		}else {
 			$('#searchWrapper').animate({height: 'toggle',opacity: 0}, 'slow',function(){
 				$('#searchWrapper').remove();
+				favSectionTop();  //  СТАЛО ТУТ
 			});
 
-            favSectionTop();
+           // favSectionTop();  БУЛО ТУТ
 		}
 	});
-
+	homeTemplate();
 })();
 function searchBy() {
 	$('.search-button').on('click',function() {
