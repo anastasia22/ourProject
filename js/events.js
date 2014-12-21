@@ -31,6 +31,7 @@ function searchBy() {
 		$('#mainContent').find(':first-child').remove();
 		if($('input[name=factor]:checked').val() == 'Title'){
 			searchByTitle();
+
 		} else {
 			searchByActor();
 		}
@@ -83,7 +84,7 @@ function addEvents() {
 
 function addEventsToActors() {
 	var infoBlock;
-	$("#Actor .singleActorBlock").hover(function() {
+	$("#Actors .singleActorBlock").hover(function() {
 			infoBlock=$(this).find(':last-child')[0];
 
 			$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);

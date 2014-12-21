@@ -89,36 +89,3 @@ Backbone.history.start();
 
 
 
-
-/*
-
-function checkUrl() {
-    var searchQuery;
-    if(!document.URL.split('#')[1]) {
-        homeTemplate();
-    }else if(document.URL.split('#')[1] == 'menuMovies') {
-        defaultMovies();
-    }else if(document.URL.split('#')[1] == 'subMenuPop') {
-        mostPopular();
-    }else if(document.URL.split('#')[1] == 'subMenu2013') {
-        mostPopular2013();
-    }else if(document.URL.split('#')[1] == 'subMenuKids') {
-        popular4Kids();
-    }else if(document.URL.split('#')[1] == 'subMenuComedy') {
-        mostPopularComedies();
-    }else if(document.URL.split('#')[1] == 'menuHelp') {
-        getHelp();
-    }else if(document.URL.split('#')[1] == 'menuHome') {
-        homeTemplate();
-    }else if(document.URL.split('#')[1].split('+')[0] == 'actors') {
-         searchQuery=document.URL.split('#')[1].split('+')[1];
-        var titleSearch = 'search/person?query=' + searchQuery;
-        $('#mainContent').find(':first-child').remove();
-        findActors(titleSearch,searchQuery);
-    }else if(document.URL.split('#')[1].split('+')[0] == 'movies') {
-         searchQuery=document.URL.split('#')[1].split('+')[1];
-        var titleSearch = 'search/movie?query=' + searchQuery;
-        $('#mainContent').find(':first-child').remove();
-        sendRequest(titleSearch,searchQuery);
-    }
-}*/
