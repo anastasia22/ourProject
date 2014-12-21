@@ -15,7 +15,7 @@ function addSearchPanel() {
     '<input type="radio" name="factor" class="search-radio" id="advanced">' +
         '<label class="search-radio-label" id="advSearch" for="advanced">Advanced</label></div>' +
 
-    '<button class="search-button">GO!</button><div class="clear-fix" style="clear: both;"></div></form>';
+    '<button class="search-button">FIND</button><div class="clear-fix" style="clear: both;"></div></form>';
 
     $('#searchWrapper').append(frm);
     $('form').submit(function (event) {
@@ -27,6 +27,10 @@ function addSearchPanel() {
     labels[1].style.borderRight = '1px solid rgba(238, 238, 238, 0.34)';
 
     //advanced search
+/*    $('input[name="factor"]:radio').on('click',function(){
+
+    });*/
+
     $('input[name="factor"]:radio').click(function () {
         controlAdvanced();
     });
@@ -46,12 +50,20 @@ function controlAdvanced() {
 //            $('#searchWrapper').animate({
 //                height: '150px'
 //            }, 300);
-            addAdvanced();
+
+            $('#searchWrapper').find(':first-child').animate({opacity : 0},300,function(){
+                $('#searchWrapper').find(':first-child').remove();
+                addAdvanced();
+            });
+
+
         })();
     } else {
         return (function () {
-            $('#advancedWrapper').animate({opacity: '0'});
-            $('#advancedWrapper').remove();
+            $('#advancedWrapper').animate({opacity: '0'},500,function(){
+                $('#advancedWrapper').remove();
+            });
+
         })();
     }
 }
@@ -70,10 +82,16 @@ function addAdvanced() {
         38406: 'Paris Hilton',
         4173: 'Anthony Hopkins',
         206: 'Jim Carrey',
+        10297: 'Matthew McConaughey',
+        51329 : 'Bradley Cooper',
+        190: 'Clinton Eastwood',
+        6968: 'Hugh Jackman',
         9642: 'Jude Law',
         2461: 'Mel Gibson',
         2231: 'Samuel L. Jackson',
         5292: 'Denzel Washington',
+        524: 'Natalie Portman',
+        976: 'Jason Statham',
         3131: 'Antonio Banderas',
         287: 'Brad Pitt',
         1892: 'Matt Damon',
@@ -90,6 +108,7 @@ function addAdvanced() {
         139: 'Uma Thurman',
         1245: 'Scarlett Johansson',
         11701: 'Angelina Jolie',
+        16644: 'Dolph Lundgren',
         8891: 'John Travolta',
         18897: 'Jackie Chan',
         12835: 'Vin Diesel',
@@ -174,20 +193,29 @@ function addAdvanced() {
 
 
             $('#searchWrapper').find(':first-child').remove();
-            list += '<div class="srch-buttons-wrapper"><button id="toSimple">BACK<br>to simple</button><button id="advSearchBtn" class="search-button">GO!</button></div><div style="clear: both; margin-top: 10px;"></div>';
+
+            list += '<div class="srch-buttons-wrapper"><button id="toSimple">BACK<br></button>' +
+            '<button id="advSearchBtn" class="search-button">SEARCH</button></div>' +
+            '<div style="clear: both; margin-top: 10px;"></div>';
             $('<div>', {
                 id: 'advancedWrapper',
                 style: 'clear: both;',
                 html: list
-            }).appendTo('#searchWrapper');
+            }).appendTo('#searchWrapper').css({opacity : 0}).animate({opacity : 1},200);
             searchBtnEvents();
             favSectionTop(150);
             // REMOVE ADVANCED AND CREATE SIMPLE SEARCH
             $('#toSimple').click(function () {
-                $('#searchWrapper').remove();
-                addSearchPanel();
+                $('#advancedWrapper').animate({height: 'toggle',opacity: '0'},'slow',function(){
+                    $('#advancedWrapper').remove();
+                    $('#searchWrapper').remove();
+                    addSearchPanel();
+                    $('#searchWrapper').css({opacity: '1'});
+                    favSectionTop();
+                });
+/*                addSearchPanel();
                 $('#searchWrapper').css({opacity: '1'});
-                favSectionTop();
+                favSectionTop();*/
             });
         }
     }
@@ -225,8 +253,15 @@ function searchBtnEvents() {
         }
         ///
         url += '&sort_by=' + $('input[name=sort]:checked').val();
-        $('#mainContent').find(':first-child').remove();
-        sendRequest(url, 'ganres');
+/*        $('#mainContent').find(':first-child').remove();
+        sendRequest(url, 'ganres');*/
+
+        $('#advancedWrapper').animate({height : 'toggle', opacity: '0'},500,function(){
+            $('#advancedWrapper').remove();
+            $('#searchWrapper').remove();
+            $('#mainContent').find(':first-child').remove();
+            sendRequest(url, 'ganres');
+        });
     });
 }
 
@@ -250,3 +285,4 @@ function favSectionTop() {
         }, 300);
     }
 }
+
