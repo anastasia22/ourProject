@@ -12,34 +12,24 @@ var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 
 // HOME BLOCK
 function homeTemplate() {
-    var some = {
-        1: '<img src="news/JessicaAlba.jpg" class="newsPic">',
-        2: '<img src="news/EdwardNorton.jpg" class="newsPic">',
-        3: '<img src="news/AlPacino.jpg" class="newsPic">'
-    };
-    var shortInfo = {
-        1: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>',
-        2: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>',
-        3: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>'
-    };
-
-    var newsBlocks= _.template('<div id="Home">' +
-    '<%_.each(obj,function(value,key){ %>' +
-    '<section class="newsBlocks">' +
-    '<%=value%>' +
-    '' +
-    '</section>' +
-    '<%})%>'
-    );
-
-
-    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
-    newsBlocks += '</div>';
-
+    var str;
+    str += '<div id="News">';
+    str += '<div class="singleNewsBlock"><img class="newsPic" src="news/Mark_Hamill.jpg">';
+    str += '<div class="newsInfo"><h1 class="newsHeader">Mark Hamill Makes Surprise Appearance at Star Wars Live Reading</h1>' +
+    '<p class="newsArticle">Mark Hamill sent Star Wars fans into a frenzy when he was revealed as the secret cast member ' +
+    'at the live reading of The Empire Strikes Back on Thursday night (18Dec14).' +
+    'Director and Live Read series organizer Jason Reitman had previously announced that Breaking Bad star Aaron Paul ' +
+    'would be playing Luke Skywalker and J.K. Simmons would portray Darth Vader at the performance in Los Angeles. ' +
+    'Reitman had kept the remainder of the cast a secret, and fans leaped to their feet and screamed when he introduced ' +
+    'Hamill, the original Luke Skywalker, onto the stage to play two roles - the evil Emperor Palpatine and Jedi warrior' +
+    ' Obi Wan-Kenobi.' +
+        'The cast was rounded out by Jessica Alba as Princess Leia, Ellen Page as Han Solo, The Office star Rainn Wilson ' +
+    'as Chewbacca, and Stephen Merchant as C-3PO. Reitman contributed whistling and beeping noises as the R2-D2 droid.' +
+        'In the Live Read series, the cast is not allowed to prepare ahead of the performance and the actors first read the script onstage.</p></div>';
     $('#mainContent').find(':first-child').remove();
-
+    str += '</div>';
    // document.getElementById('mainContent').innerHTML = newsBlocks(some);
-    $('#mainContent').append(newsBlocks(some));
+    $('#mainContent').append(str);
 }
 
 //HELP BLOCK
