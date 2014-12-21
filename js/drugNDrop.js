@@ -4,7 +4,7 @@ function startDrag(event) {
     //var sd = event.target.parentNode;
     var sd = $(event.target).closest(".singleMovieBlock");
     dragMovie.id = $(sd).attr("id");
-    console.log(dragMovie.id)
+    console.log(dragMovie.id);
     dragMovie.poster = event.target.src;
     dragMovie.title = event.target.getAttribute('name');
 }
