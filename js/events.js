@@ -12,28 +12,25 @@
 		$('#mainContent').children().remove();
 		window.location='#menuHome';
 	});
-	$('#mainMenu').on('click',handlEvent);
+	$('#mainMenu').on('click',menuEvents);
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
 			addSearchPanel();
 			var autoHeight=$('#searchWrapper').height();
 			$('#searchWrapper').css({height: '0px',opacity : 0}).animate({height: autoHeight,opacity: 1}, 300,function(){
 				$('#searchWrapper').css('height','auto');
-				favSectionTop(); // СТАЛО ТУТ
+				favSectionTop();
 			});
-			//$('#searchWrapper').css({opacity : 1});
-            //favSectionTop(); БУЛО ТУТ
 		}else {
 			$('#searchWrapper').animate({height: 'toggle',opacity: 0}, 'slow',function(){
 				$('#searchWrapper').remove();
-				favSectionTop();  //  СТАЛО ТУТ
+				favSectionTop();
 			});
-
-           // favSectionTop();  БУЛО ТУТ
 		}
 	});
 	homeTemplate();
 })();
+
 function searchBy() {
 	$('.search-button').on('click',function() {
 		$('#mainContent').find(':first-child').remove();
@@ -53,7 +50,7 @@ function searchBy() {
 	});
 }
 // menu event handlers
-function handlEvent(event) {
+function menuEvents(event) {
 	var target=event.target || event.srcElement;
 	var menu={'menuHome' : homeTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
 	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies,
@@ -66,19 +63,13 @@ function handlEvent(event) {
 			menu[temp]();
 		}
 	}
-
 }
-
-
-
 //single movie block slide out handler
-function addEvents() {
+function singleMoveBlockEvents() {
 	var infoBlock;
 
 	$(".singleMovieBlock").on('click',function() {
 		window.location='#movie+'+this.id;
-		/*showOneMovie(this.id);
-		$(window).scrollTop(0);*/
 	});
 
 	$(".singleMovieBlock").hover(function() {
@@ -86,19 +77,16 @@ function addEvents() {
 		infoBlock=$(this).find('.infoBlock');
 
 		$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
-
 	},
 	function(){
 		$(infoBlock).stop(false,false).animate({height: '0px'}, 700,
 		 	function(){		 
 		 	$(this).css({visibility: "hidden",height : '100px'});
-
 		 })
 	});
-	
 }
 
-function addEventsToActors() {
+function singleActorBlockEvents() {
 	var infoBlock;
 	$("#Actors .singleActorBlock").hover(function() {
 			infoBlock=$(this).find(':last-child')[0];
@@ -114,16 +102,56 @@ function addEventsToActors() {
 				});
 		});
 
-	$(".singleActorBlock").on('click',function() {
+	$("#Actors .singleActorBlock").on('click',function() {
 
 		createBlock();
 		$('body').css('overflow','hidden');
-		//$('body').css('position','fixed');
 		$('#offOnBtn').on('click',deleteBlock);
 		window.location ='#actor+' + this.id;
 
 		$('#Actor').append('<div id="loaderImage"></div>');
 		new imageLoader(cImageSrc, 'startAnimation()');
+	});
+}
+
+function faBlockEvents() {
+	var infoBlock;
+
+	$(".favMovieBlock").hover(function () {
+			infoBlock = $(this).find(':last-child')[0];
+			$(infoBlock).stop(true, false).css({
+				height: '0px',
+				visibility: "visible"
+			}).animate({
+				height: '50px'
+			}, 700);
+		},
+		function () {
+			$(infoBlock).stop(false, false).animate({
+					height: '0px'
+				}, 700,
+				function () {
+					$(this).css({
+						visibility: "hidden",
+						height: '50px'
+					});
+				});
+		});
+
+	$(".favMovieImg,.favInfoBlock ").on('click', function () {
+		showOneMovie(this.parentNode.getAttribute('fav-id'));
+		return;
+	});
+
+	$('.favDelBtn').on('click', function () {
+		delFavMovie(this.parentNode.getAttribute('fav-id'));
+		$(this.parentNode).animate({
+			opacity: 0,
+			height: '20px'
+		}, 600, function () {
+			this.remove();
+		});
+		return;
 	});
 }
 
