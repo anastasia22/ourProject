@@ -169,13 +169,26 @@ function singleMoviePage (movie) {
               <ul class="mov-info border_class">\
                 <li>\
                   <span class="sp_title">Rates: </span>\
-                  <span class = "additional searching" onclick="searchByRates(<%= singleMovie.rating %>)">\
+                  <% if (singleMovie.rating){ %>\
+                  <span class = "additional searching search-rate">\
                     <span><%= singleMovie.rating %></span>\
                   </span> / 10\
+                  <%} else {%>\
+                  <span>---</span>\
+                  <% } %>\
                 </li>\
                 <li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %></li>\
                 <li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %></li>\
-                <li><span class="sp_title">Year: </span><span class = "additional searching" onclick="searchByYears(<%= singleMovie.year %>)"><span><%= singleMovie.year %></span></span></li>\
+                <li>\
+                  <span class="sp_title">Year: </span>\
+                  <% if (singleMovie.year){ %>\
+                    <span class = "additional searching search-year">\
+                      <span><%= singleMovie.year %></span>\
+                    </span>\
+                  <%} else {%>\
+                    <span>---</span>\
+                  <% } %>\
+                </li>\
                 <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
                 <li><span class="sp_title">Production countries: </span>\
                   <% _.each(singleMovie.countries, function(el){ %>\
@@ -183,11 +196,14 @@ function singleMoviePage (movie) {
                   <% }) %>\
                 </li>\
                 <li><span class="sp_title">Genres: </span>\
-                  <% _.each(singleMovie.genres, function(el){ %>\
-                    <span class = "additional searching">\
-                      <span onclick="searchByGenres(<%=el.id%>,\'<%=el.name%>\')"><%= el.name %></span>\
-                    </span>\
-                  <% }) %>\
+                  <% if (singleMovie.genres){ %>\
+                    <% _.each(singleMovie.genres, function(el){ %>\
+                      <span class = "additional searching search-genre">\
+                        <span data-genre = "<%=el.id%>"><%= el.name %></span>\
+                      </span>\
+                  <% })} else { %>\
+                    <span>---</span>\
+                  <% } %>\
                 </li>\
                 <li><span class="sp_title">Production companies: </span>\
                   <% _.each(singleMovie.companies, function(el){ %>\
@@ -287,13 +303,13 @@ function singleMoviePage (movie) {
             id:movie.id,
             poster: movie.poster_path,
             tagline : movie.tagline ? movie.tagline : "---",
-            rating : movie.vote_average ? movie.vote_average : "---",
+            rating : movie.vote_average ? movie.vote_average : null,
             overview : movie.overview ? movie.overview : "sorry, no overview available",
-            year : parseInt(movie.release_date),
+            year : movie.release_date ? parseInt(movie.release_date) : null,
             budget : movie.budget == 0 ? "---" : movie.budget,
             revenue : movie.revenue == 0 ? "---" : movie.revenue,
             runtime: movie.runtime == 0 ? "---" : movie.runtime,
-            genres: movie.genres == [] ? "---" : movie.genres,
+            genres: movie.genres == [] ? null : movie.genres,
             companies : [],
             countries : [],
             similar: movie.similar.results,

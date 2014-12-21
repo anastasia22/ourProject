@@ -118,10 +118,26 @@ function addEventsToMovie(){
 	var smImages = smImageContainer.find('.screenshot');
     var smTotalLength = (parseInt(smImages.css('width')) + parseInt(smImages.css('margin-left')) + parseInt(smImages.css('margin-right'))) * smImages.length;
     smImageContainer.css({'width': smTotalLength,'right':0});
-    
     $('.carousel').on('click','.control', scrollCarousel);
     smImages.on('click', showLightRoom);
-    
+
+    $('#singleMovie').on('click', '.search-rate', searchRate);
+    $('#singleMovie').on('click', '.search-year', searchYear);
+    $('#singleMovie').on('click', '.search-genre', searchGenre);
+
+	function searchRate(){
+		var rate = $(this).children('span').text();
+		window.location = '#' + 'movies-with-rates+' + rate;
+	}
+    function searchYear(){
+		var year = $(this).children('span').text();
+		window.location = '#' + 'movies-with-year+' + year;
+	}
+	function searchGenre(){
+		var genreName = $(this).children('span').text();
+		var genreId = $(this).children('span').data('genre');
+		window.location = '#' + 'movies-with-genre+' + genreId + '+' + genreName;
+	}
     //func that shows modal large carousel
 	function showLightRoom(){
 	//setting position and width for large carousel
@@ -180,6 +196,7 @@ function addEventsToMovie(){
 	    };
 	    return
 	}
+
 };  
 
 //toggle for help page

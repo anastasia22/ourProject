@@ -15,6 +15,9 @@ var MainRouter = Backbone.Router.extend({
         'subMenuHorror' : 'Horror',
         'subMenuFantasy' : 'Fantasy',
         'movies+:query' : 'movieSearch',
+        'movies-with-rates+:rate' : 'searchByRate',
+        'movies-with-year+:year' : 'searchByYear',
+        'movies-with-genre+:id+:genre' : 'searchGenre',
         'actors+:query' : 'actorSearch',
         'movie+:query' : 'sinMoviePage',
         'actor+:query' : 'sinActorPage'
@@ -61,6 +64,26 @@ var MainRouter = Backbone.Router.extend({
         var titleSearch = 'search/movie?query=' + searchQuery;
         $('#mainContent').find(':first-child').remove();
         sendRequest(titleSearch,searchQuery);
+    },
+    searchByRate : function() {
+        var rating=document.URL.split('#')[1].split('+')[1];
+        var searchQuery = 'discover/movie?vote_average.lte=' + rating + '&sort_by=vote_average.desc';
+        $('#mainContent').find(':first-child').remove();
+        sendRequest(searchQuery, 'Movies with rating ' + rating);
+    },
+    searchByYear : function() {
+        var year=document.URL.split('#')[1].split('+')[1];
+        var searchQuery = 'discover/movie?primary_release_year=' + year + '&sort_by=popularity.desc';
+        $('#mainContent').find(':first-child').remove();
+        sendRequest(searchQuery, 'Movies released in ' + year);
+    },
+    searchGenre: function() {
+        var id = document.URL.split('#')[1].split('+')[1];
+        var name = document.URL.split('#')[1].split('+')[2];
+        console.log(id, name);
+        var searchQuery = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc';
+        $('#mainContent').find(':first-child').remove();
+        sendRequest(searchQuery ,'Movies with ' + name + '&nbsp;genre');
     },
     actorSearch : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
