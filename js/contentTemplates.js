@@ -175,14 +175,12 @@ function singleMoviePage (movie) {
                 <li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %></li>\
                 <li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %></li>\
                 <li>\
-                  <span class="sp_title">Year: </span>\
                   <% if (singleMovie.year){ %>\
-                    <span class = "additional searching search-year">\
-                      <span><%= singleMovie.year %></span>\
-                    </span>\
-                  <%} else {%>\
-                    <span>---</span>\
-                  <% } %>\
+                    <span class="sp_title">Year: </span>\
+                      <span class = "additional searching search-year">\
+                        <span><%= singleMovie.year %></span>\
+                      </span>\
+                  <%}%>\
                 </li>\
                 <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
                 <li><span class="sp_title">Production countries: </span>\
@@ -282,7 +280,7 @@ function singleMoviePage (movie) {
             </section>\
             <section class="lgSlider slider"><section class="img-container lgImgContainer">\
               <% _.each(singleMovie.images, function(el, i){ %>\
-                <img class="screenshot lgScreenshot " src="<%= hyperImageUrl %><%= el %>" data-direction="next">\
+                <img class="screenshot lgScreenshot " src="<%= hyperImageUrl %><%= el %>" data-direction="next" data-modal="<%=i%>">\
               <% }) %>\
             </section></section>\
             <section class="control lgControl rgh" data-direction="next">\

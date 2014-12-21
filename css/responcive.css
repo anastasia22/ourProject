@@ -25,14 +25,11 @@
         height: auto;
         overflow: auto;
     }
+    #modwin,
+    #singleMovie .lgScreenshot {
+        width: 624px;
+    }
     /*end of single movie page styles*/
-#modwin,
-#singleMovie .lgScreenshot {
-width: 700px;
-}
-
-
-
 
 }
 
@@ -140,9 +137,9 @@ width: 700px;
         width:87%;
     }
     #modwin,
-#singleMovie .lgScreenshot {
-width: 480px;
-}
+    #singleMovie .lgScreenshot {
+        width: 468px;
+    }
     /*end of single movie page styles*/
     
 /*    favourites  */
@@ -177,6 +174,10 @@ width: 480px;
     }
     #singleMovie .smSlider {
         width:83%;
+    }
+    #modwin,
+    #singleMovie .lgScreenshot {
+        width: 312px;
     }
     /*end of single movie page styles*/
 }

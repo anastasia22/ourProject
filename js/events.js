@@ -3,6 +3,7 @@
  */
  //adds all events handlers to menu buttons
 (function(){
+
 	$('.logo-backgr').css({cursor : 'pointer'});
 	$('.logo-backgr').on('click',function(){
 		if($('#favSection')) {
@@ -139,6 +140,7 @@ function addEventsToMovie(){
 
     $('#singleMovie').on('click', '.search-rate', searchRate);
     $('#singleMovie').on('click', '.search-year', searchYear);
+    $('#singleMovie').on('click', '.search-genre', searchYear);
     $('#singleMovie').on('click', '.similar', showMovie);
 
 
@@ -161,13 +163,19 @@ function addEventsToMovie(){
 	}
     //func that shows modal large carousel
 	function showLightRoom(){
+
 	//setting position and width for large carousel
 		var numb = $(this).data('numb')
-		var lgImageContainer = $('.lgCarousel').find($('.img-container'));;
+		var lgImageContainer = $('.lgCarousel').find($('.img-container'));
+		
 		var lgImages = lgImageContainer.find('.lgScreenshot');
-		var lgStep = lgImages.outerWidth(true);
+		var lgStep = lgImages.outerWidth();
+		
+
 		var lgTotalLength = parseInt(lgImages.css('width')) * lgImages.length;
 		lgImageContainer.css({'width': lgTotalLength,'right': numb*lgStep});
+
+		console.log(lgTotalLength, numb, lgStep )
 		lgImages.on('click', scrollCarousel);
 		createModal()
 	}
@@ -175,12 +183,10 @@ function addEventsToMovie(){
 	function createModal() {
 		var mask = $('#mask');
 		var modwin = $('#modwin');
-	    function doSize() {
-	    	var winH = $(window).height();
-		    var winW = $(window).width();
-		    modwin.css('top', winH/2-modwin.height()/2);
-		    modwin.css('left', winW/2-modwin.width()/2);
-	    }
+		var winH = $(window).height();
+	    var winW = $(window).width();
+	    modwin.css('top', winH/2-modwin.height()/2);
+	    modwin.css('left', winW/2-modwin.width()/2);
 	    mask.fadeIn(400);    
 	    mask.fadeTo("slow",0.8);    
 	    modwin.fadeIn(2000); 
@@ -188,7 +194,7 @@ function addEventsToMovie(){
 	        mask.hide();
 	        modwin.hide();
     	}); 
-    	$(document).resize(doSize);
+
 	}
     //function for sliding carousel
 	function scrollCarousel(){
