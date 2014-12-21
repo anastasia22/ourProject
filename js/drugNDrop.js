@@ -32,9 +32,9 @@ function drop(event) {
         localStorage.setItem('favMovies', JSON.stringify(favMovies));
     }
             // BORDER FOR DROP
-            $('#favSection').css({'border-left': '4px solid #08f'});
+            $('#favSection').css({border: '2px dashed #FF8D00'});
             window.setTimeout(function() {
-                $('#favSection').css({'border-left': 'none'});
+                $('#favSection').stop(true).css({border: 'none'});
             }, 500);
 
 
