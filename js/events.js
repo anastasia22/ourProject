@@ -80,7 +80,8 @@ function addEvents() {
 	});
 
 	$(".singleMovieBlock").hover(function() {
-		infoBlock=$(this).find(':last-child')[0];
+		//infoBlock=$(this).find(':last-child')[0];
+		infoBlock=$(this).find('.infoBlock');
 
 		$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
 

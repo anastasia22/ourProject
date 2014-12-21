@@ -1,16 +1,19 @@
 /*movies block styles*/
 div.singleMovieBlock {
     position: relative;
-    width: 249px;
-    height: 373px;
+    width: 33.333%;
+    height: auto;
     float: left;
     text-align: center;
-    margin: 10px;
+    margin: 10px 0;
+    padding: 0 10px;
 }
 div.singleMovieBlock:hover {
     cursor: pointer;
 }
-
+#Movies .imgWrap {
+    position: relative;
+}
 div.infoBlock {
     visibility: hidden;
     position: absolute;
@@ -28,6 +31,8 @@ div.infoBlock {
     overflow: auto;
     position: relative;
     margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 #Movies .searchResInfo{
     color: #01aadd;
@@ -46,7 +51,8 @@ div.infoBlock {
 }
 img.miniMovieImg {
     width: 100%;
-    height: 100%;
+    height: auto;
+    margin-bottom: -5px;
 }
 #loadBlock {
     background: #ccc;
@@ -88,14 +94,6 @@ img.miniMovieImg {
 }
 
 @media only screen  and (max-width: 1153px) {
-    div.singleMovieBlock {
-        position: relative;
-        width: 210px;
-        height: 320px;
-        float: left;
-        text-align: center;
-        margin: 10px 10px 10px 10px;
-    }
     div.infoBlock {
         font-size: 0.7em;
         visibility: visible;
@@ -108,14 +106,6 @@ img.miniMovieImg {
     div.infoBlock:hover {}
 }
 @media only screen and (max-width: 970px) {
-    div.singleMovieBlock {
-        position: relative;
-        width: 180px;
-        height: 250px;
-        float: left;
-        text-align: center;
-        margin: 10px 10px 10px 28px;
-    }
     div.infoBlock {
         font-size: 0.7em;
         visibility: visible;
@@ -128,15 +118,6 @@ img.miniMovieImg {
     div.infoBlock:hover {}
 }
 @media only screen and (max-width: 740px) {
-    div.singleMovieBlock {
-        position: relative;
-        width: 150px;
-        height: 230px;
-
-        float: left;
-        text-align: center;
-        margin: 10px 10px 10px 40px;
-    }
     div.infoBlock {
         font-size: 0.7em;
         visibility: visible;
@@ -152,14 +133,9 @@ img.miniMovieImg {
     }
 }
 
-@media only screen and (min-width : 320px) and (max-width : 480px) {
+@media only screen and (max-width : 480px) {
     div.singleMovieBlock {
-        position: relative;
-        width: 130px;
-        height: 190px;
-        float: left;
-        text-align: center;
-        margin: 10px;
+       width: 50%;
     }
     div.infoBlock {
         font-size: 0.7em;

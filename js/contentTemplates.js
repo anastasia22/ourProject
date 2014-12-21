@@ -68,8 +68,9 @@ function moviesTemplate(movies,listName) {
         '<%_.each(obj,function(movie){%>'+
         '<%if(movie.poster_path == null){return;}%>' +
         '<div id="<%=movie.id%>" class="singleMovieBlock">' +
+        '<div class="imgWrap">' + 
         '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>" name="<%=movie.title%>">' +
-        '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div>' +
+        '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
         '<%})%>'
     );
     if($('#loader')){
