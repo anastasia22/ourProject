@@ -80,7 +80,6 @@ var MainRouter = Backbone.Router.extend({
     searchGenre: function() {
         var id = document.URL.split('#')[1].split('+')[1];
         var name = document.URL.split('#')[1].split('+')[2];
-        console.log(id, name);
         var searchQuery = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc';
         $('#mainContent').find(':first-child').remove();
         sendRequest(searchQuery ,'Movies with ' + name + '&nbsp;genre');

@@ -26,6 +26,14 @@
         overflow: auto;
     }
     /*end of single movie page styles*/
+#modwin,
+#singleMovie .lgScreenshot {
+width: 700px;
+}
+
+
+
+
 }
 
 @media only screen and (min-width: 741px) and (max-width: 1000px) {
@@ -131,7 +139,10 @@
     #singleMovie .smSlider {
         width:87%;
     }
-   
+    #modwin,
+#singleMovie .lgScreenshot {
+width: 480px;
+}
     /*end of single movie page styles*/
     
 /*    favourites  */

@@ -141,7 +141,7 @@
     width: 89%;
 }
 #singleMovie .lgSlider{
-    height:439px;
+    /*height:439px;*/
     width: 100%;
 }
 #singleMovie .img-container{
@@ -149,7 +149,7 @@
     position:relative;
 }
 #singleMovie .lgImgContainer{
-    height:439px;
+    /*height:439px;*/
 }
 #singleMovie .screenshot{
     float: left;
@@ -176,7 +176,8 @@
 #singleMovie .lgControl{
     position:absolute;
     z-index: 7;
-    top: 197.5px;
+    top: 50%;
+margin-top: -22px;
 }
 #singleMovie .lgControl.lft {
     left:0;

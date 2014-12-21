@@ -173,17 +173,20 @@ function addEventsToMovie(){
 	function createModal() {
 		var mask = $('#mask');
 		var modwin = $('#modwin');
-	    var winH = $(window).height();
-	    var winW = $(window).width();
-	    modwin.css('top', winH/2-modwin.height()/2);
-	    modwin.css('left', winW/2-modwin.width()/2);
+	    function doSize() {
+	    	var winH = $(window).height();
+		    var winW = $(window).width();
+		    modwin.css('top', winH/2-modwin.height()/2);
+		    modwin.css('left', winW/2-modwin.width()/2);
+	    }
 	    mask.fadeIn(400);    
 	    mask.fadeTo("slow",0.8);    
 	    modwin.fadeIn(2000); 
 	    mask.on('click', function () {
 	        mask.hide();
 	        modwin.hide();
-    	});   
+    	}); 
+    	$(document).resize(doSize);
 	}
     //function for sliding carousel
 	function scrollCarousel(){

@@ -1,12 +1,14 @@
 var dragMovie = {};
 
 function startDrag(event) {
-    var sd = event.target.parentNode;
-    dragMovie.id = sd.id;
+    //var sd = event.target.parentNode;
+    var sd = $(event.target).closest(".singleMovieBlock");
+    dragMovie.id = $(sd).attr("id");
+    console.log(dragMovie.id)
     dragMovie.poster = event.target.src;
     dragMovie.title = event.target.getAttribute('name');
 }
-
+//console.log(dragMovie)
 function drop(event) {
     var favMovies = [];
     document.getElementById('favSection').style.border = 'none';
