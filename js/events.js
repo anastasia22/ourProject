@@ -123,7 +123,8 @@ function addEventsToMovie(){
 
     $('#singleMovie').on('click', '.search-rate', searchRate);
     $('#singleMovie').on('click', '.search-year', searchYear);
-    $('#singleMovie').on('click', '.search-genre', searchGenre);
+    $('#singleMovie').on('click', '.similar', showMovie);
+
 
 	function searchRate(){
 		var rate = $(this).children('span').text();
@@ -137,6 +138,10 @@ function addEventsToMovie(){
 		var genreName = $(this).children('span').text();
 		var genreId = $(this).children('span').data('genre');
 		window.location = '#' + 'movies-with-genre+' + genreId + '+' + genreName;
+	}
+	function showMovie(){
+		var movieId = $(this).data('id');
+		window.location = '#' + 'movie+' + movieId;
 	}
     //func that shows modal large carousel
 	function showLightRoom(){

@@ -164,7 +164,9 @@ function singleMoviePage (movie) {
               <img src="<%= largeImageUrl %><%= singleMovie.poster %>" name="<%= singleMovie.title %>">\
             </section>\
             <section class="column2">\
-              <q class="par_block"> <%= singleMovie.tagline %> </q>\
+              <%if(singleMovie.tagline) {%>\
+                <q class="par_block"> <%= singleMovie.tagline %> </q>\
+              <%}%>\
               <span class="sp_title block_title">Main information</span>\
               <ul class="mov-info border_class">\
                 <li>\
@@ -265,7 +267,7 @@ function singleMoviePage (movie) {
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
               <% _.each(singleMovie.similar, function(el){ %>\
-                <section class="similar" onclick="showOneMovie(<%= el.id %>)">\
+                <section class="similar" data-id="<%= el.id %>">\
                   <% if (el.backdrop_path){ %>\
                     <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
                   <%} else {%>\
@@ -302,7 +304,7 @@ function singleMoviePage (movie) {
             title : movie.title,
             id:movie.id,
             poster: movie.poster_path,
-            tagline : movie.tagline ? movie.tagline : "---",
+            tagline : movie.tagline ? movie.tagline : null,
             rating : movie.vote_average ? movie.vote_average : null,
             overview : movie.overview ? movie.overview : "sorry, no overview available",
             year : movie.release_date ? parseInt(movie.release_date) : null,
