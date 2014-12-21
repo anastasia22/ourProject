@@ -12,34 +12,26 @@ var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 
 // HOME BLOCK
 function homeTemplate() {
-    var some = {
-        1: '<img src="news/JessicaAlba.jpg" class="newsPic">',
-        2: '<img src="news/EdwardNorton.jpg" class="newsPic">',
-        3: '<img src="news/AlPacino.jpg" class="newsPic">'
-    };
-    var shortInfo = {
-        1: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>',
-        2: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>',
-        3: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet aut consequatur, doloremque dolorum excepturi nesciunt odit perspiciatis provident quaerat quisquam quod suscipit tenetur. Animi debitis impedit mollitia quos suscipit!</p>'
-    };
-
-    var newsBlocks= _.template('<div id="Home">' +
-    '<%_.each(obj,function(value,key){ %>' +
-    '<section class="newsBlocks">' +
-    '<%=value%>' +
-    '' +
-    '</section>' +
-    '<%})%>'
-    );
+    var news;
 
 
-    _.each(some,function(value,key){newsBlocks += '<section class="newsBlocks">' + value + shortInfo[key] + '</section>'});
-    newsBlocks += '</div>';
+    news ='<div id="News"><div class="singleNewsBlock"><img class="newsPic" src="' + MarkHamill.picture + '">' +
+    '<div class="newsInfo"><h2 class="newsHeader">' + MarkHamill.header + '</h1><div class="newsArticle">' +
+    '<p>' + MarkHamill.article + '</p></div></div></div></div>';
 
-    $('#mainContent').find(':first-child').remove();
 
-   // document.getElementById('mainContent').innerHTML = newsBlocks(some);
-    $('#mainContent').append(newsBlocks(some));
+    if($('#mainContent').find(':first-child'))$('#mainContent').find(':first-child').remove();
+
+    $('#mainContent').append(news);
+
+    news ='';
+
+    news ='<div class="singleNewsBlock"><img class="newsPic" src="' + NataliePortman.picture + '">' +
+    '<div class="newsInfo"><h2 class="newsHeader">' + NataliePortman.header + '</h1><div class="newsArticle">' +
+    '<p>' + NataliePortman.article + '</p></div></div></div>';
+
+
+    $('#News').append(news);
 }
 
 //HELP BLOCK
