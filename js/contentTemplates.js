@@ -112,22 +112,26 @@ function  actorsTempl(actors,listName){
     }
     $('#Actors').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
 }
+
 function  singleActorTempl(actor) {
     var content = '';
     var movieAr=actor.movie_credits.cast;
-
-    content='<div><image class="actorPic" src="http://image.tmdb.org/t/p/w300'+actor.profile_path+'"></div>' +
-        '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Born </span>' + (actor.birthday || 'no info') + ' in ' + (actor.place_of_birth || 'no info') + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Also known as </span>' + (actor.also_known_as || 'no info') + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + (parseFloat(actor.popularity).toFixed(2)  || 'no info') + '</p></div>';
-    content +='<div class="biography"><p>' + (actor.biography || 'no info') + '</p></div>';
+    var actorPage=_.template('\
+    <%if(obj.profile_path == null){%><div><image class="actorPic" src="images/no-photo.png"></div>\
+    <%} else {%> <div><image class="actorPic" src="http://image.tmdb.org/t/p/w300<%=obj.profile_path%>"></div><%}%>\
+    <div class="actorInfo"><p><span class="infoTags">Name: </span><%=obj.name%></p>\
+    <p><span class="infoTags">Born </span> <%if(obj.birthday) {%> <%=obj.birthday%><%}else{%> "no info" <%}%>\
+      in <%if(obj.place_of_birth) {%><%=obj.place_of_birth%><%}else{%>no info <%}%></p>\
+     <p><span class="infoTags">Also known as </span><%if(obj.also_known_as) {%> <%=obj.also_known_as%> <%}else{%> no info <%}%></p> \
+     <p><span class="infoTags">Popularity: </span><%if(obj.popularity) {%><%=parseFloat(obj.popularity).toFixed(2)%>  <%}else{%> no info<%}%></p></div>\
+      <div class="biography"><p><%if(obj.biography) {%><%=obj.biography%> <%}else {%> no info<%}%></p></div>\
+      <div id="castMovies"><p>Filmed in:</p><div class="castMoviesBlock"></div></div>\
+    ');
 
     stopAnimation();
     $('#loaderImage').remove();
-    $('#Actor').append(content);
-    content ='<div id="castMovies"><p>Filmed in:</p><div class="castMoviesBlock"></div></div>';
-    $('#Actor').append(content);
+    $('#Actor').append(actorPage(actor));
+
     var movieBlocks= _.template(
         '<%_.each(obj,function(movie){%>'+
         '<%if(movie.poster_path == null){return;}%>' +
@@ -138,27 +142,24 @@ function  singleActorTempl(actor) {
         '<%})%>'
     );
     $('.castMoviesBlock').append(movieBlocks(movieAr));
-/*    $(infoBlock)*/
     $(".singleMovieBlock").on('click',function() {
-
-       deleteBlock();
+        deleteBlock();
         window.location='#movie+' + this.id;
         /*$('body').css('overflow','auto');
         deleteBlock();
         $('#Actor').remove();
         $('#mainContent').find(':first-child').remove();*/
-
     });
 }
 
-function createBlock(){
+function createBlock() {
     $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
     $('#Actor').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');
     $('body').css('overflow','hidden');
     $('#offOnBtn').on('click', function() {
         if($('#mainContent').find(':first-child').attr('id') == 'Actors' || $('#mainContent').find(':first-child').attr('id') == 'singleMovie') {
-            if($('#loadImage')){
+            if($('#loadImage')) {
                 stopAnimation();
                 $('#loaderImage').remove();
             }
