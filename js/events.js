@@ -5,7 +5,7 @@
 (function(){
 
 	$('.logo-backgr').css({cursor : 'pointer'});
-	$('.logo-backgr').on('click',function(){
+	$('.logo-backgr').on('click',function() {
 		if($('#favSection')) {
 			hideFavBlock();
 		}
@@ -60,6 +60,9 @@ function menuEvents(event) {
 
 	for (var temp in menu) {
 		if(temp == target.id) {
+			if(document.URL.split('#')[1] == temp) {
+				window.location.reload();
+			}
 			$('#mainContent').find(':first-child').remove();
 			window.location='#' + temp;
 			//menu[temp]();

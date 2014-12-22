@@ -66,6 +66,9 @@ function moviesTemplate(movies,listName) {
     if(listName) {
         if(listName.split(' ')[0] == 'Search')listName = listName + movies.length;
     }
+    if(movies.length == 0) {
+        listName = 'Sorry. No results.';
+    }
 
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks(movies));

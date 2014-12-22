@@ -151,6 +151,7 @@ function addAdvanced() {
         });
 
         function callback(data) {
+
             var list = '';
 
 
@@ -255,6 +256,10 @@ function searchBtnEvents() {
             url += '&primary_release_year=' + selectYear;
         }
         ///
+        if(url == 'discover/movie') {
+            customAlert('Nothing was chosen.');
+            return;
+        }
         url += '&sort_by=' + $('input[name=sort]:checked').val();
 /*        $('#mainContent').find(':first-child').remove();
         sendRequest(url, 'ganres');*/
