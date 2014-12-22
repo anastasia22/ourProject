@@ -3,7 +3,7 @@
     z-index: 7;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.97);
     top: 0;
     left: 0;
 
@@ -72,7 +72,28 @@
     opacity: 0.8;
     cursor: default;
 }
-
+#castMovies {
+    position: absolute;
+    width: 30%;
+    height: 40%;
+    border: 1px solid #cccccc;
+    right: 7%;
+    overflow: scroll;
+    text-align: center;
+}
+#castMovies p{
+    position: fixed;
+    padding: 0.3%;
+    z-index: 12;
+    background: #cccccc;
+    opacity: 0.9;
+    display: block;
+    font-size: 1.3em;
+}
+.castMoviesBlock {
+    overflow: auto;
+    border: 1px solid #cccccc;
+}
 
 @media only screen  and (max-width: 1153px) {
 

@@ -111,17 +111,37 @@ function  actorsTempl(actors,listName){
 }
 function  singleActorTempl(actor) {
     var content = '';
-
+    var movieAr=actor.movie_credits.cast;
+    console.log(actor);
     content='<div><image class="actorPic" src="http://image.tmdb.org/t/p/w300'+actor.profile_path+'"></div>' +
         '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Born </span>' + (actor.birthday || 'no info') + ' in ' + (actor.place_of_birth || 'no info') + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ (actor.also_known_as || 'no info') + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + (actor.popularity.toFixed(2)  || 'no info') + '</p></div>';
+        '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + (parseFloat(actor.popularity).toFixed(2)  || 'no info') + '</p></div>';
     content +='<div class="biography"><p>' + (actor.biography || 'no info') + '</p></div>';
 
     stopAnimation();
     $('#loaderImage').remove();
     $('#Actor').append(content);
+    content ='<div id="castMovies"><p>Filmed in:</p><div class="castMoviesBlock"></div></div>';
+    $('#Actor').append(content);
+    var movieBlocks= _.template(
+        '<%_.each(obj,function(movie){%>'+
+        '<%if(movie.poster_path == null){return;}%>' +
+        '<div id="<%=movie.id%>" class="singleMovieBlock">' +
+        '<div class="imgWrap">' +
+        '<img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">' +
+        '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
+        '<%})%>'
+    );
+    $('.castMoviesBlock').append(movieBlocks(movieAr));
+/*    $(infoBlock)*/
+    $(".singleMovieBlock").on('click',function() {
+        deleteBlock();
+        $('#Actor').remove();
+        $('#mainContent').find(':first-child').remove();
+        window.location='#movie+'+this.id;
+    });
 }
 
 function createBlock(){

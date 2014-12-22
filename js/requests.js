@@ -35,13 +35,14 @@ function defaultMovies() {
 }
 
 function searchByTitle(){
-    window.location='#movies+' + $('#searchField').val();
+
     var titleSearch = 'search/movie?query=' + $('#searchField').val();
     sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() + '</span>  Results found: ','movies');
 }
 
 function searchByActor() {
-    window.location='#actors+' + $('#searchField').val();
+    console.log('act func')
+
     var titleSearch = 'search/person?query=' + $('#searchField').val();
     $('#mainContent').find(':first-child').remove();
     sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() +'</span>  Results found: ','actors');
@@ -132,9 +133,9 @@ function requestController(data,listName,target) {
 }*/
 
 function findThisActor(id) {
-    var apikey = "?api_key=7a135ff2c408f8e138e4645f83b30222";
+    var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
-    var actorsSearchUrl = baseUrl + 'person/'+ id + apikey;
+    var actorsSearchUrl = baseUrl + 'person/'+ id + '?append_to_response=movie_credits' + apikey;
 
     $.ajax({
         url: actorsSearchUrl,
@@ -143,6 +144,7 @@ function findThisActor(id) {
     });
 
     function callBackFunc (data) {
+        console.log('single func')
         singleActorTempl(data);
     }
 }

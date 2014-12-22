@@ -40,12 +40,13 @@ function searchBy() {
 			$('#searchWrapper').stop(true,true).animate({opacity : 0},500,function(){
 				this.remove();
 			});
-			searchByTitle();
+			window.location='#movies+' + $('#searchField').val();
+			//	searchByTitle();
 		} else {
 			$('#searchWrapper').stop(true,true).animate({opacity : 0},500,function(){
 				this.remove();
 			});
-			searchByActor();
+			window.location='#actors+' + $('#searchField').val();
 
 		}
 	});
@@ -104,14 +105,15 @@ function singleActorBlockEvents() {
 		});
 
 	$("#Actors .singleActorBlock,#singleMovie .singleActorBlock").on('click',function() {
-
+		findThisActor(this.id);
 		createBlock();
 		$('body').css('overflow','hidden');
 		$('#offOnBtn').on('click',deleteBlock);
-		window.location ='#actor+' + this.id;
+		//window.location ='#actor+' + this.id;
 
 		$('#Actor').append('<div id="loaderImage"></div>');
 		new imageLoader(cImageSrc, 'startAnimation()');
+
 	});
 }
 
