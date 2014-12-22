@@ -159,50 +159,54 @@ function singleMoviePage (movie) {
             <section class="column2">\
               <%if(singleMovie.tagline) {%>\
                 <q class="par_block"> <%= singleMovie.tagline %> </q>\
-              <%}%>\
+              <% }; %>\
               <span class="sp_title block_title">Main information</span>\
               <ul class="mov-info border_class">\
-                <li>\
-                  <span class="sp_title">Rates: </span>\
-                  <% if (singleMovie.rating){ %>\
-                  <span class = "additional searching search-rate">\
-                    <span><%= singleMovie.rating %></span>\
-                  </span> / 10\
-                  <%} else {%>\
-                  <span>---</span>\
-                  <% } %>\
-                </li>\
-                <li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %></li>\
-                <li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %></li>\
-                <li>\
-                  <% if (singleMovie.year){ %>\
+                <% if (singleMovie.rating){ %>\
+                  <li>\
+                    <span class="sp_title">Rates: </span>\
+                    <span class = "additional searching search-rate">\
+                      <span><%= singleMovie.rating %></span>\
+                    </span> / 10\
+                  </li>\
+                <% }; %>\
+                <% if (singleMovie.budget){ %>\
+                  <li><span class="sp_title">Budget: </span>$ <%= singleMovie.budget %></li>\
+                <% }; %>\
+                <% if (singleMovie.revenue){ %>\
+                  <li><span class="sp_title">Revenue: </span>$ <%= singleMovie.revenue %></li>\
+                <% }; %>\
+                  <li>\
                     <span class="sp_title">Year: </span>\
-                      <span class = "additional searching search-year">\
+                    <span class = "additional searching search-year">\
                         <span><%= singleMovie.year %></span>\
-                      </span>\
-                  <%}%>\
-                </li>\
-                <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
+                    </span>\
+                  </li>\
+                <% if (singleMovie.runtime){ %>\
+                  <li><span class="sp_title">Runtime: </span><%= singleMovie.runtime %> min</li>\
+                <% }; %>\
+                <% if (singleMovie.countries){ %>\
                 <li><span class="sp_title">Production countries: </span>\
                   <% _.each(singleMovie.countries, function(el){ %>\
                     <span class = "additional"><span><%=el%></span></span>\
-                  <% }) %>\
+                  <% })}; %>\
                 </li>\
-                <li><span class="sp_title">Genres: </span>\
                   <% if (singleMovie.genres){ %>\
+                    <li><span class="sp_title">Genres: </span>\
                     <% _.each(singleMovie.genres, function(el){ %>\
                       <span class = "additional searching search-genre">\
                         <span data-genre = "<%=el.id%>"><%= el.name %></span>\
                       </span>\
-                  <% })} else { %>\
-                    <span>---</span>\
-                  <% } %>\
-                </li>\
-                <li><span class="sp_title">Production companies: </span>\
+                  <% })%>\
+                    </li>\
+                  <% }; %>\
+                <% if (singleMovie.companies){ %>\
+                  <li><span class="sp_title">Production companies: </span>\
                   <% _.each(singleMovie.companies, function(el){ %>\
                     <span class = "additional"><span><%= el %></span></span>\
                   <% }) %>\
                 </li>\
+                <% }; %>\
               </ul>\
             </section>\
           </section>\
@@ -210,15 +214,18 @@ function singleMoviePage (movie) {
             <section class="trailer">\
               <span class="sp_title block_title">Movie trailer</span>\
               <section class="border_class">\
-                <iframe height="360" src="http://www.youtube.com/embed/<%= singleMovie.trailer %>" frameborder="0" allowfullscreen></iframe>\
+                <iframe wmode="Opaque" height="360" src="http://www.youtube.com/embed/<%= singleMovie.trailer %>?wmode=transparent" frameborder="0" allowfullscreen></iframe>\
               </section>\
             </section>\
+            <% if (singleMovie.overview){ %>\
             <blockquote class="overview">\
               <span>Experts overview</span>\
               <%= singleMovie.overview %>\
             </blockquote>\
+            <% }; %>\
           </section>\
           <section class="row">\
+            <% if (singleMovie.images){ %>\
             <section class="screens">\
               <span class="sp_title block_title">Screenshots</span>\
               <section class="border_class carousel smCarousel">\
@@ -235,7 +242,9 @@ function singleMoviePage (movie) {
                 </section>\
               </section>\
             </section>\
+            <% }; %>\
           </section>\
+          <% if (singleMovie.actors){ %>\
           <section class="row">\
             <span class="sp_title block_title">Cast</span>\
             <section class="border_class actors_container">\
@@ -254,6 +263,8 @@ function singleMoviePage (movie) {
               </section>\
             </section>\
           </section>\
+          <% }; %>\
+          <% if (singleMovie.similar){ console.log(singleMovie.similar) %>\
           <section class="row">\
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
@@ -273,7 +284,9 @@ function singleMoviePage (movie) {
                 <% }) %>\
             </section>\
           </section>\
+          <% }; %>\
           <section id="mask"></section>\
+          <% if (singleMovie.images){ %>\
           <section id="modwin" class="carousel lgCarousel">\
             <section class="control lgControl lft" data-direction="previous">\
               <section class="arrow prev-ar prev-unable"></section>\
@@ -287,55 +300,58 @@ function singleMoviePage (movie) {
               <section class="arrow next-ar next-able"></section>\
             </section>\
           </section>\
+          <% }; %>\
         </section>'
     );
 
     function renderSingleMoviePage(movie) {
         var singleMovie = {
-            title : movie.title,
             id:movie.id,
+            title : movie.title,
             poster: movie.poster_path,
-            tagline : movie.tagline ? movie.tagline : null,
-            rating : movie.vote_average ? movie.vote_average : null,
-            overview : movie.overview ? movie.overview : "sorry, no overview available",
-            year : movie.release_date ? parseInt(movie.release_date) : null,
-            budget : movie.budget == 0 ? "---" : movie.budget,
-            revenue : movie.revenue == 0 ? "---" : movie.revenue,
-            runtime: movie.runtime == 0 ? "---" : movie.runtime,
-            genres: movie.genres == [] ? null : movie.genres,
+            tagline : movie.tagline,
+            rating : movie.vote_average,
+            year : parseInt(movie.release_date),
+            budget : movie.budget,
+            revenue : movie.revenue,
+            runtime: movie.runtime,
             companies : [],
-            countries : [],
+            countries : [],            
+            genres: movie.genres,
+            overview : movie.overview,
             similar: movie.similar.results,
             images: [],
-            trailer: movie.trailers.youtube[0] ? movie.trailers.youtube[0].source: null,
+            trailer: movie.trailers.youtube[0] ? movie.trailers.youtube[0].source : null,
             actors: movie.credits.cast == [] ? null : movie.credits.cast
         };
         if (movie.production_countries[0]) {
             for (var country in movie.production_countries) {
                 singleMovie.countries.push(movie.production_countries[country].name)
             }
-        } else {singleMovie.countries = "---"};
+        } else {singleMovie.countries = null};
         if (movie.production_companies[0]) {
             for (var company in movie.production_companies) {
                 singleMovie.companies.push(movie.production_companies[company].name)
             }
-        } else {singleMovie.companies = "---"};
+        } else {singleMovie.companies = null};
         if(movie.images.backdrops[0]) {
             for (var image in movie.images.backdrops) {
                 singleMovie.images.push(movie.images.backdrops[image].file_path)
             } 
-        } else {singleMovie.images = null}
+        } else {singleMovie.images = null};
+        if (movie.similar.results[0]) {//should fix this bug
+          movie.similar.results.splice(5)
+        } else {movie.similar.results = null};
         
         return singleMovie
     };
 
 
     $('#mainContent').find(':first-child').remove();
-            stopAnimation();
-            $('#loaderImage').remove();
+      stopAnimation();
+      $('#loaderImage').remove();
     $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
-    $(document).ready(addEventsToMovie);
-
+    addEventsToMovie();
     makeDraggable();
     addEventsToActors();
 }

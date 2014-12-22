@@ -17,7 +17,7 @@ var MainRouter = Backbone.Router.extend({
         'movies+:query' : 'movieSearch',
         'movies-with-rates+:rate' : 'searchByRate',
         'movies-with-year+:year' : 'searchByYear',
-        'movies-with-genre+:id+:genre' : 'searchGenre',
+        'movies-with-genre+:id+:genre' : 'searchByGenre',
         'actors+:query' : 'actorSearch',
         'movie+:query' : 'sinMoviePage',
         'actor+:query' : 'sinActorPage'
@@ -77,7 +77,7 @@ var MainRouter = Backbone.Router.extend({
         $('#mainContent').find(':first-child').remove();
         sendRequest(searchQuery, 'Movies released in ' + year);
     },
-    searchGenre: function() {
+    searchByGenre: function() {
         var id = document.URL.split('#')[1].split('+')[1];
         var name = document.URL.split('#')[1].split('+')[2];
         var searchQuery = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc';
@@ -93,7 +93,6 @@ var MainRouter = Backbone.Router.extend({
     sinMoviePage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
         showOneMovie(parseInt(searchQuery));
-        $(window).scrollTop(0);
     },
     sinActorPage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];

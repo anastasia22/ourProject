@@ -130,56 +130,52 @@ function addEventsToActors() {
 
 //events and functions for singleMoviePage
 function addEventsToMovie(){
+	//func that sets search-events for elements of movie-page
+	(function () {
+		function searchRate(){
+			var rate = $(this).children('span').text();
+			window.location = '#' + 'movies-with-rates+' + rate;
+		};
+	    function searchYear(){
+			var year = $(this).children('span').text();
+			window.location = '#' + 'movies-with-year+' + year;
+		};
+		function searchGenre(){
+			var genreName = $(this).children('span').text();
+			var genreId = $(this).children('span').data('genre');
+			window.location = '#' + 'movies-with-genre+' + genreId + '+' + genreName;
+		};
+		function showMovie(){
+			var movieId = $(this).data('id');
+			window.location = '#' + 'movie+' + movieId;
+		};
+		$('#singleMovie').on('click', '.search-rate', searchRate);
+	    $('#singleMovie').on('click', '.search-year', searchYear);
+	    $('#singleMovie').on('click', '.search-genre', searchGenre);
+	    $('#singleMovie').on('click', '.similar', showMovie);
+	})();
+
 	//setting width for small carousel container
 	var smImageContainer = $('.smCarousel').find($('.img-container'));
 	var smImages = smImageContainer.find('.screenshot');
     var smTotalLength = (parseInt(smImages.css('width')) + parseInt(smImages.css('margin-left')) + parseInt(smImages.css('margin-right'))) * smImages.length;
     smImageContainer.css({'width': smTotalLength,'right':0});
+    smImages.on('click', createLargeCarousel);
     $('.carousel').on('click','.control', scrollCarousel);
-    smImages.on('click', showLightRoom);
-
-    $('#singleMovie').on('click', '.search-rate', searchRate);
-    $('#singleMovie').on('click', '.search-year', searchYear);
-    $('#singleMovie').on('click', '.search-genre', searchYear);
-    $('#singleMovie').on('click', '.similar', showMovie);
-
-
-	function searchRate(){
-		var rate = $(this).children('span').text();
-		window.location = '#' + 'movies-with-rates+' + rate;
-	}
-    function searchYear(){
-		var year = $(this).children('span').text();
-		window.location = '#' + 'movies-with-year+' + year;
-	}
-	function searchGenre(){
-		var genreName = $(this).children('span').text();
-		var genreId = $(this).children('span').data('genre');
-		window.location = '#' + 'movies-with-genre+' + genreId + '+' + genreName;
-	}
-	function showMovie(){
-		var movieId = $(this).data('id');
-		window.location = '#' + 'movie+' + movieId;
-	}
+    
     //func that shows modal large carousel
-	function showLightRoom(){
-
-	//setting position and width for large carousel
+	function createLargeCarousel(){
+		//setting position and width, events for large carousel
 		var numb = $(this).data('numb')
 		var lgImageContainer = $('.lgCarousel').find($('.img-container'));
-		
 		var lgImages = lgImageContainer.find('.lgScreenshot');
 		var lgStep = lgImages.outerWidth();
-		
-
 		var lgTotalLength = parseInt(lgImages.css('width')) * lgImages.length;
 		lgImageContainer.css({'width': lgTotalLength,'right': numb*lgStep});
-
-		console.log(lgTotalLength, numb, lgStep )
 		lgImages.on('click', scrollCarousel);
 		createModal()
 	}
-    //creating and inserting modal window and mask
+    //func for creating and inserting modal window and mask
 	function createModal() {
 		var mask = $('#mask');
 		var modwin = $('#modwin');
@@ -196,7 +192,7 @@ function addEventsToMovie(){
     	}); 
 
 	}
-    //function for sliding carousel
+    //func for sliding carousel
 	function scrollCarousel(){
 		var slider = $(this).closest('.carousel').find('.slider');
 		var img_cont = $(this).closest('.carousel').find('.img-container');

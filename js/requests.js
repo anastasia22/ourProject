@@ -170,23 +170,18 @@ function showOneMovie (id) {
     new imageLoader(cImageSrc, 'startAnimation()');
 
     $.ajax({
-        type: "GET",
-        url:movieUrl,
-        dataType: "json",
+        url: movieUrl,
+        dataType: "jsonp",
         success: callBackFunc
     });
-
     function callBackFunc (data) {
-            stopAnimation();
-            $('#loaderImage').remove();
-            if(data.similar.results.length>5) {data.similar.results.splice(5)};
-            singleMoviePage(data);
-        }
-
+        singleMoviePage(data);
+    }
 }
 
+
 function getHelp(){
-    $.getJSON( "news/help.json", function(data) {
+    $.getJSON("news/help.json", function(data) {
         helpTemplate(data)
     })
 }
