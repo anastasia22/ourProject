@@ -69,6 +69,12 @@ function menuEvents(event) {
 //single movie block slide out handler
 function singleMoveBlockEvents() {
 	var infoBlock;
+	function setImgHeight(){
+		var widthImg = $(".singleMovieBlock img").width();
+		$(".singleMovieBlock .imgWrap").height(widthImg*1.53);
+	};
+	setImgHeight();
+	$(window).resize(setImgHeight);
 
 	$(".singleMovieBlock").on('click',function() {
 		window.location='#movie+'+this.id;
