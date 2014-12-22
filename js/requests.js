@@ -167,8 +167,13 @@ function findThisActor(id) {
 // }
 
 function getHelp(){
-    $.getJSON("news/help.json", function(data) {
+    $.getJSON("json/help.json", function(data) {
         helpTemplate(data)
+    })
+}
+function getNews(){
+    $.getJSON("json/news.json", function(data) {
+        homeTemplate(data)
     })
 }
 

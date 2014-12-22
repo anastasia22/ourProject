@@ -6,44 +6,46 @@ var mediumImageUrl = 'http://image.tmdb.org/t/p/w185/';
 var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 
 // HOME BLOCK
-function homeTemplate() {
-    var news;
+function homeTemplate(news) {
+    var homeTmpl = _.template('<div id="News">\
+      <%_.each(data, function(el){%>\
+        <div class="singleNewsBlock">\
+          <img class="newsPic" src="<%=el.picture%>">\
+          <div class="newsInfo">\
+            <h2 class="newsHeader"><%=el.header%></h2>\
+            <div class="newsArticle">\
+              <p><%=el.article%></p>\
+            </div>\
+          </div>\
+        </div>\
+      <%})%></div>'
+    );
 
-    news ='<div id="News"><div class="singleNewsBlock"><img class="newsPic" src="' + MarkHamill.picture + '">' +
-    '<div class="newsInfo"><h2 class="newsHeader">' + MarkHamill.header + '</h1><div class="newsArticle">' +
-    '<p>' + MarkHamill.article + '</p></div></div></div></div>';
+    if ($('#mainContent').find(':first-child')) {
+        $('#mainContent').find(':first-child').remove();
+    }
 
-    if($('#mainContent').find(':first-child'))$('#mainContent').find(':first-child').remove();
-
-    $('#mainContent').append(news);
-
-    news ='';
-
-    news ='<div class="singleNewsBlock"><img class="newsPic" src="' + NataliePortman.picture + '">' +
-    '<div class="newsInfo"><h2 class="newsHeader">' + NataliePortman.header + '</h1><div class="newsArticle">' +
-    '<p>' + NataliePortman.article + '</p></div></div></div>';
-
-    $('#News').append(news);
+    $('#mainContent').append(homeTmpl({'data':news}));
 }
 
 //HELP BLOCK
 function helpTemplate(questions) {
-    var helpTempl = _.template('<section id="Help">\
+    var helpTmpl = _.template('<section id="Help">\
         <h1>Common questions</h1>\
-        <%_.each(data, function(el,i){%>\
+        <%_.each(data, function(el){%>\
             <section class="help">\
                 <span class="question">\
                     <span><%= el.number%>.</span>\
                     <span><%= el.question%></span>\
                 </span>\
-                <span class="answer"><%= data[i].answer%></span>\
+                <span class="answer"><%= el.answer%></span>\
             </section>\
         <%})%></section>'
     );
     //delete current block
     $('#mainContent').find(':first-child').remove();
     //set help block
-    $('#mainContent').append(helpTempl({'data':questions}));
+    $('#mainContent').append(helpTmpl({'data':questions}));
     HelpBlockEvents();
 }
 
@@ -253,7 +255,7 @@ function singleMovieTemplate (movie) {
             </section>\
           </section>\
           <% }; %>\
-          <% if (singleMovie.similar){console.log((singleMovie.similar))%>\
+          <% if (singleMovie.similar){%>\
           <section class="row">\
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
@@ -347,36 +349,12 @@ function singleMovieTemplate (movie) {
 
 
     $('#mainContent').find(':first-child').remove();
-      stopAnimation();
-      $('#loaderImage').remove();
+
+    stopAnimation();
+    $('#loaderImage').remove();
+    
     $('#mainContent').append(singleMovieTmpl({"singleMovie":renderSingleMoviePage(movie)}));
     addEventsToMovie();
     makeDraggable();
     singleActorBlockEvents();
 }
-////scroll to top button
-//$(function() {
-//    $(document).on('scroll', function() {
-//        var windowHght = $(window).height();
-//        var scrollT = $('body').scrollTop();
-//        if (scrollT > windowHght) {
-//            createToTop();
-//        } else {
-//            removeToTop();
-//        }
-//    });
-//    
-//    function createToTop() {
-//        $('<div>').addClass('to-top-button');
-//        $('body').insertBefore('#footer');
-//    }
-//    
-//    function removeToTop() {
-//        $('div.to-top-button').remove();
-//    }
-//});
-
-
-
-
-

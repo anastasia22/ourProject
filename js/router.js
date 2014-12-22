@@ -33,7 +33,7 @@ var MainRouter = Backbone.Router.extend({
     },
     Home : function() {
         $('#mainContent').find(':first-child').remove();
-        homeTemplate();
+        getNews();
     },
     MostPop : function() {
         $('#mainContent').find(':first-child').remove();
