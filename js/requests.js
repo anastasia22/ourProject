@@ -102,6 +102,9 @@ function requestController(data,listName,target) {
         case 'actors':
             actorsTempl(data.results,listName);
             break;
+        case 'movie':
+            singleMovieTemplate(data);
+            break;
         default:
             customAlert('Something wrong!');
             break;
@@ -146,24 +149,24 @@ function findThisActor(id) {
     }
 }
 
-function showOneMovie(id) {
-    var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
-    var baseUrl = "https://api.themoviedb.org/3/movie/";
-    var additional = '?append_to_response=similar,images,trailers,credits';
-    var movieUrl = baseUrl + id + additional + apikey;
-    $(window).scrollTop(0);
-    $('#mainContent').append('<div id="loaderImage"></div>');
-    new imageLoader(cImageSrc, 'startAnimation()');
+// function showOneMovie(id) {
+//     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
+//     var baseUrl = "https://api.themoviedb.org/3/movie/";
+//     var additional = '?append_to_response=similar,images,trailers,credits';
+//     var movieUrl = baseUrl + id + additional + apikey;
+//     $(window).scrollTop(0);
+//     $('#mainContent').append('<div id="loaderImage"></div>');
+//     new imageLoader(cImageSrc, 'startAnimation()');
 
-    $.ajax({
-        url: movieUrl,
-        dataType: "jsonp",
-        success: callBackFunc
-    });
-    function callBackFunc (data) {
-        singleMoviePage(data);
-    }
-}
+//     $.ajax({
+//         url: movieUrl,
+//         dataType: "jsonp",
+//         success: callBackFunc
+//     });
+//     function callBackFunc (data) {
+//         singleMovieTemplate(data);
+//     }
+// }
 
 function getHelp(){
     $.getJSON("news/help.json", function(data) {

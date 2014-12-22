@@ -157,8 +157,8 @@ function deleteBlock() {
     window.history.back();
 }
 
-function singleMoviePage (movie) { 
-    var singleMovieTemplate = _.template(
+function singleMovieTemplate (movie) { 
+    var singleMovieTmpl = _.template(
         '<section id = "singleMovie">\
           <h1><%= singleMovie.title %></h1>\
           <section class="row">\
@@ -369,7 +369,7 @@ function singleMoviePage (movie) {
     $('#mainContent').find(':first-child').remove();
       stopAnimation();
       $('#loaderImage').remove();
-    $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
+    $('#mainContent').append(singleMovieTmpl({"singleMovie":renderSingleMoviePage(movie)}));
     addEventsToMovie();
     makeDraggable();
     singleActorBlockEvents();

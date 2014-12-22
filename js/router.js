@@ -92,13 +92,14 @@ var MainRouter = Backbone.Router.extend({
     },
     sinMoviePage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
-        showOneMovie(parseInt(searchQuery));
-    }/*,
+        var url = 'movie/' + parseInt(searchQuery) + '?append_to_response=similar,images,trailers,credits'
+        $('#mainContent').find(':first-child').remove();
+        sendRequest(url,'Movie','movie')
+    },
     sinActorPage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
-        console.log('router');
         findThisActor(parseInt(searchQuery));
-    }*/
+    }
 
 
 });
