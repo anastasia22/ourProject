@@ -48,7 +48,6 @@ function searchByActor() {
     sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() +'</span>  Results found: ','actors');
 }
 
-
 function sendRequest(url,listName,controllerTarget) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
@@ -67,9 +66,24 @@ function sendRequest(url,listName,controllerTarget) {
     function callBackFunc (data) {
         stopAnimation();
         $('#loaderImage').remove();
-        requestController(data,listName,controllerTarget);
-        console.log(data);
 
+        switch (controllerTarget){
+            case 'movies':
+                moviesTemplate(data.results,listName);
+                break;
+            case 'actors':
+                actorsTempl(data.results,listName);
+                break;
+            case 'movie':
+                singleMovieTemplate(data);
+                break;
+            case 'actor':
+                singleActorTempl(data);
+                break;
+            default:
+                customAlert('Something wrong!');
+                break;
+        }
         $('#mainContent').find(':first-child').on('mousewheel',
             function() {
                 onToTopBtn();
@@ -85,7 +99,23 @@ function sendRequest(url,listName,controllerTarget) {
                         },
                         success: function (data) {
                             $('#loader').hide();
-                            requestController(data,listName,controllerTarget);
+                            switch (controllerTarget){
+                                case 'movies':
+                                    moviesTemplate(data.results,listName);
+                                    break;
+                                case 'actors':
+                                    actorsTempl(data.results,listName);
+                                    break;
+                                case 'movie':
+                                    singleMovieTemplate(data);
+                                    break;
+                                case 'actor':
+                                    singleActorTempl(data);
+                                    break;
+                                default:
+                                    customAlert('Something wrong!');
+                                    break;
+                            }
                         }
                     });
                 }
@@ -93,80 +123,6 @@ function sendRequest(url,listName,controllerTarget) {
         );
     }
 }
-
-function requestController(data,listName,target) {
-    switch (target){
-        case 'movies':
-            moviesTemplate(data.results,listName);
-            break;
-        case 'actors':
-            actorsTempl(data.results,listName);
-            break;
-        case 'movie':
-            singleMovieTemplate(data);
-            break;
-        default:
-            customAlert('Something wrong!');
-            break;
-    }
-}
-
-/*function findActors(url,listName) {
-    var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
-    var baseUrl = "https://api.themoviedb.org/3/";
-    var actorsSearchUrl = baseUrl + url + apikey;
-
-*//*    $('#mainContent').append('<div id="loaderImage"></div>');
-    new imageLoader(cImageSrc, 'startAnimation()');*//*
-
-    $.ajax({
-        url: actorsSearchUrl,
-        dataType: "jsonp",
-        success: callBackFunc
-    });
-
-    function callBackFunc(data) {
-        stopAnimation();
-        $('#loaderImage').remove();
-
-    }
-}*/
-
-function findThisActor(id) {
-    var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
-    var baseUrl = "https://api.themoviedb.org/3/";
-    var actorsSearchUrl = baseUrl + 'person/'+ id + '?append_to_response=movie_credits' + apikey;
-
-    $.ajax({
-        url: actorsSearchUrl,
-        dataType: "jsonp",
-        success: callBackFunc
-    });
-
-    function callBackFunc (data) {
-        console.log('single func')
-        singleActorTempl(data);
-    }
-}
-
-// function showOneMovie(id) {
-//     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
-//     var baseUrl = "https://api.themoviedb.org/3/movie/";
-//     var additional = '?append_to_response=similar,images,trailers,credits';
-//     var movieUrl = baseUrl + id + additional + apikey;
-//     $(window).scrollTop(0);
-//     $('#mainContent').append('<div id="loaderImage"></div>');
-//     new imageLoader(cImageSrc, 'startAnimation()');
-
-//     $.ajax({
-//         url: movieUrl,
-//         dataType: "jsonp",
-//         success: callBackFunc
-//     });
-//     function callBackFunc (data) {
-//         singleMovieTemplate(data);
-//     }
-// }
 
 function getHelp(){
     $.getJSON("json/help.json", function(data) {

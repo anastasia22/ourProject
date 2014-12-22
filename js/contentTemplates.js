@@ -112,11 +112,11 @@ function  actorsTempl(actors,listName){
 function  singleActorTempl(actor) {
     var content = '';
     var movieAr=actor.movie_credits.cast;
-    console.log(actor);
+
     content='<div><image class="actorPic" src="http://image.tmdb.org/t/p/w300'+actor.profile_path+'"></div>' +
         '<div class="actorInfo"><p><span class="infoTags">' + 'Name: </span>' + actor.name + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Born </span>' + (actor.birthday || 'no info') + ' in ' + (actor.place_of_birth || 'no info') + '</p>' +
-        '<p>' + '<span class="infoTags">' + 'Also known as </span>'+ (actor.also_known_as || 'no info') + '</p>' +
+        '<p>' + '<span class="infoTags">' + 'Also known as </span>' + (actor.also_known_as || 'no info') + '</p>' +
         '<p>' + '<span class="infoTags">' + 'Popularity: </span>' + (parseFloat(actor.popularity).toFixed(2)  || 'no info') + '</p></div>';
     content +='<div class="biography"><p>' + (actor.biography || 'no info') + '</p></div>';
 
@@ -137,16 +137,32 @@ function  singleActorTempl(actor) {
     $('.castMoviesBlock').append(movieBlocks(movieAr));
 /*    $(infoBlock)*/
     $(".singleMovieBlock").on('click',function() {
+
+       deleteBlock();
+        window.location='#movie+' + this.id;
+        /*$('body').css('overflow','auto');
         deleteBlock();
         $('#Actor').remove();
-        $('#mainContent').find(':first-child').remove();
-        window.location='#movie+'+this.id;
+        $('#mainContent').find(':first-child').remove();*/
+
     });
 }
 
 function createBlock(){
     $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
-    $('#offOnBtn').on('click', deleteBlock);
+    $('#Actor').append('<div id="loaderImage"></div>');
+    new imageLoader(cImageSrc, 'startAnimation()');
+    $('body').css('overflow','hidden');
+    $('#offOnBtn').on('click', function() {
+        if($('#mainContent').find(':first-child').attr('id') == 'Actors' || $('#mainContent').find(':first-child').attr('id') == 'singleMovie') {
+            if($('#loadImage')){
+                stopAnimation();
+                $('#loaderImage').remove();
+            }
+            window.history.back();
+        }
+        deleteBlock();
+    });
 }
 
 function deleteBlock() {
@@ -156,7 +172,6 @@ function deleteBlock() {
     }
     $('body').css('overflow','auto');
     $('#Actor').remove();
-    window.history.back();
 }
 
 function singleMovieTemplate (movie) { 

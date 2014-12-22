@@ -88,20 +88,20 @@ var MainRouter = Backbone.Router.extend({
         var searchQuery=document.URL.split('#')[1].split('+')[1];
         var titleSearch = 'search/person?query=' + searchQuery;
         $('#mainContent').find(':first-child').remove();
+        $('#Actor').remove();
         sendRequest(titleSearch,searchQuery,'actors');
     },
     sinMoviePage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
-        var url = 'movie/' + parseInt(searchQuery) + '?append_to_response=similar,images,trailers,credits'
+        var url = 'movie/' + parseInt(searchQuery) + '?append_to_response=similar,images,trailers,credits';
         $('#mainContent').find(':first-child').remove();
-        sendRequest(url,'Movie','movie')
+        sendRequest(url,'','movie');
     },
     sinActorPage : function() {
-        var searchQuery=document.URL.split('#')[1].split('+')[1];
-        findThisActor(parseInt(searchQuery));
+        createBlock();
+        var id=document.URL.split('#')[1].split('+')[1];
+        sendRequest('person/' + id +'?append_to_response=movie_credits','','actor');
     }
-
-
 });
 
 var router = new MainRouter;
