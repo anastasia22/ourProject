@@ -110,13 +110,24 @@ $(document).on('scroll', function(e) {
     
 });
 
-//$(document).ready(function()
-//{
-//    $("#favSection").tinyscrollbar();
-//});
-
-
-
+//correct a top position of favSection due to searchWpapper height
+function favSectionTop() {
+    var totalHight, headerHeight = document.getElementById('header').offsetHeight;
+    var srch = document.getElementById('searchWrapper');
+    var adv = document.getElementById('advancedWrapper');
+    if (adv) {
+        totalHight = headerHeight + adv.offsetHeight + 'px';
+    } else if (srch) {
+        totalHight = headerHeight + srch.offsetHeight + 'px';
+    } else if (!adv && !srch) {
+        totalHight = headerHeight + 'px';
+    }
+    if ($('#favSection')) {
+        $('#favSection').animate({
+            'top': totalHight
+        }, 300);
+    }
+}
 
 
 
