@@ -21,7 +21,7 @@ function customAlert(massage) {
 }
 
 function onToTopBtn() {
-    $(document).on('mousewheel',function() {
+    $(document).on('mousewheel',function(event) {
         if($(window).scrollTop() >= $(window).height() * 2) {
             if(!document.getElementById('scrollTopBtn')) {
                 $('body').append('<div id="scrollTopBtn" class="toTopBtn"><p class="scrolP">TO TOP</p></div>');

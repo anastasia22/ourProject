@@ -52,6 +52,7 @@ function sendRequest(url,listName,controllerTarget) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
     var moviesSearchUrl = baseUrl + url + apikey;
+    var pages;
     var page=1;
 
     $('#mainContent').append('<div id="loaderImage"></div>');
@@ -64,6 +65,7 @@ function sendRequest(url,listName,controllerTarget) {
     });
 
     function callBackFunc (data) {
+        pages = data.total_pages;
         stopAnimation();
         $('#loaderImage').remove();
 
@@ -84,11 +86,19 @@ function sendRequest(url,listName,controllerTarget) {
                 customAlert('Something wrong!');
                 break;
         }
+        if(controllerTarget == 'movie') {
+            $('#mainContent').on('mousewheel',function(){
+                onToTopBtn();
+            });
+        }else {
         $('#mainContent').find(':first-child').on('mousewheel',
-            function() {
+            function(event) {
                 onToTopBtn();
 
                 if ($(window).scrollTop() == $(document).height() - $(window).height() ) {
+                    if(page == pages) {
+                        customAlert('This is the last page.');
+                    }
                     var currentPage= '&page=' + (++page);
                     moviesSearchUrl = baseUrl + url + apikey + currentPage;
 
@@ -121,6 +131,7 @@ function sendRequest(url,listName,controllerTarget) {
                 }
             }
         );
+        }
     }
 }
 
