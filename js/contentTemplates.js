@@ -1,9 +1,4 @@
-/**
- * Created by Daryl on 28.11.2014.
- */
-
 /*templates for all sections HOME HELP MOVIES . every menu button has its own template*/
-var apiKey = '7a135ff2c408f8e138e4645f83b30222';
 var baseUrl = 'http://api.themoviedb.org/3';
 var hyperImageUrl = 'http://image.tmdb.org/t/p/w780/';
 var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
@@ -49,7 +44,7 @@ function helpTemplate(questions) {
     $('#mainContent').find(':first-child').remove();
     //set help block
     $('#mainContent').append(helpTempl({'data':questions}));
-    toggleHelp();
+    HelpBlockEvents();
 }
 
 function moviesTemplate(movies,listName) {
@@ -58,7 +53,7 @@ function moviesTemplate(movies,listName) {
         '<%if(movie.poster_path == null){return;}%>' +
         '<div id="<%=movie.id%>" class="singleMovieBlock">' +
         '<div class="imgWrap">' + 
-        '<img class="miniMovieImg" src="http://image.tmdb.org/t/p/w300<%=movie.poster_path%>" name="<%=movie.title%>">' +
+        '<img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">' +
         '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
         '<%})%>'
     );
@@ -89,7 +84,7 @@ function  actorsTempl(actors,listName){
         <% if(!actor.profile_path) { %>\
         <img class="miniActorImg noPhoto" src="images/no-photo.png">\
         <%}else{%>\
-        <img class="miniActorImg" src="http://image.tmdb.org/t/p/w300<%=actor.profile_path%>">\
+        <img class="miniActorImg" src="<%=largeImageUrl%><%=actor.profile_path%>">\
         <%}%>\
         <div class="infoBlock"><p><%=actor.name%></p></div></div>\
         <%})%>'
@@ -258,7 +253,7 @@ function singleMoviePage (movie) {
             </section>\
           </section>\
           <% }; %>\
-          <% if (singleMovie.similar){ console.log(singleMovie.similar) %>\
+          <% if (singleMovie.similar){console.log((singleMovie.similar))%>\
           <section class="row">\
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
@@ -313,30 +308,40 @@ function singleMoviePage (movie) {
             countries : [],            
             genres: movie.genres,
             overview : movie.overview,
-            similar: movie.similar.results,
             images: [],
             trailer: movie.trailers.youtube[0] ? movie.trailers.youtube[0].source : null,
-            actors: movie.credits.cast == [] ? null : movie.credits.cast
+            actors: movie.credits.cast == [] ? null : movie.credits.cast,
+            similar: []
         };
         if (movie.production_countries[0]) {
             for (var country in movie.production_countries) {
                 singleMovie.countries.push(movie.production_countries[country].name)
             }
-        } else {singleMovie.countries = null};
+        } else {
+          singleMovie.countries = null
+        };
         if (movie.production_companies[0]) {
             for (var company in movie.production_companies) {
                 singleMovie.companies.push(movie.production_companies[company].name)
             }
-        } else {singleMovie.companies = null};
+        } else {
+          singleMovie.companies = null
+        };
         if(movie.images.backdrops[0]) {
             for (var image in movie.images.backdrops) {
                 singleMovie.images.push(movie.images.backdrops[image].file_path)
             } 
-        } else {singleMovie.images = null};
-        if (movie.similar.results[0]) {//should fix this bug
-          movie.similar.results.splice(5)
-        } else {movie.similar.results = null};
-        
+        } else {
+          singleMovie.images = null
+        };
+        if (movie.similar.results.length > 5) {
+          movie.similar.results.splice(5);
+          singleMovie.similar = movie.similar.results
+        } else if (!(movie.similar.results.length)) {
+          singleMovie.similar = null
+        } else {
+          singleMovie.similar = movie.similar.results
+        };
         return singleMovie
     };
 

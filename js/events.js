@@ -254,7 +254,7 @@ function addEventsToMovie(){
 };  
 
 //toggle for help page
-function toggleHelp(){
+function HelpBlockEvents(){
 	$('#Help').on('click', '.question', function(){
 		$(this).next().slideToggle("fast")
 	});

@@ -143,10 +143,10 @@ function findThisActor(id) {
 }
 
 function showOneMovie(id) {
-    var apikey = "?api_key=7a135ff2c408f8e138e4645f83b30222";
+    var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/movie/";
-    var additional = '&append_to_response=similar,images,trailers,credits';
-    var movieUrl = baseUrl + id + apikey + additional;
+    var additional = '?append_to_response=similar,images,trailers,credits';
+    var movieUrl = baseUrl + id + additional + apikey;
     $(window).scrollTop(0);
     $('#mainContent').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');

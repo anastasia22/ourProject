@@ -179,6 +179,9 @@
     #singleMovie .lgScreenshot {
         width: 312px;
     }
+    #singleMovie .similar>section {
+    margin-left:35%;
+}
     /*end of single movie page styles*/
 }
 
@@ -223,6 +226,8 @@
     .clear-fix {
         height: 10px;
     }
-    
+    #singleMovie .smSlider {
+        width:75%;
+    }
     
 }
