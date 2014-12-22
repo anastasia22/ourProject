@@ -17,10 +17,23 @@ function customAlert(massage) {
             });
 
         },1000);
-
-
     });
+}
 
+function onToTopBtn() {
+    $(document).on('mousewheel',function() {
+        if($(window).scrollTop() >= $(window).height() * 2) {
+            if(!document.getElementById('scrollTopBtn')) {
+                $('body').append('<div id="scrollTopBtn" class="toTopBtn"><p class="scrolP">TO TOP</p></div>');
+                toTopBtnEvents();
+            }
+        }
+        if($(window).scrollTop() <= $(window).height() * 2) {
+            if(document.getElementById('scrollTopBtn')) {
+                $('#scrollTopBtn').remove();
+            }
+        }
+    });
 }
 
 var MarkHamill={picture : 'news/Mark_Hamill.jpg', header : 'Mark Hamill Makes Surprise Appearance at Star Wars Live Reading',article : 'Mark Hamill sent Star Wars fans into a frenzy when he was revealed as the secret cast member ' +
@@ -46,3 +59,75 @@ var NataliePortman = {picture : 'news/Natalie_Portman.jpg',header : 'Natalie Por
 '" me on to Tom Tykwer, who passed me on to the Wachowskis."' +
     'The Wachowski directing siblings cast her in 2006 thriller V for Vendetta.'+
         'Portman was nominated for an Academy Award in 2005 for her role in Nichols\' film Closer. She won the prize in 2011 for Black Swan.'};
+
+
+
+
+
+
+
+
+
+
+
+
+
+var cSpeed=9;
+var cWidth=100;
+var cHeight=100;
+var cTotalFrames=12;
+var cFrameWidth=200;
+var cImageSrc='images/712.gif';
+
+var cImageTimeout=false;
+var cIndex=0;
+var cXpos=0;
+var cPreloaderTimeout=false;
+var SECONDS_BETWEEN_FRAMES=0;
+
+function startAnimation(){
+
+    document.getElementById('loaderImage').style.backgroundImage='url('+cImageSrc+')';
+    document.getElementById('loaderImage').style.width=cWidth+'px';
+    document.getElementById('loaderImage').style.height=cHeight+'px';
+
+    //FPS = Math.round(100/(maxSpeed+2-speed));
+    FPS = Math.round(100/cSpeed);
+    SECONDS_BETWEEN_FRAMES = 1 / FPS;
+
+    cPreloaderTimeout=setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES/1000);
+
+}
+
+function continueAnimation(){
+
+    cXpos += cFrameWidth;
+    //increase the index so we know which frame of our animation we are currently on
+    cIndex += 1;
+
+    //if our cIndex is higher than our total number of frames, we're at the end and should restart
+    if (cIndex >= cTotalFrames) {
+        cXpos =0;
+        cIndex=0;
+    }
+
+    if(document.getElementById('loaderImage'))
+        document.getElementById('loaderImage').style.backgroundPosition=(-cXpos) + 'px 0';
+
+    cPreloaderTimeout=setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES * 1000);
+}
+
+function stopAnimation(){//stops animation
+    clearTimeout(cPreloaderTimeout);
+    cPreloaderTimeout=false;
+}
+
+function imageLoader(s, fun)//Pre-loads the sprites image
+{
+    clearTimeout(cImageTimeout);
+    cImageTimeout=0;
+    genImage = new Image();
+    genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
+    /*genImage.onerror=*//*customAlert('Could not load the image.');*//*new Function('alert(\'Could not load the image\')');*/
+    genImage.src=s;
+}

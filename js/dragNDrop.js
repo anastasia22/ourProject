@@ -1,24 +1,18 @@
 var dragMovie = {};
 
 function startDrag(event) {
-    //var sd = event.target.parentNode;
     var sd = $(event.target).closest(".singleMovieBlock");
     dragMovie.id = $(sd).attr("id");
     console.log(dragMovie.id);
     dragMovie.poster = event.target.src;
     dragMovie.title = event.target.getAttribute('name');
 }
-//console.log(dragMovie)
+
 function drop(event) {
     var favMovies = [];
-    document.getElementById('favSection').style.border = 'none';
-    $('#favSection').css({
-        border: 'none'
-    });
+    $('#favSection').css('border','none');
 
-    if (checkFav()) {
-
-    } else {
+    if (!checkFav()) {
         customAlert('This movie has been already added.');
         event.preventDefault();
         return false;
@@ -26,38 +20,51 @@ function drop(event) {
 
     if (!(localStorage.getItem('favMovies'))) {
         favMovies.push(dragMovie);
-
         localStorage.setItem('favMovies', JSON.stringify(favMovies));
     } else {
         favMovies = JSON.parse(localStorage.getItem('favMovies'));
         favMovies.push(dragMovie);
         localStorage.setItem('favMovies', JSON.stringify(favMovies));
     }
-            // BORDER FOR DROP
-            $('#favSection').css({border: '2px dashed #FF8D00'});
-            window.setTimeout(function() {
-                $('#favSection').stop(true).css({border: 'none'});
-            }, 500);
-
+    // BORDER FOR DROP
+    $('#favSection').css({border: '2px dashed #FF8D00'});
+    window.setTimeout(function() {
+        $('#favSection').stop(true).css({border: 'none'});
+    }, 500);
 
     customAlert('Movie added to favorites.');
     addFavMovieBlock(dragMovie);
-    allowDrop(event);
+    event.stopPropagation();
+    event.preventDefault();
+}
+
+function allowDrop(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    $('#favSection').css({border: '2px dashed #FF8D00'});
+    return false;
+}
+
+function handleDragLeave(event) {
+    $('#favSection').css({border: 'none'});
+    event.stopPropagation();
+    event.preventDefault();
+
+    return false;
 }
 
 function favMovies() {
+    var favoriteMovies;
     if (!(localStorage.getItem('favMovies'))) {
         return;
     }
 
-    var favoriteMovies = JSON.parse(localStorage.getItem('favMovies'));
+    favoriteMovies = JSON.parse(localStorage.getItem('favMovies'));
 
     for (var i = 0; i < favoriteMovies.length; i++) {
         addFavMovieBlock(favoriteMovies[i]);
     }
-
 }
-
 
 function addFavMovieBlock(movie) {
     var str = '<div class="favMovieBlock" fav-id="' + movie.id + '">' +
@@ -68,34 +75,10 @@ function addFavMovieBlock(movie) {
         '</div></div>';
 
     $('#favSection').append(str);
-    addHovEvent();
-    
+    faBlockEvents();
 }
 
-function allowDrop(event) {
-
-    event.stopPropagation();
-    event.preventDefault();
-
-            
-
-    return false;
-
-}
-
-function handleDragLeave(event) {
-    $('#favSection').css({
-        border: 'none'
-    });
-    event.stopPropagation();
-    event.preventDefault();
-
-    return false;
-}
-
-
-
-function makeDraggable(elem) {
+function makeDraggable() {
     $('.singleMovieBlock').attr({
         draggable: true,
         ondragstart: 'startDrag(event)'
@@ -103,61 +86,12 @@ function makeDraggable(elem) {
 }
 
 function makeDroppable() {
-    var a = $('#favSection');
     $('#favSection').attr({
         ondrop: 'drop(event)',
         ondragover: 'allowDrop(event)',
         ondragleave: 'handleDragLeave(event)'
     });
 }
-
-function addHovEvent() {
-    var infoBlock;
-    
-    $(".favMovieBlock").hover(function () {
-            infoBlock = $(this).find(':last-child')[0];
-
-            $(infoBlock).stop(true, false).css({
-                height: '0px',
-                visibility: "visible"
-            }).animate({
-                height: '50px'
-            }, 700);
-
-        },
-        function () {
-            $(infoBlock).stop(false, false).animate({
-                    height: '0px'
-                }, 700,
-                function () {
-                    $(this).css({
-                        visibility: "hidden",
-                        height: '50px'
-                    });
-
-                })
-        });
-
-    $(".favMovieImg,.favInfoBlock ").on('click', function () {
-
-        showOneMovie(this.parentNode.getAttribute('fav-id'));
-        return;
-    });
-
-    $('.favDelBtn').on('click', function () {
-        delFavMovie(this.parentNode.getAttribute('fav-id'));
-
-        $(this.parentNode).animate({
-            opacity: 0,
-            height: '20px'
-        }, 600, function () {
-            this.remove();
-        });
-        return;
-    });
-
-}
-
 
 function delFavMovie(blockID) {
     var allMovies = JSON.parse(localStorage.getItem('favMovies'));
@@ -171,7 +105,6 @@ function delFavMovie(blockID) {
 
     localStorage.setItem('favMovies', JSON.stringify(temp));
 }
-
 
 function checkFav() {
     var favorites = $('.favMovieBlock');

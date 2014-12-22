@@ -14,11 +14,9 @@ var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
 function homeTemplate() {
     var news;
 
-
     news ='<div id="News"><div class="singleNewsBlock"><img class="newsPic" src="' + MarkHamill.picture + '">' +
     '<div class="newsInfo"><h2 class="newsHeader">' + MarkHamill.header + '</h1><div class="newsArticle">' +
     '<p>' + MarkHamill.article + '</p></div></div></div></div>';
-
 
     if($('#mainContent').find(':first-child'))$('#mainContent').find(':first-child').remove();
 
@@ -29,7 +27,6 @@ function homeTemplate() {
     news ='<div class="singleNewsBlock"><img class="newsPic" src="' + NataliePortman.picture + '">' +
     '<div class="newsInfo"><h2 class="newsHeader">' + NataliePortman.header + '</h1><div class="newsArticle">' +
     '<p>' + NataliePortman.article + '</p></div></div></div>';
-
 
     $('#News').append(news);
 }
@@ -75,10 +72,10 @@ function moviesTemplate(movies,listName) {
 
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks(movies));
-        addEvents();
+        singleMoveBlockEvents();
     } else {
         $('#mainContent').append('<section id="Movies"><h1>' + listName + '</h1>' + movieBlocks(movies) + '</section>');
-        addEvents();
+        singleMoveBlockEvents();
     }
     $('#Movies').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
 
@@ -86,37 +83,34 @@ function moviesTemplate(movies,listName) {
 }
 
 function  actorsTempl(actors,listName){
-    var actorsBlock='';
-
-    for (var i=0; i < actors.length; i++) {
-        actorsBlock +='<div id="' + actors[i].id + '"class="singleActorBlock">';
-        if(actors[i].profile_path == null) {
-            actorsBlock+='<img class="miniActorImg noPhoto" src="images/no-photo.png">';
-        } else{
-            actorsBlock+='<img class="miniActorImg" src="http://image.tmdb.org/t/p/w300' + actors[i].profile_path + '">';
-        }
-        actorsBlock+='<div class="infoBlock">';
-        actorsBlock+='<p>' + actors[i].name + '</p>';
-        actorsBlock+='</div></div>';
-
-    }
+    var actorBlocks= _.template(
+        '<%_.each(obj,function(actor){%>\
+        <div id="<%=actor.id%>" class="singleActorBlock">\
+        <% if(!actor.profile_path) { %>\
+        <img class="miniActorImg noPhoto" src="images/no-photo.png">\
+        <%}else{%>\
+        <img class="miniActorImg" src="http://image.tmdb.org/t/p/w300<%=actor.profile_path%>">\
+        <%}%>\
+        <div class="infoBlock"><p><%=actor.name%></p></div></div>\
+        <%})%>'
+    );
 
     if($('#loader')){
         $('#loader').remove();
     }
+
     if(listName.split(' ')[0] == 'Search') {
         listName = listName + actors.length;
     }
-    actorsBlock += '<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>';
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
-       /* $('#Actors').append(actorsBlock);                                           !!!!!!!!!!!!!!!!!!!!!!!         A C H T U N G !!!!!!!!!!!!!!!!!!!!!!!!!!
-        addEventsToActors();*/
+        $('#Actors').append(actorBlocks(actors));
+        singleActorBlockEvents();
     } else {
-        actorsBlock='<section id="Actors"><h1>' + listName + '</h1>' + actorsBlock + '</section>';
-        $('#mainContent').append(actorsBlock);
-        addEventsToActors();
+        $('#mainContent').append('<section id="Actors"><h1>' + listName + '</h1>' + actorBlocks(actors) + '</section>');
+        singleActorBlockEvents();
     }
+    $('#Actors').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
 }
 function  singleActorTempl(actor) {
     var content = '';
@@ -131,13 +125,13 @@ function  singleActorTempl(actor) {
     stopAnimation();
     $('#loaderImage').remove();
     $('#Actor').append(content);
-
 }
 
 function createBlock(){
     $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
     $('#offOnBtn').on('click', deleteBlock);
 }
+
 function deleteBlock() {
     if($('#loadImage')){
        stopAnimation();
@@ -145,7 +139,7 @@ function deleteBlock() {
     }
     $('body').css('overflow','auto');
     $('#Actor').remove();
-   window.history.back();
+    window.history.back();
 }
 
 function singleMoviePage (movie) { 
@@ -353,7 +347,7 @@ function singleMoviePage (movie) {
     $('#mainContent').append(singleMovieTemplate({"singleMovie":renderSingleMoviePage(movie)}));
     addEventsToMovie();
     makeDraggable();
-    addEventsToActors();
+    singleActorBlockEvents();
 }
 ////scroll to top button
 //$(function() {
