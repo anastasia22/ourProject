@@ -34,20 +34,6 @@ function defaultMovies() {
    sendRequest(defaultMovies,'This year movies','movies');
 }
 
-function searchByTitle(){
-
-    var titleSearch = 'search/movie?query=' + $('#searchField').val();
-    sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() + '</span>  Results found: ','movies');
-}
-
-function searchByActor() {
-    console.log('act func')
-
-    var titleSearch = 'search/person?query=' + $('#searchField').val();
-    $('#mainContent').find(':first-child').remove();
-    sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + $('#searchField').val() +'</span>  Results found: ','actors');
-}
-
 function sendRequest(url,listName,controllerTarget) {
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
@@ -68,13 +54,12 @@ function sendRequest(url,listName,controllerTarget) {
         pages = data.total_pages;
         stopAnimation();
         $('#loaderImage').remove();
-
         switch (controllerTarget){
             case 'movies':
-                moviesTemplate(data.results,listName);
+                moviesTemplate(data,listName);
                 break;
             case 'actors':
-                actorsTempl(data.results,listName);
+                actorsTempl(data,listName);
                 break;
             case 'movie':
                 singleMovieTemplate(data);
@@ -111,10 +96,10 @@ function sendRequest(url,listName,controllerTarget) {
                             $('#loader').hide();
                             switch (controllerTarget){
                                 case 'movies':
-                                    moviesTemplate(data.results,listName);
+                                    moviesTemplate(data,listName);
                                     break;
                                 case 'actors':
-                                    actorsTempl(data.results,listName);
+                                    actorsTempl(data,listName);
                                     break;
                                 case 'movie':
                                     singleMovieTemplate(data);

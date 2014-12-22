@@ -49,7 +49,8 @@ function helpTemplate(questions) {
     HelpBlockEvents();
 }
 
-function moviesTemplate(movies,listName) {
+function moviesTemplate(data,listName) {
+    var movies = data.results;
     var movieBlocks= _.template(
         '<%_.each(obj,function(movie){%>'+
         '<%if(movie.poster_path == null){return;}%>' +
@@ -59,12 +60,12 @@ function moviesTemplate(movies,listName) {
         '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
         '<%})%>'
     );
-    if($('#loader')){
+    if($('#loader')) {
        $('#loader').remove(); 
     }
 
     if(listName) {
-        if(listName.split(' ')[0] == 'Search')listName = listName + movies.length;
+        if(listName.split(' ')[0] == 'Search')listName = listName + data.total_results;
     }
     if(movies.length == 0) {
         listName = 'Sorry. No results.';
@@ -82,7 +83,8 @@ function moviesTemplate(movies,listName) {
     makeDraggable();
 }
 
-function  actorsTempl(actors,listName){
+function  actorsTempl(data,listName) {
+    var actors = data.results;
     var actorBlocks= _.template(
         '<%_.each(obj,function(actor){%>\
         <div id="<%=actor.id%>" class="singleActorBlock">\
@@ -95,12 +97,12 @@ function  actorsTempl(actors,listName){
         <%})%>'
     );
 
-    if($('#loader')){
+    if($('#loader')) {
         $('#loader').remove();
     }
 
     if(listName.split(' ')[0] == 'Search') {
-        listName = listName + actors.length;
+        listName = listName + data.total_results;
     }
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
@@ -137,7 +139,7 @@ function  singleActorTempl(actor) {
         '<%if(movie.poster_path == null){return;}%>' +
         '<div id="<%=movie.id%>" class="singleMovieBlock">' +
         '<div class="imgWrap">' +
-        '<img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">' +
+        '<img class="miniMovieImg" src="<%=mediumImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">' +
         '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
         '<%})%>'
     );

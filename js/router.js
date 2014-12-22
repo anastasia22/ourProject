@@ -63,7 +63,8 @@ var MainRouter = Backbone.Router.extend({
         var searchQuery=document.URL.split('#')[1].split('+')[1];
         var titleSearch = 'search/movie?query=' + searchQuery;
         $('#mainContent').find(':first-child').remove();
-        sendRequest(titleSearch,searchQuery,'movies');
+
+        sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + searchQuery + '</span>  Results found: ','movies');
     },
     searchByRate : function() {
         var rating=document.URL.split('#')[1].split('+')[1];
@@ -89,7 +90,7 @@ var MainRouter = Backbone.Router.extend({
         var titleSearch = 'search/person?query=' + searchQuery;
         $('#mainContent').find(':first-child').remove();
         $('#Actor').remove();
-        sendRequest(titleSearch,searchQuery,'actors');
+        sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + searchQuery + '</span>  Results found: ','actors');
     },
     sinMoviePage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
@@ -98,6 +99,7 @@ var MainRouter = Backbone.Router.extend({
         sendRequest(url,'','movie');
     },
     sinActorPage : function() {
+        $('#Actor').remove();
         createBlock();
         var id=document.URL.split('#')[1].split('+')[1];
         sendRequest('person/' + id +'?append_to_response=movie_credits','','actor');
