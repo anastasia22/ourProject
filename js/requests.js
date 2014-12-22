@@ -135,3 +135,11 @@ function getNews(){
     })
 }
 
+function getGenres() {
+            $.ajax({
+            url: 'http://api.themoviedb.org/3/genre/movie/list?api_key=7a135ff2c408f8e138e4645f83b30222',
+            dataType: 'json',
+            success: paintAdvanced
+        });            
+        }
+
