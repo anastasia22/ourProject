@@ -32,6 +32,9 @@ function addSearchPanel() {
     });*/
 
     $('input[name="factor"]:radio').click(function () {
+/*        $('#searchWrapper').find(':first-child').slideUp('slow',function(){
+
+        });*/
         controlAdvanced();
     });
 
@@ -260,7 +263,7 @@ function searchBtnEvents() {
             $('#advancedWrapper').remove();
             $('#searchWrapper').remove();
             $('#mainContent').find(':first-child').remove();
-            sendRequest(url, 'ganres');
+            sendRequest(url, 'Combined search.','movies');
         });
     });
 }

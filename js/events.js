@@ -61,7 +61,7 @@ function menuEvents(event) {
 		if(temp == target.id) {
 			$('#mainContent').find(':first-child').remove();
 			window.location='#' + temp;
-			menu[temp]();
+			//menu[temp]();
 		}
 	}
 }
@@ -103,7 +103,7 @@ function singleActorBlockEvents() {
 				});
 		});
 
-	$("#Actors .singleActorBlock").on('click',function() {
+	$("#Actors .singleActorBlock,#singleMovie .singleActorBlock").on('click',function() {
 
 		createBlock();
 		$('body').css('overflow','hidden');

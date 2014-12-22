@@ -67,6 +67,7 @@ function sendRequest(url,listName,controllerTarget) {
         stopAnimation();
         $('#loaderImage').remove();
         requestController(data,listName,controllerTarget);
+        console.log(data);
 
         $('#mainContent').find(':first-child').on('mousewheel',
             function() {
@@ -102,6 +103,7 @@ function requestController(data,listName,target) {
             break;
         default:
             customAlert('Something wrong!');
+            break;
     }
 }
 
