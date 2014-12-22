@@ -93,11 +93,12 @@ var MainRouter = Backbone.Router.extend({
     sinMoviePage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
         showOneMovie(parseInt(searchQuery));
-    },
+    }/*,
     sinActorPage : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
+        console.log('router');
         findThisActor(parseInt(searchQuery));
-    }
+    }*/
 
 
 });
