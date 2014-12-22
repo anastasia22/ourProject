@@ -69,6 +69,11 @@ function menuEvents(event) {
 		}
 	}
 }
+
+$('.footer-par span').click(function() {
+  	console.log('clicked')
+  	window.location='#' + 'menuHelp';
+});
 //single movie block slide out handler
 function singleMoveBlockEvents() {
 	var infoBlock;
@@ -80,6 +85,7 @@ function singleMoveBlockEvents() {
 	$(window).resize(setImgHeight);
 
 	$(".singleMovieBlock").on('click',function() {
+		console.log($(this).text())
 		window.location='#movie+'+this.id;
 	});
 
@@ -278,3 +284,4 @@ function toTopBtnEvents() {
 		this.remove();
 	});
 }
+
