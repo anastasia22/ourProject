@@ -1,6 +1,5 @@
 //search visualisation
 function addSearchPanel() {
-    var state = true;
     var frm = '';
 
     $('<div>').attr('id', 'searchWrapper').addClass('search-wrapper').insertAfter('#header');
@@ -34,9 +33,6 @@ function addSearchPanel() {
 
 //toggle div for adv search and move properly fav section
 function controlAdvanced() {
-    var searchWrap = $('#searchWrapper'),
-        expH = 250,
-        collapsH = 100;
     if ($('#advanced').prop('checked') == true) {
         return (function () {
             $('#searchWrapper').find(':first-child').animate({

@@ -45,6 +45,7 @@ a {
     overflow: auto;
     min-height: 630px; /*changed from 600 to 620*/
     position: static;
+    padding-bottom: 37px;
 }
 
 #footer {
