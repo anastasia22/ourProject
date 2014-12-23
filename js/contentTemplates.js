@@ -103,6 +103,9 @@ function  actorsTempl(data,listName) {
     if(listName.split(' ')[0] == 'Search') {
         listName = listName + data.total_results;
     }
+    if(actors.length == 0) {
+        listName = 'Sorry. No results.';
+    }
 
     if($('#mainContent').find(':first-child').attr('id') == 'Actors') {
         $('#Actors').append(actorBlocks(actors));
