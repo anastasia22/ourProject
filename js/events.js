@@ -7,10 +7,17 @@
 			hideFavBlock();
 		}
 		$('#searchWrapper').remove();
+		$('favoritesButton').toggleClass('menuButtonHovered');
+
+		$('callSearch').toggleClass('menuButtonHovered');
 		$('#mainContent').children().remove();
+		if(document.URL.split('#')[1] == 'menuHome') {
+			window.location.reload();
+		}
 		window.location='#menuHome';
 	});
 	$('#mainMenu').on('click',menuEvents);
+    
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
 			addSearchPanel();
