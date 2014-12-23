@@ -98,14 +98,14 @@ $(document).on('scroll', function(e) {
 
 //correct a top position of favSection due to searchWpapper height
 function favSectionTop() {
-    var totalHight, headerHeight = $('#header').offsetHeight;
-    var srch = $('#searchWrapper');
-    var adv = $('#advancedWrapper');
-    if (adv) {
+    var totalHight, headerHeight = document.getElementById('header').offsetHeight;
+    var srch = document.getElementById('searchWrapper');
+    var adv = document.getElementById('advancedWrapper');
+    if (adv !== null) {
         totalHight = headerHeight + adv.offsetHeight + 'px';
-    } else if (srch) {
+    } else if (srch !== null) {
         totalHight = headerHeight + srch.offsetHeight + 'px';
-    } else if (!adv && !srch) {
+    } else if (adv == null && srch == null) {
         totalHight = headerHeight + 'px';
     }
     if ($('#favSection')) {

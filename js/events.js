@@ -19,11 +19,13 @@
 				$('#searchWrapper').css('height','auto');
 				favSectionTop();
 			});
+            $('#callSearch').toggleClass('menuButtonHovered');
 		}else {
 			$('#searchWrapper').animate({height: 'toggle',opacity: 0}, 'slow',function(){
 				$('#searchWrapper').remove();
 				favSectionTop();
 			});
+            $('#callSearch').toggleClass('menuButtonHovered');
 		}
 	});
 })();
