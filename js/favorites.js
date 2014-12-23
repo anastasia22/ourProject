@@ -1,6 +1,3 @@
-/**
- * Created by Daryl on 28.11.2014.
- */
 
 function eventHandler(event) {
     var button = $('#favoritesButton');
@@ -39,14 +36,10 @@ function addFavBlock() {
       //append favBlock due to header and searchWrapper common height !!!! 'top': headerPlusSearchHeight()
 
     $(favBlock).insertAfter( "#header" ).animate({'opacity': '1', 'top': headerPlusSearchHeight()}, 400,function() {
-
-
-        makeDroppable();
-        favMovies();
-
-    });
-
-    }, 200);
+            makeDroppable();
+            favMovies();
+            });
+        }, 200);
 
 
 }
@@ -76,10 +69,7 @@ function hideFavBlock() {
     window.setTimeout(function() {
          $('#favSection').remove();
     }, 300);
-
 }
-
-
 //make fav block fixed when scroll
 $(document).on('scroll', function(e) {
     var isFavorites = checkFavorites();
@@ -106,8 +96,6 @@ $(document).on('scroll', function(e) {
     } else {
         return;
     }
-    
-    
 });
 
 //correct a top position of favSection due to searchWpapper height

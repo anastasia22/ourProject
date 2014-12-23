@@ -1,4 +1,3 @@
-/*templates for all sections HOME HELP MOVIES . every menu button has its own template*/
 var baseUrl = 'http://api.themoviedb.org/3';
 var hyperImageUrl = 'http://image.tmdb.org/t/p/w780/';
 var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
@@ -147,10 +146,6 @@ function  singleActorTempl(actor) {
     $(".singleMovieBlock").on('click',function() {
         deleteBlock();
         window.location='#movie+' + this.id;
-        /*$('body').css('overflow','auto');
-        deleteBlock();
-        $('#Actor').remove();
-        $('#mainContent').find(':first-child').remove();*/
     });
 }
 

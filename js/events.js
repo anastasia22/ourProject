@@ -1,7 +1,3 @@
-/**
- * Created by Daryl on 03.12.2014.
- */
- //adds all events handlers to menu buttons
 (function(){
 
 	$('.logo-backgr').css({cursor : 'pointer'});
@@ -49,7 +45,7 @@ function searchBy() {
 		}
 	});
 }
-// menu event handlers
+
 function menuEvents(event) {
 	var target=event.target || event.srcElement;
 	var menu={'menuHome' : homeTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
@@ -63,7 +59,6 @@ function menuEvents(event) {
 			}
 			$('#mainContent').find(':first-child').remove();
 			window.location='#' + temp;
-			//menu[temp]();
 		}
 	}
 }
@@ -118,14 +113,7 @@ function singleActorBlockEvents() {
 		});
 
 	$("#Actors .singleActorBlock,#singleMovie .singleActorBlock").on('click',function() {
-
-		//createBlock();
-		/*$('body').css('overflow','hidden');*/
-	/*	$('#offOnBtn').on('click',deleteBlock);*/
 		window.location ='#actor+' + this.id;
-
-
-
 	});
 }
 
