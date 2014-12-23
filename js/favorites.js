@@ -1,7 +1,3 @@
-/**
- * Created by Daryl on 28.11.2014.
- */
-
 function eventHandler(event) {
     var button = $('#favoritesButton');
 
@@ -11,9 +7,7 @@ function eventHandler(event) {
     }else {
         button.toggleClass('menuButtonHovered');
         addFavBlock();
-
     }
-
 }
 
 //check is there a favorites block on the page
@@ -31,7 +25,8 @@ function addFavBlock() {
     var favBlock = '<div id=\"favSection\"></div>';
 
     /*shortens main block */
-    $('#mainContent').animate({'width':'75%','float':'left'}, 300);
+    $('#mainContent').animate({'width':'75%','float':'left'}, 300, setImgHeightEvent);
+
     //$(favBlock).insertAfter( "#header" );
     /*adds favorites block*/
 
@@ -76,7 +71,7 @@ function hideFavBlock() {
     window.setTimeout(function() {
          $('#favSection').remove();
     }, 300);
-
+    window.setTimeout(setImgHeightEvent, 1000);
 }
 
 
@@ -112,9 +107,9 @@ $(document).on('scroll', function(e) {
 
 //correct a top position of favSection due to searchWpapper height
 function favSectionTop() {
-    var totalHight, headerHeight = document.getElementById('header').offsetHeight;
-    var srch = document.getElementById('searchWrapper');
-    var adv = document.getElementById('advancedWrapper');
+    var totalHight, headerHeight = $('#header').offsetHeight;
+    var srch = $('#searchWrapper');
+    var adv = $('#advancedWrapper');
     if (adv) {
         totalHight = headerHeight + adv.offsetHeight + 'px';
     } else if (srch) {

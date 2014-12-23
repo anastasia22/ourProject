@@ -152,5 +152,5 @@ function getGenres() {
             dataType: 'json',
             success: paintAdvanced
         });            
-        }
+}
 

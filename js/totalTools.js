@@ -1,6 +1,3 @@
-/**
- * Created by Daryl on 20.12.2014.
- */
 
 function customAlert(massage) {
     var defMsg =' Attention!!!';
@@ -42,7 +39,7 @@ var cWidth=100;
 var cHeight=100;
 var cTotalFrames=12;
 var cFrameWidth=200;
-var cImageSrc='images/712.gif';
+var cImageSrc='images/preload.gif';
 
 var cImageTimeout=false;
 var cIndex=0;

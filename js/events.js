@@ -1,6 +1,3 @@
-/**
- * Created by Daryl on 03.12.2014.
- */
  //adds all events handlers to menu buttons
 (function(){
 
@@ -69,23 +66,20 @@ function menuEvents(event) {
 		}
 	}
 }
+//event for changing poster sizes when animate
+function setImgHeightEvent(){
+		var widthImg = $(".singleMovieBlock img").width();
+		$(".singleMovieBlock .imgWrap").height(widthImg*1.53);
+};
 
-$('.footer-par span').click(function() {
-  	console.log('clicked')
-  	window.location='#' + 'menuHelp';
-});
+
 //single movie block slide out handler
 function singleMoveBlockEvents() {
 	var infoBlock;
-	function setImgHeight(){
-		var widthImg = $(".singleMovieBlock img").width();
-		$(".singleMovieBlock .imgWrap").height(widthImg*1.53);
-	};
-	setImgHeight();
-	$(window).resize(setImgHeight);
+	setImgHeightEvent();
+	$(window).resize(setImgHeightEvent);
 
 	$(".singleMovieBlock").on('click',function() {
-		console.log($(this).text())
 		window.location='#movie+'+this.id;
 	});
 
@@ -156,12 +150,12 @@ function faBlockEvents() {
 		});
 
 	$(".favMovieImg,.favInfoBlock ").on('click', function () {
-		showOneMovie(this.parentNode.getAttribute('fav-id'));
+		window.location='#movie+'+ ($(this).parent().attr('fav-id'));
 		return;
 	});
 
 	$('.favDelBtn').on('click', function () {
-		delFavMovie(this.parentNode.getAttribute('fav-id'));
+		delFavMovie($(this).parent().attr('fav-id'));
 		$(this.parentNode).animate({
 			opacity: 0,
 			height: '20px'
