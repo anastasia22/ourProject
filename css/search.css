@@ -20,22 +20,10 @@
     float: left;
     z-index: 0;
 }
-
-/*
-.by {
-    margin-right: 14px;
-    font-size: 1.1em;
-    color: #777;
-    float: left;
-    margin: 9px 14px 0 0;
-}
-*/
-
 .search-radio {
     display: none;
 }
-
-.search-radio-label { /****  delete #searchWrapper selector  *****/
+.search-radio-label { 
     height: 39px;
     width: 28.57142857142857%;
     cursor: pointer;
@@ -46,20 +34,15 @@
     text-align: center;
     line-height: 21px;
 }
-
-
 .search-radio-label:first-of-type {
     width: 42.85714285714286%;
 }
-
 .search-radio-label:hover {
     background: #01aadd;
 }
-
 input[type="radio"]:checked + .search-radio-label {
     background: #0382a8;
 }
-
 .search-button {
     float: left;
     margin: 32px 0 0 2%;
@@ -80,7 +63,6 @@ input[type="radio"]:checked + .search-radio-label {
 .clear-fix {
     height: 10px;
 }
-/** advanced **/
 
 .genre {
     display: inline-block;
@@ -136,7 +118,6 @@ input[type="radio"]:checked + .search-radio-label {
     outline: none;
     color: #006E96;
     padding-left: 3px;
-/*    background: url(../images/title-arrow.png) no-repeat right #fff;*/
     overflow: hidden;
 }
 

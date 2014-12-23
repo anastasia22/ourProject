@@ -3,11 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-
-/*******     BASE     *******/
-
-
 body{
     margin: 0% 10% 0% 10%;
     background-color:#f5f5f5;
@@ -19,35 +14,28 @@ body{
     color: #333;
     position: relative;
 }
-
 a {
     text-decoration: none;
 }
-
-/*******     LAYOUT     *******/
-
 #header {
     width: 100%;
     height: 200px;
     position: relative;
     z-index: 2;
 }
-
 #mainMenu {
     height: 55px;
     text-align: center;
     overflow: hidden;
     position: static;
 }
-
 #mainContent {
     width: 100%;
     overflow: auto;
-    min-height: 630px; /*changed from 600 to 620*/
+    min-height: 630px;
     position: static;
     padding-bottom: 37px;
 }
-
 #footer {
     width: 100%;
     height: 80px;
@@ -55,14 +43,6 @@ a {
     z-index: 1;
     position: relative;
 }
-
-
-/*******     MODULES     *******/
-
-
-/*** header ***/
-
-/** logo **/
 .logo-backgr {
     background: #646060;
 }
@@ -81,10 +61,6 @@ a {
     top: 6px;
     cursor: pointer;
   }
-
-
-
-
 .page-header span {
     font-size: 0.64em;
     top: -30px;
@@ -94,10 +70,6 @@ a {
 .header-wrapper {
     padding-top: 7px;
 }
-
-
-/** registration **/
-
 .registration {
    position: absolute;
     top: 0;
@@ -106,7 +78,6 @@ a {
     width: 159px;
     text-align: right;
 }
-
 .registration a {
     float: left;
     color: #eee;
@@ -115,22 +86,13 @@ a {
     -webkit-transition-duration: 0.2s;
             transition-duration: 0.2s;
 }
-
 .registration a:hover {
     color: #6ec1e0;
 }
-
-
-
-
-
-/** menu **/
-
 .main-menu-wrapper {
     display: block;
     width: 100%;
 }
-
 .menuButton {
     width: 17.60532384993222%;
     display: inline-block;
@@ -144,22 +106,16 @@ a {
     -webkit-transition-duration: 0.2s;
             transition-duration: 0.2s
 }
-
 .menuButton:hover {
     cursor: pointer;
     background: #01aadd;
 }
-
 .menuButtonHovered {
     background: #0382a8;
 }
-
 .toggle-menu {
     display: none;
 }
-
-/* dropdown */
-
 .menuButton ul {
     visibility: hidden;
     position: absolute;
@@ -170,37 +126,26 @@ a {
     cursor: pointer;
     background: #01aadd;
 }
-
 .menuButton ul li {
     height: 30px;
     line-height: 30px;
 }
-
-
-
 .menuButton ul li:hover {
     background: #eee;
     color: #01aadd;
 }
-
 .menuButton:hover ul {
     visibility: visible;
      z-index: 20; 
     
 }
-
 .menu-color {
     background: #6ec1e0;
     border-top: 2px solid #3A77B3;
 }
-
-
-    /*** content ***/
-
 .content-background {
     background: #FFFAF0;
 }
-
 .footer-par {
     color: #fff;
     position: relative;
@@ -208,27 +153,4 @@ a {
     left: 66px;
     font-size: 0.9em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,0 +1,147 @@
+.search-wrapper
+  height: auto
+  opacity: 0
+  clear: both
+  background: #C5E2FF
+  position: static
+  margin: 0 auto
+  overflow: visible
+
+.search-input
+  margin: 32px 2% 15px 4%
+  border: none
+  height: 39px
+  width: 38%
+  padding: 12px
+  color: #555
+  font-size: 1.1em
+  outline: none
+  float: left
+  z-index: 0
+
+.search-radio
+  display: none
+
+.search-radio-label
+  height: 39px
+  width: 28.57142857142857%
+  cursor: pointer
+  background: #6EC1E0
+  padding: 11px 0
+  float: left
+  color: #fff
+  text-align: center
+  line-height: 21px
+  &:first-of-type
+    width: 42.85714285714286%
+  &:hover
+    background: #01aadd
+
+input[type="radio"]:checked + .search-radio-label
+  background: #0382a8
+
+.search-button
+  float: left
+  margin: 32px 0 0 2%
+  border: none
+  outline: none
+  width: 78px
+  height: 39px
+  font-size: 1.5em
+  color: #fff
+  background: #FCA840
+  cursor: pointer
+  &:hover
+    background: #FF8D00
+
+.clear-fix
+  height: 10px
+
+.genre
+  display: inline-block
+  width: 140px
+  label
+    font-size: 0.95em
+    cursor: pointer
+    color: #006E96
+    &:hover:before
+      background: #0382A8
+    &:before
+      display: inline-block
+      content: ""
+      width: 15px
+      height: 15px
+      position: relative
+      top: 2px
+      background: #f2f2f2
+      margin: 0 8px 0 0
+      cursor: pointer
+      -webkit-transition-duration: 0.2s
+      transition-duration: 0.2s
+  input[type="checkbox"]
+    display: none
+    &:checked + label:before
+      background-color: #FCA840
+      background-size: 7px 7px
+
+#advancedWrapper
+  width: 100%
+  padding: 0 0 0 5%
+  background: #C5E2FF
+
+.search-selects
+  float: left
+  margin: 0 0 10px 2%
+
+.select
+  height: 24px
+  width: 170px
+  margin-right: 10px
+  border: none
+  outline: none
+  color: #006E96
+  padding-left: 3px
+  overflow: hidden
+
+.search-genres
+  width: 59%
+  float: left
+  padding-bottom: 10px
+
+#advSearchBtn
+  width: 100px
+  height: 39px
+  font-size: 1em
+  margin: 0
+  margin: 28px 0 0 5.317129558242242%
+  display: block
+  margin-bottom: 10px
+  float: left
+
+.cat-label
+  font-size: 0.8em
+  margin: 5px 0px -1px
+  color: #65899E
+  padding-left: 6px
+
+.search-genres .cat-label:first-child
+  border-bottom: 1px solid #96C3DD
+  width: 96%
+  margin-bottom: 6px
+
+#toSimple
+  border: none
+  background: #6EC1E0
+  color: #fff
+  width: 100px
+  height: 39px
+  margin: 28px 0 0 5.317129558242242%
+  display: block
+  outline: none
+  float: left
+  &:hover
+    background: #01aadd
+
+.srch-buttons-wrapper
+  float: left
+  width: 15.95138867472673%

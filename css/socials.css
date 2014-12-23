@@ -1,6 +1,3 @@
-/*this is social`s styles. i stole  it :(  and i regret for what have i done*/
-
-/* Wrapper */
 .icon-button {
 	z-index: 8;
 	background-color: white;
@@ -30,7 +27,7 @@
     border-top: 0px solid #fff;
 }
 
-/* Circle */
+
 .icon-button span {
 	border-radius: 0;
 	display: block;
@@ -59,7 +56,7 @@
 	background-color: #db5a3c;
 }
 
-/* Icons */
+
 .icon-button i {
 	background: none;
 	color: white;
