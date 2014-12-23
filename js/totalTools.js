@@ -42,6 +42,7 @@ function checkOnLoad() {
 
 
 
+
 var cSpeed=9;
 var cWidth=100;
 var cHeight=100;

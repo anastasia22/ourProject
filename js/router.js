@@ -48,7 +48,7 @@ var MainRouter = Backbone.Router.extend({
         $('#mainContent').find(':first-child').remove();
         mostPopularComedies();
     },
-    Horror : function(){
+    Horror : function() {
         $('#mainContent').find(':first-child').remove();
         bestHorrors();
     },
