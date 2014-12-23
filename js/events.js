@@ -38,13 +38,11 @@ function searchBy() {
 				this.remove();
 			});
 			window.location='#movies+' + $('#searchField').val();
-			//	searchByTitle();
 		} else {
 			$('#searchWrapper').stop(true,true).animate({opacity : 0},500,function(){
 				this.remove();
 			});
 			window.location='#actors+' + $('#searchField').val();
-
 		}
 	});
 }
