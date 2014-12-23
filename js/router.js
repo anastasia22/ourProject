@@ -2,7 +2,7 @@
 var MainRouter = Backbone.Router.extend({
 
     routes: {
-        'menuMovies': 'defaultMovies',
+        'menuMovies': 'defMovies',
         'menuHelp': 'Help',
         'menuHome': 'Home',
         'subMenuPop': 'MostPop',
@@ -20,10 +20,6 @@ var MainRouter = Backbone.Router.extend({
         'actor+:query' : 'sinActorPage'
 
     },
-    defaultMovies :  function() {
-        $('#mainContent').find(':first-child').remove();
-        defaultMovies();
-    },
     Help : function() {
         $('#mainContent').find(':first-child').remove();
         getHelp();
@@ -31,6 +27,10 @@ var MainRouter = Backbone.Router.extend({
     Home : function() {
         $('#mainContent').find(':first-child').remove();
         getNews();
+    },
+    defMovies :  function() {
+        $('#mainContent').find(':first-child').remove();
+        defaultMovies();
     },
     MostPop : function() {
         $('#mainContent').find(':first-child').remove();

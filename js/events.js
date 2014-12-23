@@ -194,14 +194,14 @@ function addEventsToMovie(){
     //func that shows modal large carousel
 	function createLargeCarousel(){
 		//setting position and width, events for large carousel
-		var numb = $(this).data('numb')
+		var numb = $(this).data('numb');
 		var lgImageContainer = $('.lgCarousel').find($('.img-container'));
 		var lgImages = lgImageContainer.find('.lgScreenshot');
 		var lgStep = lgImages.outerWidth();
 		var lgTotalLength = parseInt(lgImages.css('width')) * lgImages.length;
 		lgImageContainer.css({'width': lgTotalLength,'right': numb*lgStep});
 		lgImages.on('click', scrollCarousel);
-		createModal()
+		createModal();
 	}
     //func for creating and inserting modal window and mask
 	function createModal() {
@@ -248,7 +248,7 @@ function addEventsToMovie(){
 	        nextArrow.removeClass('next-able').addClass('next-unable');
 	        img_cont.stop().animate({"right": "+=" + lastStep + "px"}, "slow", "linear")
 	    };
-	    return
+	    return;
 	}
 
 };  

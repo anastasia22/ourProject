@@ -16,7 +16,6 @@ function drop(event) {
         event.preventDefault();
         return false;
     }
-
     if (!(localStorage.getItem('favMovies'))) {
         favMovies.push(dragMovie);
         localStorage.setItem('favMovies', JSON.stringify(favMovies));
@@ -101,7 +100,6 @@ function delFavMovie(blockID) {
         }
         temp.push(allMovies[i]);
     }
-
     localStorage.setItem('favMovies', JSON.stringify(temp));
 }
 
