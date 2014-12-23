@@ -17,6 +17,7 @@
 		window.location='#menuHome';
 	});
 	$('#mainMenu').on('click',menuEvents);
+    
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
 			addSearchPanel();
