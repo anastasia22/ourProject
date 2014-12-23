@@ -24,12 +24,8 @@ function drop(event) {
         favMovies.push(dragMovie);
         localStorage.setItem('favMovies', JSON.stringify(favMovies));
     }
-    // BORDER FOR DROP
-    $('#favSection').css({border: '2px dashed #FF8D00'});
-    window.setTimeout(function() {
-        $('#favSection').stop(true).css({border: 'none'});
-    }, 500);
-
+    //remove background FOR DROP
+     $('#favSection').css({background: '#C5E2FF'});
     customAlert('Movie added to favorites.');
     addFavMovieBlock(dragMovie);
     event.stopPropagation();
@@ -39,12 +35,12 @@ function drop(event) {
 function allowDrop(event) {
     event.stopPropagation();
     event.preventDefault();
-    $('#favSection').css({border: '2px dashed #FF8D00'});
-    return false;
+    // background FOR DROP
+    $('#favSection').css({background: '#01aadd'});
+   
 }
 
 function handleDragLeave(event) {
-    $('#favSection').css({border: 'none'});
     event.stopPropagation();
     event.preventDefault();
 

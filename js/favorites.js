@@ -90,6 +90,8 @@ $(document).on('scroll', function(e) {
         if (docScrollTop >= scrollToFooter) {
             var newHeight = winHeight - (docScrollTop - scrollToFooter);
             $('#favSection').css({height: newHeight + 'px'});
+        } else if (docScrollTop < scrollToFooter) {
+            $('#favSection').css({height: '100%'});
         }
     } else {
         return;
