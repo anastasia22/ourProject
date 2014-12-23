@@ -1,301 +1,251 @@
-@media only screen  and (max-width: 1153px) {
-    div.infoBlock {
-        font-size: 0.7em;
-        visibility: visible;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-    }
-    div.infoBlock:hover {}
-}
+@media only screen and (max-width: 1153px) {
+  div.infoBlock {
+    font-size: 0.7em;
+    visibility: visible;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; } }
 @media only screen and (min-width: 590px) and (max-width: 1027px) {
-    .srch-buttons-wrapper {
-        width: 41%;
-    }
-}
-
-@media only screen  and (min-width: 1000px) {
-    .label-wrapper {
-        width: 41%;
-        height: 40px;
-        margin: 32px 0 0 0;
-        float: left;
-    }
-}
-
+  .srch-buttons-wrapper {
+    width: 41%; } }
+@media only screen and (min-width: 1000px) {
+  .label-wrapper {
+    width: 41%;
+    height: 40px;
+    margin: 32px 0 0 0;
+    float: left; } }
 @media only screen and (max-width: 970px) {
-    #singleMovie .trailer {
-        width: 100%;
-    }
-    #singleMovie .overview {
-        width: 100%;
-        height: auto;
-        overflow: auto;
-    }
-    #modwin,
-    #singleMovie .lgScreenshot {
-        width: 624px;
-    }
-    div.infoBlock {
-        font-size: 0.7em;
-        visibility: visible;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-    }
-    div.infoBlock:hover {}
-    .biography {
-        width: 90%;
-        clear: both;
-        height: 60%;
-        margin: 10px;
-    }
-}
+  #singleMovie .trailer {
+    width: 100%; }
+  #singleMovie .overview {
+    width: 100%;
+    height: auto;
+    overflow: auto; }
 
+  #modwin, #singleMovie .lgScreenshot {
+    width: 624px; }
+
+  div.infoBlock {
+    font-size: 0.7em;
+    visibility: visible;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; }
+
+  .biography {
+    width: 90%;
+    clear: both;
+    height: 60%;
+    margin: 10px; } }
 @media only screen and (min-width: 741px) and (max-width: 1000px) {
-     .search-input {
-         width: 30%;
-     }
-    .label-wrapper {
-        float: left;
-        width: 47%;
-        margin: 32px 0 0 0;
-    }
-    .clear-fix {
-        height: 10px;
-    }
-    .search-button {
-        margin-left: 2%;
-    }
-}
+  .search-input {
+    width: 30%; }
 
+  .label-wrapper {
+    float: left;
+    width: 47%;
+    margin: 32px 0 0 0; }
+
+  .clear-fix {
+    height: 10px; }
+
+  .search-button {
+    margin-left: 2%; } }
 @media only screen and (max-width: 740px) {
-    body {
-        width: 100%;
-        margin: 0 auto;
-    }
-    #header {
-        width: 100%;
-        height: 356px;
-        position: relative;
-    }
-    #menuMovies ul {
-        display: none;
-    }
-    #mainMenu {
-        height: 211px;
-    }
-    .menuButton {
-        display: block;
-        width: 100%;
-    }
-    .toggle-menu {
-        width: 30px;
-        height: 30px;
-    }
-    #favoritesButton {
-        display: none;
-    }
-    .search-input {
-        width: 91%;
-        margin-bottom: 15px;
-        margin-top: 20px;
-    }
-    .label-wrapper {
-        margin-left: 8%;
-        margin-top: 0;
-        width: 60%;
-    }
-    .search-button {
-        margin: 0 0 0 4%;
-    }
-    .clear-fix {
-        height: 15px;
-    }
-    #singleMovie .row {
-        margin-top: 30px;
-    }
-    #singleMovie .poster {
-        float:none;
-        margin: 0 auto;
-        width: 60%;
-    }
-    #singleMovie .column2 {
-        margin-top: 10px;
-        width: 100%;
-    }
-    #singleMovie q {
-        text-align: center;
-    }
-    #singleMovie .border_class {
-        padding: 10px;
-    }
-    #singleMovie .smSlider {
-        width:87%;
-    }
-    #modwin,
-    #singleMovie .lgScreenshot {
-        width: 468px;
-    }
-    #favSection {
-        display: none;
-    }
-    .footer-par {
-        top: 45px;
-        left: 15px;
-        font-size: 0.8em;
-    }
-    div.infoBlock {
-        font-size: 0.7em;
-        visibility: visible;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-    }
-    div.infoBlock:hover {}
-    #scrollTopBtn {
-        display: none ;
-    }
-    .actorPic {
-        float: left;
-        margin: 10px;
-        margin-right: 0%;
-        width: 200px;
-        height: 290px;
+  body {
+    width: 100%;
+    margin: 0 auto; }
 
-    }
-    .actorInfo {
-        width:  50%;
-        margin-top: 5px;
-        float: left;
-        font-size: 0.8em;
-    }
-    .biography {
-        width: 90%;
-        height: 50%;
-        background: none;
-        margin-tom: 0px;
-    }
-}
+  #header {
+    width: 100%;
+    height: 356px;
+    position: relative; }
+
+  #menuMovies ul {
+    display: none; }
+
+  #mainMenu {
+    height: 211px; }
+
+  .menuButton {
+    display: block;
+    width: 100%; }
+
+  .toggle-menu {
+    width: 30px;
+    height: 30px; }
+
+  #favoritesButton {
+    display: none; }
+
+  .search-input {
+    width: 91%;
+    margin-bottom: 15px;
+    margin-top: 20px; }
+
+  .label-wrapper {
+    margin-left: 8%;
+    margin-top: 0;
+    width: 60%; }
+
+  .search-button {
+    margin: 0 0 0 4%; }
+
+  .clear-fix {
+    height: 15px; }
+
+  #singleMovie .row {
+    margin-top: 30px; }
+  #singleMovie .poster {
+    float: none;
+    margin: 0 auto;
+    width: 60%; }
+  #singleMovie .column2 {
+    margin-top: 10px;
+    width: 100%; }
+  #singleMovie q {
+    text-align: center; }
+  #singleMovie .border_class {
+    padding: 10px; }
+  #singleMovie .smSlider {
+    width: 87%; }
+
+  #modwin, #singleMovie .lgScreenshot {
+    width: 468px; }
+
+  #favSection {
+    display: none; }
+
+  .footer-par {
+    top: 45px;
+    left: 15px;
+    font-size: 0.8em; }
+
+  div.infoBlock {
+    font-size: 0.7em;
+    visibility: visible;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; }
+
+  #scrollTopBtn {
+    display: none; }
+
+  .actorPic {
+    float: left;
+    margin: 10px;
+    margin-right: 0%;
+    width: 200px;
+    height: 290px; }
+
+  .actorInfo {
+    width: 50%;
+    margin-top: 5px;
+    float: left;
+    font-size: 0.8em; }
+
+  .biography {
+    width: 90%;
+    height: 50%;
+    background: none;
+    margin-tom: 0px; } }
 @media only screen and (max-width: 520px) {
-    .label-wrapper {
-        margin: 0 auto;
-        width: 80%;
-    }
-    
-    .search-button {
-        margin: 30px 40% 0;
-    }
-    #singleMovie .similar>img {
-        width:30%;
-    }
-    #singleMovie .smSlider {
-        width:83%;
-    }
-    #modwin,
-    #singleMovie .lgScreenshot {
-        width: 312px;
-    }
-    #singleMovie .similar>section {
-    margin-left:35%;
-}
-}
+  .label-wrapper {
+    margin: 0 auto;
+    width: 80%; }
 
+  .search-button {
+    margin: 30px 40% 0; }
+
+  #singleMovie .similar > img {
+    width: 30%; }
+  #singleMovie .smSlider {
+    width: 83%; }
+
+  #modwin {
+    width: 312px; }
+
+  #singleMovie .lgScreenshot {
+    width: 312px; }
+  #singleMovie .similar > section {
+    margin-left: 35%; } }
 @media only screen and (max-width: 499px) {
-    .search-genres {
-        width: 100%;
-    }
-    #toSimple {
-        margin-left: 7%;
-    }
-    #advSearchBtn {
-        margin-left: 7%;
-    }
-    #singleMovie .smSlider {
-        width:80%;
-    }
-}
-@media only screen and (max-width : 480px) {
-    div.singleMovieBlock {
-       width: 50%;
-    }
-    div.infoBlock {
-        font-size: 0.7em;
-        visibility: visible;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-    }
-    div.infoBlock:hover {}
-    .toTopBtn {
-        position: fixed;
-        top: 0;
-        left: 5px;
-        height: 100%;
-        width: 9%;
+  .search-genres {
+    width: 100%; }
 
-        background: #cccccc;
-    }
-}
+  #toSimple, #advSearchBtn {
+    margin-left: 7%; }
+
+  #singleMovie .smSlider {
+    width: 80%; } }
+@media only screen and (max-width: 480px) {
+  div.singleMovieBlock {
+    width: 50%; }
+  div.infoBlock {
+    font-size: 0.7em;
+    visibility: visible;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; }
+
+  .toTopBtn {
+    position: fixed;
+    top: 0;
+    left: 5px;
+    height: 100%;
+    width: 9%;
+    background: #cccccc; } }
 @media only screen and (max-width: 370px) {
-    .label-wrapper {
-        width: 100%;
-        height: 100px;
-        margin-top: 15px;
-        float: left;
-    }
-    .search-radio-label {
-        display: block;
-        clear: both;
-        margin: 0;
-        width: 100%;
-    }
+  .label-wrapper {
+    width: 100%;
+    height: 100px;
+    margin-top: 15px;
+    float: left; }
+
+  .search-radio-label {
+    display: block;
+    clear: both;
+    margin: 0;
+    width: 100%; }
     .search-radio-label:first-of-type {
-        width: 100%;
-    }
-    .clear-fix {
-        height: 10px;
-    }
-    #singleMovie .smSlider {
-        width:75%;
-    }
-}
-@media only screen and (min-width : 320px) and (max-width : 480px) {
-    .actorPic {
-        float: left;
-        margin: 10px;
-        margin-right: 0%;
-        width: 130px;
-        height: 190px;
+      width: 100%; }
 
-    }
-    .biography {
-        width: 90%;
-        clear: both;
-        height: 60%;
-        margin: 10px;
-    }
-    .actorInfo {
-        width: 45%;
-        margin-top: 10px;
-        float: left;
-    }
+  .clear-fix {
+    height: 10px; }
+
+  #singleMovie .smSlider {
+    width: 75%; } }
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .actorPic {
+    float: left;
+    margin: 10px;
+    margin-right: 0%;
+    width: 130px;
+    height: 190px; }
+
+  .biography {
+    width: 90%;
+    clear: both;
+    height: 60%;
+    margin: 10px; }
+
+  .actorInfo {
+    width: 45%;
+    margin-top: 10px;
+    float: left; }
     .actorInfo p {
-        margin: 20px 10px 10px 10px;
-    }
-    #offOnBtn {
-        background-image: url(../images/closeBtn2.png);
-        width: 25px;
-        height: 25px;
-        border-radius: 15px;
-    }
+      margin: 20px 10px 10px 10px; }
 
-}
+  #offOnBtn {
+    background-image: url(../images/closeBtn2.png);
+    width: 25px;
+    height: 25px;
+    border-radius: 15px; } }

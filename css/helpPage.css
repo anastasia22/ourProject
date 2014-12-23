@@ -1,50 +1,29 @@
 #Help {
-	padding-top:10px;
-}
-#Help h1{
-	color: rgb(51, 51, 51);
-    font-weight:bold;
-    text-transform:uppercase;
+  padding-top: 10px; }
+  #Help h1 {
+    color: #333333;
+    font-weight: bold;
+    text-transform: uppercase;
     font-size: 2em;
     margin: 10px;
-    text-align: center;
-} 
-
-#Help .help {
-    color: rgb(51, 51, 51);
+    text-align: center; }
+  #Help .help {
+    color: #333333;
     margin: 10px auto;
-    width: 80%;
-}
-
-#Help .question {
-    background-color: rgb(110, 193, 224);
+    width: 80%; }
+  #Help .question {
+    background-color: #6ec1e0;
     cursor: pointer;
     display: inline-block;
     padding: 10px;
     width: 100%;
-    font-weight: bold;
-}
-
-
-#Help .answer {
+    font-weight: bold; }
+  #Help .answer {
     background-color: rgba(110, 193, 224, 0.2);
-    display:none;
+    display: none;
     padding: 10px;
     text-align: justify;
     width: 100%;
-    transition: display 2s ease
-}
-
-#Help .visible {
-    display: inline-block;    
-}
-
-
-
-
-
-
-
-
-
-
+    transition: display 2s ease; }
+  #Help .visible {
+    display: inline-block; }
