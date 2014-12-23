@@ -34,6 +34,14 @@ function onToTopBtn() {
 }
 
 
+function checkOnLoad() {
+    if(!document.URL.split('#')[1]) {
+        window.location = '#menuHome';
+    }
+}
+
+
+
 var cSpeed=9;
 var cWidth=100;
 var cHeight=100;
