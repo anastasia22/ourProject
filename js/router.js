@@ -1,6 +1,3 @@
-/**
- * Created by Daryl on 17.12.2014.
- */
 
 var MainRouter = Backbone.Router.extend({
 

@@ -271,7 +271,7 @@ function singleMovieTemplate (movie) {
             </section>\
             <% }; %>\
           </section>\
-          <% if (singleMovie.actors){ %>\
+          <% if (singleMovie.actors[0]){ %>\
           <section class="row">\
             <span class="sp_title block_title">Cast</span>\
             <section class="border_class actors_container">\
@@ -291,7 +291,7 @@ function singleMovieTemplate (movie) {
             </section>\
           </section>\
           <% }; %>\
-          <% if (singleMovie.similar){%>\
+          <% if (singleMovie.similar[0]){%>\
           <section class="row">\
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
@@ -349,7 +349,7 @@ function singleMovieTemplate (movie) {
             images: [],
             trailer: movie.trailers.youtube[0] ? movie.trailers.youtube[0].source : null,
             actors: movie.credits.cast == [] ? null : movie.credits.cast,
-            similar: []
+            similar: movie.similar.results
         };
         if (movie.production_countries[0]) {
             for (var country in movie.production_countries) {
@@ -373,13 +373,8 @@ function singleMovieTemplate (movie) {
           singleMovie.images = null
         };
         if (movie.similar.results.length > 5) {
-          movie.similar.results.splice(5);
-          singleMovie.similar = movie.similar.results
-        } else if (!(movie.similar.results.length)) {
-          singleMovie.similar = null
-        } else {
-          singleMovie.similar = movie.similar.results
-        };
+            singleMovie.similar.splice(5)
+        } 
         return singleMovie
     };
 

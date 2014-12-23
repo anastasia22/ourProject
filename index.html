@@ -1,97 +1,92 @@
 <!DOCTYPE html>
 <html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Spring</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="images/pageIcon1.png" />
+        <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/mainStyle.css">
+        <link rel="stylesheet" href="css/helpPage.css">
+        <link rel="stylesheet" href="css/socials.css">
+        <link rel="stylesheet" href="css/favorites.css">
+        <link rel="stylesheet" href="css/homeBlock.css">
+        <link rel="stylesheet" href="css/singleMovieBlock.css">
+        <link rel="stylesheet" href="css/moviesBlocks.css">
+        <link rel="stylesheet" href="css/search.css">
+        <link rel="stylesheet" href="css/actorsBlocks.css">
+        <link rel="stylesheet" href="css/responcive.css">
+        <link rel="stylesheet" href="css/singleActorBlock.css">
+        <link rel="stylesheet" href="css/total.css">
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery-1.11.1.js"></script>
+        <script src="js/backbone.js"></script>
+        <script src="js/json2.js"></script>
+    </head>
 
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Spring</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="images/pageIcon1.png" />
-    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/mainStyle.css">
-    <link rel="stylesheet" href="css/helpPage.css">
-    <link rel="stylesheet" href="css/socials.css">
-    <link rel="stylesheet" href="css/favorites.css">
-    <link rel="stylesheet" href="css/homeBlock.css">
-    <link rel="stylesheet" href="css/singleMovieBlock.css">
-    <link rel="stylesheet" href="css/moviesBlocks.css">
-    <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/actorsBlocks.css">
-    <link rel="stylesheet" href="css/responcive.css">
-    <link rel="stylesheet" href="css/singleActorBlock.css">
-    <link rel="stylesheet" href="css/total.css">
-    <script src="js/underscore.js"></script>
-    <script src="js/jquery-1.11.1.js"></script>
-    <script src="js/backbone.js"></script>
-    <script src="js/json2.js"></script>
-</head>
-
-<body>
-    <div id="header">
-        <div class="logo-backgr logo-dimentions">
-
-            <div class="header-wrapper">
-                <div class="logo logo-events"></div>
-<!--                <h1 class="page-header logo-events">Spring</h1>-->
+    <body>
+        <div id="header">
+            <div class="logo-backgr logo-dimentions">
+                <div class="header-wrapper">
+                    <div class="logo logo-events"></div>
+                </div>
             </div>
+            <!--MENU-->
+            <nav id="mainMenu" class="menu-color">
+                <div class="toggle-menu">
+                    <span class="toggle-span"></span>
+                    <span class="toggle-span"></span>
+                    <span class="toggle-span"></span> 
+                </div>
+                <ul class="main-menu-wrapper">
+                    <li id="menuHome" class="menuButton">Home</li>
 
-<!--
-            <div class="registration">
-                <a href="#">Registration</a>
-                <a href="#">Sing in</a>
-            </div>
--->
+                    <li id="menuMovies" class="menuButton">Movies
+                        <!--dorp down block-->
+                        <ul>
+                            <li id="subMenuPop">Most popular</li>
+                            <li id="subMenu2013">Last year most popular</li>
+                            <li id="subMenuKids">For kids</li>
+                            <li id="subMenuComedy">Best comedies</li>
+                            <li id="subMenuHorror">Best horror films</li>
+                            <li id="subMenuFantasy">Fantasy</li>
+                        </ul>
+                    </li>
+                    <li class="menuButton" id="callSearch">Search</li>
+                    <li id="menuHelp" class="menuButton">Help</li>
+                    <li id="favoritesButton" class="menuButton" onclick="eventHandler()">&#9734; Favorites</li>
+                </ul>
+            </nav>
         </div>
-
-        <!--MENU-->
-        <nav id="mainMenu" class="menu-color">
-            <div class="toggle-menu">
-                <span class="toggle-span"></span>
-                <span class="toggle-span"></span>
-                <span class="toggle-span"></span> 
-            </div>
-            <ul class="main-menu-wrapper">
-                <li id="menuHome" class="menuButton">Home</li>
-
-                <li id="menuMovies" class="menuButton">Movies
-                    <!--dorp down block-->
-                    <ul>
-                        <li id="subMenuPop">Most popular</li>
-                        <li id="subMenu2013">Last year most popular</li>
-                        <li id="subMenuKids">For kids</li>
-                        <li id="subMenuComedy">Best comedies</li>
-                        <li id="subMenuHorror">Best horror films</li>
-                        <li id="subMenuFantasy">Fantasy</li>
-                    </ul>
-                </li>
-                
-                <li class="menuButton" id="callSearch">Search</li>
-                <li id="menuHelp" class="menuButton">Help</li>
-                <li id="favoritesButton" class="menuButton" onclick="eventHandler()">&#9734; Favorites</li>
-            </ul>
-        </nav>
-    </div>
-    <!--section with main content movies help Home .....-->
-    <main id="mainContent" class="content-background">
-    </main>
-    <footer id="footer" class="logo-backgr">
-        <p class="footer-par"> &copy; 2014-2015 www.spring.lviv.com <span>FAQ</span></p>
-        <!--SOCIALS-->
-        <a href="http://twitter.com/minimalmonkey" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
-        <a href="http://facebook.com" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
-        <a href="http://plus.google.com" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
-    </footer>
-    <script src="js/totalTools.js"></script>
-    <script src="js/favorites.js"></script>
-    <script src="js/contentTemplates.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/requests.js"></script>
-    <script src="js/events.js"></script>
-    <script src="js/dragNDrop.js"></script>
+        <!--section with main content movies help Home .....-->
+        
+        <main id="mainContent" class="content-background">
+        </main>
+        
+        <footer id="footer" class="logo-backgr">
+            <p class="footer-par"> &copy; 2014-2015 www.spring.lviv.com</p>
+            <!--SOCIALS-->
+            <a href="http://twitter.com/minimalmonkey" class="icon-button twitter">
+                <i class="icon-twitter"></i><span></span>
+            </a>
+            <a href="http://facebook.com" class="icon-button facebook">
+                <i class="icon-facebook"></i><span></span>
+            </a>
+            <a href="http://plus.google.com" class="icon-button google-plus">
+                <i class="icon-google-plus"></i><span></span>
+            </a>
+        </footer>
+        <script src="js/totalTools.js"></script>
+        <script src="js/favorites.js"></script>
+        <script src="js/contentTemplates.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/requests.js"></script>
+        <script src="js/events.js"></script>
+        <script src="js/dragNDrop.js"></script>
         <script src="js/router.js"></script>
 
-</body>
-
+    </body>
 </html>
 
 
