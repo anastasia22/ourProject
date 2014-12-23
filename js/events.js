@@ -26,7 +26,7 @@
 			});
 		}
 	});
-	homeTemplate();
+	window.location = '#menuHome';
 })();
 
 function searchBy() {
