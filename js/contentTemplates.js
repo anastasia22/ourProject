@@ -3,17 +3,19 @@ var hyperImageUrl = 'http://image.tmdb.org/t/p/w780/';
 var largeImageUrl = 'http://image.tmdb.org/t/p/w300/';
 var mediumImageUrl = 'http://image.tmdb.org/t/p/w185/';
 var smallImageUrl = 'http://image.tmdb.org/t/p/w92/';
+var newsUrl = 'http://static01.nyt.com/';
 
 // HOME BLOCK
 function homeTemplate(news) {
     var homeTmpl = _.template('<div id="News">\
       <%_.each(data, function(el){%>\
-        <div class="singleNewsBlock">\
-          <img class="newsPic" src="<%=el.picture%>">\
+        <div class="singleNewsBlock" data-source="<%=el.web_url%>">\
+          <div class="newsPic"><img src="<%=newsUrl%><%=el.multimedia[0].url%>"></div>\
           <div class="newsInfo">\
-            <h2 class="newsHeader"><%=el.header%></h2>\
+            <h2 class="newsHeader"><%=el.headline.main%></h2>\
             <div class="newsArticle">\
-              <p><%=el.article%></p>\
+              <p><%=el.headline.seo%><%=el.lead_paragraph%></p>\
+              <a target="_blank" href="<%=el.web_url%>">Read more...</a>\
             </div>\
           </div>\
         </div>\
@@ -25,6 +27,7 @@ function homeTemplate(news) {
     }
 
     $('#mainContent').append(homeTmpl({'data':news}));
+    NewsBlockEvents();
 }
 
 //HELP BLOCK

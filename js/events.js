@@ -268,6 +268,11 @@ function HelpBlockEvents(){
 	});
 }
 
+function NewsBlockEvents(){
+	$('#News').on('click', '.singleNewsBlock', function(){
+		window.open($(this).data('source'));
+	});
+};
 // events to scroll top btn
 function toTopBtnEvents() {
 	$('#scrollTopBtn').on('click',function() {
