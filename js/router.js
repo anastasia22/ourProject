@@ -4,7 +4,7 @@ var MainRouter = Backbone.Router.extend({
     routes: {
         'menuMovies': 'defMovies',
         'menuHelp': 'Help',
-        'menuHome': 'Home',
+        'news': 'News',
         'subMenuPop': 'MostPop',
         'subMenu2013': 'LastYear',
         'subMenuKids': 'ForKids',
@@ -24,7 +24,7 @@ var MainRouter = Backbone.Router.extend({
         $('#mainContent').find(':first-child').remove();
         getHelp();
     },
-    Home : function() {
+    News : function() {
         $('#mainContent').find(':first-child').remove();
         getNews();
     },

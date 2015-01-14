@@ -11,10 +11,10 @@
 
 		$('callSearch').toggleClass('menuButtonHovered');
 		$('#mainContent').children().remove();
-		if(document.URL.split('#')[1] == 'menuHome') {
+		if(document.URL.split('#')[1] == 'news') {
 			window.location.reload();
 		}
-		window.location='#menuHome';
+		window.location='#news';
 	});
 	$('#mainMenu').on('click',menuEvents);
     
@@ -57,7 +57,7 @@ function searchBy() {
 
 function menuEvents(event) {
 	var target=event.target || event.srcElement;
-	var menu={'menuHome' : homeTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
+	var menu={'news' : newsTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
 	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies,
 		'subMenuHorror' : bestHorrors,'subMenuFantasy' : bestFantasy};
 
@@ -269,7 +269,7 @@ function HelpBlockEvents(){
 }
 
 function NewsBlockEvents(){
-	$('#News').on('click', '.singleNewsBlock', function(){
+	$('#News').on('click', '.newsHeader', function(){
 		window.open($(this).data('source'));
 	});
 };

@@ -146,7 +146,7 @@ function getHelp(){
 function getNews(){
     $('#mainContent').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');
-    var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:%28%22Movies%22%29%20AND%20type_of_material:%28%22News%22%29&sort=newest&page=2&api-key=c3b06d2b0936ccb5547a877c765a49a5:1:70730185';
+    var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?page=1&fq=section_name:%28%22Movies%22%29%20AND%20type_of_material:%28%22News%22%29&sort=newest&api-key=c3b06d2b0936ccb5547a877c765a49a5:1:70730185';
     $.ajax({
         url: url,
         // dataType: "jsonp",
@@ -154,7 +154,7 @@ function getNews(){
     });
     function callBackFunc(data){
         // data.response.docs.splice(5);
-        homeTemplate(data.response.docs)
+        newsTemplate(data.response.docs)
     }
 }
 
