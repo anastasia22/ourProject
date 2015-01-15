@@ -2,36 +2,27 @@
 var MainRouter = Backbone.Router.extend({
 
     routes: {
-        'menuMovies': 'defMovies',
-        'menuHelp': 'Help',
+        'movies': 'defMovies',
+        'help': 'Help',
         'news': 'News',
-        'subMenuPop': 'MostPop',
+        'popular': 'MostPop',
         'subMenu2013': 'LastYear',
-        'subMenuKids': 'ForKids',
-        'subMenuComedy' : 'Comedy',
-        'subMenuHorror' : 'Horror',
-        'subMenuFantasy' : 'Fantasy',
+        'for-kids': 'ForKids',
+        'comedy' : 'Comedy',
+        'horror' : 'Horror',
+        'fantasy' : 'Fantasy',
         'movies+:query' : 'movieSearch',
-        'movies-with-rates+:rate' : 'searchByRate',
-        'movies-with-year+:year' : 'searchByYear',
-        'movies-with-genre+:id+:genre' : 'searchByGenre',
+        'movies-with-rates/:rate' : 'searchByRate',
+        'movies-with-year/:year' : 'searchByYear',
+        'movies-with-genre/:id/:genre' : 'searchByGenre',
         'actors+:query' : 'actorSearch',
-        'movie+:query' : 'sinMoviePage',
-        'actor+:query' : 'sinActorPage'
+        'movie/:query' : 'sinMoviePage',
+        'actor/:query' : 'sinActorPage'
 
     },
-    Help : function() {
-        $('#mainContent').find(':first-child').remove();
-        getHelp();
-    },
-    News : function() {
-        $('#mainContent').find(':first-child').remove();
-        getNews();
-    },
-    defMovies :  function() {
-        $('#mainContent').find(':first-child').remove();
-        defaultMovies();
-    },
+    Help : getHelp,
+    News : getNews,
+    defMovies : defaultMovies,
     MostPop : function() {
         $('#mainContent').find(':first-child').remove();
         mostPopular();
@@ -64,33 +55,33 @@ var MainRouter = Backbone.Router.extend({
         sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + searchQuery + '</span>  Results found: ','movies');
     },
     searchByRate : function() {
-        var rating=document.URL.split('#')[1].split('+')[1];
+        var rating=document.URL.split('#')[1].split('/')[1];
         var searchQuery = 'discover/movie?vote_average.lte=' + rating + '&sort_by=vote_average.desc';
         $('#mainContent').find(':first-child').remove();
         sendRequest(searchQuery, 'Movies with rating ' + rating,'movies');
     },
     searchByYear : function() {
-        var year=document.URL.split('#')[1].split('+')[1];
+        var year=document.URL.split('#')[1].split('/')[1];
         var searchQuery = 'discover/movie?primary_release_year=' + year + '&sort_by=popularity.desc';
         $('#mainContent').find(':first-child').remove();
         sendRequest(searchQuery, 'Movies released in ' + year,'movies');
     },
     searchByGenre: function() {
-        var id = document.URL.split('#')[1].split('+')[1];
-        var name = document.URL.split('#')[1].split('+')[2];
+        var id = document.URL.split('#')[1].split('/')[1];
+        var name = document.URL.split('#')[1].split('/')[2];
         var searchQuery = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc';
         $('#mainContent').find(':first-child').remove();
         sendRequest(searchQuery ,'Movies with ' + name + '&nbsp;genre','movies');
     },
     actorSearch : function() {
-        var searchQuery=document.URL.split('#')[1].split('+')[1];
+        var searchQuery=document.URL.split('#')[1].split('/')[1];
         var titleSearch = 'search/person?query=' + searchQuery;
         $('#mainContent').find(':first-child').remove();
         $('#Actor').remove();
         sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + searchQuery + '</span>  Results found: ','actors');
     },
     sinMoviePage : function() {
-        var searchQuery=document.URL.split('#')[1].split('+')[1];
+        var searchQuery=document.URL.split('#')[1].split('/')[1];
         var url = 'movie/' + parseInt(searchQuery) + '?append_to_response=similar,images,trailers,credits';
         $('#mainContent').find(':first-child').remove();
         sendRequest(url,'','movie');
@@ -98,7 +89,7 @@ var MainRouter = Backbone.Router.extend({
     sinActorPage : function() {
         $('#Actor').remove();
         createBlock();
-        var id=document.URL.split('#')[1].split('+')[1];
+        var id=document.URL.split('#')[1].split('/')[1];
         sendRequest('person/' + id +'?append_to_response=movie_credits','','actor');
     }
 });

@@ -36,7 +36,7 @@ function onToTopBtn() {
 
 function checkOnLoad() {
     if(!document.URL.split('#')[1]) {
-        window.location = '#menuHome';
+        window.location = '#news';
     }
 }
 

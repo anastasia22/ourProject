@@ -1,7 +1,6 @@
  //adds all events handlers to menu buttons
 (function(){
-
-	$('.logo-backgr').css({cursor : 'pointer'});
+	//main logo events
 	$('.logo-backgr').on('click',function() {
 		if($('#favSection')) {
 			hideFavBlock();
@@ -16,6 +15,7 @@
 		}
 		window.location='#news';
 	});
+
 	$('#mainMenu').on('click',menuEvents);
     
 	$('#callSearch').on('click',function() {
@@ -56,18 +56,16 @@ function searchBy() {
 }
 
 function menuEvents(event) {
-	var target=event.target || event.srcElement;
-	var menu={'news' : newsTemplate, 'menuMovies' : defaultMovies,'menuHelp' : getHelp,
-	'subMenuPop':mostPopular,'subMenu2013':mostPopular2013,'subMenuKids':popular4Kids,'subMenuComedy':mostPopularComedies,
-		'subMenuHorror' : bestHorrors,'subMenuFantasy' : bestFantasy};
+	var target = event.target || event.srcElement;
+	var menu = ['news', 'movies', 'help', 'popular', 'subMenu2013','for-kids', 'comedy', 'horror', 'fantasy'];
 
-	for (var temp in menu) {
-		if(temp == target.id) {
-			if(document.URL.split('#')[1] == temp) {
+	for (var i in menu) {
+		if(menu[i] == target.id) {
+			if(document.URL.split('#')[1] == menu[i]) {
 				window.location.reload();
 			}
 			$('#mainContent').find(':first-child').remove();
-			window.location='#' + temp;
+			window.location='#' + menu[i];
 		}
 	}
 }
@@ -85,7 +83,7 @@ function singleMoveBlockEvents() {
 	$(window).resize(setImgHeightEvent);
 
 	$(".singleMovieBlock").on('click',function() {
-		window.location='#movie+'+this.id;
+		window.location='#movie/'+ $(this).data('id');
 	});
 
 	$(".singleMovieBlock").hover(function() {
@@ -119,7 +117,7 @@ function singleActorBlockEvents() {
 		});
 
 	$("#Actors .singleActorBlock,#singleMovie .singleActorBlock").on('click',function() {
-		window.location ='#actor+' + this.id;
+		window.location ='#actor/' + this.id;
 	});
 }
 
@@ -148,7 +146,7 @@ function faBlockEvents() {
 		});
 
 	$(".favMovieImg,.favInfoBlock ").on('click', function () {
-		window.location='#movie+'+ ($(this).parent().attr('fav-id'));
+		window.location='#movie/'+ ($(this).parent().attr('fav-id'));
 		return;
 	});
 
@@ -170,20 +168,20 @@ function addEventsToMovie(){
 	(function () {
 		function searchRate(){
 			var rate = $(this).children('span').text();
-			window.location = '#' + 'movies-with-rates+' + rate;
+			window.location = '#' + 'movies-with-rates/' + rate;
 		};
 	    function searchYear(){
 			var year = $(this).children('span').text();
-			window.location = '#' + 'movies-with-year+' + year;
+			window.location = '#' + 'movies-with-year/' + year;
 		};
 		function searchGenre(){
 			var genreName = $(this).children('span').text();
 			var genreId = $(this).children('span').data('genre');
-			window.location = '#' + 'movies-with-genre+' + genreId + '+' + genreName;
+			window.location = '#' + 'movies-with-genre/' + genreId + '/' + genreName;
 		};
 		function showMovie(){
 			var movieId = $(this).data('id');
-			window.location = '#' + 'movie+' + movieId;
+			window.location = '#' + 'movie/' + movieId;
 		};
 		$('#singleMovie').on('click', '.search-rate', searchRate);
 	    $('#singleMovie').on('click', '.search-year', searchYear);

@@ -58,13 +58,18 @@ function helpTemplate(questions) {
 function moviesTemplate(data,listName) {
     var movies = data.results;
     var movieBlocks= _.template(
-        '<%_.each(obj,function(movie){%>'+
-        '<%if(movie.poster_path == null){return;}%>' +
-        '<div id="<%=movie.id%>" class="singleMovieBlock">' +
-        '<div class="imgWrap">' + 
-        '<img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">' +
-        '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
-        '<%})%>'
+        '<%_.each(obj,function(movie){%>\
+          <%if (movie.poster_path == null) {return}%>\
+          <div data-id="<%=movie.id%>" class="singleMovieBlock">\
+            <div class="imgWrap">\
+              <img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">\
+              <div class="infoBlock">\
+                <p><%=movie.title%></p>\
+                <p><%=movie.release_date%></p>\
+                </div>\
+              </div>\
+            </div>\
+        <%})%>'
     );
     if($('#loader')) {
        $('#loader').remove(); 
@@ -146,7 +151,7 @@ function  singleActorTempl(actor) {
     var movieBlocks= _.template(
         '<%_.each(obj,function(movie){%>'+
         '<%if(movie.poster_path == null){return;}%>' +
-        '<div id="<%=movie.id%>" class="singleMovieBlock">' +
+        '<div data-id="<%=movie.id%>" class="singleMovieBlock">' +
         '<div class="imgWrap">' +
         '<img class="miniMovieImg" src="<%=mediumImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">' +
         '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
@@ -155,7 +160,7 @@ function  singleActorTempl(actor) {
     $('.castMoviesBlock').append(movieBlocks(movieAr));
     $(".singleMovieBlock").on('click',function() {
         deleteBlock();
-        window.location='#movie+' + this.id;
+        window.location='#movie/' + $(this).data('id');
     });
 }
 

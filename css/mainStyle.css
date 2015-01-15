@@ -44,7 +44,9 @@ a {
   position: relative; }
 
 .logo-backgr {
-  background: #646060; }
+  background: #646060;
+  cursor:pointer;
+}
 
 .logo-dimentions {
   height: 145px;
