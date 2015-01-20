@@ -4,6 +4,7 @@ var keys = function() {
         return _EventListingsNY
     };
 }
+var procesing;
 
 function popular4Kids() {
    	var forKids ='discover/movie?with_genres=16,10751&sort_by=popularity.desc';
@@ -35,17 +36,19 @@ function mostPopularComedies() {
     sendRequest(mostPopComedies,'Most popular comedies','movies');
 }
 
-function defaultMovies() {
+function defaultMovies(page) {
     var defaultMovies='discover/movie?primary_release_year=2014';
-   sendRequest(defaultMovies,'This year movies','movies');
+    sendRequest(defaultMovies,'This year movies','movies', page);
 }
 
-function sendRequest(url,listName,controllerTarget) {
+function sendRequest(url,listName,controllerTarget, page) {
+    procesing = false
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
-    var moviesSearchUrl = baseUrl + url + apikey;
     var pages;
-    var page=1;
+    var page = page||1;
+    var currentPage= '&page=' + (++page);
+    moviesSearchUrl = baseUrl + url + apikey + currentPage;
 
     $('#mainContent').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');
@@ -57,7 +60,6 @@ function sendRequest(url,listName,controllerTarget) {
     });
 
     function callBackFunc (data) {
-        pages = data.total_pages;
         stopAnimation();
         $('#loaderImage').remove();
         switch (controllerTarget){
@@ -77,52 +79,6 @@ function sendRequest(url,listName,controllerTarget) {
                 customAlert('Something wrong!');
                 break;
         }
-        if(controllerTarget == 'movie') {
-            $('#mainContent').on('mousewheel',function(){
-                onToTopBtn();
-            });
-        }else {
-        $('#mainContent').find(':first-child').on('mousewheel',
-            function(event) {
-                onToTopBtn();
-
-                if ($(window).scrollTop() == $(document).height() - $(window).height() ) {
-                    if(page == pages) {
-                        customAlert('This is the last page.');
-                    }
-                    var currentPage= '&page=' + (++page);
-                    moviesSearchUrl = baseUrl + url + apikey + currentPage;
-
-                    $.ajax({
-                        url: moviesSearchUrl,
-                        beforeSend: function() {
-                            $('#loader').show();
-                        },
-                        success: function (data) {
-                            $('#loader').hide();
-                            switch (controllerTarget){
-                                case 'movies':
-                                    moviesTemplate(data,listName);
-                                    break;
-                                case 'actors':
-                                    actorsTempl(data,listName);
-                                    break;
-                                case 'movie':
-                                    singleMovieTemplate(data);
-                                    break;
-                                case 'actor':
-                                    singleActorTempl(data);
-                                    break;
-                                default:
-                                    customAlert('Something wrong!');
-                                    break;
-                            }
-                        }
-                    });
-                }
-            }
-        );
-        }
     }
 }
 
@@ -131,7 +87,7 @@ function getHelp(){
         helpTemplate(data)
     })
 }
-var procesing;
+
 function getNews(page){
     procesing = false
     // $('#mainContent').append('<div id="loaderImage"></div>');
@@ -143,9 +99,14 @@ function getNews(page){
         success: callBackFunc
     });
     function callBackFunc(data){
+        // if(page > data.response.meta.offset/10){
+        //     customAlert('This is the last page.');
+        //     return
+        // };
+        $('#News').data('page', (data.response.meta.offset/10 + 1));
 
-       $('#News').data('page', (data.response.meta.offset/10 + 1));
         newsTemplate(data.response);
+
         
     }
 }

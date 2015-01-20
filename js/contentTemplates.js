@@ -22,7 +22,6 @@ function newsTemplate(news) {
           </div>\
         <%}})%>'
     );
-    console.log($('#mainContent').find(':first-child').attr('id'));
     if ($('#mainContent').find(':first-child').attr('id') == 'News') {
       $('#News').append(homeTmpl({'data':news.docs}));
     }  else {
@@ -35,6 +34,7 @@ function newsTemplate(news) {
     $('#News').data('page', (news.meta.offset/10 + 1));
     procesing = true;
     NewsBlockEvents();
+    loadContent()
 }
 
 //HELP BLOCK
@@ -77,14 +77,12 @@ function moviesTemplate(data,listName) {
     if($('#loader')) {
        $('#loader').remove(); 
     }
-
     if(listName) {
         if(listName.split(' ')[0] == 'Search')listName = listName + data.total_results;
     }
     if(movies.length == 0) {
         listName = 'Sorry. No results.';
     }
-console.log($('#mainContent').find(':first-child').attr('id'));
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks(movies));
         singleMoveBlockEvents();
@@ -93,8 +91,11 @@ console.log($('#mainContent').find(':first-child').attr('id'));
         singleMoveBlockEvents();
     }
     $('#Movies').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
-
+    $('#Movies').data('total', data.total_pages);
+    $('#Movies').data('page', data.page);
+    procesing = true;
     makeDraggable();
+    loadContent()
 }
 
 function  actorsTempl(data,listName) {

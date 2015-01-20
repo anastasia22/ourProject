@@ -62,9 +62,10 @@ function menuEvents(event) {
 		if(menu[i] == target.id) {
 			if(document.URL.split('#')[1] == menu[i]) {
 				window.location.reload();
+			} else {
+				$('#mainContent').find(':first-child').remove();
+				window.location='#' + menu[i];
 			}
-			$('#mainContent').find(':first-child').remove();
-			window.location='#' + menu[i];
 		}
 	}
 }
@@ -270,14 +271,6 @@ function NewsBlockEvents(){
 		window.open($(this).data('source'));
 	});
 	
-	$(window).on('scroll', function(){
-		if(($(window).scrollTop() >= ($(document).height() - $(window).height() - 300))&&procesing ){
-			getNews($('#News').data('page'))
-		}
-	});
-
-
-
 };
 // events to scroll top btn
 function toTopBtnEvents() {
@@ -285,6 +278,24 @@ function toTopBtnEvents() {
 		$(window).scrollTop(0);
 		window.location = '#' + document.URL.split('#')[1];
 		this.remove();
+	});
+}
+
+function loadContent(){
+	$(window).on('scroll', function(){
+		onToTopBtn();
+		if ($(window).scrollTop() >= ($(document).height() - $(window).height() - 300)&&procesing ) {
+			if($('#mainContent').find(':first-child').attr('id') == 'News') {
+				getNews($('#News').data('page'))
+			} else if ($('#mainContent').find(':first-child').attr('id') == 'Movies') {
+				if($('#Movies').data('page') == $('#Movies').data('total')) {
+		            	customAlert('This is the last page.');
+		        } else {
+		        		defaultMovies($('#Movies').data('page') + 1)
+		        }
+		    }
+		} 	
+	
 	});
 }
 
