@@ -58,7 +58,7 @@ function helpTemplate(questions) {
     HelpBlockEvents();
 }
 
-function moviesTemplate(data,listName) {
+function moviesTemplate(data,listName, type) {
     var movies = data.results;
     var movieBlocks = _.template(
       '<%_.each(obj,function(movie){%>\
@@ -93,6 +93,7 @@ function moviesTemplate(data,listName) {
     $('#Movies').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
     $('#Movies').data('total', data.total_pages);
     $('#Movies').data('page', data.page);
+    $('#Movies').data('type', type);
     procesing = true;
     makeDraggable();
     loadContent()

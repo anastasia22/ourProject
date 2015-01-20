@@ -6,42 +6,43 @@ var keys = function() {
 }
 var procesing;
 
-function popular4Kids() {
-   	var forKids ='discover/movie?with_genres=16,10751&sort_by=popularity.desc';
-    sendRequest(forKids,'For kids','movies');
+function defaultMovies(type, page) {
+    var url;
+    var listName;
+    switch (type){
+            case 'popular':
+                url='discover/movie?sort_by=popularity.desc';
+                listName='Most popular';
+                break;
+            case 'this-year':
+                url='discover/movie?primary_release_year=2014';
+                listName='This year movies';
+                break;
+            case 'last-year':
+                url='discover/movie?primary_release_year=2013&sort_by=popularity.desc';
+                listName='Last year most popular';
+                break;    
+            case 'for-kids':
+                url='discover/movie?with_genres=16,10751&sort_by=popularity.desc';
+                listName='For kids';
+                break;
+            case 'comedy':
+                url='discover/movie?with_genres=35,36&sort_by=revenue.desc';
+                listName='Most popular comedies';
+                break;
+            case 'horror':
+                url='discover/movie?with_genres=27,80&sort_by=popularity.desc';
+                listName='Best horror films';
+                break;
+            case 'fantasy':
+                url='discover/movie?with_genres=14&sort_by=popularity.desc';
+                listName='Fantasy';
+                break;
+        }
+    sendRequest(url,listName,'movies',type, page);
 }
 
-function mostPopular() {
-    var mostPopUrl ='discover/movie?sort_by=popularity.desc';
-    sendRequest(mostPopUrl,'Most popular','movies');
-}
-
-function mostPopular2013() {
-    var lastYear = 'discover/movie?primary_release_year=2013&sort_by=popularity.desc';
-    sendRequest(lastYear,'Last year most popular','movies');
-}
-
-function bestHorrors() {
-    var horrors = 'discover/movie?with_genres=27,80&sort_by=popularity.desc';
-    sendRequest(horrors,'Best horror films','movies');
-}
-
-function bestFantasy() {
-    var fantasy = 'discover/movie?with_genres=14&sort_by=popularity.desc';
-    sendRequest(fantasy,'Fantasy','movies');
-}
-
-function mostPopularComedies() {
-    var mostPopComedies = 'discover/movie?with_genres=35,36&sort_by=revenue.desc';
-    sendRequest(mostPopComedies,'Most popular comedies','movies');
-}
-
-function defaultMovies(page) {
-    var defaultMovies='discover/movie?primary_release_year=2014';
-    sendRequest(defaultMovies,'This year movies','movies', page);
-}
-
-function sendRequest(url,listName,controllerTarget, page) {
+function sendRequest(url,listName,controllerTarget,type, page) {
     procesing = false
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
@@ -64,7 +65,7 @@ function sendRequest(url,listName,controllerTarget, page) {
         $('#loaderImage').remove();
         switch (controllerTarget){
             case 'movies':
-                moviesTemplate(data,listName);
+                moviesTemplate(data,listName, type);
                 break;
             case 'actors':
                 actorsTempl(data,listName);

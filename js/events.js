@@ -56,7 +56,7 @@ function searchBy() {
 
 function menuEvents(event) {
 	var target = event.target || event.srcElement;
-	var menu = ['news', 'movies', 'help', 'popular', 'subMenu2013','for-kids', 'comedy', 'horror', 'fantasy'];
+	var menu = ['news', 'movies_this-year', 'help', 'movies_popular', 'movies_last-year','movies_for-kids', 'movies_comedy', 'movies_horror', 'movies_fantasy'];
 
 	for (var i in menu) {
 		if(menu[i] == target.id) {
@@ -291,7 +291,7 @@ function loadContent(){
 				if($('#Movies').data('page') == $('#Movies').data('total')) {
 		            	customAlert('This is the last page.');
 		        } else {
-		        		defaultMovies($('#Movies').data('page') + 1)
+		        		defaultMovies($('#Movies').data('type') , $('#Movies').data('page') + 1)
 		        }
 		    }
 		} 	

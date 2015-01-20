@@ -2,15 +2,9 @@
 var MainRouter = Backbone.Router.extend({
 
     routes: {
-        'movies': 'defMovies',
+        'movies_:type': 'Movies',
         'help': 'Help',
         'news': 'News',
-        'popular': 'MostPop',
-        'subMenu2013': 'LastYear',
-        'for-kids': 'ForKids',
-        'comedy' : 'Comedy',
-        'horror' : 'Horror',
-        'fantasy' : 'Fantasy',
         'movies+:query' : 'movieSearch',
         'movies-with-rates/:rate' : 'searchByRate',
         'movies-with-year/:year' : 'searchByYear',
@@ -22,30 +16,10 @@ var MainRouter = Backbone.Router.extend({
     },
     Help : getHelp,
     News : getNews,
-    defMovies : defaultMovies,
-    MostPop : function() {
+    Movies : function() {
         $('#mainContent').find(':first-child').remove();
-        mostPopular();
-    },
-    LastYear : function() {
-        $('#mainContent').find(':first-child').remove();
-        mostPopular2013();
-    },
-    ForKids : function() {
-        $('#mainContent').find(':first-child').remove();
-        popular4Kids();
-    },
-    Comedy : function() {
-        $('#mainContent').find(':first-child').remove();
-        mostPopularComedies();
-    },
-    Horror : function() {
-        $('#mainContent').find(':first-child').remove();
-        bestHorrors();
-    },
-    Fantasy : function(){
-        $('#mainContent').find(':first-child').remove();
-        bestFantasy();
+        var type = document.URL.split('#')[1].split('_')[1];
+        defaultMovies(type)
     },
     movieSearch : function() {
         var searchQuery=document.URL.split('#')[1].split('+')[1];
