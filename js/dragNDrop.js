@@ -1,6 +1,7 @@
 var dragMovie = {};
 
 function startDrag(event) {
+    console.log(event.target)
     var sd = $(event.target).closest(".singleMovieBlock");
     dragMovie.id = $(sd).data('id');
     dragMovie.poster = event.target.src;

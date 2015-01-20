@@ -15,7 +15,6 @@
 		}
 		window.location='#news';
 	});
-
 	$('#mainMenu').on('click',menuEvents);
     
 	$('#callSearch').on('click',function() {
@@ -270,6 +269,15 @@ function NewsBlockEvents(){
 	$('#News').on('click', '.newsHeader', function(){
 		window.open($(this).data('source'));
 	});
+	
+	$(window).on('scroll', function(){
+		if(($(window).scrollTop() >= ($(document).height() - $(window).height() - 300))&&procesing ){
+			getNews($('#News').data('page'))
+		}
+	});
+
+
+
 };
 // events to scroll top btn
 function toTopBtnEvents() {

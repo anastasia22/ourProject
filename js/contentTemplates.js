@@ -8,8 +8,7 @@ var newsUrl = 'http://static01.nyt.com/';
 // HOME BLOCK
 function newsTemplate(news) {
     var homeTmpl = _.template(
-      '<div id="News">\
-        <%_.each(data, function(el){%>\
+      '<%_.each(data, function(el){%>\
           <%if(el.multimedia.length){%>\
           <div class="singleNewsBlock">\
             <div class="newsPic"><img src="<%=newsUrl%><%=el.multimedia[0].url%>"></div>\
@@ -21,16 +20,20 @@ function newsTemplate(news) {
               </div>\
             </div>\
           </div>\
-        <%}})%>\
-        <div class="morenews" data-page="">More...</div>\
-      </div>'
+        <%}})%>'
     );
-
-    if ($('#mainContent').find(':first-child')) {
+    console.log($('#mainContent').find(':first-child').attr('id'));
+    if ($('#mainContent').find(':first-child').attr('id') == 'News') {
+      $('#News').append(homeTmpl({'data':news.docs}));
+    }  else {
         $('#mainContent').find(':first-child').remove();
+        $('#mainContent').append( '<div id="News"><h1>The latest movie news</h1>' + 
+          homeTmpl({'data':news.docs}) + '</div>');
     }
 
-    $('#mainContent').append(homeTmpl({'data':news}));
+    
+    $('#News').data('page', (news.meta.offset/10 + 1));
+    procesing = true;
     NewsBlockEvents();
 }
 
@@ -57,19 +60,19 @@ function helpTemplate(questions) {
 
 function moviesTemplate(data,listName) {
     var movies = data.results;
-    var movieBlocks= _.template(
-        '<%_.each(obj,function(movie){%>\
-          <%if (movie.poster_path == null) {return}%>\
-          <div data-id="<%=movie.id%>" class="singleMovieBlock">\
-            <div class="imgWrap">\
-              <img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">\
-              <div class="infoBlock">\
-                <p><%=movie.title%></p>\
-                <p><%=movie.release_date%></p>\
-                </div>\
-              </div>\
+    var movieBlocks = _.template(
+      '<%_.each(obj,function(movie){%>\
+        <%if (movie.poster_path == null) {return}%>\
+        <div data-id="<%=movie.id%>" class="singleMovieBlock">\
+          <div class="imgWrap">\
+            <img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">\
+            <div class="infoBlock">\
+              <p><%=movie.title%></p>\
+              <p><%=movie.release_date%></p>\
             </div>\
-        <%})%>'
+          </div>\
+        </div>\
+      <%})%>'
     );
     if($('#loader')) {
        $('#loader').remove(); 
@@ -81,7 +84,7 @@ function moviesTemplate(data,listName) {
     if(movies.length == 0) {
         listName = 'Sorry. No results.';
     }
-
+console.log($('#mainContent').find(':first-child').attr('id'));
     if($('#mainContent').find(':first-child').attr('id') == 'Movies') {
         $('#Movies').append(movieBlocks(movies));
         singleMoveBlockEvents();

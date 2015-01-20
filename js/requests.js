@@ -1,19 +1,7 @@
 var keys = function() {
     var _EventListingsNY = '32072a386a8d87b37c7f310ac2cc27bd:11:70730185';
-    var _MostPopularNY = '14b1838415527ef7acfcb1adb622423d:3:70730185';
-    var _MovieReviewsNY = 'bd57083637548dd98822dfc5b8c0e352:15:70730185';
-    var _TopStoriesNY = 'bfad0b239fee10088cd2bfda5a191806:15:70730185';
     this.getEventListings = function(){
         return _EventListingsNY
-    };
-    this.getMostPopular = function(){
-        return _MostPopularNY
-    };
-        this.getMovieReviews = function(){
-        return _MostPopularNY
-    };
-        this.getTopStories = function(){
-        return _MostPopularNY
     };
 }
 
@@ -143,17 +131,22 @@ function getHelp(){
         helpTemplate(data)
     })
 }
+var procesing;
 function getNews(page){
-    $('#mainContent').append('<div id="loaderImage"></div>');
-    new imageLoader(cImageSrc, 'startAnimation()');
-    page = page||0;
+    procesing = false
+    // $('#mainContent').append('<div id="loaderImage"></div>');
+    // new imageLoader(cImageSrc, 'startAnimation()');
+    var page = page||0;
     var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:%28%22Movies%22%29%20AND%20type_of_material:%28%22News%22%29&sort=newest&api-key=c3b06d2b0936ccb5547a877c765a49a5:1:70730185&page=' + page;
     $.ajax({
         url: url,
         success: callBackFunc
     });
     function callBackFunc(data){
-        newsTemplate(data.response.docs)
+
+       $('#News').data('page', (data.response.meta.offset/10 + 1));
+        newsTemplate(data.response);
+        
     }
 }
 
