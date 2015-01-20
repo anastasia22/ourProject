@@ -6,7 +6,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50px; } }
+    height: 50px; } 
+  }
 @media only screen and (min-width: 590px) and (max-width: 1027px) {
   .srch-buttons-wrapper {
     width: 41%; } }
@@ -16,6 +17,7 @@
     height: 40px;
     margin: 32px 0 0 0;
     float: left; } }
+
 @media only screen and (max-width: 970px) {
   #singleMovie .trailer {
     width: 100%; }
@@ -40,7 +42,27 @@
     width: 90%;
     clear: both;
     height: 60%;
-    margin: 10px; } }
+    margin: 10px; }
+
+  #News .newsPic{
+    width:35%;
+  }
+  #News .newsInfo {
+    width:63%;
+  }
+  #News .newsHeader {
+    font-size: 1.25rem;
+  }
+  #News .newsHeader:hover {
+    font-size:1.3rem;
+  }
+  #News .newsInfo .newsArticle {
+    font-size:0.9rem;
+  }
+
+     }
+
+
 @media only screen and (min-width: 741px) and (max-width: 1000px) {
   .search-input {
     width: 30%; }
@@ -154,7 +176,19 @@
     width: 90%;
     height: 50%;
     background: none;
-    margin-tom: 0px; } }
+    margin-tom: 0px; }
+  
+  #News .newsHeader {
+    font-size: 1.1rem;
+  }
+  #News .newsHeader:hover {
+    font-size:1.2rem;
+  }
+  #News h1 {
+  font-size:1.5rem;
+  }
+
+}
 @media only screen and (max-width: 520px) {
   .label-wrapper {
     margin: 0 auto;
@@ -174,7 +208,23 @@
   #singleMovie .lgScreenshot {
     width: 312px; }
   #singleMovie .similar > section {
-    margin-left: 35%; } }
+    margin-left: 35%; } 
+  
+  #News .newsInfo .newsArticle {
+    display:none;
+  }
+  #News .singleNewsBlock {
+    background-color: #c5e2ff
+  }
+  #News .newsHeader {
+    font-size: 1rem;
+  }
+  #News .newsHeader:hover {
+    font-size:1rem;
+  }
+
+
+  }
 @media only screen and (max-width: 499px) {
   .search-genres {
     width: 100%; }
@@ -184,6 +234,7 @@
 
   #singleMovie .smSlider {
     width: 80%; } }
+
 @media only screen and (max-width: 480px) {
   div.singleMovieBlock {
     width: 50%; }
@@ -202,7 +253,10 @@
     left: 5px;
     height: 100%;
     width: 9%;
-    background: #cccccc; } }
+    background: #cccccc; } 
+
+
+}
 @media only screen and (max-width: 370px) {
   .label-wrapper {
     width: 100%;
@@ -222,7 +276,18 @@
     height: 10px; }
 
   #singleMovie .smSlider {
-    width: 75%; } }
+    width: 75%; } 
+
+  #News .newsHeader {
+      font-size: 0.8rem;
+  }
+  #News .newsHeader:hover {
+    font-size:0.9rem;
+  }
+  #News h1 {
+  font-size:1.25rem;
+  }
+  }
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .actorPic {
     float: left;

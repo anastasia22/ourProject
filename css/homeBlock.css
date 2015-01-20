@@ -1,10 +1,15 @@
 #News {
   margin: 10px;
 }
+#News h1 {
+  color: #333;
+  margin-left: 5%;
+  font-size:2rem;
+}
 
 #News .singleNewsBlock {
   width: 90%;
-  margin: 20px 10px;
+  margin: 20px auto;
   background: #e9f4f3;
 }
 
@@ -20,7 +25,6 @@
 #News .newsPic {
   width: 25%;
   float:left;
-  margin:10px;
 }
 
 #News .newsPic>img {
@@ -28,24 +32,25 @@
 }
 #News .newsInfo {
   float:left;
-  padding: 20px;
-  width:70%;
+  width:73%;
   margin-left:2%;
 }
 #News .newsHeader {
   background: #c5e2ff;
   padding: 7px 20px;
   font-size:1.5rem;
+  color:#056e8d;
 }
 #News .newsHeader:hover{
   text-decoration:underline;
   cursor:pointer;
-   font-size:1.6rem;
+  font-size:1.6rem;
 }
 
 #News .newsInfo .newsArticle {
   padding: 5px;
   height: 90%;
+  font-size: 1rem;
 }
 
 #News a {
