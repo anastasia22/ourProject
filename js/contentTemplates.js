@@ -58,7 +58,7 @@ function helpTemplate(questions) {
     HelpBlockEvents();
 }
 
-function moviesTemplate(data,listName, type) {
+function moviesTemplate(data, listName, type, query) {
     var movies = data.results;
     var movieBlocks = _.template(
       '<%_.each(obj,function(movie){%>\
@@ -94,6 +94,7 @@ function moviesTemplate(data,listName, type) {
     $('#Movies').data('total', data.total_pages);
     $('#Movies').data('page', data.page);
     $('#Movies').data('type', type);
+    if(query){$('#Movies').data('query', query)};
     procesing = true;
     makeDraggable();
     loadContent()

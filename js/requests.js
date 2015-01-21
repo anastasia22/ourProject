@@ -6,7 +6,7 @@ var keys = function() {
 }
 var procesing;
 
-function defaultMovies(type, page) {
+function defaultMovies(type, page, query) {
     var url;
     var listName;
     switch (type){
@@ -38,17 +38,22 @@ function defaultMovies(type, page) {
                 url='discover/movie?with_genres=14&sort_by=popularity.desc';
                 listName='Fantasy';
                 break;
+            case 'search-movies':
+                url='search/movie?query=' + query;
+                listName='Search for: <span class="searchResInfo">' + query + '</span>  Results found: ';
+                break;
         }
-    sendRequest(url,listName,'movies',type, page);
+    sendRequest(url,listName,'movies', page, type, query);
 }
 
-function sendRequest(url,listName,controllerTarget,type, page) {
+
+function sendRequest(url,listName,controllerTarget,page,type, query) {
     procesing = false
     var apikey = "&api_key=7a135ff2c408f8e138e4645f83b30222";
     var baseUrl = "https://api.themoviedb.org/3/";
     var pages;
     var page = page||1;
-    var currentPage= '&page=' + (++page);
+    var currentPage= '&page=' + page;
     moviesSearchUrl = baseUrl + url + apikey + currentPage;
 
     $('#mainContent').append('<div id="loaderImage"></div>');
@@ -65,7 +70,7 @@ function sendRequest(url,listName,controllerTarget,type, page) {
         $('#loaderImage').remove();
         switch (controllerTarget){
             case 'movies':
-                moviesTemplate(data,listName, type);
+                moviesTemplate(data, listName, type, query);
                 break;
             case 'actors':
                 actorsTempl(data,listName);
@@ -91,8 +96,8 @@ function getHelp(){
 
 function getNews(page){
     procesing = false
-    // $('#mainContent').append('<div id="loaderImage"></div>');
-    // new imageLoader(cImageSrc, 'startAnimation()');
+    $('#mainContent').append('<div id="loaderImage"></div>');
+    new imageLoader(cImageSrc, 'startAnimation()');
     var page = page||0;
     var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:%28%22Movies%22%29%20AND%20type_of_material:%28%22News%22%29&sort=newest&api-key=c3b06d2b0936ccb5547a877c765a49a5:1:70730185&page=' + page;
     $.ajax({
@@ -100,15 +105,10 @@ function getNews(page){
         success: callBackFunc
     });
     function callBackFunc(data){
-        // if(page > data.response.meta.offset/10){
-        //     customAlert('This is the last page.');
-        //     return
-        // };
+        stopAnimation();
+        $('#loaderImage').remove();
         $('#News').data('page', (data.response.meta.offset/10 + 1));
-
         newsTemplate(data.response);
-
-        
     }
 }
 

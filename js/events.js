@@ -284,15 +284,17 @@ function toTopBtnEvents() {
 function loadContent(){
 	$(window).on('scroll', function(){
 		onToTopBtn();
-		if ($(window).scrollTop() >= ($(document).height() - $(window).height() - 300)&&procesing ) {
+		if ($(window).scrollTop() >= ($(document).height() - $(window).height() - 200)&&procesing ) {
 			if($('#mainContent').find(':first-child').attr('id') == 'News') {
 				getNews($('#News').data('page'))
 			} else if ($('#mainContent').find(':first-child').attr('id') == 'Movies') {
 				if($('#Movies').data('page') == $('#Movies').data('total')) {
 		            	customAlert('This is the last page.');
 		        } else {
-		        		defaultMovies($('#Movies').data('type') , $('#Movies').data('page') + 1)
+		        		defaultMovies($('#Movies').data('type'),$('#Movies').data('page') + 1,$('#Movies').data('query'))
 		        }
+		    } else if ($('#mainContent').find(':first-child').attr('id') == 'Actors') {
+		    	
 		    }
 		} 	
 	
