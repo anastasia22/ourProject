@@ -9,6 +9,7 @@ var procesing;
 function defaultMovies(type, page, query) {
     var url;
     var listName;
+    var controllerTarget = 'movies';
     switch (type){
             case 'popular':
                 url='discover/movie?sort_by=popularity.desc';
@@ -42,10 +43,29 @@ function defaultMovies(type, page, query) {
                 url='search/movie?query=' + query;
                 listName='Search for: <span class="searchResInfo">' + query + '</span>  Results found: ';
                 break;
+            case 'movies-with-rates':
+                url='discover/movie?vote_average.lte=' + query + '&sort_by=vote_average.desc';
+                listName='Movies with rating ' + query;
+                break;
+            case 'movies-with-year':
+                url='discover/movie?primary_release_year=' + query + '&sort_by=popularity.desc';
+                listName='Movies released in ' + query;
+                break;
+            case 'movies-with-genre':
+                url='discover/movie?with_genres=' + query[0] + '&sort_by=popularity.desc';
+                listName='Movies with ' + query[1] + '&nbsp;genre';
+                break;
+            case 'actors':
+                url='search/person?query=' + query;
+                listName='Search for: <span class="searchResInfo">' + query + '</span>  Results found: ';
+                controllerTarget = 'actors'
+                break;
+            default:
+                customAlert('An error occured!');
+                break;
         }
-    sendRequest(url,listName,'movies', page, type, query);
+    sendRequest(url,listName,controllerTarget, page, type, query);
 }
-
 
 function sendRequest(url,listName,controllerTarget,page,type, query) {
     procesing = false
@@ -73,7 +93,7 @@ function sendRequest(url,listName,controllerTarget,page,type, query) {
                 moviesTemplate(data, listName, type, query);
                 break;
             case 'actors':
-                actorsTempl(data,listName);
+                actorsTempl(data, listName, type, query);
                 break;
             case 'movie':
                 singleMovieTemplate(data);
@@ -82,7 +102,7 @@ function sendRequest(url,listName,controllerTarget,page,type, query) {
                 singleActorTempl(data);
                 break;
             default:
-                customAlert('Something wrong!');
+                customAlert('An error occured!');
                 break;
         }
     }

@@ -100,7 +100,7 @@ function moviesTemplate(data, listName, type, query) {
     loadContent()
 }
 
-function  actorsTempl(data,listName) {
+function  actorsTempl(data,listName,type,query) {
     var actors = data.results;
     var actorBlocks= _.template(
         '<%_.each(obj,function(actor){%>\
@@ -133,6 +133,12 @@ function  actorsTempl(data,listName) {
         singleActorBlockEvents();
     }
     $('#Actors').append('<div id="loader"><img src="http://preloaders.net/images/ajax-loader.gif" alt="AJAX loader" title="AJAX loader" /></div>');
+    $('#Actors').data('total', data.total_pages);
+    $('#Actors').data('page', data.page);
+    $('#Actors').data('type', type);
+    if(query){$('#Actors').data('query', query)};
+    procesing = true;
+    loadContent()
 }
 
 function  singleActorTempl(actor) {

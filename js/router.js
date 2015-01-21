@@ -5,14 +5,13 @@ var MainRouter = Backbone.Router.extend({
         'news': 'News',
         'help': 'Help',
         'movies_:type': 'Movies',
-        'movies+:query' : 'movieSearch',
+        'movies/:query' : 'movieSearch',
         'movies-with-rates/:rate' : 'searchByRate',
         'movies-with-year/:year' : 'searchByYear',
         'movies-with-genre/:id/:genre' : 'searchByGenre',
         'actors+:query' : 'actorSearch',
         'movie/:query' : 'sinMoviePage',
         'actor/:query' : 'sinActorPage'
-
     },
     Help : getHelp,
     News : getNews,
@@ -22,16 +21,32 @@ var MainRouter = Backbone.Router.extend({
         defaultMovies(type,0)
     },
     movieSearch : function() {
-        var query=document.URL.split('#')[1].split('+')[1];
+        var query=document.URL.split('#')[1].split('/')[1];
         $('#mainContent').find(':first-child').remove();
         defaultMovies('search-movies', 0, query);
     },
+    searchByRate : function() {
+        var rating=document.URL.split('#')[1].split('/')[1];
+        $('#mainContent').find(':first-child').remove();
+        defaultMovies('movies-with-rates', 0, rating);
+    },
+    searchByYear : function() {
+        var year=document.URL.split('#')[1].split('/')[1];
+        $('#mainContent').find(':first-child').remove();
+        defaultMovies('movies-with-year', 0, year);
+    },
+    searchByGenre: function() {
+        var genre = [];
+        genre[0] = document.URL.split('#')[1].split('/')[1];
+        genre[1] = document.URL.split('#')[1].split('/')[2];
+        $('#mainContent').find(':first-child').remove();
+        defaultMovies('movies-with-genre', 0, genre);
+    },
     actorSearch : function() {
-        var searchQuery=document.URL.split('#')[1].split('+')[1];
-        var titleSearch = 'search/person?query=' + searchQuery;
+        var query=document.URL.split('#')[1].split('+')[1];
         $('#mainContent').find(':first-child').remove();
         $('#Actor').remove();
-        sendRequest(titleSearch,'Search for: <span class="searchResInfo">' + searchQuery + '</span>  Results found: ','actors');
+        defaultMovies('actors', 0, query)
     },
     sinMoviePage : function() {
         var searchQuery=document.URL.split('#')[1].split('/')[1];
@@ -44,30 +59,7 @@ var MainRouter = Backbone.Router.extend({
         createBlock();
         var id=document.URL.split('#')[1].split('/')[1];
         sendRequest('person/' + id +'?append_to_response=movie_credits','','actor');
-    },
-
-
-
-
-    searchByRate : function() {
-        var rating=document.URL.split('#')[1].split('/')[1];
-        var searchQuery = 'discover/movie?vote_average.lte=' + rating + '&sort_by=vote_average.desc';
-        $('#mainContent').find(':first-child').remove();
-        sendRequest(searchQuery, 'Movies with rating ' + rating,'movies');
-    },
-    searchByYear : function() {
-        var year=document.URL.split('#')[1].split('/')[1];
-        var searchQuery = 'discover/movie?primary_release_year=' + year + '&sort_by=popularity.desc';
-        $('#mainContent').find(':first-child').remove();
-        sendRequest(searchQuery, 'Movies released in ' + year,'movies');
-    },
-    searchByGenre: function() {
-        var id = document.URL.split('#')[1].split('/')[1];
-        var name = document.URL.split('#')[1].split('/')[2];
-        var searchQuery = 'discover/movie?with_genres=' + id + '&sort_by=popularity.desc';
-        $('#mainContent').find(':first-child').remove();
-        sendRequest(searchQuery ,'Movies with ' + name + '&nbsp;genre','movies');
-    },
+    }
 });
 
 var router = new MainRouter;

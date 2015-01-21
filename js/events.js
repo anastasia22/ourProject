@@ -44,7 +44,7 @@ function searchBy() {
 			$('#searchWrapper').stop(true,true).animate({opacity : 0},500,function(){
 				this.remove();
 			});
-			window.location='#movies+' + $('#searchField').val();
+			window.location='#movies/' + $('#searchField').val();
 		} else {
 			$('#searchWrapper').stop(true,true).animate({opacity : 0},500,function(){
 				this.remove();
@@ -258,7 +258,7 @@ function addEventsToMovie(){
 	}
 
 };  
-
+localStorage.clear();
 //toggle for help page
 function HelpBlockEvents(){
 	$('#Help').on('click', '.question', function(){
@@ -284,17 +284,22 @@ function toTopBtnEvents() {
 function loadContent(){
 	$(window).on('scroll', function(){
 		onToTopBtn();
-		if ($(window).scrollTop() >= ($(document).height() - $(window).height() - 200)&&procesing ) {
-			if($('#mainContent').find(':first-child').attr('id') == 'News') {
+		var containerId = $('#mainContent').find(':first-child').attr('id')
+	if ($(window).scrollTop() >= ($(document).height() - $(window).height() - 200)&&procesing ) {
+			if (containerId == 'News') {
 				getNews($('#News').data('page'))
-			} else if ($('#mainContent').find(':first-child').attr('id') == 'Movies') {
-				if($('#Movies').data('page') == $('#Movies').data('total')) {
+			} else if (containerId == 'Movies') {
+				if ($('#Movies').data('page') == $('#Movies').data('total')) {
 		            	customAlert('This is the last page.');
 		        } else {
-		        		defaultMovies($('#Movies').data('type'),$('#Movies').data('page') + 1,$('#Movies').data('query'))
+		        		defaultMovies($('#Movies').data('type'),$('#Movies').data('page') + 1, $('#Movies').data('query'))
 		        }
-		    } else if ($('#mainContent').find(':first-child').attr('id') == 'Actors') {
-		    	
+		    } else if (containerId == 'Actors') {
+		    	if ($('#Actors').data('page') == $('#Actors').data('total')) {
+		            	customAlert('This is the last page.');
+		        } else {
+		    		defaultMovies($('#Actors').data('type'), $('#Actors').data('page') + 1, $('#Actors').data('query'))
+		    	}
 		    }
 		} 	
 	
