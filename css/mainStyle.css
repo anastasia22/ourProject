@@ -94,15 +94,20 @@ a {
 .menuButton {
   width: 17.60532%;
   display: inline-block;
+  padding: 17.5px 0 19px;
   float: left;
   position: inherit;
   overflow: hidden;
   color: white;
-  padding: 17.5px 0 19px;
   border: 0;
   line-height: 16px;
   -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s; }
+  transition-duration: 0.2s; 
+}
+.menuButton>a{
+  display:block;
+  color:white;
+}
   .menuButton:hover {
     cursor: pointer;
     background: #01aadd; }
@@ -122,12 +127,16 @@ a {
   width: 17.60532%;
   cursor: pointer;
   background: #01aadd; }
-  .menuButton ul li {
+  .menuButton ul li{
     height: 30px;
     line-height: 30px; }
+    .menuButton ul li>a{
+      color:white;
+    }
     .menuButton ul li:hover {
-      background: #eeeeee;
-      color: #01aadd; }
+      background: #eee;
+       }
+       .menuButton ul li>a:hover{color: #01aadd;}
 .menuButton:hover ul {
   visibility: visible;
   z-index: 20; }

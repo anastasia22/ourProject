@@ -2,18 +2,18 @@
 (function(){
 	//main logo events
 	$('.logo-backgr').on('click',function() {
-		if($('#favSection')) {
+		if ($('#favSection')) {
 			hideFavBlock();
 		}
 		$('#searchWrapper').remove();
-		$('favoritesButton').toggleClass('menuButtonHovered');
-
-		$('callSearch').toggleClass('menuButtonHovered');
+		$('#favoritesButton').removeClass('menuButtonHovered');
+		$('#callSearch').removeClass('menuButtonHovered');
 		$('#mainContent').children().remove();
 		if(document.URL.split('#')[1] == 'news') {
 			window.location.reload();
 		}
 		window.location='#news';
+
 	});
 	$('#mainMenu').on('click',menuEvents);
     
@@ -36,6 +36,13 @@
 	});
 })();
 
+function menuEvents(event) {
+	var target = event.target || event.srcElement;
+		if(document.URL == target.href) {
+			window.location.reload();
+		}
+}
+
 function searchBy() {
 	$('.search-button').on('click',function() {
 		$('#mainContent').find(':first-child').remove();
@@ -54,21 +61,7 @@ function searchBy() {
 	});
 }
 
-function menuEvents(event) {
-	var target = event.target || event.srcElement;
-	var menu = ['news', 'movies_this-year', 'help', 'movies_popular', 'movies_last-year','movies_for-kids', 'movies_comedy', 'movies_horror', 'movies_fantasy'];
 
-	for (var i in menu) {
-		if(menu[i] == target.id) {
-			if(document.URL.split('#')[1] == menu[i]) {
-				window.location.reload();
-			} else {
-				$('#mainContent').find(':first-child').remove();
-				window.location='#' + menu[i];
-			}
-		}
-	}
-}
 //event for changing poster sizes when animate
 function setImgHeightEvent(){
 		var widthImg = $(".singleMovieBlock img").width();
