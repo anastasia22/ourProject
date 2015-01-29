@@ -25,10 +25,17 @@
 #News .newsPic {
   width: 25%;
   float:left;
+  overflow: hidden;
+}
+.newsPic a {
+  display:block;
 }
 
-#News .newsPic>img {
+#News .newsPic img {
   width:100%;
+}
+#News .newsPic img:hover {
+  transform:scale(1.1,1.1);
 }
 #News .newsInfo {
   float:left;
@@ -39,12 +46,15 @@
   background: #c5e2ff;
   padding: 7px 20px;
   font-size:1.5rem;
-  color:#056e8d;
+
 }
 #News .newsHeader:hover{
   text-decoration:underline;
   cursor:pointer;
   font-size:1.6rem;
+}
+#News .newsHeader>a{
+    color:#056e8d;
 }
 
 #News .newsInfo .newsArticle {

@@ -11,9 +11,9 @@ function newsTemplate(news) {
       '<%_.each(data, function(el){%>\
           <%if(el.multimedia.length){%>\
           <div class="singleNewsBlock">\
-            <div class="newsPic"><img src="<%=newsUrl%><%=el.multimedia[0].url%>"></div>\
+            <div class="newsPic"><a target="_blank" href="<%=el.web_url%>"><img src="<%=newsUrl%><%=el.multimedia[0].url%>"></a></div>\
             <div class="newsInfo">\
-              <h2 class="newsHeader" data-source="<%=el.web_url%>"><%=el.headline.main%></h2>\
+              <h2 class="newsHeader"><a href="<%=el.web_url%>"><%=el.headline.main%></a></h2>\
               <div class="newsArticle">\
                 <p><%=el.lead_paragraph%></p>\
                 <a target="_blank" href="<%=el.web_url%>">Read more...</a>\
@@ -33,7 +33,6 @@ function newsTemplate(news) {
     
     $('#News').data('page', (news.meta.offset/10 + 1));
     procesing = true;
-    NewsBlockEvents();
     loadContent()
 }
 
