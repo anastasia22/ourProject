@@ -70,23 +70,6 @@ a {
 .header-wrapper {
   padding-top: 7px; }
 
-.registration {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 14px;
-  width: 159px;
-  text-align: right; }
-  .registration a {
-    float: left;
-    color: #eeeeee;
-    display: inline-block;
-    padding: 8px;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s; }
-    .registration a:hover {
-      color: #6ec1e0; }
-
 .main-menu-wrapper {
   display: block;
   width: 100%; }
@@ -131,9 +114,11 @@ a {
   background: #01aadd; }
   .menuButton ul li{
     height: 30px;
-    line-height: 30px; }
+    }
     .menuButton ul li>a{
+      display:block;
       color:white;
+      line-height: 30px; 
     }
     .menuButton ul li:hover {
       background: #eee;

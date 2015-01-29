@@ -13,56 +13,68 @@ function defaultMovies(type, page, query) {
     switch (type){
             case 'popular':
                 url='discover/movie?sort_by=popularity.desc';
-                listName='Most popular';
-                break;
-            case 'this-year':
-                url='discover/movie?primary_release_year=2014';
-                listName='This year movies';
-                break;
-            case 'last-year':
-                url='discover/movie?primary_release_year=2013&sort_by=popularity.desc';
-                listName='Last year most popular';
-                break;    
-            case 'for-kids':
-                url='discover/movie?with_genres=16,10751&sort_by=popularity.desc';
-                listName='For kids';
-                break;
+                listName='Most popular movies';
+            break;
+            case 'adventure':
+                url='discover/movie?with_genres=12&sort_by=popularity.desc';
+                listName='Adventure';
+            break;
             case 'comedy':
-                url='discover/movie?with_genres=35,36&sort_by=revenue.desc';
-                listName='Most popular comedies';
-                break;
-            case 'horror':
-                url='discover/movie?with_genres=27,80&sort_by=popularity.desc';
-                listName='Best horror films';
-                break;
+                url='discover/movie?with_genres=35&sort_by=popularity.desc';
+                listName='Comedy';
+            break;
+            case 'documentary':
+                url='discover/movie?with_genres=99&sort_by=popularity.desc';
+                listName='Documentary';
+            break;
+            case 'drama':
+                url='discover/movie?with_genres=18&sort_by=popularity.desc';
+                listName='Drama';
+            break;  
             case 'fantasy':
                 url='discover/movie?with_genres=14&sort_by=popularity.desc';
                 listName='Fantasy';
-                break;
+            break;    
+            case 'for-kids':
+                url='discover/movie?with_genres=16,10751&sort_by=popularity.desc';
+                listName='For kids';
+            break;
+            case 'horror':
+                url='discover/movie?with_genres=27&sort_by=popularity.desc';
+                listName='Horror';
+            break;
+            case 'romance':
+                url='discover/movie?with_genres=10749&sort_by=popularity.desc';
+                listName='Romance';
+            break;  
+            case 'thriller':
+                url='discover/movie?with_genres=53&sort_by=popularity.desc';
+                listName='Thriller';
+            break;    
             case 'search-movies':
                 url='search/movie?query=' + query;
                 listName='Search for: <span class="searchResInfo">' + query + '</span>  Results found: ';
-                break;
+            break;
             case 'movies-with-rates':
                 url='discover/movie?vote_average.lte=' + query + '&sort_by=vote_average.desc';
                 listName='Movies with rating ' + query;
-                break;
+            break;
             case 'movies-with-year':
                 url='discover/movie?primary_release_year=' + query + '&sort_by=popularity.desc';
                 listName='Movies released in ' + query;
-                break;
+            break;
             case 'movies-with-genre':
                 url='discover/movie?with_genres=' + query[0] + '&sort_by=popularity.desc';
                 listName='Movies with ' + query[1] + '&nbsp;genre';
-                break;
+            break;
             case 'actors':
                 url='search/person?query=' + query;
                 listName='Search for: <span class="searchResInfo">' + query + '</span>  Results found: ';
                 controllerTarget = 'actors'
-                break;
+            break;
             default:
                 customAlert('An error occured!');
-                break;
+            break;
         }
     sendRequest(url,listName,controllerTarget, page, type, query);
 }
