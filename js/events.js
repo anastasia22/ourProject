@@ -16,6 +16,7 @@
 
 	});
 	$('#mainMenu').on('click',menuEvents);
+	$('#favoritesButton').on('click',appearFavorites);
     
 	$('#callSearch').on('click',function() {
 		if(!document.getElementById('searchWrapper')) {
@@ -75,10 +76,6 @@ function singleMoveBlockEvents() {
 	setImgHeightEvent();
 	$(window).resize(setImgHeightEvent);
 
-	$(".singleMovieBlock").on('click',function() {
-		window.location='#movie/'+ $(this).data('id');
-	});
-
 	$(".singleMovieBlock").hover(function() {
 		//infoBlock=$(this).find(':last-child')[0];
 		infoBlock=$(this).find('.infoBlock');
@@ -118,7 +115,7 @@ function faBlockEvents() {
 	var infoBlock;
 
 	$(".favMovieBlock").hover(function () {
-			infoBlock = $(this).find(':last-child')[0];
+			infoBlock = $(this).find('.favInfoBlock');
 			$(infoBlock).stop(true, false).css({
 				height: '0px',
 				visibility: "visible"
@@ -138,14 +135,9 @@ function faBlockEvents() {
 				});
 		});
 
-	$(".favMovieImg,.favInfoBlock ").on('click', function () {
-		window.location='#movie/'+ ($(this).parent().attr('fav-id'));
-		return;
-	});
-
 	$('.favDelBtn').on('click', function () {
 		delFavMovie($(this).parent().attr('fav-id'));
-		$(this.parentNode).animate({
+		$(this.parentNode).animate({//should replace parentNode into parent()!!!!!!!!!!!!!
 			opacity: 0,
 			height: '20px'
 		}, 600, function () {
@@ -157,31 +149,6 @@ function faBlockEvents() {
 
 //events and functions for singleMoviePage
 function addEventsToMovie(){
-	//func that sets search-events for elements of movie-page
-	(function () {
-		function searchRate(){
-			var rate = $(this).children('span').text();
-			window.location = '#' + 'movies-with-rates/' + rate;
-		};
-	    function searchYear(){
-			var year = $(this).children('span').text();
-			window.location = '#' + 'movies-with-year/' + year;
-		};
-		function searchGenre(){
-			var genreName = $(this).children('span').text();
-			var genreId = $(this).children('span').data('genre');
-			window.location = '#' + 'movies-with-genre/' + genreId + '/' + genreName;
-		};
-		function showMovie(){
-			var movieId = $(this).data('id');
-			window.location = '#' + 'movie/' + movieId;
-		};
-		$('#singleMovie').on('click', '.search-rate', searchRate);
-	    $('#singleMovie').on('click', '.search-year', searchYear);
-	    $('#singleMovie').on('click', '.search-genre', searchGenre);
-	    $('#singleMovie').on('click', '.similar', showMovie);
-	})();
-
 	//setting width for small carousel container
 	var smImageContainer = $('.smCarousel').find($('.img-container'));
 	var smImages = smImageContainer.find('.screenshot');

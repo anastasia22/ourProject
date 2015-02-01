@@ -1,9 +1,14 @@
-var keys = function() {
-    var _EventListingsNY = '32072a386a8d87b37c7f310ac2cc27bd:11:70730185';
-    this.getEventListings = function(){
-        return _EventListingsNY
-    };
-}
+// var keys = function() {
+//     var _NYTnews = '32072a386a8d87b37c7f310ac2cc27bd:11:70730185';
+//     var _TMDBmovies = '7a135ff2c408f8e138e4645f83b30222';
+//     this.getNewsKey = function(){
+//         return _NYTnews
+//     };
+//     this.getMoviesKey = function(){
+//         return _NYTnews
+//     };
+
+// }
 var procesing;
 
 function defaultMovies(type, page, query) {

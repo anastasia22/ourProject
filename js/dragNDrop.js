@@ -1,11 +1,10 @@
 var dragMovie = {};
 
 function startDrag(event) {
-    console.log(event.target)
     var sd = $(event.target).closest(".singleMovieBlock");
-    dragMovie.id = $(sd).data('id');
+    dragMovie.id = $(sd).attr('href').split('/')[1];
     dragMovie.poster = event.target.src;
-    dragMovie.title = event.target.getAttribute('name');
+    dragMovie.title = $(event.target).attr('name');
 }
 
 function drop(event) {
@@ -64,12 +63,13 @@ function favMovies() {
 }
 
 function addFavMovieBlock(movie) {
-    var str = '<div class="favMovieBlock" fav-id="' + movie.id + '">' +
+    var str = '<div class="favMovieBlock">' +
         '<button class="favDelBtn"></button>' +
+        '<a href="#movie/' + movie.id + '">' +
         '<img class="favMovieImg" src="' + movie.poster + '"  ondragover="allowDrop(event)" ondragleave="handleDragLeave(event)">' +
         '<div class="favInfoBlock">' +
         '<p>' + movie.title + '</p>' +
-        '</div></div>';
+        '</div></a></div>';
 
     $('#favSection').append(str);
     faBlockEvents();

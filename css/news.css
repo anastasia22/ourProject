@@ -33,9 +33,12 @@
 
 #News .newsPic img {
   width:100%;
+  transform:scale(0.9);
+  opacity:0.9;
 }
 #News .newsPic img:hover {
-  transform:scale(1.1,1.1);
+  transform:scale(1.1);
+  opacity:1;
 }
 #News .newsInfo {
   float:left;

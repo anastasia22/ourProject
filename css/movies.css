@@ -1,4 +1,4 @@
-div.singleMovieBlock {
+.singleMovieBlock {
   position: relative;
   width: 33.333%;
   height: auto;
@@ -6,13 +6,13 @@ div.singleMovieBlock {
   text-align: center;
   margin: 10px 0;
   padding: 0 10px; }
-  div.singleMovieBlock:hover {
+  .singleMovieBlock:hover {
     cursor: pointer; }
 
 #Movies .imgWrap {
   position: relative; }
 
-div.infoBlock {
+.infoBlock {
   visibility: hidden;
   position: absolute;
   bottom: 0;

@@ -87,7 +87,7 @@
     height: 356px;
     position: relative; }
 
-  #menuMovies ul {
+  .menuButton ul {
     display: none; }
 
   #mainMenu {

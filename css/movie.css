@@ -51,9 +51,8 @@
     font-size: 1rem; }
     #singleMovie .mov-info > li:last-child {
       padding-bottom: 0; }
-  #singleMovie .searching {
+  #singleMovie .searching>a {
     color: #333333;
-    cursor: pointer;
     display: inline-block; }
   #singleMovie .additional:after {
     content: ", ";
@@ -63,7 +62,7 @@
     display: inline-block; }
   #singleMovie .additional > span {
     margin-left: 5px; }
-  #singleMovie .searching > span:hover {
+  #singleMovie .searching > a:hover {
     font-weight: bold;
     text-decoration: underline; }
   #singleMovie .trailer {
@@ -138,19 +137,19 @@
     margin: 0 auto;
     cursor: pointer; }
   #singleMovie .prev-able {
-    background: url("../images/arrow.png") no-repeat left top; }
+    background: url("../images/arrow.png") no-repeat left bottom; }
   #singleMovie .prev-unable {
     background: url("../images/arrow.png") no-repeat left center;
     cursor: auto; }
   #singleMovie .prev-able:hover {
-    background: url("../images/arrow.png") no-repeat left bottom; }
+    background: url("../images/arrow.png") no-repeat left top; }
   #singleMovie .next-able {
-    background: url("../images/arrow.png") no-repeat right top; }
+    background: url("../images/arrow.png") no-repeat right bottom; }
   #singleMovie .next-unable {
     background: url("../images/arrow.png") no-repeat right center;
     cursor: auto; }
   #singleMovie .next-able:hover {
-    background: url("../images/arrow.png") no-repeat right bottom; }
+    background: url("../images/arrow.png") no-repeat right top; }
   #singleMovie .actors {
     margin: 0 auto;
     width: 100%; }
@@ -178,18 +177,35 @@
     text-align: center;
     width: 100%; }
   #singleMovie .similar {
-    padding: 1%;
-    cursor: pointer; }
+    padding: 1%;}
+  #singleMovie .similar a{display:block;}  
     #singleMovie .similar:hover {
-      background-color: rgba(110, 193, 224, 0.2); }
+      background-color: rgba(110, 193, 224, 0.2); 
+    }
+     
     #singleMovie .similar span {
-      display: block; }
-    #singleMovie .similar > img {
+      display: block;
+      padding-top: 5px; }
+     #singleMovie .similar_name:hover{
+  text-decoration:underline;
+     }
+    #singleMovie .sml_poster {
       float: left;
       width: 20%;
-      margin-right: 2%; }
-    #singleMovie .similar > section {
+      margin-right: 2%;
+      overflow:hidden; }
+    #singleMovie .sml_poster img{
+      opacity:0.85;
+    }  
+   #singleMovie .similar:hover img{
+        opacity:1;
+      }
+
+    #singleMovie .sml_info {
       margin-left: 25%; }
+
+
+
 
 #mask {
   position: fixed;

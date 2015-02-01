@@ -1,5 +1,5 @@
 
-function eventHandler(event) {
+function appearFavorites() {
     var button = $('#favoritesButton');
 
     if(checkFavorites()){

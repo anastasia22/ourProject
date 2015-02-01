@@ -7,13 +7,13 @@ var newsUrl = 'http://static01.nyt.com/';
 
 // HOME BLOCK
 function newsTemplate(news) {
-    var homeTmpl = _.template(
+    var newsTmpl = _.template(
       '<%_.each(data, function(el){%>\
           <%if(el.multimedia.length){%>\
           <div class="singleNewsBlock">\
             <div class="newsPic"><a target="_blank" href="<%=el.web_url%>"><img src="<%=newsUrl%><%=el.multimedia[0].url%>"></a></div>\
             <div class="newsInfo">\
-              <h2 class="newsHeader"><a href="<%=el.web_url%>"><%=el.headline.main%></a></h2>\
+              <h2 class="newsHeader"><a target="_blank" href="<%=el.web_url%>"><%=el.headline.main%></a></h2>\
               <div class="newsArticle">\
                 <p><%=el.lead_paragraph%></p>\
                 <a target="_blank" href="<%=el.web_url%>">Read more...</a>\
@@ -23,11 +23,11 @@ function newsTemplate(news) {
         <%}})%>'
     );
     if ($('#mainContent').find(':first-child').attr('id') == 'News') {
-      $('#News').append(homeTmpl({'data':news.docs}));
+      $('#News').append(newsTmpl({'data':news.docs}));
     }  else {
         $('#mainContent').find(':first-child').remove();
         $('#mainContent').append( '<div id="News"><h1>The latest movie news</h1>' + 
-          homeTmpl({'data':news.docs}) + '</div>');
+          newsTmpl({'data':news.docs}) + '</div>');
     }
 
     
@@ -62,7 +62,7 @@ function moviesTemplate(data, listName, type, query) {
     var movieBlocks = _.template(
       '<%_.each(obj,function(movie){%>\
         <%if (movie.poster_path == null) {return}%>\
-        <div data-id="<%=movie.id%>" class="singleMovieBlock">\
+        <a href="#movie/<%=movie.id%>" class="singleMovieBlock">\
           <div class="imgWrap">\
             <img class="miniMovieImg" src="<%=largeImageUrl%><%=movie.poster_path%>" name="<%=movie.title%>">\
             <div class="infoBlock">\
@@ -70,7 +70,7 @@ function moviesTemplate(data, listName, type, query) {
               <p><%=movie.release_date%></p>\
             </div>\
           </div>\
-        </div>\
+        </a>\
       <%})%>'
     );
     if($('#loader')) {
@@ -218,8 +218,8 @@ function singleMovieTemplate (movie) {
                 <% if (singleMovie.rating){ %>\
                   <li>\
                     <span class="sp_title">Rates: </span>\
-                    <span class = "additional searching search-rate">\
-                      <span><%= singleMovie.rating %></span>\
+                    <span class = "additional searching">\
+                      <a href="#movies-with-rates/<%= singleMovie.rating %>"><%= singleMovie.rating %></a>\
                     </span> / 10\
                   </li>\
                 <% }; %>\
@@ -231,8 +231,8 @@ function singleMovieTemplate (movie) {
                 <% }; %>\
                   <li>\
                     <span class="sp_title">Year: </span>\
-                    <span class = "additional searching search-year">\
-                        <span><%= singleMovie.year %></span>\
+                    <span class = "additional searching">\
+                        <a href="#movies-with-year/<%= singleMovie.year %>"><%= singleMovie.year %></a>\
                     </span>\
                   </li>\
                 <% if (singleMovie.runtime){ %>\
@@ -247,8 +247,8 @@ function singleMovieTemplate (movie) {
                   <% if (singleMovie.genres){ %>\
                     <li><span class="sp_title">Genres: </span>\
                     <% _.each(singleMovie.genres, function(el){ %>\
-                      <span class = "additional searching search-genre">\
-                        <span data-genre = "<%=el.id%>"><%= el.name %></span>\
+                      <span class = "additional searching">\
+                        <a href="#movies-with-genre/<%=el.id%>/<%= el.name %>"><%= el.name %></a>\
                       </span>\
                   <% })%>\
                     </li>\
@@ -322,19 +322,23 @@ function singleMovieTemplate (movie) {
             <span class="sp_title block_title">Similar movies</span>\
             <section class="border_class similar_container">\
               <% _.each(singleMovie.similar, function(el){ %>\
-                <section class="similar" data-id="<%= el.id %>">\
-                  <% if (el.backdrop_path){ %>\
-                    <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
-                  <%} else {%>\
-                    <img src="images/no-image1.jpg">\
-                  <% } %>\
-                    <section>\
-                    <span class="similar_name sp_title"><%= el.title %></span>\
-                    <span class="similar_date"><%= el.release_date %></span>\
-                    <span class="similar_rate"><%= el.vote_average %></span>\
-                    </section>\
+                <section class="similar">\
+                  <section class="sml_poster">\
+                  <a href="#movie/<%= el.id %>">\
+                    <% if (el.backdrop_path){ %>\
+                      <img src="<%= mediumImageUrl %><%= el.backdrop_path %>">\
+                    <%} else {%>\
+                      <img src="images/no-image.jpg">\
+                    <% } %>\
+                  </a>\
+                  </section>\
+                  <section class="sml_info">\
+                    <a class="similar_name sp_title" href="#movie/<%= el.id %>"><%= el.title %></a>\
+                    <span>Release date: <%= el.release_date %></span>\
+                    <span>Rating: <%= el.vote_average %></span>\
+                  </section>\
                 </section>\
-                <% }) %>\
+              <% }) %>\
             </section>\
           </section>\
           <% }; %>\
