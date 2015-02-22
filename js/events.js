@@ -90,27 +90,6 @@ function singleMoveBlockEvents() {
 	});
 }
 
-function singleActorBlockEvents() {
-	var infoBlock;
-	$("#Actors .singleActorBlock").hover(function() {
-			infoBlock=$(this).find(':last-child')[0];
-
-			$(infoBlock).stop(true,false).css({height: '0px',visibility: "visible"}).animate({height: '100px'}, 700);
-
-		},
-		function(){
-			$(infoBlock).stop(false,false).animate({height: '0px'}, 700,
-				function(){
-					$(this).css({visibility: "hidden",height : '100px'});
-
-				});
-		});
-
-	$("#Actors .singleActorBlock,#singleMovie .singleActorBlock").on('click',function() {
-		window.location ='#actor/' + this.id;
-	});
-}
-
 function faBlockEvents() {
 	var infoBlock;
 
@@ -200,19 +179,20 @@ function addEventsToMovie(){
 	    var direction=$(this).data('direction');
 	    var diffWidth = imagesWidth - sliderWidth;
 	    var lastStep = diffWidth - imagesRight;
+	    console.log(imagesRight,step,lastStep);
 	    if (direction == 'previous' && imagesRight > step) {
 	        nextArrow.removeClass('next-unable').addClass('next-able');
-	        img_cont.stop().animate({"right": "-=" + step + "px" }, "slow","linear")
+	        img_cont.stop(true, true).animate({"right": "-=" + step + "px" }, "slow","linear")
 	    } else if (direction == 'previous' && imagesRight <= step && imagesRight > 0) {
 	        prevArrow.removeClass('prev-able').addClass('prev-unable');
-	        img_cont.stop().animate({"right": "-=" + imagesRight + "px" }, "slow","linear")
+	        img_cont.stop(true, true).animate({"right": "-=" + imagesRight + "px" }, "slow","linear")
 	    };
 	    if (direction =='next' && lastStep > step) {
 	        prevArrow.removeClass('prev-unable').addClass('prev-able');
-	        img_cont.stop().animate({"right": "+=" + step + "px"}, "slow", "linear")
+	        img_cont.stop(true, true).animate({"right": "+=" + step + "px"}, "slow", "linear")
 	    } else if (direction =='next' && lastStep <= step) {
 	        nextArrow.removeClass('next-able').addClass('next-unable');
-	        img_cont.stop().animate({"right": "+=" + lastStep + "px"}, "slow", "linear")
+	        img_cont.stop(true, true).animate({"right": "+=" + lastStep + "px"}, "slow", "linear")
 	    };
 	    return;
 	}

@@ -113,10 +113,10 @@ function sendRequest(url,listName,controllerTarget,page,type, query) {
                 actorsTempl(data, listName, type, query);
                 break;
             case 'movie':
-                singleMovieTemplate(data);
+                movieTemplate(data);
                 break;
             case 'actor':
-                singleActorTempl(data);
+                singleActorTemplate(data);
                 break;
             default:
                 customAlert('An error occured!');
@@ -136,7 +136,7 @@ function getNews(page){
     $('#mainContent').append('<div id="loaderImage"></div>');
     new imageLoader(cImageSrc, 'startAnimation()');
     var page = page||0;
-    var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:%28%22Movies%22%29%20AND%20type_of_material:%28%22News%22%29&sort=newest&api-key=c3b06d2b0936ccb5547a877c765a49a5:1:70730185&page=' + page;
+    var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name:("Movies") AND type_of_material:("News")&sort=newest&api-key=c3b06d2b0936ccb5547a877c765a49a5:1:70730185&page=' + page;
     $.ajax({
         url: url,
         success: callBackFunc

@@ -6,12 +6,12 @@ var MainRouter = Backbone.Router.extend({
         'help': 'Help',
         'movies_:type': 'Movies',
         'movies/:query' : 'movieSearch',
+        'actors+:query' : 'actorSearch',
+        'movie/:query' : 'sinMoviePage',
+        'actor/:query' : 'sinActorPage',
         'movies-with-rates/:rate' : 'searchByRate',
         'movies-with-year/:year' : 'searchByYear',
         'movies-with-genre/:id/:genre' : 'searchByGenre',
-        'actors+:query' : 'actorSearch',
-        'movie/:query' : 'sinMoviePage',
-        'actor/:query' : 'sinActorPage'
     },
     Help : getHelp,
     News : getNews,
@@ -45,7 +45,6 @@ var MainRouter = Backbone.Router.extend({
     actorSearch : function() {
         var query=document.URL.split('#')[1].split('+')[1];
         $('#mainContent').find(':first-child').remove();
-        $('#Actor').remove();
         defaultMovies('actors', 0, query)
     },
     sinMoviePage : function() {
@@ -55,10 +54,10 @@ var MainRouter = Backbone.Router.extend({
         sendRequest(url,'','movie');
     },
     sinActorPage : function() {
-        $('#Actor').remove();
-        createBlock();
+        $('#mainContent').find(':first-child').remove();
         var id=document.URL.split('#')[1].split('/')[1];
-        sendRequest('person/' + id +'?append_to_response=movie_credits','','actor');
+        var url = 'person/' + id +'?append_to_response=movie_credits,images';
+        sendRequest(url,'','actor');
     }
 });
 

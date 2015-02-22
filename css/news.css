@@ -23,7 +23,7 @@
     clear: both; 
 }  
 #News .newsPic {
-  width: 25%;
+  width: 20%;
   float:left;
   overflow: hidden;
 }
@@ -42,7 +42,7 @@
 }
 #News .newsInfo {
   float:left;
-  width:73%;
+  width: 78%;
   margin-left:2%;
 }
 #News .newsHeader {

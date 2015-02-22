@@ -159,7 +159,8 @@
     background: white;
     float: left;
     margin: 7px;
-    cursor: pointer; }
+    cursor: pointer; 
+    display:block;}
     #singleMovie .single_actor > img {
       height: 138px;
       width: 92px; }

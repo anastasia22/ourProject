@@ -140,14 +140,18 @@ function  actorsTempl(data,listName,type,query) {
     loadContent()
 }
 
-function  singleActorTempl(actor) {
-    var content = '';
-    var movieAr=actor.movie_credits.cast;
-    var actorPage=_.template('\
-    <%if(obj.profile_path == null){%><div><image class="actorPic" src="images/no-photo.png"></div>\
-    <%} else {%> <div><image class="actorPic" src="http://image.tmdb.org/t/p/w300<%=obj.profile_path%>"></div><%}%>\
-    <div class="actorInfo"><p><span class="infoTags">Name: </span><%=obj.name%></p>\
-    <p><span class="infoTags">Born </span> <%if(obj.birthday) {%> <%=obj.birthday%><%}else{%> "no info" <%}%>\
+function  singleActorTemplate(actor) {
+    
+    var actorTmpl=_.template('\
+    <%if(obj.profile_path == null){%>\
+      <div><image class="actorPic" src="images/no-photo.png"></div>\
+    <%} else {%> \
+      <div><image class="actorPic" src="http://image.tmdb.org/t/p/w300<%=obj.profile_path%>"></div>\
+    <%}%>\
+    <div class="actorInfo">\
+    <p><span class="infoTags">Name: </span><%=obj.name%></p>\
+    <p><span class="infoTags">Born </span> \
+    <%if(obj.birthday) {%> <%=obj.birthday%><%}else{%> "no info" <%}%>\
       in <%if(obj.place_of_birth) {%><%=obj.place_of_birth%><%}else{%>no info <%}%></p>\
      <p><span class="infoTags">Also known as </span><%if(obj.also_known_as) {%> <%=obj.also_known_as%> <%}else{%> no info <%}%></p> \
      <p><span class="infoTags">Popularity: </span><%if(obj.popularity) {%><%=parseFloat(obj.popularity).toFixed(2)%>  <%}else{%> no info<%}%></p></div>\
@@ -168,41 +172,19 @@ function  singleActorTempl(actor) {
         '<div class="infoBlock"><p><%=movie.title%></p><p><%=movie.release_date%></p></div></div></div>' +
         '<%})%>'
     );
-    $('.castMoviesBlock').append(movieBlocks(movieAr));
-    $(".singleMovieBlock").on('click',function() {
-        deleteBlock();
-        window.location='#movie/' + $(this).data('id');
-    });
+
+    $('#mainContent').find(':first-child').remove();
+
+    stopAnimation();
+    $('#loaderImage').remove();
+    
+    $('#mainContent').append(singleActorTemplate({"Actor":actor}));
 }
 
-function createBlock() {
-    $('#mainContent').append('<div id="Actor"><button id="offOnBtn"></div>');
-    $('#Actor').append('<div id="loaderImage"></div>');
-    new imageLoader(cImageSrc, 'startAnimation()');
-    $('body').css('overflow','hidden');
-    $('#offOnBtn').on('click', function() {
-        if($('#mainContent').find(':first-child').attr('id') == 'Actors' || $('#mainContent').find(':first-child').attr('id') == 'singleMovie') {
-            if($('#loadImage')) {
-                stopAnimation();
-                $('#loaderImage').remove();
-            }
-            window.history.back();
-        }
-        deleteBlock();
-    });
-}
 
-function deleteBlock() {
-    if($('#loadImage')){
-       stopAnimation();
-       $('#loaderImage').remove();
-    }
-    $('body').css('overflow','auto');
-    $('#Actor').remove();
-}
 
-function singleMovieTemplate (movie) { 
-    var singleMovieTmpl = _.template(
+function movieTemplate (movie) { 
+    var movieTmpl = _.template(
         '<section id = "singleMovie">\
           <h1><%= singleMovie.title %></h1>\
           <section class="row">\
@@ -303,7 +285,7 @@ function singleMovieTemplate (movie) {
             <section class="border_class actors_container">\
               <section class="actors">\
                 <% _.each(singleMovie.actors, function(el){ %>\
-                  <section class="single_actor singleActorBlock" id="<%=el.id%>">\
+                  <a href="" class="single_actor singleActorBlock" id="<%=el.id%>">\
                     <% if (el.profile_path){ %>\
                       <img src="<%= smallImageUrl %><%= el.profile_path %>">\
                     <%} else {%>\
@@ -311,7 +293,7 @@ function singleMovieTemplate (movie) {
                     <% } %>\
                     <span class="act_name"><%= el.name %></span>\
                     <span class="act_role"><%= el.character %></span>\
-                  </section>\
+                  </a>\
                 <% }) %>\
               </section>\
             </section>\
@@ -361,7 +343,7 @@ function singleMovieTemplate (movie) {
         </section>'
     );
 
-    function renderSingleMoviePage(movie) {
+    function renderMoviePage(movie) {
         var singleMovie = {
             id:movie.id,
             title : movie.title,
@@ -414,8 +396,8 @@ function singleMovieTemplate (movie) {
     stopAnimation();
     $('#loaderImage').remove();
     
-    $('#mainContent').append(singleMovieTmpl({"singleMovie":renderSingleMoviePage(movie)}));
+    $('#mainContent').append(movieTmpl({"singleMovie":renderMoviePage(movie)}));
     addEventsToMovie();
     makeDraggable();
-    singleActorBlockEvents();
+
 }
